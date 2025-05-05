@@ -1,0 +1,18 @@
+@prefix ex: <https://sparql.uniprot.org/.well-known/sparql-examples/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <https://schema.org/> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+
+ex:M7_module a sh:SPARQLExecutable,
+        sh:SPARQLSelectExecutable ;
+    rdfs:comment "Entry, type, database associated"@en ;
+    sh:prefixes _:sparql_examples_prefixes ;
+    sh:select """PREFIX up: <http://purl.uniprot.org/core/>
+SELECT ?entry ?db ?database ?type
+WHERE {
+	?entry rdfs:seeAlso ?db.
+	?db up:database ?database.
+	?entry rdf:type ?type.
+}""" ;
+    schema:keywords "database" ;
+    schema:target <https://sparql.uniprot.org/sparql/> .

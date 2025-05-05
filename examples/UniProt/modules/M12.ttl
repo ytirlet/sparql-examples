@@ -1,0 +1,17 @@
+@prefix ex: <https://sparql.uniprot.org/.well-known/sparql-examples/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <https://schema.org/> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+
+ex:M12_module a sh:SPARQLExecutable,
+        sh:SPARQLSelectExecutable ;
+    rdfs:comment "protein and annotation"@en ;
+    sh:prefixes _:sparql_examples_prefixes ;
+    sh:select """PREFIX up: <http://purl.uniprot.org/core/>
+SELECT ?protein ?annotation
+WHERE {
+	?protein rdf:type up:Protein.
+	?protein up:annotation ?annotation.
+}""" ;
+    schema:keywords "protein annotation" ;
+    schema:target <https://sparql.uniprot.org/sparql/> .
