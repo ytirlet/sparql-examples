@@ -10,8 +10,8 @@ ex:M10_module a sh:SPARQLExecutable,
     sh:select """PREFIX up: <http://purl.uniprot.org/core/>
 SELECT ?entry ?recName ?fullName
 WHERE {
-	?entry up:recommandedName ?recName.
+	?entry up:recommendedName ?recName.
 	?recName up:fullName ?fullName.
 }""" ;
-    schema:keywords "recommanded name", "full name" ;
+    schema:keywords "recommended name", "full name" ;
     schema:target <https://sparql.uniprot.org/sparql/> .

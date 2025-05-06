@@ -5,13 +5,13 @@
 
 ex:M1_module a sh:SPARQLExecutable, # do we keep that ?
         sh:SPARQLSelectExecutable ; # and that ?
-    rdfs:comment "Taxon scientfic name"@en ;
+    rdfs:comment "Taxon scientific name"@en ;
     sh:prefixes _:sparql_examples_prefixes ;
     sh:select """PREFIX up: <http://purl.uniprot.org/core/>
 SELECT ?taxon ?name
 WHERE {
 	?taxon rdf:type up:Taxon.
-	?taxon up:scientifName ?name.
+	?taxon up:scientificName ?name.
 }""" ;
     schema:keywords "taxon name" ;
     schema:target <https://sparql.uniprot.org/sparql/> .

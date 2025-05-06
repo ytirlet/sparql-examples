@@ -10,7 +10,7 @@ ex:M3_module a sh:SPARQLExecutable,
     sh:select """PREFIX up: <http://purl.uniprot.org/core/>
 SELECT ?taxon ?superTaxon ?name
 WHERE {
-	?taxon up:ScientifName ?name.
+	?taxon up:scientificName ?name.
 	?taxon rdfs:subClassOf ?superTaxon.
 }""" ;
     schema:keywords "taxon superClass and name" ;

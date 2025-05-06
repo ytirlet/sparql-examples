@@ -11,7 +11,7 @@ ex:M4_module a sh:SPARQLExecutable,
 SELECT ?taxon ?superTaxon ?name
 WHERE {
 	?taxon rdf:type up:Taxon.
-	?taxon up:ScientifName ?name.
+	?taxon up:scientificName ?name.
 	?taxon rdfs:subClassOf ?superTaxon.
 }""" ;
     schema:keywords "taxon superClass", "taxon name" ;
