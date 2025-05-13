@@ -1,0 +1,20 @@
+@prefix ex: <https://sparql.uniprot.org/.well-known/sparql-examples/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <https://schema.org/> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+
+ex:M20_module a sh:SPARQLExecutable,
+        sh:SPARQLSelectExecutable ;
+    rdfs:comment "ChEBI restriction"@en ;
+    sh:prefixes _:sparql_examples_prefixes ;
+    sh:select """PREFIX up: <http://purl.uniprot.org/core/>
+SELECT ?compound ?chebi ?superchebi ?chebiRestriction ?chebi2
+WHERE {
+	?compound rh:chebi ?chebi.
+	?chebiRestriction owl:someValuesFrom ?chebi.
+	?chebiRestriction rdf:type owl:Restriction.
+	?chebi2 rdfs:subClassOf ?chebiRestriction.
+	?chebi2 (rdfs:subClassOf)+ ?superchebi.
+}""" ;
+    schema:keywords "ChEBI restriction" ;
+    schema:target <https://sparql.uniprot.org/sparql/> .

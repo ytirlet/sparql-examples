@@ -1,0 +1,19 @@
+@prefix ex: <https://sparql.uniprot.org/.well-known/sparql-examples/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <https://schema.org/> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+
+ex:M20_module a sh:SPARQLExecutable,
+        sh:SPARQLSelectExecutable ;
+    rdfs:comment "protein that has catalytic activity and link to database"@en ;
+    sh:prefixes _:sparql_examples_prefixes ;
+    sh:select """PREFIX up: <http://purl.uniprot.org/core/>
+SELECT ?protein ?annotation ?dbentry ?database
+WHERE {
+	?protein rdfs:seeAlso ?dbentry.
+	?dbentry up:database ?database.
+	?protein up:annotation ?annotation.
+	?annotation up:catalyticActivity ?ca.
+}""" ;
+    schema:keywords "protein annotation", "catalytic activity" ;
+    schema:target <https://sparql.uniprot.org/sparql/> .

@@ -1,0 +1,18 @@
+@prefix ex: <https://sparql.uniprot.org/.well-known/sparql-examples/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <https://schema.org/> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+
+ex:M20_module a sh:SPARQLExecutable,
+        sh:SPARQLSelectExecutable ;
+    rdfs:comment "protein, annotation and associated disease"@en ;
+    sh:prefixes _:sparql_examples_prefixes ;
+    sh:select """PREFIX up: <http://purl.uniprot.org/core/>
+SELECT ?protein ?annotation ?disease
+WHERE {
+	?protein up:annotation ?annotation.
+	?protein rdf:type up:Protein.
+	?annotation up:disease ?disease.
+}""" ;
+    schema:keywords "protein annotation", "disease" ;
+    schema:target <https://sparql.uniprot.org/sparql/> .

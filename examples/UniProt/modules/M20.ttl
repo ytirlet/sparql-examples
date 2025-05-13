@@ -1,0 +1,21 @@
+@prefix ex: <https://sparql.uniprot.org/.well-known/sparql-examples/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <https://schema.org/> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+
+ex:M20_module a sh:SPARQLExecutable,
+        sh:SPARQLSelectExecutable ;
+    rdfs:comment "protein and annotation and up to the source"@en ;
+    sh:prefixes _:sparql_examples_prefixes ;
+    sh:select """PREFIX up: <http://purl.uniprot.org/core/>
+SELECT ?protein ?type1 ?type2
+WHERE {
+	?protein rdf:type up:Protein.
+	?protein up:annotation ?annotation.
+	?object rdf:object ?annotation.
+	?object up:attribution ?attribution.
+	?attribution up:source ?source.
+	?source rdf:type ?sourceType.
+}""" ;
+    schema:keywords "annotation", "evidence tag", "PubMed" ;
+    schema:target <https://sparql.uniprot.org/sparql/> .
