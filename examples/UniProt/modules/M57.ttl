@@ -1,9 +1,10 @@
+@base <https://sparql.uniprot.org/.well-known/sparql-examples/M57_entry_type_mnemonic>
 @prefix ex: <https://sparql.uniprot.org/.well-known/sparql-examples/> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix schema: <https://schema.org/> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 
-ex:M20_module a sh:SPARQLExecutable,
+<> a sh:SPARQLExecutable,
         sh:SPARQLSelectExecutable ;
     rdfs:comment "entry, type and mnemonic"@en ;
     sh:prefixes _:sparql_examples_prefixes ;
@@ -14,4 +15,10 @@ WHERE {
 	?entry up:mnemonic ?mnemonic.
 }""" ;
     schema:keywords "mnemonic" ;
-    schema:target <https://sparql.uniprot.org/sparql/> .
+    schema:target <https://sparql.uniprot.org/sparql/> ;
+    todo:input  <#port-entry> <#port-type> <#port-mnemonic> ;
+    todo:output  <#port-entry> <#port-type> <#port-mnemonic> .
+
+<#port-entry> a todo:Port ; todo:name "entry" .
+<#port-type> a todo:Port ; todo:name "type" .
+<#port-mnemonic> a todo:Port ; todo:name "mnemonic" .
