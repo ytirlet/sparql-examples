@@ -1,4 +1,4 @@
-@base <https://sparql.uniprot.org/.well-known/sparql-examples/M66_GO_protein>
+@base <https://sparql.uniprot.org/.well-known/sparql-examples/M66_GO_protein> .
 @prefix ex: <https://sparql.uniprot.org/.well-known/sparql-examples/> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix schema: <https://schema.org/> .

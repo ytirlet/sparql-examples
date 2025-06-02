@@ -1,4 +1,4 @@
-@base <https://sparql.uniprot.org/.well-known/sparql-examples/M57_entry_type_mnemonic>
+@base <https://sparql.uniprot.org/.well-known/sparql-examples/M57_entry_type_mnemonic> .
 @prefix ex: <https://sparql.uniprot.org/.well-known/sparql-examples/> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix schema: <https://schema.org/> .
