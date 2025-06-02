@@ -6,6 +6,7 @@
 @prefix todo: <https://example.org/TODO#> .
 @prefix up: <http://purl.uniprot.org/core/> .
 @prefix uniprotkb: <http://purl.uniprot.org/uniprot/> .
+@prefix rh: <http://rdf.rhea-db.org/> .
 
 <> a sh:SPARQLExecutable,
         sh:SPARQLSelectExecutable ;
