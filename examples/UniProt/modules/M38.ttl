@@ -10,7 +10,7 @@
     rdfs:comment "reaction to compound"@en ;
     sh:prefixes _:sparql_examples_prefixes ;
     sh:select """PREFIX up: <http://purl.uniprot.org/core/>
-PREFIX rh:<http://rdf.rhea-db.org/>
+PREFIX rh: <http://rdf.rhea-db.org/>
 SELECT ?compound ?reaction ?side ?participant
 WHERE {
 	?reaction rdfs:subClassOf rh:Reaction.

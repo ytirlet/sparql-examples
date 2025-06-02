@@ -8,7 +8,7 @@ ex:M20_module a sh:SPARQLExecutable, sh:SPARQLSelectExecutable;
   rdfs:comment "ChEBI restriction"@en;
   sh:prefixes _:genid-7523890a6556424fa6d6a7199afaa9af2-sparql_examples_prefixes;
   sh:select """PREFIX up: <http://purl.uniprot.org/core/>
-PREFIX rh:<http://rdf.rhea-db.org/>
+PREFIX rh: <http://rdf.rhea-db.org/>
 SELECT ?compound ?chebi ?superchebi ?chebiRestriction ?chebi2
 WHERE {
         ?compound rh:chebi ?chebi.
