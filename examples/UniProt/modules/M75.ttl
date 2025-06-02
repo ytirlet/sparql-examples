@@ -20,8 +20,8 @@ WHERE {
 }""" ;
     schema:keywords "ChEBI" ;
     schema:target <https://sparql.uniprot.org/sparql/> ;
-    todo:input  <#port-rhea>, <#port-compound>, <#port-chebi> ;
-    todo:output  <#port-rhea>, <#port-compound>, <#port-chebi> .
+    todo:input <#port-rhea>, <#port-compound>, <#port-chebi> ;
+    todo:output <#port-rhea>, <#port-compound>, <#port-chebi> .
     
 <#port-rhea> a todo:Port ;
 	todo:name "rhea";

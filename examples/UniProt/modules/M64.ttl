@@ -26,8 +26,8 @@ WHERE {
 }""" ;
     schema:keywords "enzyme" ;
     schema:target <https://sparql.uniprot.org/sparql/> ;
-    todo:input  <#port-protein>, <#port-enzyme>, <#port-rhea> ;
-    todo:output  <<#port-protein> .
+    todo:input <#port-protein>, <#port-enzyme>, <#port-rhea> ;
+    todo:output <#port-protein> .
     
 <#port-protein> a todo:Port ;
 	todo:name "protein";

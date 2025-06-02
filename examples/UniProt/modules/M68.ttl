@@ -21,8 +21,8 @@ WHERE {
   }
 }""" ;
     schema:target <https://sparql.uniprot.org/sparql/> ;
-    todo:input  <#port-chebi>, <#port-query> ;
-    todo:output  <#port-chebi>, <#port-query> .
+    todo:input <#port-chebi>, <#port-query> ;
+    todo:output <#port-chebi>, <#port-query> .
     
 <#port-chebi> a todo:Port ; 
 	todo:name "chebi".

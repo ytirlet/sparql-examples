@@ -20,8 +20,8 @@ WHERE {
 }""" ;
     schema:keywords "mnemonic" ;
     schema:target <https://sparql.uniprot.org/sparql/> ;
-    todo:input  <#port-entry>, <#port-type>, <#port-mnemonic> ;
-    todo:output  <#port-entry>, <#port-type>, <#port-mnemonic> .
+    todo:input <#port-entry>, <#port-type>, <#port-mnemonic> ;
+    todo:output <#port-entry>, <#port-type>, <#port-mnemonic> .
     
 <#port-entry> a todo:Port ; 
 	todo:name "entry" ; 

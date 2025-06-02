@@ -22,8 +22,8 @@ WHERE {
 }""" ;
     schema:keywords "compound" ;
     schema:target <https://sparql.uniprot.org/sparql/> ;
-    todo:input  <#port-reaction>, <#port-side>, <#port-participant>, <#port-compound> ;
-    todo:output  <#port-reaction>, <#port-compound>.
+    todo:input <#port-reaction>, <#port-side>, <#port-participant>, <#port-compound> ;
+    todo:output <#port-reaction>, <#port-compound>.
     
 <#port-reaction> a todo:Port ;
 	todo:name "reaction";

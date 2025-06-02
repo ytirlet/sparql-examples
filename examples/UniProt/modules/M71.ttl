@@ -24,8 +24,8 @@ WHERE {
 	modl:bagitemOf ?epiSet .
 }""" ;
     schema:target <https://glyconnect.expasy.org/glystreem/sparql> ;
-    todo:input  <#port-epitope>, <#port-glytoucanID>, <#port-name>, <#port-source>, <#port-epiSet> ;
-    todo:output  <#port-epitope>, <#port-glytoucanID>, <#port-name>, <#port-source>, <#port-epiSet> .
+    todo:input <#port-epitope>, <#port-glytoucanID>, <#port-name>, <#port-source>, <#port-epiSet> ;
+    todo:output <#port-epitope>, <#port-glytoucanID>, <#port-name>, <#port-source>, <#port-epiSet> .
     
 <#port-epitope> a todo:Port ; 
 	todo:name "epitope" ;

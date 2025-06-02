@@ -22,8 +22,8 @@ WHERE {
 ?glycan ?p ?glytoucanID .
 }""" ;
     schema:target <https://glyconnect.expasy.org/glystreem/sparql> ;
-    todo:input  <#port-glycan>, <#port-glycanid>, <#port-p>, <#port-glytoucanID> ;
-    todo:output  <#port-glycanid>, <#port-p>, <#port-glytoucanID> .
+    todo:input <#port-glycan>, <#port-glycanid>, <#port-p>, <#port-glytoucanID> ;
+    todo:output <#port-glycanid>, <#port-p>, <#port-glytoucanID> .
     
 <#port-glycan> a todo:Port ; 
 	todo:name "glycan" ;

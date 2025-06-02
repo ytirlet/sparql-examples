@@ -18,8 +18,8 @@ WHERE {
 }""" ;
     schema:keywords "Bgee" ;
     schema:target <https://sparql.uniprot.org/sparql/> ;
-    todo:input  <#port-ensemblGene> ;
-    todo:output  <#port-ensemblGeneNoVer>.
+    todo:input <#port-ensemblGene> ;
+    todo:output <#port-ensemblGeneNoVer>.
     
 <#port-ensemblGene> a todo:Port ; 
 	todo:name "ensemblGene" ;
