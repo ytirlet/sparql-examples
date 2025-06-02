@@ -1,3 +1,4 @@
+@base <file:///home/ytirlet/Documents/uniprot_rq/modules/modules_uniprot/tri_module/M14.ttl> .
 @prefix ex: <https://sparql.uniprot.org/.well-known/sparql-examples/> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix schema: <https://schema.org/> .
