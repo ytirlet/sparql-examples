@@ -6,7 +6,7 @@
 @prefix todo: <https://example.org/TODO#> .
 @prefix up: <http://purl.uniprot.org/core/> .
 @prefix uniprotkb: <http://purl.uniprot.org/uniprot/> .
-@prefix xsd: <http://www.w3.org/2001/XMLSchema#>
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <> a sh:SPARQLExecutable,
         sh:SPARQLSelectExecutable ;
