@@ -5,6 +5,7 @@
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix todo: <https://example.org/TODO#> .
 @prefix glystreem: <https://glyconnect.expasy.org/rdf/structures#> .
+@prefix up: <http://purl.uniprot.org/core/> .
 
 <> a sh:SPARQLExecutable,
         sh:SPARQLSelectExecutable ;

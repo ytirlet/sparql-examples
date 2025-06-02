@@ -4,6 +4,7 @@
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix rh: <http://rdf.rhea-db.org/> .
 @prefix todo: <https://example.org/TODO#> .
+@prefix up: <http://purl.uniprot.org/core/> .
 
 ex:M20_module a sh:SPARQLExecutable, sh:SPARQLSelectExecutable;
   rdfs:comment "entry, associated chebi and super chebi"@en;
