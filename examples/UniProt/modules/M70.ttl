@@ -20,8 +20,8 @@ WHERE {
 		glystreem:hasEpitopeSet ?epiSet .
 }""" ;
     schema:target <https://glyconnect.expasy.org/glystreem/sparql> ;
-    todo:input  <#port-glycan> <#port-glycanid> <#port-type> <#port-core> <#port-epiSet> ;
-    todo:output  <#port-glycan> <#port-glycanid> <#port-type> <#port-core> <#port-epiSet> .
+    todo:input  <#port-glycan>, <#port-glycanid>, <#port-type>, <#port-core>, <#port-epiSet> ;
+    todo:output  <#port-glycan>, <#port-glycanid>, <#port-type>, <#port-core>, <#port-epiSet> .
     
 <#port-glycan> a todo:Port ; 
 	todo:name "glycan" ;

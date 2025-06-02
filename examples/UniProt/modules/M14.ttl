@@ -16,8 +16,8 @@ WHERE {
 }""";
   schema:keywords "annotation";
   schema:target <https://sparql.uniprot.org/sparql/> ;
-  todo:input <#port-protein> <#port-annotation> <#port-annType>;
-  todo:output <#port-protein> <#port-annotation> <#port-annType>.
+  todo:input <#port-protein>, <#port-annotation>, <#port-annType>;
+  todo:output <#port-protein>, <#port-annotation>, <#port-annType>.
 
 <file:///home/ytirlet/Documents/uniprot_rq/modules/modules_uniprot/tri_module/M14.ttl#annotation>
   a <https://purl.expasy.org/sparql-examples/ontology#ModulePort>;

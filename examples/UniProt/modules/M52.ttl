@@ -19,8 +19,8 @@ WHERE {
 }""" ;
     schema:keywords "protein annotation", "cellular component" ;
     schema:target <https://sparql.uniprot.org/sparql/> ;
-    todo:input  <#port-protein> <#port-annotation> <#port-location_inside_cell> <#port-cellcpt> ;
-    todo:output  <#port-protein> <#port-annotation> <#port-location_inside_cell> <#port-cellcpt>.
+    todo:input  <#port-protein>, <#port-annotation>, <#port-location_inside_cell>, <#port-cellcpt> ;
+    todo:output  <#port-protein>, <#port-annotation>, <#port-location_inside_cell>, <#port-cellcpt>.
     
 <#port-protein> a todo:Port ;
 	todo:name "protein" ;

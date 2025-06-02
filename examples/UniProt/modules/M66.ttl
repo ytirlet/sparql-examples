@@ -19,8 +19,8 @@ WHERE {
 }""" ;
     schema:keywords "GO" ;
     schema:target <https://sparql.uniprot.org/sparql/> ;
-    todo:input  <#port-protein> <#port-go> ;
-    todo:output  <#port-protein> <#port-go> .
+    todo:input  <#port-protein>, <#port-go> ;
+    todo:output  <#port-protein>, <#port-go> .
     
 <#port-protein> a todo:Port ; 
 	todo:name "protein" ; 

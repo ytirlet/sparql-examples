@@ -24,8 +24,8 @@ WHERE {
 }""" ;
     schema:keywords "taxon" ;
     schema:target <https://sparql.uniprot.org/sparql/> ;
-    todo:input  <#port-protein> <#port-organism> <#port-taxon> ;
-    todo:output  <#port-protein> <#port-organism> <#port-taxon> .
+    todo:input  <#port-protein>, <#port-organism>, <#port-taxon> ;
+    todo:output  <#port-protein>, <#port-organism>, <#port-taxon> .
     
 <#port-protein> a todo:Port ; 
 	todo:name "protein" ; 
