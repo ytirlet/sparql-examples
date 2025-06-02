@@ -1,0 +1,31 @@
+@base <https://sparql.uniprot.org/.well-known/sparql-examples/M66_GO_protein>
+@prefix ex: <https://sparql.uniprot.org/.well-known/sparql-examples/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <https://schema.org/> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+
+<> a sh:SPARQLExecutable,
+        sh:SPARQLSelectExecutable ;
+    rdfs:comment "GO_protein"@en ;
+    sh:prefixes _:sparql_examples_prefixes ;
+    sh:select """PREFIX up: <http://purl.uniprot.org/core/>
+SELECT ?protein ?go
+WHERE {
+ ?protein up:classifiedWith/rdfs:subClassOf* ?go .
+ GRAPH <https://sparql.uniprot.org/go> {
+    ?go a owl:Class .
+ }
+}""" ;
+    schema:keywords "GO" ;
+    schema:target <https://sparql.uniprot.org/sparql/> ;
+    todo:input  <#port-protein> <#port-go> ;
+    todo:output  <#port-protein> <#port-go> .
+    
+<#port-protein> a todo:Port ; 
+	todo:name "protein" ; 
+	rdfs:domain up:Protein ; ####### VERIFIER
+	todo:example (uniprotkb:P01308 uniprotkb:A0A002 uniprotkb:A0A008ARC3).
+
+<#port-go> a todo:Port ; 
+	todo:name "go".
+

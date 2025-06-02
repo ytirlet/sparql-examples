@@ -1,13 +1,15 @@
+@base <https://sparql.uniprot.org/.well-known/sparql-examples/M38_reaction_compound> .
 @prefix ex: <https://sparql.uniprot.org/.well-known/sparql-examples/> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix schema: <https://schema.org/> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 
-ex:M20_module a sh:SPARQLExecutable,
+<> a sh:SPARQLExecutable,
         sh:SPARQLSelectExecutable ;
     rdfs:comment "reaction to compound"@en ;
     sh:prefixes _:sparql_examples_prefixes ;
     sh:select """PREFIX up: <http://purl.uniprot.org/core/>
+PREFIX rh:<http://rdf.rhea-db.org/>
 SELECT ?compound ?reaction ?side ?participant
 WHERE {
 	?reaction rdfs:subClassOf rh:Reaction.
@@ -16,4 +18,21 @@ WHERE {
 	?participant rh:compound ?compound.
 }""" ;
     schema:keywords "compound" ;
-    schema:target <https://sparql.uniprot.org/sparql/> .
+    schema:target <https://sparql.uniprot.org/sparql/> ;
+    todo:input  <#port-reaction> <#port-side> <#port-participant> <#port-compound> ;
+    todo:output  <#port-reaction> <#port-compound>.
+    
+<#port-reaction> a todo:Port ;
+	todo:name "reaction";
+	rdfs:domain rh:Reaction.
+
+<#port-side> a todo:Port ;
+	todo:name "side" ;
+	rdfs:domain rh:ReactionSide.
+
+<#port-participant> a todo:Port ;
+	todo:name "participant" ;
+	rdfs:domain rh:ReactionParticipant.
+
+<#port-compound> a todo:Port ;
+	todo:name "compound".

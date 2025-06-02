@@ -1,0 +1,39 @@
+@base <https://sparql.uniprot.org/.well-known/sparql-examples/M71_epitope>
+@prefix ex: <https://sparql.uniprot.org/.well-known/sparql-examples/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <https://schema.org/> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+
+<> a sh:SPARQLExecutable,
+        sh:SPARQLSelectExecutable ;
+    rdfs:comment "epitope"@en ;
+    sh:prefixes _:sparql_examples_prefixes ;
+    sh:select """PREFIX up: <http://purl.uniprot.org/core/>
+SELECT
+ ?epitope ?name ?source ?glytoucanID ?epiSet
+WHERE {
+?epitope a glystreem:Epitope;
+	glystreem:epitopeName ?name ;
+	glystreem:epitopeSource ?source .
+	glystreem:epitope_glytoucanID ?glytoucanID
+	modl:bagitemOf ?epiSet .
+}""" ;
+    schema:target <https://glyconnect.expasy.org/glystreem/sparql> ;
+    todo:input  <#port-epitope> <#port-glytoucanID> <#port-name> <#port-source> <#port-epiSet> ;
+    todo:output  <#port-epitope> <#port-glytoucanID> <#port-name> <#port-source> <#port-epiSet> .
+    
+<#port-epitope> a todo:Port ; 
+	todo:name "epitope" ;
+	rdfs:domain glystreem:Epitope.
+
+<#port-glytoucanID> a todo:Port ; 
+	todo:name "glytoucanID".
+	
+<#port-name> a todo:Port ; 
+	todo:name "name".
+	
+<#port-source> a todo:Port ; 
+	todo:name "source".
+	
+<#port-epiSet> a todo:Port ; 
+	todo:name "epiSet".

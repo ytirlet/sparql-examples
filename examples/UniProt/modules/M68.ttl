@@ -1,0 +1,31 @@
+@base <https://sparql.uniprot.org/.well-known/sparql-examples/M68_sachem_query>
+@prefix ex: <https://sparql.uniprot.org/.well-known/sparql-examples/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <https://schema.org/> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+
+<> a sh:SPARQLExecutable,
+        sh:SPARQLSelectExecutable ;
+    rdfs:comment "Sachem query"@en ;
+    sh:prefixes _:sparql_examples_prefixes ;
+    sh:select """PREFIX up: <http://purl.uniprot.org/core/>
+SELECT
+ ?chebi ?query
+WHERE {
+  SERVICE <https://idsm.elixir-czech.cz/sparql/endpoint/chebi> {
+    ?chebi sachem:substructureSearch [
+        sachem:query ?query ].
+  }
+}""" ;
+    schema:target <https://sparql.uniprot.org/sparql/> ;
+    todo:input  <#port-chebi> <#port-query> ;
+    todo:output  <#port-chebi> <#port-query> .
+    
+<#port-chebi> a todo:Port ; 
+	todo:name "chebi".
+
+<#port-query> a todo:Port ; 
+	todo:name "query"
+	rdfs:domain xsd:string
+	todo:example "[C@]12(CCC3CCCC[C@]3(C)[C@@]1([H])CC[C@]1(C)[C@@]([H])([C@@](C)([H])CCCC(C)C)CC[C@@]21[H])[H]" .
+	

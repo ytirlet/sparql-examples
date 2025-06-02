@@ -1,0 +1,40 @@
+@base <https://sparql.uniprot.org/.well-known/sparql-examples/M64_enzyme>
+@prefix ex: <https://sparql.uniprot.org/.well-known/sparql-examples/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <https://schema.org/> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+
+<> a sh:SPARQLExecutable,
+        sh:SPARQLSelectExecutable ;
+    rdfs:comment "protein that are enzymes"@en ;
+    sh:prefixes _:sparql_examples_prefixes ;
+    sh:select """PREFIX up: <http://purl.uniprot.org/core/>
+SELECT ?protein
+WHERE {
+	{
+	?protein ( up:enzyme | up:domain/up:enzyme | up:component/up:enzyme ) ?enzyme .
+	}
+	UNION
+	{
+	?protein up:annotation/up:catalyticActivity/up:catalyzedReaction ?rhea .}
+	UNION
+	{ ?protein up:annotation/rdf:type up:Catalytic_Activity_Annotation. }
+	
+}""" ;
+    schema:keywords "enzyme" ;
+    schema:target <https://sparql.uniprot.org/sparql/> ;
+    todo:input  <#port-protein> <#port-enzyme> <#port-rhea> ;
+    todo:output  <<#port-protein> .
+    
+<#port-protein> a todo:Port ;
+	todo:name "protein";
+	rdfs:domain up:Protein ;
+	todo:example uniprotkb:P01308, uniprotkb:A0A002, uniprotkb:A0A008ARC3.
+
+<#port-enzyme> a todo:Port ;
+	todo:name "enzyme";
+	rdfs:domain up:Enzyme.
+
+<#port-rhea> a todo:Port ;
+	todo:name "rhea";
+	rdfs:domain rh:Reaction.

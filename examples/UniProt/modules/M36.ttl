@@ -2,16 +2,30 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix schema: <https://schema.org/> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix rh: <http://rdf.rhea-db.org/> .
+@prefix todo: <https://example.org/TODO#> .
 
-ex:M20_module a sh:SPARQLExecutable,
-        sh:SPARQLSelectExecutable ;
-    rdfs:comment "entry, associated chebi and super chebi"@en ;
-    sh:prefixes _:sparql_examples_prefixes ;
-    sh:select """PREFIX up: <http://purl.uniprot.org/core/>
+ex:M20_module a sh:SPARQLExecutable, sh:SPARQLSelectExecutable;
+  rdfs:comment "entry, associated chebi and super chebi"@en;
+  sh:prefixes _:genid-f9d4c6b7f347433798b3ecb642d17f492-sparql_examples_prefixes;
+  sh:select """PREFIX up: <http://purl.uniprot.org/core/>
+PREFIX rh:<http://rdf.rhea-db.org/>
 SELECT ?entry ?chebi ?superchebi
 WHERE {
-	?entry rh:chebi ?chebi.
-	?chebi (rdfs:subClassOf)+ ?superchebi.
-}""" ;
-    schema:keywords "ChEBI" ;
-    schema:target <https://sparql.uniprot.org/sparql/> .
+        ?entry rh:chebi ?chebi.
+        ?chebi (rdfs:subClassOf)+ ?superchebi.
+}""";
+  schema:keywords "ChEBI";
+  schema:target <https://sparql.uniprot.org/sparql/> .
+
+<file:///home/ytirlet/Documents/uniprot_rq/modules/modules_uniprot/tri_module/M36.ttl#entry>
+  a <https://purl.expasy.org/sparql-examples/ontology#ModulePort>;
+  todo:name "entry" .
+
+<file:///home/ytirlet/Documents/uniprot_rq/modules/modules_uniprot/tri_module/M36.ttl#chebi>
+  a <https://purl.expasy.org/sparql-examples/ontology#ModulePort>;
+  todo:name "chebi" .
+
+<file:///home/ytirlet/Documents/uniprot_rq/modules/modules_uniprot/tri_module/M36.ttl#superchebi>
+  a <https://purl.expasy.org/sparql-examples/ontology#ModulePort>;
+  todo:name "superchebi" .

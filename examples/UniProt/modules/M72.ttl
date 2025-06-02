@@ -1,0 +1,39 @@
+@prefix ex: <https://sparql.uniprot.org/.well-known/sparql-examples/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <https://schema.org/> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix todo: <https://example.org/TODO#> .
+
+ex:M10_module a sh:SPARQLExecutable, sh:SPARQLSelectExecutable;
+  rdfs:comment "Entry, recommended name and full name"@en;
+  sh:prefixes _:genid-2d0dc5b16a874d7192dc80da3a65f7de2-sparql_examples_prefixes;
+  sh:select """PREFIX up: <http://purl.uniprot.org/core/>
+SELECT ?entry ?recName ?fullName ?altName ?shortName
+WHERE {
+        ?entry up:recommendedName ?recName.
+        ?entry up:alternativeName ?altName.
+        ?recName up:fullName ?fullName.
+        ?recName up:shortName ?shortName.
+}""";
+  schema:keywords "name";
+  schema:target <https://sparql.uniprot.org/sparql/> .
+
+<file:///home/ytirlet/Documents/uniprot_rq/modules/modules_uniprot/tri_module/M72.ttl#fullName>
+  a <https://purl.expasy.org/sparql-examples/ontology#ModulePort>;
+  todo:name "fullName" .
+
+<file:///home/ytirlet/Documents/uniprot_rq/modules/modules_uniprot/tri_module/M72.ttl#shortName>
+  a <https://purl.expasy.org/sparql-examples/ontology#ModulePort>;
+  todo:name "shortName" .
+
+<file:///home/ytirlet/Documents/uniprot_rq/modules/modules_uniprot/tri_module/M72.ttl#recName>
+  a <https://purl.expasy.org/sparql-examples/ontology#ModulePort>;
+  todo:name "recName" .
+
+<file:///home/ytirlet/Documents/uniprot_rq/modules/modules_uniprot/tri_module/M72.ttl#entry>
+  a <https://purl.expasy.org/sparql-examples/ontology#ModulePort>;
+  todo:name "entry" .
+
+<file:///home/ytirlet/Documents/uniprot_rq/modules/modules_uniprot/tri_module/M72.ttl#altName>
+  a <https://purl.expasy.org/sparql-examples/ontology#ModulePort>;
+  todo:name "altName" .

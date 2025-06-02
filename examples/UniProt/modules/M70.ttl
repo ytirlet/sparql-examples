@@ -1,0 +1,39 @@
+@base <https://sparql.uniprot.org/.well-known/sparql-examples/M70_glycan_to_epi_set>
+@prefix ex: <https://sparql.uniprot.org/.well-known/sparql-examples/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <https://schema.org/> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+
+<> a sh:SPARQLExecutable,
+        sh:SPARQLSelectExecutable ;
+    rdfs:comment "glycan to epi set"@en ;
+    sh:prefixes _:sparql_examples_prefixes ;
+    sh:select """PREFIX up: <http://purl.uniprot.org/core/>
+SELECT
+ ?glycan ?glycanid ?type ?core ?epiSet
+WHERE {
+?glycan a glystreem:Glycan ;
+		glystreem:id ?glycanid ;
+		glystreem:glycan_type ?type ;
+		glystreem:glycan_core ?core ;
+		glystreem:hasEpitopeSet ?epiSet .
+}""" ;
+    schema:target <https://glyconnect.expasy.org/glystreem/sparql> ;
+    todo:input  <#port-glycan> <#port-glycanid> <#port-type> <#port-core> <#port-epiSet> ;
+    todo:output  <#port-glycan> <#port-glycanid> <#port-type> <#port-core> <#port-epiSet> .
+    
+<#port-glycan> a todo:Port ; 
+	todo:name "glycan" ;
+	rdfs:domain glystreem:Glycan.
+
+<#port-glycanid> a todo:Port ; 
+	todo:name "glycanid".
+	
+<#port-type> a todo:Port ; 
+	todo:name "type".
+	
+<#port-core> a todo:Port ; 
+	todo:name "core".
+	
+<#port-epiSet> a todo:Port ; 
+	todo:name "epiSet".

@@ -1,0 +1,27 @@
+@base <https://sparql.uniprot.org/.well-known/sparql-examples/M63_Bgee_IRI_Conversion>
+@prefix ex: <https://sparql.uniprot.org/.well-known/sparql-examples/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <https://schema.org/> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+
+<> a sh:SPARQLExecutable,
+        sh:SPARQLSelectExecutable ;
+    rdfs:comment "Bgee IRI conversion"@en ;
+    sh:prefixes _:sparql_examples_prefixes ;
+    sh:select """PREFIX up: <http://purl.uniprot.org/core/>
+SELECT ?ensemblGeneNoVer
+WHERE {
+	BIND( IRI(REPLACE(STR(?ensemblGene), "\\.[0-9]+$", "")) AS ?ensemblGeneNoVer )   # strip version from Ensembl ID
+}""" ;
+    schema:keywords "Bgee" ;
+    schema:target <https://sparql.uniprot.org/sparql/> ;
+    todo:input  <#port-ensemblGene> ;
+    todo:output  <#port-ensemblGeneNoVer>.
+    
+<#port-ensemblGene> a todo:Port ; 
+	todo:name "ensemblGene" ;
+	rdfs:domain up:Gene.
+
+<#port-ensemblGeneNoVer> a todo:Port ;
+	todo:name "ensemblGeneNoVer"
+	rdfs:domain xsd:string.

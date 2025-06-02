@@ -1,0 +1,41 @@
+@prefix ex: <https://sparql.uniprot.org/.well-known/sparql-examples/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <https://schema.org/> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix todo: <https://example.org/TODO#> .
+
+ex:M17_module a sh:SPARQLExecutable, sh:SPARQLSelectExecutable;
+  rdfs:comment "entry, type and date of creation"@en;
+  sh:prefixes _:genid-a998ebdc3a924a4c8cb1ae25054b75a72-sparql_examples_prefixes;
+  sh:select """PREFIX up: <http://purl.uniprot.org/core/>
+SELECT ?entry ?date ?modified ?reviewed ?version
+WHERE {
+        ?entry rdf:type up:Protein ;
+                up:created ?date ;
+                up:modified ?modified ;
+                up:reviewed ?reviewed ;
+                up:version ?version .
+}""";
+  schema:keywords "date", "entry history";
+  schema:target <https://sparql.uniprot.org/sparql/> .
+
+<file:///home/ytirlet/Documents/uniprot_rq/modules/modules_uniprot/tri_module/M17_b.ttl#date>
+  a <https://purl.expasy.org/sparql-examples/ontology#ModulePort>;
+  todo:name "date" .
+
+<file:///home/ytirlet/Documents/uniprot_rq/modules/modules_uniprot/tri_module/M17_b.ttl#entry>
+  a <https://purl.expasy.org/sparql-examples/ontology#ModulePort>;
+  rdfs:domain up:Protein ;
+  todo:name "entry" .
+
+<file:///home/ytirlet/Documents/uniprot_rq/modules/modules_uniprot/tri_module/M17_b.ttl#modified>
+  a <https://purl.expasy.org/sparql-examples/ontology#ModulePort>;
+  todo:name "modified" .
+
+<file:///home/ytirlet/Documents/uniprot_rq/modules/modules_uniprot/tri_module/M17_b.ttl#reviewed>
+  a <https://purl.expasy.org/sparql-examples/ontology#ModulePort>;
+  todo:name "reviewed" .
+
+<file:///home/ytirlet/Documents/uniprot_rq/modules/modules_uniprot/tri_module/M17_b.ttl#version>
+  a <https://purl.expasy.org/sparql-examples/ontology#ModulePort>;
+  todo:name "version" .

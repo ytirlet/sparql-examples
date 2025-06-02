@@ -1,0 +1,36 @@
+@base <https://sparql.uniprot.org/.well-known/sparql-examples/M69_glycan_to_id>
+@prefix ex: <https://sparql.uniprot.org/.well-known/sparql-examples/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <https://schema.org/> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+
+<> a sh:SPARQLExecutable,
+        sh:SPARQLSelectExecutable ;
+    rdfs:comment "Glycan to ID"@en ;
+    sh:prefixes _:sparql_examples_prefixes ;
+    sh:select """PREFIX up: <http://purl.uniprot.org/core/>
+SELECT
+ ?glycanid ?p ?glytoucanID
+WHERE {
+?glycan a glystreem:Glycan ;
+	glystreem:id ?glycanid ;
+	glystreem:glytoucan_id|glystreem:composition_glytoucan_id ?glytoucanID .
+?glycan ?p ?glytoucanID .
+}""" ;
+    schema:target <https://glyconnect.expasy.org/glystreem/sparql> ;
+    todo:input  <#port-glycan> <#port-glycanid> <#port-p> <#port-glytoucanID> ;
+    todo:output  <#port-glycanid> <#port-p> <#port-glytoucanID .
+    
+<#port-glycan> a todo:Port ; 
+	todo:name "glycan" ;
+	rdfs:domain glystreem:Glycan.
+
+<#port-glycanid> a todo:Port ; 
+	todo:name "glycanid".
+
+<#port-p> a todo:Port ; ###### DO WE KEEP ?
+	todo:name "p".
+	
+<#port-glytoucanID> a todo:Port ; 
+	todo:name "glytoucanID".
+

@@ -1,0 +1,36 @@
+@prefix ex: <https://sparql.uniprot.org/.well-known/sparql-examples/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <https://schema.org/> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix todo: <https://example.org/TODO#> .
+
+ex:M4_module a sh:SPARQLExecutable, sh:SPARQLSelectExecutable;
+  rdfs:comment "Taxon, his Scientific name and super Class"@en;
+  sh:prefixes _:genid-9505b3c793ad4fdeb36bc733b4b55a462-sparql_examples_prefixes;
+  sh:select """PREFIX up: <http://purl.uniprot.org/core/>
+SELECT ?taxon ?superTaxon ?name ?rank
+WHERE {
+        ?taxon rdf:type up:Taxon.
+        ?taxon up:scientificName ?name.
+        ?taxon rdfs:subClassOf ?superTaxon.
+        ?taxon up:rank ?rank.
+}""";
+  schema:keywords "taxonomy";
+  schema:target <https://sparql.uniprot.org/sparql/> .
+
+<file:///home/ytirlet/Documents/uniprot_rq/modules/modules_uniprot/tri_module/M74.ttl#name>
+  a <https://purl.expasy.org/sparql-examples/ontology#ModulePort>;
+  todo:name "name" .
+
+<file:///home/ytirlet/Documents/uniprot_rq/modules/modules_uniprot/tri_module/M74.ttl#rank>
+  a <https://purl.expasy.org/sparql-examples/ontology#ModulePort>;
+  todo:name "rank" .
+
+<file:///home/ytirlet/Documents/uniprot_rq/modules/modules_uniprot/tri_module/M74.ttl#taxon>
+  a <https://purl.expasy.org/sparql-examples/ontology#ModulePort>;
+  rdfs:domain <http://purl.uniprot.org/core/Taxon>;
+  todo:name "taxon" .
+
+<file:///home/ytirlet/Documents/uniprot_rq/modules/modules_uniprot/tri_module/M74.ttl#superTaxon>
+  a <https://purl.expasy.org/sparql-examples/ontology#ModulePort>;
+  todo:name "superTaxon" .

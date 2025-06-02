@@ -2,16 +2,29 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix schema: <https://schema.org/> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix todo: <https://example.org/TODO#> .
 
-ex:M20_module a sh:SPARQLExecutable,
-        sh:SPARQLSelectExecutable ;
-    rdfs:comment "entry, type and sequence"@en ;
-    sh:prefixes _:sparql_examples_prefixes ;
-    sh:select """PREFIX up: <http://purl.uniprot.org/core/>
+ex:M20_module a sh:SPARQLExecutable, sh:SPARQLSelectExecutable;
+  rdfs:comment "entry, type and sequence"@en;
+  sh:prefixes _:genid-f141d7ece9e04ea5a0f0105edefab5512-sparql_examples_prefixes;
+  sh:select """PREFIX up: <http://purl.uniprot.org/core/>
 SELECT ?entry ?type ?sequence
 WHERE {
-	?entry rdf:type ?type.
-	?entry up:sequence ?sequence.
-}""" ;
-    schema:keywords "sequence" ;
-    schema:target <https://sparql.uniprot.org/sparql/> .
+        ?entry rdf:type ?type.
+        ?entry up:sequence ?sequence.
+}""";
+  schema:keywords "sequence";
+  schema:target <https://sparql.uniprot.org/sparql/> .
+
+<file:///home/ytirlet/Documents/uniprot_rq/modules/modules_uniprot/tri_module/M32.ttl#entry>
+  a <https://purl.expasy.org/sparql-examples/ontology#ModulePort>;
+  todo:options (up:Annotation up:Protein up:Ressource) ;
+  todo:name "entry" .
+
+<file:///home/ytirlet/Documents/uniprot_rq/modules/modules_uniprot/tri_module/M32.ttl#sequence>
+  a <https://purl.expasy.org/sparql-examples/ontology#ModulePort>;
+  todo:name "sequence" .
+
+<file:///home/ytirlet/Documents/uniprot_rq/modules/modules_uniprot/tri_module/M32.ttl#type>
+  a <https://purl.expasy.org/sparql-examples/ontology#ModulePort>;
+  todo:name "type" .

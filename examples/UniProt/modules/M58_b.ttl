@@ -1,0 +1,41 @@
+@prefix ex: <https://sparql.uniprot.org/.well-known/sparql-examples/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <https://schema.org/> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix todo: <https://example.org/TODO#> .
+
+ex:M20_module a sh:SPARQLExecutable, sh:SPARQLSelectExecutable;
+  rdfs:comment "annotation, catalytic activity and enzyme class"@en;
+  sh:prefixes _:genid-8dcde06a4f0a432e93db1bb1824b3b772-sparql_examples_prefixes;
+  sh:select """PREFIX up: <http://purl.uniprot.org/core/>
+SELECT ?protein ?annotation ?enzymeClass
+WHERE {
+        ?protein up:annotation ?annotation.
+        ?annotation up:catalyticActivity ?ca.
+        ?ca up:catalyzedReaction ?rhea.
+        OPTIONAL {
+        ?ca up:enzymeClass ?enzymeClass.
+        }
+}""";
+  schema:keywords "enzyme class", "protein annotation";
+  schema:target <https://sparql.uniprot.org/sparql/> .
+
+<file:///home/ytirlet/Documents/uniprot_rq/modules/modules_uniprot/tri_module/M58_b.ttl#annotation>
+  a <https://purl.expasy.org/sparql-examples/ontology#ModulePort>;
+  todo:name "annotation" .
+
+<file:///home/ytirlet/Documents/uniprot_rq/modules/modules_uniprot/tri_module/M58_b.ttl#enzymeClass>
+  a <https://purl.expasy.org/sparql-examples/ontology#ModulePort>;
+  todo:name "enzymeClass" .
+
+<file:///home/ytirlet/Documents/uniprot_rq/modules/modules_uniprot/tri_module/M58_b.ttl#protein>
+  a <https://purl.expasy.org/sparql-examples/ontology#ModulePort>;
+  todo:name "protein" .
+
+<file:///home/ytirlet/Documents/uniprot_rq/modules/modules_uniprot/tri_module/M58_b.ttl#rhea>
+  a <https://purl.expasy.org/sparql-examples/ontology#ModulePort>;
+  todo:name "rhea" .
+
+<file:///home/ytirlet/Documents/uniprot_rq/modules/modules_uniprot/tri_module/M58_b.ttl#ca>
+  a <https://purl.expasy.org/sparql-examples/ontology#ModulePort>;
+  todo:name "ca" .

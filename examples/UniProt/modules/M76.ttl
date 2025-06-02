@@ -1,0 +1,46 @@
+@prefix ex: <https://sparql.uniprot.org/.well-known/sparql-examples/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <https://schema.org/> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix todo: <https://example.org/TODO#> .
+
+ex:M20_module a sh:SPARQLExecutable, sh:SPARQLSelectExecutable;
+  rdfs:comment "faldo begin"@en;
+  sh:prefixes _:genid-956feea9100c41f1bdfdd9a89a8ba79c2-sparql_examples_prefixes;
+  sh:select """PREFIX up: <http://purl.uniprot.org/core/>
+PREFIX faldo: <http://biohackathon.org/resource/faldo#>
+SELECT ?entry ?faldoBegin ?faldoEnd ?beginPosition ?endPosition ?reference
+WHERE {
+        ?entry faldo:begin ?faldoBegin.
+        ?faldoBegin faldo:position ?beginPosition.
+        ?faldoBegin faldo:reference ?reference.
+        ?entry faldo:end ?faldoEnd.
+        ?faldoEnd faldo:position ?endPosition.
+
+}""";
+  schema:keywords "faldo begin", "faldo position", "falso reference";
+  schema:target <https://sparql.uniprot.org/sparql/> .
+
+<file:///home/ytirlet/Documents/uniprot_rq/modules/modules_uniprot/tri_module/M76.ttl#entry>
+  a <https://purl.expasy.org/sparql-examples/ontology#ModulePort>;
+  todo:name "entry" .
+
+<file:///home/ytirlet/Documents/uniprot_rq/modules/modules_uniprot/tri_module/M76.ttl#reference>
+  a <https://purl.expasy.org/sparql-examples/ontology#ModulePort>;
+  todo:name "reference" .
+
+<file:///home/ytirlet/Documents/uniprot_rq/modules/modules_uniprot/tri_module/M76.ttl#endPosition>
+  a <https://purl.expasy.org/sparql-examples/ontology#ModulePort>;
+  todo:name "endPosition" .
+
+<file:///home/ytirlet/Documents/uniprot_rq/modules/modules_uniprot/tri_module/M76.ttl#faldoBegin>
+  a <https://purl.expasy.org/sparql-examples/ontology#ModulePort>;
+  todo:name "faldoBegin" .
+
+<file:///home/ytirlet/Documents/uniprot_rq/modules/modules_uniprot/tri_module/M76.ttl#faldoEnd>
+  a <https://purl.expasy.org/sparql-examples/ontology#ModulePort>;
+  todo:name "faldoEnd" .
+
+<file:///home/ytirlet/Documents/uniprot_rq/modules/modules_uniprot/tri_module/M76.ttl#beginPosition>
+  a <https://purl.expasy.org/sparql-examples/ontology#ModulePort>;
+  todo:name "beginPosition" .

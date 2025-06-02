@@ -1,0 +1,38 @@
+@base <https://sparql.uniprot.org/.well-known/sparql-examples/M67_protein_to_taxon>
+@prefix ex: <https://sparql.uniprot.org/.well-known/sparql-examples/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <https://schema.org/> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+
+<> a sh:SPARQLExecutable,
+        sh:SPARQLSelectExecutable ;
+    rdfs:comment "Protein to taxon"@en ;
+    sh:prefixes _:sparql_examples_prefixes ;
+    sh:select """PREFIX up: <http://purl.uniprot.org/core/>
+SELECT
+ ?protein ?organism
+WHERE {
+ {
+   BIND(?taxon AS ?organism)
+   ?protein up:organism ?organism .
+ } UNION {
+   ?protein up:organism ?organism .
+   ?organism rdfs:subClassOf ?taxon .
+ }
+}
+}""" ;
+    schema:keywords "taxon" ;
+    schema:target <https://sparql.uniprot.org/sparql/> ;
+    todo:input  <#port-protein> <#port-organism> <#port-taxon> ;
+    todo:output  <#port-protein> <#port-organism> <#port-taxon> .
+    
+<#port-protein> a todo:Port ; 
+	todo:name "protein" ; 
+	rdfs:domain up:Protein ;
+	todo:example (uniprotkb:P01308 uniprotkb:A0A002 uniprotkb:A0A008ARC3).
+
+<#port-organism> a todo:Port ; 
+	todo:name "organism".
+	
+<#port-taxon> a todo:Port ; 
+	todo:name "taxon".

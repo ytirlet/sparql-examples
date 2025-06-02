@@ -18,7 +18,20 @@ WHERE {
     schema:target <https://sparql.uniprot.org/sparql/> ;
     todo:input  <#port-entry> <#port-type> <#port-mnemonic> ;
     todo:output  <#port-entry> <#port-type> <#port-mnemonic> .
-
-<#port-entry> a todo:Port ; todo:name "entry" .
-<#port-type> a todo:Port ; todo:name "type" .
-<#port-mnemonic> a todo:Port ; todo:name "mnemonic" .
+    
+<#port-entry> a todo:Port ; 
+	todo:name "entry" ; 
+	rdfs:domain [
+		a owl:Class ;
+		todo:option (up:Cluster up:Protein up:Sequence) 
+		]; 
+	todo:example (uniprotkb:P01308 uniprotkb:A0A002 uniprotkb:A0A008ARC3).
+	
+<#port-type> a todo:Port ; 
+	todo:name "type" 
+	todo:option (up:Cluster up:Protein up:Sequence) .
+	
+<#port-mnemonic> a todo:Port ; 
+	todo:name "mnemonic" ;
+	rdfs:domain xsd:string ;
+	todo:example "A4_HUMAN", "1433E_MOUSE", "1FEH2_WHEAT".

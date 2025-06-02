@@ -1,0 +1,32 @@
+@base <https://sparql.uniprot.org/.well-known/sparql-examples/M65_rhea_to_chebi>
+@prefix ex: <https://sparql.uniprot.org/.well-known/sparql-examples/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <https://schema.org/> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+
+<> a sh:SPARQLExecutable,
+        sh:SPARQLSelectExecutable ;
+    rdfs:comment "rhea to ChEBI"@en ;
+    sh:prefixes _:sparql_examples_prefixes ;
+    sh:select """PREFIX up: <http://purl.uniprot.org/core/>
+SELECT ?rhea ?chebi ?superchebi
+WHERE {
+	?rhea rh:side/rh:contains/rh:compound ?compound . 
+	?compound (rh:chebi|(rh:reactivePart/rh:chebi)|(rh:underlyingChebi/rh:chebi)) ?chebi . 
+	?chebi (rdfs:subClassOf)+ ?superchebi.
+}""" ;
+    schema:keywords "ChEBI" ;
+    schema:target <https://sparql.uniprot.org/sparql/> ;
+    todo:input  <#port-rhea> <#port-compound> <#port-chebi> ;
+    todo:output  <#port-rhea> <#port-compound> <#port-chebi> .
+    
+<#port-rhea> a todo:Port ;
+	todo:name "rhea";
+	rdfs:domain rh:Reaction.
+
+<#port-compound> a todo:Port ;
+	todo:name "compound".
+
+<#port-chebi> a todo:Port ;
+	todo:name "chebi".
+

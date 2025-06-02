@@ -5,26 +5,25 @@
 @prefix todo: <https://example.org/TODO#> .
 
 ex:M20_module a sh:SPARQLExecutable, sh:SPARQLSelectExecutable;
-  rdfs:comment "protein, annotation and range"@en;
-  sh:prefixes _:genid-d07baa472d2843c69bb2a0c7daaafea42-sparql_examples_prefixes;
+  rdfs:comment "protein, annotation, ligand and ?chebi"@en;
+  sh:prefixes _:genid-05aeb7151c484b97b39af92e349680812-sparql_examples_prefixes;
   sh:select """PREFIX up: <http://purl.uniprot.org/core/>
-SELECT ?protein ?annotation ?range
+SELECT ?annotation ?ligand ?chebi
 WHERE {
-        ?protein up:annotation ?annotation.
-        ?annotation up:range ?range
+        ?annotation up:ligand ?ligand.
+        ?ligand rdfs:subClassOf ?chebi.
 }""";
-  schema:keywords "protein annotation", "annotation range";
+  schema:keywords "protein annotation";
   schema:target <https://sparql.uniprot.org/sparql/> .
 
-<file:///home/ytirlet/Documents/uniprot_rq/modules/modules_uniprot/tri_module/M40.ttl#annotation>
+<file:///home/ytirlet/Documents/uniprot_rq/modules/modules_uniprot/tri_module/M50_b.ttl#annotation>
   a <https://purl.expasy.org/sparql-examples/ontology#ModulePort>;
   todo:name "annotation" .
 
-<file:///home/ytirlet/Documents/uniprot_rq/modules/modules_uniprot/tri_module/M40.ttl#protein>
+<file:///home/ytirlet/Documents/uniprot_rq/modules/modules_uniprot/tri_module/M50_b.ttl#chebi>
   a <https://purl.expasy.org/sparql-examples/ontology#ModulePort>;
-  todo:name "protein" 
-  rdfs:domain up:Portein.
+  todo:name "chebi" .
 
-<file:///home/ytirlet/Documents/uniprot_rq/modules/modules_uniprot/tri_module/M40.ttl#range>
+<file:///home/ytirlet/Documents/uniprot_rq/modules/modules_uniprot/tri_module/M50_b.ttl#ligand>
   a <https://purl.expasy.org/sparql-examples/ontology#ModulePort>;
-  todo:name "range" .
+  todo:name "ligand" .

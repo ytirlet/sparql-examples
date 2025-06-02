@@ -2,16 +2,25 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix schema: <https://schema.org/> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix todo: <https://example.org/TODO#> .
 
-ex:M20_module a sh:SPARQLExecutable,
-        sh:SPARQLSelectExecutable ;
-    rdfs:comment "protein encoded in compartment"@en ;
-    sh:prefixes _:sparql_examples_prefixes ;
-    sh:select """PREFIX up: <http://purl.uniprot.org/core/>
+ex:M20_module a sh:SPARQLExecutable, sh:SPARQLSelectExecutable;
+  rdfs:comment "protein encoded in compartment"@en;
+  sh:prefixes _:genid-4e1d845085dd4de1b8e376b304d3e9d42-sparql_examples_prefixes;
+  sh:select """PREFIX up: <http://purl.uniprot.org/core/>
 SELECT ?protein ?compartment
 WHERE {
-	?protein rdf:type up:Protein.
-	?protein up:encodedIn ?compartment.
-}""" ;
-    schema:keywords "" ;
-    schema:target <https://sparql.uniprot.org/sparql/> .
+        ?protein rdf:type up:Protein.
+        ?protein up:encodedIn ?compartment.
+}""";
+  schema:keywords "";
+  schema:target <https://sparql.uniprot.org/sparql/> .
+
+<file:///home/ytirlet/Documents/uniprot_rq/modules/modules_uniprot/tri_module/M61.ttl#compartment>
+  a <https://purl.expasy.org/sparql-examples/ontology#ModulePort>;
+  todo:name "compartment" .
+
+<file:///home/ytirlet/Documents/uniprot_rq/modules/modules_uniprot/tri_module/M61.ttl#protein>
+  a <https://purl.expasy.org/sparql-examples/ontology#ModulePort>;
+  rdfs:domain <http://purl.uniprot.org/core/Protein>;
+  todo:name "protein" .

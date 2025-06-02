@@ -2,16 +2,29 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix schema: <https://schema.org/> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix todo: <https://example.org/TODO#> .
 
-ex:M20_module a sh:SPARQLExecutable,
-        sh:SPARQLSelectExecutable ;
-    rdfs:comment "protein transcribed from gene"@en ;
-    sh:prefixes _:sparql_examples_prefixes ;
-    sh:select """PREFIX up: <http://purl.uniprot.org/core/>
+ex:M20_module a sh:SPARQLExecutable, sh:SPARQLSelectExecutable;
+  rdfs:comment "protein transcribed from gene"@en;
+  sh:prefixes _:genid-3086c2d61db2430d80f99321f1c9b8cb2-sparql_examples_prefixes;
+  sh:select """PREFIX up: <http://purl.uniprot.org/core/>
 SELECT ?protein ?entry ?gene
 WHERE {
-	?protein rdfs:seeAlso ?entry.
-	?entry up:transcribedFrom ?gene.
-}""" ;
-    schema:keywords "transcribed from" ;
-    schema:target <https://sparql.uniprot.org/sparql/> .
+        ?protein rdfs:seeAlso ?entry.
+        ?entry up:transcribedFrom ?gene.
+}""";
+  schema:keywords "transcribed from";
+  schema:target <https://sparql.uniprot.org/sparql/> .
+
+<file:///home/ytirlet/Documents/uniprot_rq/modules/modules_uniprot/tri_module/M45.ttl#entry>
+  a <https://purl.expasy.org/sparql-examples/ontology#ModulePort>;
+  todo:name "entry" .
+
+<file:///home/ytirlet/Documents/uniprot_rq/modules/modules_uniprot/tri_module/M45.ttl#protein>
+  a <https://purl.expasy.org/sparql-examples/ontology#ModulePort>;
+  todo:name "protein" ;
+  rdfs:domain up:Protein .
+
+<file:///home/ytirlet/Documents/uniprot_rq/modules/modules_uniprot/tri_module/M45.ttl#gene>
+  a <https://purl.expasy.org/sparql-examples/ontology#ModulePort>;
+  todo:name "gene" .
