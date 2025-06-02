@@ -10,6 +10,7 @@
     rdfs:comment "epitope"@en ;
     sh:prefixes _:sparql_examples_prefixes ;
     sh:select """PREFIX up: <http://purl.uniprot.org/core/>
+    PREFIX glystreem: <https://glyconnect.expasy.org/rdf/structures#>
 SELECT
  ?epitope ?name ?source ?glytoucanID ?epiSet
 WHERE {

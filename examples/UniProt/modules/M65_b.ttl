@@ -10,6 +10,7 @@
     rdfs:comment "rhea to ChEBI"@en ;
     sh:prefixes _:sparql_examples_prefixes ;
     sh:select """PREFIX up: <http://purl.uniprot.org/core/>
+    PREFIX rh:<http://rdf.rhea-db.org/>
 SELECT ?rhea ?chebi ?superchebi
 WHERE {
 	?rhea rh:side/rh:contains/rh:compound ?compound . 
