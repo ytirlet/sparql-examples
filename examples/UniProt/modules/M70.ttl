@@ -14,14 +14,13 @@
     sh:prefixes _:sparql_examples_prefixes ;
     sh:select """PREFIX up: <http://purl.uniprot.org/core/>
     PREFIX glystreem: <https://glyconnect.expasy.org/rdf/structures#>
-SELECT
- ?glycan ?glycanid ?type ?core ?epiSet
+SELECT ?glycan ?glycanid ?type ?core ?epiSet
 WHERE {
 ?glycan a glystreem:Glycan ;
-		glystreem:id ?glycanid ;
-		glystreem:glycan_type ?type ;
-		glystreem:glycan_core ?core ;
-		glystreem:hasEpitopeSet ?epiSet .
+	glystreem:id ?glycanid ;
+	glystreem:glycan_type ?type ;
+	glystreem:glycan_core ?core ;
+	glystreem:hasEpitopeSet ?epiSet .
 }""" ;
     schema:target <https://glyconnect.expasy.org/glystreem/sparql> ;
     todo:input <#port-glycan>, <#port-glycanid>, <#port-type>, <#port-core>, <#port-epiSet> ;

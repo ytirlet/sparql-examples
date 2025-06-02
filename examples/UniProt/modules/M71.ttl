@@ -19,8 +19,8 @@ SELECT
 WHERE {
 ?epitope a glystreem:Epitope;
 	glystreem:epitopeName ?name ;
-	glystreem:epitopeSource ?source .
-	glystreem:epitope_glytoucanID ?glytoucanID
+	glystreem:epitopeSource ?source ;
+	glystreem:epitope_glytoucanID ?glytoucanID ;
 	modl:bagitemOf ?epiSet .
 }""" ;
     schema:target <https://glyconnect.expasy.org/glystreem/sparql> ;

@@ -12,6 +12,7 @@
     rdfs:comment "Sachem query"@en ;
     sh:prefixes _:sparql_examples_prefixes ;
     sh:select """PREFIX up: <http://purl.uniprot.org/core/>
+    PREFIX sachem: <http://bioinfo.uochb.cas.cz/rdf/v1.0/sachem#>
 SELECT
  ?chebi ?query
 WHERE {
