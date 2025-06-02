@@ -13,6 +13,7 @@
     rdfs:comment "protein, annotation and location"@en ;
     sh:prefixes _:sparql_examples_prefixes ;
     sh:select """PREFIX up: <http://purl.uniprot.org/core/>
+    PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 SELECT ?protein ?annotation ?location_inside_cell ?cellcpt
 WHERE {
 	?protein up:annotation ?annotation.
