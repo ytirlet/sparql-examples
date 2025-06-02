@@ -18,8 +18,8 @@ WHERE {
 
 <file:///home/ytirlet/Documents/uniprot_rq/modules/modules_uniprot/tri_module/M23.ttl#protein>
   a <https://purl.expasy.org/sparql-examples/ontology#ModulePort>;
-  todo:name "protein" .
-  rdfs:domain up:Protein
+  todo:name "protein" ;
+  rdfs:domain up:Protein .
 
 <file:///home/ytirlet/Documents/uniprot_rq/modules/modules_uniprot/tri_module/M23.ttl#goTerm>
   a <https://purl.expasy.org/sparql-examples/ontology#ModulePort>;

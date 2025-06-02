@@ -29,7 +29,7 @@ WHERE {
 	todo:example (uniprotkb:P01308 uniprotkb:A0A002 uniprotkb:A0A008ARC3).
 	
 <#port-type> a todo:Port ; 
-	todo:name "type" 
+	todo:name "type" ;
 	todo:option (up:Cluster up:Protein up:Sequence) .
 	
 <#port-mnemonic> a todo:Port ; 

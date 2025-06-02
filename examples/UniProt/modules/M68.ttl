@@ -26,7 +26,7 @@ WHERE {
 	todo:name "chebi".
 
 <#port-query> a todo:Port ; 
-	todo:name "query"
-	rdfs:domain xsd:string
+	todo:name "query" ;
+	rdfs:domain xsd:string ;
 	todo:example "[C@]12(CCC3CCCC[C@]3(C)[C@@]1([H])CC[C@]1(C)[C@@]([H])([C@@](C)([H])CCCC(C)C)CC[C@@]21[H])[H]" .
 	

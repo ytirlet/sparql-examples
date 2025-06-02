@@ -23,7 +23,7 @@ WHERE {
 
 <file:///home/ytirlet/Documents/uniprot_rq/modules/modules_uniprot/tri_module/M39.ttl#annotation>
   a <https://purl.expasy.org/sparql-examples/ontology#ModulePort>;
-  todo:name "annotation" 
+  todo:name "annotation" ;
   rdfs:domain up:Catalytic_Activity_Annotation .
 
 <file:///home/ytirlet/Documents/uniprot_rq/modules/modules_uniprot/tri_module/M39.ttl#protein>
