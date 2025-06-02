@@ -4,12 +4,15 @@
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix todo: <https://example.org/TODO#> .
 @prefix up: <http://purl.uniprot.org/core/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 
-ex:M20_module a sh:SPARQLExecutable, sh:SPARQLSelectExecutable;
+ex:M76_module a sh:SPARQLExecutable, sh:SPARQLSelectExecutable;
   rdfs:comment "faldo begin"@en;
   sh:prefixes _:genid-956feea9100c41f1bdfdd9a89a8ba79c2-sparql_examples_prefixes;
   sh:select """PREFIX up: <http://purl.uniprot.org/core/>
 PREFIX faldo: <http://biohackathon.org/resource/faldo#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 SELECT ?entry ?faldoBegin ?faldoEnd ?beginPosition ?endPosition ?reference
 WHERE {
         ?entry faldo:begin ?faldoBegin.

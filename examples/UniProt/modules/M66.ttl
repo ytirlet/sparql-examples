@@ -6,12 +6,17 @@
 @prefix todo: <https://example.org/TODO#> .
 @prefix up: <http://purl.uniprot.org/core/> .
 @prefix uniprotkb: <http://purl.uniprot.org/uniprot/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
 
 <> a sh:SPARQLExecutable,
         sh:SPARQLSelectExecutable ;
     rdfs:comment "GO_protein"@en ;
     sh:prefixes _:sparql_examples_prefixes ;
     sh:select """PREFIX up: <http://purl.uniprot.org/core/>
+    PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
 SELECT ?protein ?go
 WHERE {
  ?protein up:classifiedWith/rdfs:subClassOf* ?go .

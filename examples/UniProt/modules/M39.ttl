@@ -5,11 +5,14 @@
 @prefix todo: <https://example.org/TODO#> .
 @prefix up: <http://purl.uniprot.org/core/> .
 @prefix up: <http://purl.uniprot.org/core/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 
-ex:M20_module a sh:SPARQLExecutable, sh:SPARQLSelectExecutable;
+ex:M39_module a sh:SPARQLExecutable, sh:SPARQLSelectExecutable;
   rdfs:comment "protein, annotation, catalytic activity and reaction"@en;
   sh:prefixes _:genid-90b91c90b607405e8ca1f130e80db3542-sparql_examples_prefixes;
   sh:select """PREFIX up: <http://purl.uniprot.org/core/>
+  PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 SELECT ?protein ?annotation ?ca ?reaction
 WHERE {
         ?protein up:annotation ?annotation.

@@ -6,13 +6,18 @@
 @prefix todo: <https://example.org/TODO#> .
 @prefix up: <http://purl.uniprot.org/core/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix spex: <https://purl.expasy.org/sparql-examples/ontology#> .
 
 <> a sh:SPARQLExecutable,
         sh:SPARQLSelectExecutable ;
     rdfs:comment "Sachem query"@en ;
     sh:prefixes _:sparql_examples_prefixes ;
+    spex:federatesWith <https://idsm.elixir-czech.cz/sparql/endpoint/chebi> ;
     sh:select """PREFIX up: <http://purl.uniprot.org/core/>
     PREFIX sachem: <http://bioinfo.uochb.cas.cz/rdf/v1.0/sachem#>
+    PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 SELECT
  ?chebi ?query
 WHERE {
@@ -21,7 +26,7 @@ WHERE {
         sachem:query ?query ].
   }
 }""" ;
-    schema:target <https://sparql.uniprot.org/sparql/> ;
+    schema:target <https://idsm.elixir-czech.cz/sparql/endpoint/chebi> ;
     todo:input <#port-chebi>, <#port-query> ;
     todo:output <#port-chebi>, <#port-query> .
     

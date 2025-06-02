@@ -4,11 +4,14 @@
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix todo: <https://example.org/TODO#> .
 @prefix up: <http://purl.uniprot.org/core/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 
-ex:M10_module a sh:SPARQLExecutable, sh:SPARQLSelectExecutable;
+ex:M72_module a sh:SPARQLExecutable, sh:SPARQLSelectExecutable;
   rdfs:comment "Entry, recommended name and full name"@en;
   sh:prefixes _:genid-2d0dc5b16a874d7192dc80da3a65f7de2-sparql_examples_prefixes;
   sh:select """PREFIX up: <http://purl.uniprot.org/core/>
+  PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 SELECT ?entry ?recName ?fullName ?altName ?shortName
 WHERE {
         ?entry up:recommendedName ?recName.

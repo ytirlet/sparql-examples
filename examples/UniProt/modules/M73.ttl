@@ -4,12 +4,15 @@
 @prefix todo: <https://example.org/TODO#> .
 @prefix up: <http://purl.uniprot.org/core/> .
 @prefix ex: <https://sparql.uniprot.org/.well-known/sparql-examples/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 
-ex:M8_module a sh:SPARQLExecutable, sh:SPARQLSelectExecutable;
+ex:M73_module a sh:SPARQLExecutable, sh:SPARQLSelectExecutable;
   rdfs:comment "protein and gene"@en;
   sh:prefixes _:genid-e6032deb82b547d696185a74958b09f22-sparql_examples_prefixes;
   sh:select """PREFIX up: <http://purl.uniprot.org/core/>
 PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 SELECT ?protein ?gene ?name
 WHERE {
         ?protein rdf:type up:Protein.

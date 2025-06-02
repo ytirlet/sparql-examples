@@ -6,6 +6,7 @@
 @prefix todo: <https://example.org/TODO#> .
 @prefix glystreem: <https://glyconnect.expasy.org/rdf/structures#> .
 @prefix up: <http://purl.uniprot.org/core/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 
 
 <> a sh:SPARQLExecutable,
@@ -15,6 +16,8 @@
     sh:select """PREFIX up: <http://purl.uniprot.org/core/>
     PREFIX glystreem: <https://glyconnect.expasy.org/rdf/structures#>
     PREFIX modl: <https://archive.org/services/purl/domain/modular_ontology_design_library/>
+    PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 SELECT
  ?epitope ?name ?source ?glytoucanID ?epiSet
 WHERE {

@@ -4,11 +4,14 @@
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix todo: <https://example.org/TODO#> .
 @prefix up: <http://purl.uniprot.org/core/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 
-ex:M20_module a sh:SPARQLExecutable, sh:SPARQLSelectExecutable;
+ex:M31_module a sh:SPARQLExecutable, sh:SPARQLSelectExecutable;
   rdfs:comment "entry and database"@en;
   sh:prefixes _:genid-ac45fd49b32c49498ff94650acc4f7e82-sparql_examples_prefixes;
   sh:select """PREFIX up: <http://purl.uniprot.org/core/>
+  PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 SELECT ?entry ?dbentry ?database
 WHERE {
         ?entry rdfs:seeAlso ?dbentry.

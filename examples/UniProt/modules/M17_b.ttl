@@ -4,11 +4,14 @@
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix todo: <https://example.org/TODO#> .
 @prefix up: <http://purl.uniprot.org/core/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 
 ex:M17_module a sh:SPARQLExecutable, sh:SPARQLSelectExecutable;
   rdfs:comment "entry, type and date of creation"@en;
   sh:prefixes _:genid-a998ebdc3a924a4c8cb1ae25054b75a72-sparql_examples_prefixes;
   sh:select """PREFIX up: <http://purl.uniprot.org/core/>
+  PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 SELECT ?entry ?date ?modified ?reviewed ?version
 WHERE {
         ?entry rdf:type up:Protein ;
