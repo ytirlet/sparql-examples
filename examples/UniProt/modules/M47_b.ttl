@@ -1,3 +1,4 @@
+@base <https://sparql.uniprot.org/.well-known/sparql-examples/M47.ttl> .
 @prefix ex: <https://sparql.uniprot.org/.well-known/sparql-examples/> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix schema: <https://schema.org/> .
@@ -14,7 +15,7 @@ ex:M47_module a sh:SPARQLExecutable, sh:SPARQLSelectExecutable;
 PREFIX rh: <http://rdf.rhea-db.org/>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-SELECT ?reaction ?side ?participant ?compound ?chebi ?protein ?annotation ?ca
+SELECT ?reaction ?compound ?protein ?annotation ?ca
 WHERE {
         ?protein up:annotation ?annotation.
         ?annotation up:catalyticActivity ?ca.
@@ -25,38 +26,36 @@ WHERE {
         ?participant rh:compound ?compound.
 }""";
   schema:keywords "catalyzed reaction", "catalytic activity";
-  schema:target <https://sparql.uniprot.org/sparql/> .
+  schema:target <https://sparql.uniprot.org/sparql/> ;
+  todo:input <#port-protein>, <#port-annotation>, <#port-ca>, <#port-reaction>, <#port-side>, <#port-participant>, <#port-compound> ;
+  todo:output <#port-protein>, <#port-annotation>, <#port-ca>, <#port-reaction>, <#port-compound> .
 
-<file:///home/ytirlet/Documents/uniprot_rq/modules/modules_uniprot/tri_module/M47_b.ttl#reaction>
+<#port-reaction>
   a <https://purl.expasy.org/sparql-examples/ontology#ModulePort>;
   todo:name "reaction" ;
   rdfs:domain rh:Reaction.
 
-<file:///home/ytirlet/Documents/uniprot_rq/modules/modules_uniprot/tri_module/M47_b.ttl#annotation>
+<#port-annotation>
   a <https://purl.expasy.org/sparql-examples/ontology#ModulePort>;
   todo:name "annotation" .
 
-<file:///home/ytirlet/Documents/uniprot_rq/modules/modules_uniprot/tri_module/M47_b.ttl#compound>
+<#port-compound>
   a <https://purl.expasy.org/sparql-examples/ontology#ModulePort>;
   todo:name "compound" .
 
-<file:///home/ytirlet/Documents/uniprot_rq/modules/modules_uniprot/tri_module/M47_b.ttl#chebi>
-  a <https://purl.expasy.org/sparql-examples/ontology#ModulePort>;
-  todo:name "chebi" .
-
-<file:///home/ytirlet/Documents/uniprot_rq/modules/modules_uniprot/tri_module/M47_b.ttl#participant>
+<#port-participant>
   a <https://purl.expasy.org/sparql-examples/ontology#ModulePort>;
   todo:name "participant" .
 
-<file:///home/ytirlet/Documents/uniprot_rq/modules/modules_uniprot/tri_module/M47_b.ttl#protein>
+<#port-protein>
   a <https://purl.expasy.org/sparql-examples/ontology#ModulePort>;
   todo:name "protein" ;
   rdfs:domain up:Protein.
 
-<file:///home/ytirlet/Documents/uniprot_rq/modules/modules_uniprot/tri_module/M47_b.ttl#ca>
+<#port-ca>
   a <https://purl.expasy.org/sparql-examples/ontology#ModulePort>;
   todo:name "ca" .
 
-<file:///home/ytirlet/Documents/uniprot_rq/modules/modules_uniprot/tri_module/M47_b.ttl#side>
+<#port-side>
   a <https://purl.expasy.org/sparql-examples/ontology#ModulePort>;
   todo:name "side" .

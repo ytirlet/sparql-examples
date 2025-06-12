@@ -1,3 +1,4 @@
+@base <https://sparql.uniprot.org/.well-known/sparql-examples/M45.ttl> .
 @prefix ex: <https://sparql.uniprot.org/.well-known/sparql-examples/> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix schema: <https://schema.org/> .
@@ -18,17 +19,19 @@ WHERE {
         ?entry up:transcribedFrom ?gene.
 }""";
   schema:keywords "transcribed from";
-  schema:target <https://sparql.uniprot.org/sparql/> .
+  schema:target <https://sparql.uniprot.org/sparql/> ;
+  todo:input <#port-protein>, <#port-entry>, <#port-gene> ;
+  todo:output <#port-protein>, <#port-entry>, <#port-gene> .
 
-<file:///home/ytirlet/Documents/uniprot_rq/modules/modules_uniprot/tri_module/M45.ttl#entry>
+<#port-entry>
   a <https://purl.expasy.org/sparql-examples/ontology#ModulePort>;
   todo:name "entry" .
 
-<file:///home/ytirlet/Documents/uniprot_rq/modules/modules_uniprot/tri_module/M45.ttl#protein>
+<#port-protein>
   a <https://purl.expasy.org/sparql-examples/ontology#ModulePort>;
   todo:name "protein" ;
   rdfs:domain up:Protein .
 
-<file:///home/ytirlet/Documents/uniprot_rq/modules/modules_uniprot/tri_module/M45.ttl#gene>
+<#port-gene>
   a <https://purl.expasy.org/sparql-examples/ontology#ModulePort>;
   todo:name "gene" .

@@ -36,7 +36,7 @@ WHERE {
 	
 <#port-annotation> a todo:Port ;
 	todo:name "annotation" ;
-	rdfs:domain up:Sub-Cellular_Annotation.
+	rdfs:domain up:Subcellular_Location_Annotation.
 
 <#port-location_inside_cell> a todo:Port ;
 	todo:name "location_inside_cell" ;

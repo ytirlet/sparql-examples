@@ -1,3 +1,4 @@
+@base <https://sparql.uniprot.org/.well-known/sparql-examples/M23.ttl> .
 @prefix ex: <https://sparql.uniprot.org/.well-known/sparql-examples/> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix schema: <https://schema.org/> .
@@ -18,17 +19,19 @@ WHERE {
         ?goTerm rdfs:subClassOf ?superGO.
 }""";
   schema:keywords "protein classification", "GO annotation";
-  schema:target <https://sparql.uniprot.org/sparql/> .
+  schema:target <https://sparql.uniprot.org/sparql/> ;
+  todo:input <#port-protein>, <#port-goTerm>, <#port-superGO> ;
+  todo:output <#port-protein>, <#port-goTerm>, <#port-superGO>.
 
-<file:///home/ytirlet/Documents/uniprot_rq/modules/modules_uniprot/tri_module/M23.ttl#protein>
+<#port-protein>
   a <https://purl.expasy.org/sparql-examples/ontology#ModulePort>;
   todo:name "protein" ;
   rdfs:domain up:Protein .
 
-<file:///home/ytirlet/Documents/uniprot_rq/modules/modules_uniprot/tri_module/M23.ttl#goTerm>
+<#port-goTerm>
   a <https://purl.expasy.org/sparql-examples/ontology#ModulePort>;
   todo:name "goTerm" .
 
-<file:///home/ytirlet/Documents/uniprot_rq/modules/modules_uniprot/tri_module/M23.ttl#superGO>
+<#port-superGO>
   a <https://purl.expasy.org/sparql-examples/ontology#ModulePort>;
   todo:name "superGO" .

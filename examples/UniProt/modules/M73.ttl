@@ -1,3 +1,4 @@
+@base <https://sparql.uniprot.org/.well-known/sparql-examples/M73.ttl> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix schema: <https://schema.org/> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
@@ -13,7 +14,7 @@ ex:M73_module a sh:SPARQLExecutable, sh:SPARQLSelectExecutable;
 PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-SELECT ?protein ?gene ?name
+SELECT ?protein ?gene ?name ?locusName
 WHERE {
         ?protein rdf:type up:Protein.
         ?protein up:encodedBy ?gene.
@@ -21,21 +22,23 @@ WHERE {
         ?gene up:locusName ?locusName.
 }""";
   schema:keywords "gene name";
-  schema:target <https://sparql.uniprot.org/sparql/> .
+  schema:target <https://sparql.uniprot.org/sparql/> ;
+  todo:input <#port-protein>, <#port-gene>, <#port-name>, <#port-locusName> ;
+  todo:output <#port-protein>, <#port-gene>, <#port-name>, <#port-locusName> .
 
-<file:///home/ytirlet/Documents/uniprot_rq/modules/modules_uniprot/tri_module/M73.ttl#name>
+<#port-name>
   a <https://purl.expasy.org/sparql-examples/ontology#ModulePort>;
   todo:name "name" .
 
-<file:///home/ytirlet/Documents/uniprot_rq/modules/modules_uniprot/tri_module/M73.ttl#protein>
+<#port-protein>
   a <https://purl.expasy.org/sparql-examples/ontology#ModulePort>;
   rdfs:domain <http://purl.uniprot.org/core/Protein>;
   todo:name "protein" .
 
-<file:///home/ytirlet/Documents/uniprot_rq/modules/modules_uniprot/tri_module/M73.ttl#gene>
+<#port-gene>
   a <https://purl.expasy.org/sparql-examples/ontology#ModulePort>;
   todo:name "gene" .
 
-<file:///home/ytirlet/Documents/uniprot_rq/modules/modules_uniprot/tri_module/M73.ttl#locusName>
+<#port-locusName>
   a <https://purl.expasy.org/sparql-examples/ontology#ModulePort>;
   todo:name "locusName" .

@@ -1,3 +1,4 @@
+@base <https://sparql.uniprot.org/.well-known/sparql-examples/M20.ttl> .
 @prefix ex: <https://sparql.uniprot.org/.well-known/sparql-examples/> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix schema: <https://schema.org/> .
@@ -20,25 +21,27 @@ WHERE {
         ?source rdf:type ?sourceType.
 }""";
   schema:keywords "annotation", "evidence tag", "PubMed";
-  schema:target <https://sparql.uniprot.org/sparql/> .
+  schema:target <https://sparql.uniprot.org/sparql/> ;
+  todo:input <#port-annotation>, <#port-object>, <#port-attribution>, <#port-sourceType>, <#port-source> ;
+  todo:output <#port-annotation>, <#port-object>, <#port-attribution>, <#port-sourceType>, <#port-source> .
 
-<file:///home/ytirlet/Documents/uniprot_rq/modules/modules_uniprot/tri_module/M20_b.ttl#annotation>
+<#port-annotation>
   a <https://purl.expasy.org/sparql-examples/ontology#ModulePort>;
   todo:name "annotation" .
 
-<file:///home/ytirlet/Documents/uniprot_rq/modules/modules_uniprot/tri_module/M20_b.ttl#object>
+<#port-object>
   a <https://purl.expasy.org/sparql-examples/ontology#ModulePort>;
   todo:name "object" .
 
-<file:///home/ytirlet/Documents/uniprot_rq/modules/modules_uniprot/tri_module/M20_b.ttl#attribution>
+<#port-attribution>
   a <https://purl.expasy.org/sparql-examples/ontology#ModulePort>;
   todo:name "attribution" .
 
-<file:///home/ytirlet/Documents/uniprot_rq/modules/modules_uniprot/tri_module/M20_b.ttl#sourceType>
+<#port-sourceType>
   a <https://purl.expasy.org/sparql-examples/ontology#ModulePort>;
   todo:name "sourceType" .
 
-<file:///home/ytirlet/Documents/uniprot_rq/modules/modules_uniprot/tri_module/M20_b.ttl#source>
+<#port-source>
   a <https://purl.expasy.org/sparql-examples/ontology#ModulePort>;
   todo:options "()";
   todo:name "source" .

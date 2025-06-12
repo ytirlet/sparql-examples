@@ -1,3 +1,4 @@
+@base <https://sparql.uniprot.org/.well-known/sparql-examples/M39.ttl> .
 @prefix ex: <https://sparql.uniprot.org/.well-known/sparql-examples/> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix schema: <https://schema.org/> .
@@ -20,22 +21,24 @@ WHERE {
         ?ca up:catalyzedReaction ?reaction.
 }""";
   schema:keywords "catalytic activity", "catalyzed reaction";
-  schema:target <https://sparql.uniprot.org/sparql/> .
+  schema:target <https://sparql.uniprot.org/sparql/> ;
+  todo:input <#port-reaction>, <#port-protein>, <#port-annotation>, <#port-ca> ;
+  todo:output <#port-reaction>, <#port-protein>, <#port-annotation>, <#port-ca> .
 
-<file:///home/ytirlet/Documents/uniprot_rq/modules/modules_uniprot/tri_module/M39.ttl#reaction>
+<#port-reaction>
   a <https://purl.expasy.org/sparql-examples/ontology#ModulePort>;
   todo:name "reaction" .
 
-<file:///home/ytirlet/Documents/uniprot_rq/modules/modules_uniprot/tri_module/M39.ttl#annotation>
+<#port-annotation>
   a <https://purl.expasy.org/sparql-examples/ontology#ModulePort>;
   todo:name "annotation" ;
   rdfs:domain up:Catalytic_Activity_Annotation .
 
-<file:///home/ytirlet/Documents/uniprot_rq/modules/modules_uniprot/tri_module/M39.ttl#protein>
+<#port-protein>
   a <https://purl.expasy.org/sparql-examples/ontology#ModulePort>;
   todo:name "protein" ;
   rdfs:domain up:Protein.
 
-<file:///home/ytirlet/Documents/uniprot_rq/modules/modules_uniprot/tri_module/M39.ttl#ca>
+<#port-ca>
   a <https://purl.expasy.org/sparql-examples/ontology#ModulePort>;
   todo:name "ca" .

@@ -1,3 +1,4 @@
+@base <https://sparql.uniprot.org/.well-known/sparql-examples/M36.ttl> .
 @prefix ex: <https://sparql.uniprot.org/.well-known/sparql-examples/> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix schema: <https://schema.org/> .
@@ -20,16 +21,18 @@ WHERE {
         ?chebi (rdfs:subClassOf)+ ?superchebi.
 }""";
   schema:keywords "ChEBI";
-  schema:target <https://sparql.uniprot.org/sparql/> .
+  schema:target <https://sparql.uniprot.org/sparql/> ;
+  todo:input <#port-entry>, <#port-chebi>, <#port-superchebi> ;
+  todo:output <#port-entry>, <#port-chebi>, <#port-superchebi>.
 
-<file:///home/ytirlet/Documents/uniprot_rq/modules/modules_uniprot/tri_module/M36.ttl#entry>
+<#port-entry>
   a <https://purl.expasy.org/sparql-examples/ontology#ModulePort>;
   todo:name "entry" .
 
-<file:///home/ytirlet/Documents/uniprot_rq/modules/modules_uniprot/tri_module/M36.ttl#chebi>
+<#port-chebi>
   a <https://purl.expasy.org/sparql-examples/ontology#ModulePort>;
   todo:name "chebi" .
 
-<file:///home/ytirlet/Documents/uniprot_rq/modules/modules_uniprot/tri_module/M36.ttl#superchebi>
+<#port-superchebi>
   a <https://purl.expasy.org/sparql-examples/ontology#ModulePort>;
   todo:name "superchebi" .

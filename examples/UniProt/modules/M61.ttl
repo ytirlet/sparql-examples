@@ -1,3 +1,4 @@
+@base <https://sparql.uniprot.org/.well-known/sparql-examples/M61.ttl> .
 @prefix ex: <https://sparql.uniprot.org/.well-known/sparql-examples/> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix schema: <https://schema.org/> .
@@ -18,13 +19,15 @@ WHERE {
         ?protein up:encodedIn ?compartment.
 }""";
   schema:keywords "";
-  schema:target <https://sparql.uniprot.org/sparql/> .
+  schema:target <https://sparql.uniprot.org/sparql/> ;
+  todo:input <#port-protein>, <#port-compartment> ;
+  todo:output <#port-protein>, <#port-compartment> .
 
-<file:///home/ytirlet/Documents/uniprot_rq/modules/modules_uniprot/tri_module/M61.ttl#compartment>
+<#port-compartment>
   a <https://purl.expasy.org/sparql-examples/ontology#ModulePort>;
   todo:name "compartment" .
 
-<file:///home/ytirlet/Documents/uniprot_rq/modules/modules_uniprot/tri_module/M61.ttl#protein>
+<#port-protein>
   a <https://purl.expasy.org/sparql-examples/ontology#ModulePort>;
   rdfs:domain <http://purl.uniprot.org/core/Protein>;
   todo:name "protein" .

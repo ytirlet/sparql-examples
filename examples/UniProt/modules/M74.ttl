@@ -1,3 +1,4 @@
+@base <https://sparql.uniprot.org/.well-known/sparql-examples/M74.ttl> .
 @prefix ex: <https://sparql.uniprot.org/.well-known/sparql-examples/> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix schema: <https://schema.org/> .
@@ -20,21 +21,23 @@ WHERE {
         ?taxon up:rank ?rank.
 }""";
   schema:keywords "taxonomy";
-  schema:target <https://sparql.uniprot.org/sparql/> .
+  schema:target <https://sparql.uniprot.org/sparql/> ;
+  todo:input <#port-taxon>, <#port-name>, <#port-superTaxon>, <#port-rank> ;
+  todo:output <#port-taxon>, <#port-name>, <#port-superTaxon>, <#port-rank> .
 
-<file:///home/ytirlet/Documents/uniprot_rq/modules/modules_uniprot/tri_module/M74.ttl#name>
+<#port-name>
   a <https://purl.expasy.org/sparql-examples/ontology#ModulePort>;
   todo:name "name" .
 
-<file:///home/ytirlet/Documents/uniprot_rq/modules/modules_uniprot/tri_module/M74.ttl#rank>
+<#port-rank>
   a <https://purl.expasy.org/sparql-examples/ontology#ModulePort>;
   todo:name "rank" .
 
-<file:///home/ytirlet/Documents/uniprot_rq/modules/modules_uniprot/tri_module/M74.ttl#taxon>
+<#port-taxon>
   a <https://purl.expasy.org/sparql-examples/ontology#ModulePort>;
   rdfs:domain <http://purl.uniprot.org/core/Taxon>;
   todo:name "taxon" .
 
-<file:///home/ytirlet/Documents/uniprot_rq/modules/modules_uniprot/tri_module/M74.ttl#superTaxon>
+<#port-superTaxon>
   a <https://purl.expasy.org/sparql-examples/ontology#ModulePort>;
   todo:name "superTaxon" .

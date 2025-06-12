@@ -1,3 +1,4 @@
+@base <https://sparql.uniprot.org/.well-known/sparql-examples/M58.ttl> .
 @prefix ex: <https://sparql.uniprot.org/.well-known/sparql-examples/> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix schema: <https://schema.org/> .
@@ -12,7 +13,7 @@ ex:M58_module a sh:SPARQLExecutable, sh:SPARQLSelectExecutable;
   sh:select """PREFIX up: <http://purl.uniprot.org/core/>
   PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-SELECT ?protein ?annotation ?enzymeClass
+SELECT ?protein ?rhea ?enzymeClass
 WHERE {
         ?protein up:annotation ?annotation.
         ?annotation up:catalyticActivity ?ca.
@@ -22,24 +23,26 @@ WHERE {
         }
 }""";
   schema:keywords "enzyme class", "protein annotation";
-  schema:target <https://sparql.uniprot.org/sparql/> .
+  schema:target <https://sparql.uniprot.org/sparql/> ;
+  todo:input <#port-protein>, <#port-annotation>, <#port-ca>, <#port-rhea>, <#port-enzymeClass> ;
+  todo:output <#port-protein>, <#port-rhea>, <#port-enzymeClass> .
 
-<file:///home/ytirlet/Documents/uniprot_rq/modules/modules_uniprot/tri_module/M58_b.ttl#annotation>
+<#port-annotation>
   a <https://purl.expasy.org/sparql-examples/ontology#ModulePort>;
   todo:name "annotation" .
 
-<file:///home/ytirlet/Documents/uniprot_rq/modules/modules_uniprot/tri_module/M58_b.ttl#enzymeClass>
+<#port-enzymeClass>
   a <https://purl.expasy.org/sparql-examples/ontology#ModulePort>;
   todo:name "enzymeClass" .
 
-<file:///home/ytirlet/Documents/uniprot_rq/modules/modules_uniprot/tri_module/M58_b.ttl#protein>
+<#port-protein>
   a <https://purl.expasy.org/sparql-examples/ontology#ModulePort>;
   todo:name "protein" .
 
-<file:///home/ytirlet/Documents/uniprot_rq/modules/modules_uniprot/tri_module/M58_b.ttl#rhea>
+<#port-rhea>
   a <https://purl.expasy.org/sparql-examples/ontology#ModulePort>;
   todo:name "rhea" .
 
-<file:///home/ytirlet/Documents/uniprot_rq/modules/modules_uniprot/tri_module/M58_b.ttl#ca>
+<#port-ca>
   a <https://purl.expasy.org/sparql-examples/ontology#ModulePort>;
   todo:name "ca" .

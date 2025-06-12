@@ -1,3 +1,4 @@
+@base <https://sparql.uniprot.org/.well-known/sparql-examples/M76.ttl> .
 @prefix ex: <https://sparql.uniprot.org/.well-known/sparql-examples/> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix schema: <https://schema.org/> .
@@ -23,28 +24,30 @@ WHERE {
 
 }""";
   schema:keywords "faldo begin", "faldo position", "falso reference";
-  schema:target <https://sparql.uniprot.org/sparql/> .
+  schema:target <https://sparql.uniprot.org/sparql/> ;
+  todo:input <#port-entry>, <#port-faldoBegin>, <#port-faldoEnd>, <#port-beginPosition>, <#port-endPosition>, <#port-reference> ;
+  todo:output <#port-entry>, <#port-faldoBegin>, <#port-faldoEnd>, <#port-beginPosition>, <#port-endPosition>, <#port-reference> .
 
-<file:///home/ytirlet/Documents/uniprot_rq/modules/modules_uniprot/tri_module/M76.ttl#entry>
+<#port-entry>
   a <https://purl.expasy.org/sparql-examples/ontology#ModulePort>;
   todo:name "entry" .
 
-<file:///home/ytirlet/Documents/uniprot_rq/modules/modules_uniprot/tri_module/M76.ttl#reference>
+<#port-reference>
   a <https://purl.expasy.org/sparql-examples/ontology#ModulePort>;
   todo:name "reference" .
 
-<file:///home/ytirlet/Documents/uniprot_rq/modules/modules_uniprot/tri_module/M76.ttl#endPosition>
+<#port-endPosition>
   a <https://purl.expasy.org/sparql-examples/ontology#ModulePort>;
   todo:name "endPosition" .
 
-<file:///home/ytirlet/Documents/uniprot_rq/modules/modules_uniprot/tri_module/M76.ttl#faldoBegin>
+<#port-faldoBegin>
   a <https://purl.expasy.org/sparql-examples/ontology#ModulePort>;
   todo:name "faldoBegin" .
 
-<file:///home/ytirlet/Documents/uniprot_rq/modules/modules_uniprot/tri_module/M76.ttl#faldoEnd>
+<#port-faldoEnd>
   a <https://purl.expasy.org/sparql-examples/ontology#ModulePort>;
   todo:name "faldoEnd" .
 
-<file:///home/ytirlet/Documents/uniprot_rq/modules/modules_uniprot/tri_module/M76.ttl#beginPosition>
+<#port-beginPosition>
   a <https://purl.expasy.org/sparql-examples/ontology#ModulePort>;
   todo:name "beginPosition" .

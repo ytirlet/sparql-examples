@@ -1,3 +1,4 @@
+@base <https://sparql.uniprot.org/.well-known/sparql-examples/M17.ttl> .
 @prefix ex: <https://sparql.uniprot.org/.well-known/sparql-examples/> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix schema: <https://schema.org/> .
@@ -12,34 +13,36 @@ ex:M17_module a sh:SPARQLExecutable, sh:SPARQLSelectExecutable;
   sh:select """PREFIX up: <http://purl.uniprot.org/core/>
   PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-SELECT ?entry ?date ?modified ?reviewed ?version
+SELECT ?protein ?date ?modified ?reviewed ?version
 WHERE {
-        ?entry rdf:type up:Protein ;
+        ?protein rdf:type up:Protein ;
                 up:created ?date ;
                 up:modified ?modified ;
                 up:reviewed ?reviewed ;
                 up:version ?version .
 }""";
   schema:keywords "date", "entry history";
-  schema:target <https://sparql.uniprot.org/sparql/> .
+  schema:target <https://sparql.uniprot.org/sparql/> ;
+  todo:input <#port-protein>, <#port-date>, <#port-modified>, <#port-reviewed>, <#port-version>;
+  todo:output <#port-protein>, <#port-date>, <#port-modified>, <#port-reviewed>, <#port-version>.
 
-<file:///home/ytirlet/Documents/uniprot_rq/modules/modules_uniprot/tri_module/M17_b.ttl#date>
+<#port-date>
   a <https://purl.expasy.org/sparql-examples/ontology#ModulePort>;
   todo:name "date" .
 
-<file:///home/ytirlet/Documents/uniprot_rq/modules/modules_uniprot/tri_module/M17_b.ttl#entry>
+<#port-protein>
   a <https://purl.expasy.org/sparql-examples/ontology#ModulePort>;
   rdfs:domain up:Protein ;
-  todo:name "entry" .
+  todo:name "protein" .
 
-<file:///home/ytirlet/Documents/uniprot_rq/modules/modules_uniprot/tri_module/M17_b.ttl#modified>
+<#port-modified>
   a <https://purl.expasy.org/sparql-examples/ontology#ModulePort>;
   todo:name "modified" .
 
-<file:///home/ytirlet/Documents/uniprot_rq/modules/modules_uniprot/tri_module/M17_b.ttl#reviewed>
+<#port-reviewed>
   a <https://purl.expasy.org/sparql-examples/ontology#ModulePort>;
   todo:name "reviewed" .
 
-<file:///home/ytirlet/Documents/uniprot_rq/modules/modules_uniprot/tri_module/M17_b.ttl#version>
+<#port-version>
   a <https://purl.expasy.org/sparql-examples/ontology#ModulePort>;
   todo:name "version" .

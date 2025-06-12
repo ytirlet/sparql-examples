@@ -1,3 +1,4 @@
+@base <https://sparql.uniprot.org/.well-known/sparql-examples/M32.ttl> .
 @prefix ex: <https://sparql.uniprot.org/.well-known/sparql-examples/> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix schema: <https://schema.org/> .
@@ -18,17 +19,19 @@ WHERE {
         ?entry up:sequence ?sequence.
 }""";
   schema:keywords "sequence";
-  schema:target <https://sparql.uniprot.org/sparql/> .
+  schema:target <https://sparql.uniprot.org/sparql/> ;
+  todo:input <#port-entry>, <#port-type>, <#port-sequence> ;
+  todo:output <#port-entry>, <#port-type>, <#port-sequence> .
 
-<file:///home/ytirlet/Documents/uniprot_rq/modules/modules_uniprot/tri_module/M32.ttl#entry>
+<#port-entry>
   a <https://purl.expasy.org/sparql-examples/ontology#ModulePort>;
   todo:options (up:Annotation up:Protein up:Ressource) ;
   todo:name "entry" .
 
-<file:///home/ytirlet/Documents/uniprot_rq/modules/modules_uniprot/tri_module/M32.ttl#sequence>
+<#port-sequence>
   a <https://purl.expasy.org/sparql-examples/ontology#ModulePort>;
   todo:name "sequence" .
 
-<file:///home/ytirlet/Documents/uniprot_rq/modules/modules_uniprot/tri_module/M32.ttl#type>
+<#port-type>
   a <https://purl.expasy.org/sparql-examples/ontology#ModulePort>;
   todo:name "type" .

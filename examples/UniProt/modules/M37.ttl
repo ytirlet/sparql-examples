@@ -1,3 +1,4 @@
+@base <https://sparql.uniprot.org/.well-known/sparql-examples/M37.ttl> .
 @prefix ex: <https://sparql.uniprot.org/.well-known/sparql-examples/> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix schema: <https://schema.org/> .
@@ -25,25 +26,27 @@ WHERE {
         ?chebi2 (rdfs:subClassOf)+ ?superchebi.
 }""";
   schema:keywords "ChEBI restriction";
-  schema:target <https://sparql.uniprot.org/sparql/> .
+  schema:target <https://sparql.uniprot.org/sparql/> ;
+  todo:input <#port-compound>, <#port-chebi>, <#port-superchebi>, <#port-chebiRestriction>, <#port-chebi2> ;
+  todo:output <#port-compound>, <#port-chebi>, <#port-superchebi>, <#port-chebiRestriction>, <#port-chebi2> .
 
-<file:///home/ytirlet/Documents/uniprot_rq/modules/modules_uniprot/tri_module/M37.ttl#compound>
+<#port-compound>
   a <https://purl.expasy.org/sparql-examples/ontology#ModulePort>;
   todo:name "compound" .
 
-<file:///home/ytirlet/Documents/uniprot_rq/modules/modules_uniprot/tri_module/M37.ttl#chebiRestriction>
+<#port-chebiRestriction>
   a <https://purl.expasy.org/sparql-examples/ontology#ModulePort>;
   rdfs:domain <http://www.w3.org/2002/07/owl#Restriction>;
   todo:name "chebiRestriction" .
 
-<file:///home/ytirlet/Documents/uniprot_rq/modules/modules_uniprot/tri_module/M37.ttl#chebi2>
+<#port-chebi2>
   a <https://purl.expasy.org/sparql-examples/ontology#ModulePort>;
   todo:name "chebi2" .
 
-<file:///home/ytirlet/Documents/uniprot_rq/modules/modules_uniprot/tri_module/M37.ttl#chebi>
+<#port-chebi>
   a <https://purl.expasy.org/sparql-examples/ontology#ModulePort>;
   todo:name "chebi" .
 
-<file:///home/ytirlet/Documents/uniprot_rq/modules/modules_uniprot/tri_module/M37.ttl#superchebi>
+<#port-superchebi>
   a <https://purl.expasy.org/sparql-examples/ontology#ModulePort>;
   todo:name "superchebi" .

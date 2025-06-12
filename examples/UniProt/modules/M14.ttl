@@ -1,4 +1,4 @@
-@base <file:///home/ytirlet/Documents/uniprot_rq/modules/modules_uniprot/tri_module/M14.ttl> .
+@base <https://sparql.uniprot.org/.well-known/sparql-examples/M14.ttl> .
 @prefix ex: <https://sparql.uniprot.org/.well-known/sparql-examples/> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix schema: <https://schema.org/> .
@@ -24,16 +24,16 @@ WHERE {
   todo:input <#port-protein>, <#port-annotation>, <#port-annType>;
   todo:output <#port-protein>, <#port-annotation>, <#port-annType>.
 
-<file:///home/ytirlet/Documents/uniprot_rq/modules/modules_uniprot/tri_module/M14.ttl#annotation>
+<#port-annotation>
   a <https://purl.expasy.org/sparql-examples/ontology#ModulePort>;
   todo:options "()";
   todo:name "annotation" .
 
-<file:///home/ytirlet/Documents/uniprot_rq/modules/modules_uniprot/tri_module/M14.ttl#protein>
+<#port-protein>
   a <https://purl.expasy.org/sparql-examples/ontology#ModulePort>;
   rdfs:domain <http://purl.uniprot.org/core/Protein>;
   todo:name "protein" .
 
-<file:///home/ytirlet/Documents/uniprot_rq/modules/modules_uniprot/tri_module/M14.ttl#annType>
+<#port-annType>
   a <https://purl.expasy.org/sparql-examples/ontology#ModulePort>;
   todo:name "annType" .

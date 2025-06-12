@@ -1,3 +1,4 @@
+@base <https://sparql.uniprot.org/.well-known/sparql-examples/M29.ttl> .
 @prefix ex: <https://sparql.uniprot.org/.well-known/sparql-examples/> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix schema: <https://schema.org/> .
@@ -18,16 +19,18 @@ WHERE {
         ?member up:sequenceFor ?similar.
 }""";
   schema:keywords "similar protein";
-  schema:target <https://sparql.uniprot.org/sparql/> .
+  schema:target <https://sparql.uniprot.org/sparql/> ;
+  todo:input <#port-cluster>, <#port-member>, <#port-similar> ;
+  todo:output <#port-cluster>, <#port-member>, <#port-similar> .
 
-<file:///home/ytirlet/Documents/uniprot_rq/modules/modules_uniprot/tri_module/M29.ttl#cluster>
+<#port-cluster>
   a <https://purl.expasy.org/sparql-examples/ontology#ModulePort>;
   todo:name "cluster" .
 
-<file:///home/ytirlet/Documents/uniprot_rq/modules/modules_uniprot/tri_module/M29.ttl#similar>
+<#port-similar>
   a <https://purl.expasy.org/sparql-examples/ontology#ModulePort>;
   todo:name "similar" .
 
-<file:///home/ytirlet/Documents/uniprot_rq/modules/modules_uniprot/tri_module/M29.ttl#member>
+<#port-member>
   a <https://purl.expasy.org/sparql-examples/ontology#ModulePort>;
   todo:name "member" .

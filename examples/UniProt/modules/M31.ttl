@@ -1,3 +1,4 @@
+@base <https://sparql.uniprot.org/.well-known/sparql-examples/M31.ttl> .
 @prefix ex: <https://sparql.uniprot.org/.well-known/sparql-examples/> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix schema: <https://schema.org/> .
@@ -18,16 +19,18 @@ WHERE {
         ?dbentry up:database ?database.
 }""";
   schema:keywords "";
-  schema:target <https://sparql.uniprot.org/sparql/> .
+  schema:target <https://sparql.uniprot.org/sparql/> ;
+  todo:input <#port-entry>, <#port-dbentry>, <#port-database> ;
+  todo:output <#port-entry>, <#port-dbentry>, <#port-database> .
 
-<file:///home/ytirlet/Documents/uniprot_rq/modules/modules_uniprot/tri_module/M31.ttl#database>
+<#port-database>
   a <https://purl.expasy.org/sparql-examples/ontology#ModulePort>;
   todo:name "database" .
 
-<file:///home/ytirlet/Documents/uniprot_rq/modules/modules_uniprot/tri_module/M31.ttl#entry>
+<#port-entry>
   a <https://purl.expasy.org/sparql-examples/ontology#ModulePort>;
   todo:name "entry" .
 
-<file:///home/ytirlet/Documents/uniprot_rq/modules/modules_uniprot/tri_module/M31.ttl#dbentry>
+<#port-dbentry>
   a <https://purl.expasy.org/sparql-examples/ontology#ModulePort>;
   todo:name "dbentry" .
