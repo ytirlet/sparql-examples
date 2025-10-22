@@ -3,12 +3,13 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix schema: <https://schema.org/> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
-@prefix todo: <https://example.org/TODO#> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
 @prefix up: <http://purl.uniprot.org/core/> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 ex:M20_module a sh:SPARQLExecutable, sh:SPARQLSelectExecutable;
-  rdfs:comment "protein and annotation and up to the source"@en;
+  rdfs:comment "Annotation attribution"@en;
   sh:prefixes _:genid-957ebfe3624441a187b8b96f0207b3b22-sparql_examples_prefixes;
   sh:select """PREFIX up: <http://purl.uniprot.org/core/>
   PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
@@ -19,29 +20,33 @@ WHERE {
         ?object up:attribution ?attribution.
         ?attribution up:source ?source.
         ?source rdf:type ?sourceType.
+        ?attribution up:evidence ?evidence.
 }""";
   schema:keywords "annotation", "evidence tag", "PubMed";
   schema:target <https://sparql.uniprot.org/sparql/> ;
-  todo:input <#port-annotation>, <#port-object>, <#port-attribution>, <#port-sourceType>, <#port-source> ;
-  todo:output <#port-annotation>, <#port-object>, <#port-attribution>, <#port-sourceType>, <#port-source> .
+  smodule:output <#port-annotation>, <#port-object>, <#port-attribution>, <#port-sourceType>, <#port-source>, <#port-evidence> .
 
 <#port-annotation>
-  a <https://purl.expasy.org/sparql-examples/ontology#ModulePort>;
-  todo:name "annotation" .
+  a smodule:ModulePort;
+  rdfs:domain up:Annotation ;
+  smodule:name "annotation" .
 
 <#port-object>
-  a <https://purl.expasy.org/sparql-examples/ontology#ModulePort>;
-  todo:name "object" .
+  a smodule:ModulePort;
+  smodule:name "object" .
 
 <#port-attribution>
-  a <https://purl.expasy.org/sparql-examples/ontology#ModulePort>;
-  todo:name "attribution" .
+  a smodule:ModulePort;
+  smodule:name "attribution" .
 
 <#port-sourceType>
-  a <https://purl.expasy.org/sparql-examples/ontology#ModulePort>;
-  todo:name "sourceType" .
+  a smodule:ModulePort;
+  smodule:name "sourceType" .
 
 <#port-source>
-  a <https://purl.expasy.org/sparql-examples/ontology#ModulePort>;
-  todo:options "()";
-  todo:name "source" .
+  a smodule:ModulePort;
+  smodule:name "source" .
+
+<#port-evidence>
+  a smodule:ModulePort;
+  smodule:name "evidence".

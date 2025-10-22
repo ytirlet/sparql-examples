@@ -11,7 +11,7 @@
 
 <> a sh:SPARQLExecutable,
         sh:SPARQLSelectExecutable ;
-    rdfs:comment "epitope"@en ;
+    rdfs:comment "Epitope"@en ;
     sh:prefixes _:sparql_examples_prefixes ;
     sh:select """PREFIX up: <http://purl.uniprot.org/core/>
     PREFIX glystreem: <https://glyconnect.expasy.org/rdf/structures#>

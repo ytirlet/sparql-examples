@@ -3,12 +3,13 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix schema: <https://schema.org/> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
-@prefix todo: <https://example.org/TODO#> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
 @prefix up: <http://purl.uniprot.org/core/> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 ex:M51_module a sh:SPARQLExecutable, sh:SPARQLSelectExecutable;
-  rdfs:comment "protein, annotation and associated disease"@en;
+  rdfs:comment "protein and associated disease"@en;
   sh:prefixes _:genid-a9e564c4f244461280d810ae10be072c2-sparql_examples_prefixes;
   sh:select """PREFIX up: <http://purl.uniprot.org/core/>
   PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
@@ -17,24 +18,25 @@ SELECT ?protein ?annotation ?disease
 WHERE {
         ?protein up:annotation ?annotation.
         ?protein rdf:type up:Protein.
+        ?annotation rdf:type up:Disease_Annotation.
         ?annotation up:disease ?disease.
+        ?disease rdf:type up:Disease.
 }""";
   schema:keywords "protein annotation", "disease";
   schema:target <https://sparql.uniprot.org/sparql/> ;
-  todo:input <#port-protein>, <#port-annotation>, <#port-disease> ;
-  todo:output <#port-protein>, <#port-annotation>, <#port-disease> .
+  smodule:output <#port-protein>, <#port-annotation>, <#port-disease> .
   
 
 <#port-annotation>
-  a <https://purl.expasy.org/sparql-examples/ontology#ModulePort>;
-  todo:name "annotation" ;
+  a smodule:ModulePort;
+  smodule:name "annotation" ;
   rdfs:domain up:Disease_Annotation.
 
 <#port-disease>
-  a <https://purl.expasy.org/sparql-examples/ontology#ModulePort>;
-  todo:name "disease" .
+  a smodule:ModulePort;
+  smodule:name "disease" .
 
 <#port-protein>
-  a <https://purl.expasy.org/sparql-examples/ontology#ModulePort>;
-  rdfs:domain <http://purl.uniprot.org/core/Protein>;
-  todo:name "protein" .
+  a smodule:ModulePort;
+  rdfs:domain up:Protein;
+  smodule:name "protein" .

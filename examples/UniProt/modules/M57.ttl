@@ -1,45 +1,54 @@
-@base <https://sparql.uniprot.org/.well-known/sparql-examples/M57_entry_type_mnemonic> .
+@base <https://sparql.uniprot.org/.well-known/sparql-examples/M57.ttl> .
 @prefix ex: <https://sparql.uniprot.org/.well-known/sparql-examples/> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix schema: <https://schema.org/> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
-@prefix todo: <https://example.org/TODO#> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
 @prefix up: <http://purl.uniprot.org/core/> .
 @prefix uniprotkb: <http://purl.uniprot.org/uniprot/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<> a sh:SPARQLExecutable,
+ex:M57_module a sh:SPARQLExecutable,
         sh:SPARQLSelectExecutable ;
-    rdfs:comment "entry, type and mnemonic"@en ;
+    rdfs:comment "entry mnemonic"@en ;
     sh:prefixes _:sparql_examples_prefixes ;
     sh:select """PREFIX up: <http://purl.uniprot.org/core/>
     PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-SELECT ?entry ?type ?mnemonic
+SELECT ?entry ?type ?mnemonic ?oldmnemonic
 WHERE {
 	?entry rdf:type ?type.
 	?entry up:mnemonic ?mnemonic.
+	OPTIONAL {?entry up:oldMnemonic ?oldmnemonic.}
 }""" ;
     schema:keywords "mnemonic" ;
     schema:target <https://sparql.uniprot.org/sparql/> ;
-    todo:input <#port-entry>, <#port-type>, <#port-mnemonic> ;
-    todo:output <#port-entry>, <#port-type>, <#port-mnemonic> .
+    smodule:output <#port-entry>, <#port-type>, <#port-mnemonic>, <#port-oldmnemonic> .
     
-<#port-entry> a todo:Port ; 
-	todo:name "entry" ; 
+<#port-entry> 
+	a smodule:ModulePort ; 
+	smodule:name "entry" ; 
 	rdfs:domain [
 		a owl:Class ;
-		todo:option (up:Cluster up:Protein up:Sequence) 
+		smodule:option (up:Cluster up:Protein up:Sequence) .
 		]; 
-	todo:example (uniprotkb:P01308 uniprotkb:A0A002 uniprotkb:A0A008ARC3).
+	smodule:example (uniprotkb:P01308 uniprotkb:A0A002 uniprotkb:A0A008ARC3).
 	
-<#port-type> a todo:Port ; 
-	todo:name "type" ;
-	todo:option (up:Cluster up:Protein up:Sequence) .
+<#port-type> 
+	a smodule:ModulePort ; 
+	smodule:name "type" ;
+	smodule:option (up:Cluster up:Protein up:Sequence) .
 	
-<#port-mnemonic> a todo:Port ; 
-	todo:name "mnemonic" ;
+<#port-mnemonic> 
+	a smodule:ModulePort ; 
+	smodule:name "mnemonic" ;
 	rdfs:domain xsd:string ;
-	todo:example "A4_HUMAN", "1433E_MOUSE", "1FEH2_WHEAT".
+	smodule:example "A4_HUMAN", "1433E_MOUSE", "1FEH2_WHEAT".
+	
+<#port-oldmnemonic> 
+	a smodule:ModulePort ;
+	smodule:name "oldmnemonic" ;
+	rdfs:domain xsd:string.

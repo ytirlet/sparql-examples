@@ -3,9 +3,10 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix schema: <https://schema.org/> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
-@prefix todo: <https://example.org/TODO#> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
 @prefix up: <http://purl.uniprot.org/core/> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 ex:M45_module a sh:SPARQLExecutable, sh:SPARQLSelectExecutable;
   rdfs:comment "protein transcribed from gene"@en;
@@ -20,18 +21,19 @@ WHERE {
 }""";
   schema:keywords "transcribed from";
   schema:target <https://sparql.uniprot.org/sparql/> ;
-  todo:input <#port-protein>, <#port-entry>, <#port-gene> ;
-  todo:output <#port-protein>, <#port-entry>, <#port-gene> .
+  smodule:output <#port-protein>, <#port-entry>, <#port-gene> .
 
 <#port-entry>
-  a <https://purl.expasy.org/sparql-examples/ontology#ModulePort>;
-  todo:name "entry" .
+  a smodule:ModulePort;
+  rdfs:domain xsd:anyURI ;
+  smodule:name "entry" .
 
 <#port-protein>
-  a <https://purl.expasy.org/sparql-examples/ontology#ModulePort>;
-  todo:name "protein" ;
+  a smodule:ModulePort;
+  smodule:name "protein" ;
   rdfs:domain up:Protein .
 
 <#port-gene>
-  a <https://purl.expasy.org/sparql-examples/ontology#ModulePort>;
-  todo:name "gene" .
+  a smodule:ModulePort;
+  rdfs:domain up:Gene;
+  smodule:name "gene" .

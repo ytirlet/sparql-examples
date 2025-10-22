@@ -1,4 +1,4 @@
-@base <https://sparql.uniprot.org/.well-known/sparql-examples/M72.ttl> .
+@base <https://sparql.uniprot.org/.well-known/sparql-examples/M78.ttl> .
 @prefix ex: <https://sparql.uniprot.org/.well-known/sparql-examples/> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix schema: <https://schema.org/> .
@@ -8,37 +8,35 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-ex:M72_module a sh:SPARQLExecutable, sh:SPARQLSelectExecutable;
-  rdfs:comment "Entry, recommended name and full name"@en;
+ex:M78_module a sh:SPARQLExecutable, sh:SPARQLSelectExecutable;
+  rdfs:comment "Any Name"@en;
   sh:prefixes _:genid-2d0dc5b16a874d7192dc80da3a65f7de2-sparql_examples_prefixes;
   sh:select """PREFIX up: <http://purl.uniprot.org/core/>
-  PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-SELECT ?entry ?recName ?fullName ?altName ?shortName
+SELECT ?entry ?anyName
 WHERE {
+        { ?entry up:recommendedName ?anyName.
+        }
+        UNION {
         ?entry up:recommendedName ?recName.
-        ?entry up:alternativeName ?altName.
-        ?recName up:fullName ?fullName.
-        ?recName up:shortName ?shortName.
+        ?recName up:fullName ?anyName.
+        }
+        UNION {
+        ?entry up:recommendedName ?recName.
+        ?recName up:shortName ?anyName.
+        }
+        UNION {
+        ?entry up:alternativeName ?anyName.
+        }
 }""";
   schema:keywords "name";
   schema:target <https://sparql.uniprot.org/sparql/> ;
-  smodule:output <#port-entry>, <#port-recName>, <#port-altName>, <#port-fullName>, <#port-shortName> .
+  smodule:output <#port-entry>, <#port-Name>.
 
-<#port-fullName>
+<#port-anyName>
   a smodule:ModulePort;
-  rdfs:domain up:Structured_Name ;
-  smodule:name "fullName" .
-
-<#port-shortName>
-  a smodule:ModulePort;
-  rdfs:domain up:Structured_Name ;
-  smodule:name "shortName" .
-
-<#port-recName>
-  a smodule:ModulePort;
-  rdfs:domain up:Structured_Name ;
-  smodule:name "recName" .
+  smodule:name "anyName" .
 
 <#port-entry>
   a smodule:ModulePort;
@@ -48,7 +46,3 @@ WHERE {
 		]; 
   smodule:name "entry" .
 
-<#port-altName>
-  a smodule:ModulePort;
-  rdfs:domain up:Structured_Name ;
-  smodule:name "altName" .

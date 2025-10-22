@@ -1,14 +1,15 @@
-@base <https://sparql.uniprot.org/.well-known/sparql-examples/M75_rhea_to_chebi> .
+@base <https://sparql.uniprot.org/.well-known/sparql-examples/M75.ttl> .
 @prefix ex: <https://sparql.uniprot.org/.well-known/sparql-examples/> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix schema: <https://schema.org/> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
-@prefix todo: <https://example.org/TODO#> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
 @prefix rh: <http://rdf.rhea-db.org/> .
 @prefix up: <http://purl.uniprot.org/core/> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<> a sh:SPARQLExecutable,
+ex:M75_module a sh:SPARQLExecutable,
         sh:SPARQLSelectExecutable ;
     rdfs:comment "compound to ChEBI"@en ;
     sh:prefixes _:sparql_examples_prefixes ;
@@ -22,17 +23,19 @@ WHERE {
 	?chebi (rdfs:subClassOf)+ ?superchebi.
 }""" ;
     schema:keywords "ChEBI" ;
-    schema:target <https://sparql.uniprot.org/sparql/> ;
-    todo:input <#port-rhea>, <#port-compound>, <#port-chebi> ;
-    todo:output <#port-rhea>, <#port-compound>, <#port-chebi> .
-    
-<#port-rhea> a todo:Port ;
-	todo:name "rhea";
-	rdfs:domain rh:Reaction.
+    schema:target <https://sparql.rhea-db.org/rhea> ;
+    smodule:output <#port-rhea>,<#port-chebi>, <#port-superchebi>.
 
-<#port-compound> a todo:Port ;
-	todo:name "compound".
+<#port-compound> 
+	a smodule:ModulePort ;
+	rdfs:domain rh:Compound.
+	smodule:name "compound".
 
-<#port-chebi> a todo:Port ;
-	todo:name "chebi".
+<#port-chebi> 
+	a smodule:ModulePort ;
+	smodule:name "chebi".
+	
+<#port-superchebi> 
+	a smodule:ModulePort ;
+	smodule:name "superchebi".
 

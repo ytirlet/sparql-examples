@@ -2,13 +2,14 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix schema: <https://schema.org/> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
-@prefix todo: <https://example.org/TODO#> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
 @prefix up: <http://purl.uniprot.org/core/> .
 @prefix ex: <https://sparql.uniprot.org/.well-known/sparql-examples/> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 ex:M73_module a sh:SPARQLExecutable, sh:SPARQLSelectExecutable;
-  rdfs:comment "protein and gene"@en;
+  rdfs:comment "protein to gene"@en;
   sh:prefixes _:genid-e6032deb82b547d696185a74958b09f22-sparql_examples_prefixes;
   sh:select """PREFIX up: <http://purl.uniprot.org/core/>
 PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
@@ -20,25 +21,39 @@ WHERE {
         ?protein up:encodedBy ?gene.
         ?gene skos:prefLabel ?name.
         ?gene up:locusName ?locusName.
+        ?gene skos:altLabel ?altLabel.
+        ?gene up:orfName ?orfName.
 }""";
   schema:keywords "gene name";
   schema:target <https://sparql.uniprot.org/sparql/> ;
-  todo:input <#port-protein>, <#port-gene>, <#port-name>, <#port-locusName> ;
-  todo:output <#port-protein>, <#port-gene>, <#port-name>, <#port-locusName> .
+  smodule:output <#port-protein>, <#port-gene>, <#port-name>, <#port-locusName> , <#port-altLabel>, <#port-orfName>.
 
 <#port-name>
-  a <https://purl.expasy.org/sparql-examples/ontology#ModulePort>;
-  todo:name "name" .
+  a smodule:ModulePort;
+  rdfs:domain xsd:string ;
+  smodule:name "name" .
 
 <#port-protein>
-  a <https://purl.expasy.org/sparql-examples/ontology#ModulePort>;
+  a smodule:ModulePort;
   rdfs:domain <http://purl.uniprot.org/core/Protein>;
-  todo:name "protein" .
+  smodule:name "protein" .
 
 <#port-gene>
-  a <https://purl.expasy.org/sparql-examples/ontology#ModulePort>;
-  todo:name "gene" .
+  a smodule:ModulePort;
+  rdfs:domain up:Gene ;
+  smodule:name "gene" .
 
 <#port-locusName>
-  a <https://purl.expasy.org/sparql-examples/ontology#ModulePort>;
-  todo:name "locusName" .
+  a smodule:ModulePort;
+  rdfs:domain xsd:string ;
+  smodule:name "locusName" .
+  
+<#port-altLabel>
+  a smodule:ModulePort;
+  rdfs:domain xsd:string ;
+  smodule:name "altLabel" .  
+  
+<#port-orfName>
+  a smodule:ModulePort;
+  rdfs:domain xsd:string ;
+  smodule:name "orfName" .

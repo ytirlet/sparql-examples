@@ -3,23 +3,24 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix schema: <https://schema.org/> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
-@prefix todo: <https://example.org/TODO#> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
 @prefix rh: <http://rdf.rhea-db.org/> .
 @prefix up: <http://purl.uniprot.org/core/> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 ex:M47_module a sh:SPARQLExecutable, sh:SPARQLSelectExecutable;
-  rdfs:comment "annotation and catalyzed reaction to compound +chebi"@en;
+  rdfs:comment "protein linked to reaction and compound"@en;
   sh:prefixes _:genid-8e9915183d644ef598608fb53f07cd322-sparql_examples_prefixes;
   sh:select """PREFIX up: <http://purl.uniprot.org/core/>
 PREFIX rh: <http://rdf.rhea-db.org/>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-SELECT ?reaction ?compound ?protein ?annotation ?ca
+SELECT ?reaction ?compound ?protein ?annotation
 WHERE {
         ?protein up:annotation ?annotation.
-        ?annotation up:catalyticActivity ?ca.
-        ?ca up:catalyzedReaction ?reaction.
+        ?annotation up:catalyticActivity ?catalyticActivity.
+        ?catalyticActivity up:catalyzedReaction ?reaction.
         ?reaction rdfs:subClassOf rh:Reaction.
         ?reaction rh:side ?side.
         ?side rh:contains ?participant.
@@ -27,35 +28,24 @@ WHERE {
 }""";
   schema:keywords "catalyzed reaction", "catalytic activity";
   schema:target <https://sparql.uniprot.org/sparql/> ;
-  todo:input <#port-protein>, <#port-annotation>, <#port-ca>, <#port-reaction>, <#port-side>, <#port-participant>, <#port-compound> ;
-  todo:output <#port-protein>, <#port-annotation>, <#port-ca>, <#port-reaction>, <#port-compound> .
+  smodule:output <#port-protein>, <#port-annotation>, <#port-reaction>, <#port-compound> .
 
 <#port-reaction>
-  a <https://purl.expasy.org/sparql-examples/ontology#ModulePort>;
-  todo:name "reaction" ;
+  a smodule:ModulePort;
+  smodule:name "reaction" ;
   rdfs:domain rh:Reaction.
 
 <#port-annotation>
-  a <https://purl.expasy.org/sparql-examples/ontology#ModulePort>;
-  todo:name "annotation" .
+  a smodule:ModulePort;
+  rdfs:domain up:Annotation ;
+  smodule:name "annotation" .
 
 <#port-compound>
-  a <https://purl.expasy.org/sparql-examples/ontology#ModulePort>;
-  todo:name "compound" .
-
-<#port-participant>
-  a <https://purl.expasy.org/sparql-examples/ontology#ModulePort>;
-  todo:name "participant" .
+  a smodule:ModulePort;
+  smodule:name "compound" .
 
 <#port-protein>
-  a <https://purl.expasy.org/sparql-examples/ontology#ModulePort>;
-  todo:name "protein" ;
+  a smodule:ModulePort;
+  smodule:name "protein" ;
   rdfs:domain up:Protein.
 
-<#port-ca>
-  a <https://purl.expasy.org/sparql-examples/ontology#ModulePort>;
-  todo:name "ca" .
-
-<#port-side>
-  a <https://purl.expasy.org/sparql-examples/ontology#ModulePort>;
-  todo:name "side" .

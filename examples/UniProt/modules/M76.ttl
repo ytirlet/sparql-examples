@@ -3,12 +3,13 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix schema: <https://schema.org/> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
-@prefix todo: <https://example.org/TODO#> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
 @prefix up: <http://purl.uniprot.org/core/> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 ex:M76_module a sh:SPARQLExecutable, sh:SPARQLSelectExecutable;
-  rdfs:comment "faldo begin"@en;
+  rdfs:comment "faldo: start/end position and reference"@en;
   sh:prefixes _:genid-956feea9100c41f1bdfdd9a89a8ba79c2-sparql_examples_prefixes;
   sh:select """PREFIX up: <http://purl.uniprot.org/core/>
 PREFIX faldo: <http://biohackathon.org/resource/faldo#>
@@ -25,29 +26,29 @@ WHERE {
 }""";
   schema:keywords "faldo begin", "faldo position", "falso reference";
   schema:target <https://sparql.uniprot.org/sparql/> ;
-  todo:input <#port-entry>, <#port-faldoBegin>, <#port-faldoEnd>, <#port-beginPosition>, <#port-endPosition>, <#port-reference> ;
-  todo:output <#port-entry>, <#port-faldoBegin>, <#port-faldoEnd>, <#port-beginPosition>, <#port-endPosition>, <#port-reference> .
+  smodule:output <#port-entry>, <#port-faldoBegin>, <#port-faldoEnd>, <#port-beginPosition>, <#port-endPosition>, <#port-reference> .
 
 <#port-entry>
-  a <https://purl.expasy.org/sparql-examples/ontology#ModulePort>;
-  todo:name "entry" .
+  a smodule:ModulePort;
+  rdfs:domain xsd:anyURI ;
+  smodule:name "entry" .
 
 <#port-reference>
-  a <https://purl.expasy.org/sparql-examples/ontology#ModulePort>;
-  todo:name "reference" .
+  a smodule:ModulePort;
+  smodule:name "reference" .
 
 <#port-endPosition>
-  a <https://purl.expasy.org/sparql-examples/ontology#ModulePort>;
-  todo:name "endPosition" .
+  a smodule:ModulePort;
+  smodule:name "endPosition" .
 
 <#port-faldoBegin>
-  a <https://purl.expasy.org/sparql-examples/ontology#ModulePort>;
-  todo:name "faldoBegin" .
+  a smodule:ModulePort;
+  smodule:name "faldoBegin" .
 
 <#port-faldoEnd>
-  a <https://purl.expasy.org/sparql-examples/ontology#ModulePort>;
-  todo:name "faldoEnd" .
+  a smodule:ModulePort;
+  smodule:name "faldoEnd" .
 
 <#port-beginPosition>
-  a <https://purl.expasy.org/sparql-examples/ontology#ModulePort>;
-  todo:name "beginPosition" .
+  a smodule:ModulePort;
+  smodule:name "beginPosition" .

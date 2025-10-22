@@ -3,12 +3,13 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix schema: <https://schema.org/> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
-@prefix todo: <https://example.org/TODO#> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
 @prefix up: <http://purl.uniprot.org/core/> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 ex:M74_module a sh:SPARQLExecutable, sh:SPARQLSelectExecutable;
-  rdfs:comment "Taxon, his Scientific name and super Class"@en;
+  rdfs:comment "Taxon, Scientific name and super Class"@en;
   sh:prefixes _:genid-9505b3c793ad4fdeb36bc733b4b55a462-sparql_examples_prefixes;
   sh:select """PREFIX up: <http://purl.uniprot.org/core/>
   PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
@@ -22,22 +23,24 @@ WHERE {
 }""";
   schema:keywords "taxonomy";
   schema:target <https://sparql.uniprot.org/sparql/> ;
-  todo:input <#port-taxon>, <#port-name>, <#port-superTaxon>, <#port-rank> ;
-  todo:output <#port-taxon>, <#port-name>, <#port-superTaxon>, <#port-rank> .
+  smodule:output <#port-taxon>, <#port-name>, <#port-superTaxon>, <#port-rank> .
 
 <#port-name>
-  a <https://purl.expasy.org/sparql-examples/ontology#ModulePort>;
-  todo:name "name" .
+  a smodule:ModulePort;
+  rdfs:domain xsd:string ;
+  smodule:name "name" .
 
 <#port-rank>
-  a <https://purl.expasy.org/sparql-examples/ontology#ModulePort>;
-  todo:name "rank" .
+  a smodule:ModulePort;
+  rdfs:domain up:Rank ;
+  smodule:name "rank" .
 
 <#port-taxon>
-  a <https://purl.expasy.org/sparql-examples/ontology#ModulePort>;
-  rdfs:domain <http://purl.uniprot.org/core/Taxon>;
-  todo:name "taxon" .
+  a smodule:ModulePort;
+  rdfs:domain up:Taxon;
+  smodule:name "taxon" .
 
 <#port-superTaxon>
-  a <https://purl.expasy.org/sparql-examples/ontology#ModulePort>;
-  todo:name "superTaxon" .
+  a smodule:ModulePort;
+  rdfs:domain up:Taxon ;
+  smodule:name "superTaxon" .

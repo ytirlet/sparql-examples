@@ -3,12 +3,13 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix schema: <https://schema.org/> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
-@prefix todo: <https://example.org/TODO#> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
 @prefix up: <http://purl.uniprot.org/core/> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 ex:M29_module a sh:SPARQLExecutable, sh:SPARQLSelectExecutable;
-  rdfs:comment "cluster, member and similar protein"@en;
+  rdfs:comment "Cluster and similar protein"@en;
   sh:prefixes _:genid-9031af4a41d246548eb3d9c1752cdb662-sparql_examples_prefixes;
   sh:select """PREFIX up: <http://purl.uniprot.org/core/>
   PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
@@ -20,17 +21,16 @@ WHERE {
 }""";
   schema:keywords "similar protein";
   schema:target <https://sparql.uniprot.org/sparql/> ;
-  todo:input <#port-cluster>, <#port-member>, <#port-similar> ;
-  todo:output <#port-cluster>, <#port-member>, <#port-similar> .
+  smodule:output <#port-cluster>, <#port-member>, <#port-similar> .
 
 <#port-cluster>
-  a <https://purl.expasy.org/sparql-examples/ontology#ModulePort>;
-  todo:name "cluster" .
+  a smodule:ModulePort;
+  smodule:name "cluster" .
 
 <#port-similar>
-  a <https://purl.expasy.org/sparql-examples/ontology#ModulePort>;
-  todo:name "similar" .
+  a smodule:ModulePort;
+  smodule:name "similar" .
 
 <#port-member>
-  a <https://purl.expasy.org/sparql-examples/ontology#ModulePort>;
-  todo:name "member" .
+  a smodule:ModulePort;
+  smodule:name "member" .

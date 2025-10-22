@@ -3,44 +3,48 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix schema: <https://schema.org/> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
-@prefix todo: <https://example.org/TODO#> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
 @prefix up: <http://purl.uniprot.org/core/> .
 @prefix uniprotkb: <http://purl.uniprot.org/uniprot/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <> a sh:SPARQLExecutable,
         sh:SPARQLSelectExecutable ;
-    rdfs:comment "protein, annotation and location"@en ;
+    rdfs:comment "protein and location"@en ;
     sh:prefixes _:sparql_examples_prefixes ;
     sh:select """PREFIX up: <http://purl.uniprot.org/core/>
     PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
     PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-SELECT ?protein ?annotation ?location_inside_cell ?cellcpt
+SELECT ?protein ?annotation ?location_inside_cell ?cellComponent
 WHERE {
 	?protein up:annotation ?annotation.
 	?protein rdf:type up:Protein.
-	?annotation up:locatedIn/up:cellularComponent ?cellcpt.
-	?cellcpt skos:prefLabel ?location_inside_cell.
+	?annotation up:locatedIn/up:cellularComponent ?cellComponent.
+	?cellComponent skos:prefLabel ?location_inside_cell.
 }""" ;
     schema:keywords "protein annotation", "cellular component" ;
     schema:target <https://sparql.uniprot.org/sparql/> ;
-    todo:input <#port-protein>, <#port-annotation>, <#port-location_inside_cell>, <#port-cellcpt> ;
-    todo:output <#port-protein>, <#port-annotation>, <#port-location_inside_cell>, <#port-cellcpt>.
+    smodule:output <#port-protein>, <#port-annotation>, <#port-location_inside_cell>, <#port-cellComponent>.
     
-<#port-protein> a todo:Port ;
-	todo:name "protein" ;
+<#port-protein> 
+	a smodule:ModulePort ;
+	smodule:name "protein" ;
 	rdfs:domain up:Protein ;
-	todo:example uniprotkb:P01308, uniprotkb:A0A002, uniprotkb:A0A008ARC3.
+	smodule:example uniprotkb:P01308, uniprotkb:A0A002, uniprotkb:A0A008ARC3.
 	
-<#port-annotation> a todo:Port ;
-	todo:name "annotation" ;
+<#port-annotation> 
+	a smodule:ModulePort ;
+	smodule:name "annotation" ;
 	rdfs:domain up:Subcellular_Location_Annotation.
 
-<#port-location_inside_cell> a todo:Port ;
-	todo:name "location_inside_cell" ;
+<#port-location_inside_cell> 
+	a smodule:ModulePort ;
+	smodule:name "location_inside_cell" ;
 	rdfs:domain xsd:string.
 
-<#port-cellcpt> a todo:Port ; 
-	todo:name "cellcpt".
+<#port-cellComponent> 
+	a smodule:ModulePort ; 
+	smodule:name "cellComponent".

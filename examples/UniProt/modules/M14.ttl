@@ -3,37 +3,43 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix schema: <https://schema.org/> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
-@prefix todo: <https://example.org/TODO#> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
 @prefix up: <http://purl.uniprot.org/core/> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 ex:M14_module a sh:SPARQLExecutable, sh:SPARQLSelectExecutable;
-  rdfs:comment "protein, annotation and type of annotation"@en;
+  rdfs:comment "Protein annotation"@en;
   sh:prefixes _:genid-a5a7c406b5704bba8032a9ff320543ac2-sparql_examples_prefixes;
   sh:select """PREFIX up: <http://purl.uniprot.org/core/>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-SELECT ?protein ?annotation ?annType
+SELECT ?protein ?annotation ?annotationType ?comment
 WHERE {
         ?protein rdf:type up:Protein.
         ?protein up:annotation ?annotation.
-        ?annotation rdf:type ?annType.
+        ?annotation rdf:type ?annotationType.
+        ?annotation rdfs:comment ?comment.
 }""";
   schema:keywords "annotation";
   schema:target <https://sparql.uniprot.org/sparql/> ;
-  todo:input <#port-protein>, <#port-annotation>, <#port-annType>;
-  todo:output <#port-protein>, <#port-annotation>, <#port-annType>.
+  smodule:output <#port-protein>, <#port-annotation>, <#port-annotationType>, <#port-comment> .
 
 <#port-annotation>
-  a <https://purl.expasy.org/sparql-examples/ontology#ModulePort>;
-  todo:options "()";
-  todo:name "annotation" .
+  a smodule:ModulePort;
+  rdfs:domain up:Annotation ;
+  smodule:name "annotation" .
 
 <#port-protein>
-  a <https://purl.expasy.org/sparql-examples/ontology#ModulePort>;
-  rdfs:domain <http://purl.uniprot.org/core/Protein>;
-  todo:name "protein" .
+  a smodule:ModulePort;
+  rdfs:domain up:Protein;
+  smodule:name "protein" .
 
-<#port-annType>
-  a <https://purl.expasy.org/sparql-examples/ontology#ModulePort>;
-  todo:name "annType" .
+<#port-annotationType>
+  a smodule:ModulePort;
+  smodule:name "annotationType" .
+  
+<#port-comment>
+  a smodule:ModulePort;
+  rdfs:domain xsd:string ;
+  smodule:name "comment".

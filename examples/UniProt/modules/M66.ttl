@@ -1,15 +1,16 @@
-@base <https://sparql.uniprot.org/.well-known/sparql-examples/M66_GO_protein> .
+@base <https://sparql.uniprot.org/.well-known/sparql-examples/M66.ttl> .
 @prefix ex: <https://sparql.uniprot.org/.well-known/sparql-examples/> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix schema: <https://schema.org/> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
-@prefix todo: <https://example.org/TODO#> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
 @prefix up: <http://purl.uniprot.org/core/> .
 @prefix uniprotkb: <http://purl.uniprot.org/uniprot/> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<> a sh:SPARQLExecutable,
+ex:M66_module a sh:SPARQLExecutable,
         sh:SPARQLSelectExecutable ;
     rdfs:comment "GO_protein"@en ;
     sh:prefixes _:sparql_examples_prefixes ;
@@ -26,14 +27,15 @@ WHERE {
 }""" ;
     schema:keywords "GO" ;
     schema:target <https://sparql.uniprot.org/sparql/> ;
-    todo:input <#port-protein>, <#port-go> ;
-    todo:output <#port-protein>, <#port-go> .
+    smodule:output <#port-protein>, <#port-go> .
     
-<#port-protein> a todo:Port ; 
-	todo:name "protein" ; 
-	rdfs:domain up:Protein ; ####### VERIFIER
-	todo:example (uniprotkb:P01308 uniprotkb:A0A002 uniprotkb:A0A008ARC3).
+<#port-protein> 
+	a smodule:ModulePort ; 
+	smodule:name "protein" ; 
+	rdfs:domain up:Protein ;
+	smodule:example (uniprotkb:P01308 uniprotkb:A0A002 uniprotkb:A0A008ARC3).
 
-<#port-go> a todo:Port ; 
-	todo:name "go".
+<#port-go> 
+	a smodule:ModulePort ; 
+	smodule:name "go".
 

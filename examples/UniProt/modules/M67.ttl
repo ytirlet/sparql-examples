@@ -1,43 +1,43 @@
-@base <https://sparql.uniprot.org/.well-known/sparql-examples/M67_protein_to_taxon> .
+@base <https://sparql.uniprot.org/.well-known/sparql-examples/M67.ttl> .
 @prefix ex: <https://sparql.uniprot.org/.well-known/sparql-examples/> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix schema: <https://schema.org/> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
-@prefix todo: <https://example.org/TODO#> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
 @prefix up: <http://purl.uniprot.org/core/> .
 @prefix uniprotkb: <http://purl.uniprot.org/uniprot/> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix upModule: <http://purl.uniprot.org/module/> .
 
-<> a sh:SPARQLExecutable,
+ex:M67_module a sh:SPARQLExecutable,
         sh:SPARQLSelectExecutable ;
     rdfs:comment "Protein to taxon"@en ;
     sh:prefixes _:sparql_examples_prefixes ;
     sh:select """PREFIX up: <http://purl.uniprot.org/core/>
     PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-SELECT
- ?protein ?organism
+SELECT ?protein ?organism ?taxon
 WHERE {
- {
-   BIND(?taxon AS ?organism)
-   ?protein up:organism ?organism .
- } UNION {
-   ?protein up:organism ?organism .
-   ?organism rdfs:subClassOf ?taxon .
- }
+ ?protein up:organism ?organism.
+ ?organism rdfs:subClassOf? ?taxon.
 }""" ;
     schema:keywords "taxon" ;
     schema:target <https://sparql.uniprot.org/sparql/> ;
-    todo:input <#port-protein>, <#port-organism>, <#port-taxon> ;
-    todo:output <#port-protein>, <#port-organism>, <#port-taxon> .
+    smodule:output <#port-protein>, <#port-organism>, <#port-taxon> .
     
-<#port-protein> a todo:Port ; 
-	todo:name "protein" ; 
+<#port-protein> 
+	a smodule:ModulePort ; 
+	smodule:name "protein" ; 
 	rdfs:domain up:Protein ;
-	todo:example (uniprotkb:P01308 uniprotkb:A0A002 uniprotkb:A0A008ARC3).
+	smodule:example (uniprotkb:P01308 uniprotkb:A0A002 uniprotkb:A0A008ARC3).
 
-<#port-organism> a todo:Port ; 
-	todo:name "organism".
+<#port-organism> 
+	a smodule:ModulePort ;
+	rdfs:domain up:Taxon;
+	smodule:name "organism".
 	
-<#port-taxon> a todo:Port ; 
-	todo:name "taxon".
+<#port-taxon> 
+	a smodule:ModulePort ; 
+	rdfs:domain up:Taxon;
+	smodule:name "taxon".

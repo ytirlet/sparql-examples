@@ -3,12 +3,13 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix schema: <https://schema.org/> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
-@prefix todo: <https://example.org/TODO#> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
 @prefix up: <http://purl.uniprot.org/core/> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 ex:M31_module a sh:SPARQLExecutable, sh:SPARQLSelectExecutable;
-  rdfs:comment "entry and database"@en;
+  rdfs:comment "Entry and database"@en;
   sh:prefixes _:genid-ac45fd49b32c49498ff94650acc4f7e82-sparql_examples_prefixes;
   sh:select """PREFIX up: <http://purl.uniprot.org/core/>
   PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
@@ -18,19 +19,21 @@ WHERE {
         ?entry rdfs:seeAlso ?dbentry.
         ?dbentry up:database ?database.
 }""";
-  schema:keywords "";
+  schema:keywords "database";
   schema:target <https://sparql.uniprot.org/sparql/> ;
-  todo:input <#port-entry>, <#port-dbentry>, <#port-database> ;
-  todo:output <#port-entry>, <#port-dbentry>, <#port-database> .
+  smodule:output <#port-entry>, <#port-dbentry>, <#port-database> .
 
 <#port-database>
-  a <https://purl.expasy.org/sparql-examples/ontology#ModulePort>;
-  todo:name "database" .
+  a smodule:ModulePort;
+  rdfs:domain up:Database;
+  smodule:name "database" .
 
 <#port-entry>
-  a <https://purl.expasy.org/sparql-examples/ontology#ModulePort>;
-  todo:name "entry" .
+  a smodule:ModulePort;
+  rdfs:domain xsd:anyURI ;
+  smodule:name "entry" .
 
 <#port-dbentry>
-  a <https://purl.expasy.org/sparql-examples/ontology#ModulePort>;
-  todo:name "dbentry" .
+  a smodule:ModulePort;
+  rdfs:domain up:Ressource ;
+  smodule:name "dbentry" .

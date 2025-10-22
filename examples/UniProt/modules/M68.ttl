@@ -1,15 +1,16 @@
-@base <https://sparql.uniprot.org/.well-known/sparql-examples/M68_sachem_query> .
+@base <https://sparql.uniprot.org/.well-known/sparql-examples/M68.ttl> .
 @prefix ex: <https://sparql.uniprot.org/.well-known/sparql-examples/> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix schema: <https://schema.org/> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
-@prefix todo: <https://example.org/TODO#> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
 @prefix up: <http://purl.uniprot.org/core/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix spex: <https://purl.expasy.org/sparql-examples/ontology#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<> a sh:SPARQLExecutable,
+ex:M68_module a sh:SPARQLExecutable,
         sh:SPARQLSelectExecutable ;
     rdfs:comment "Sachem query"@en ;
     sh:prefixes _:sparql_examples_prefixes ;
@@ -22,19 +23,20 @@ SELECT
  ?chebi ?query
 WHERE {
   SERVICE <https://idsm.elixir-czech.cz/sparql/endpoint/chebi> {
-    ?chebi sachem:substructureSearch [
+    ?chebi sachem:substructureSearch|sachem:similarCompoundSearch [
         sachem:query ?query ].
   }
 }""" ;
     schema:target <https://idsm.elixir-czech.cz/sparql/endpoint/chebi> ;
-    todo:input <#port-chebi>, <#port-query> ;
-    todo:output <#port-chebi>, <#port-query> .
+    smodule:output <#port-chebi>, <#port-query> .
     
-<#port-chebi> a todo:Port ; 
-	todo:name "chebi".
+<#port-chebi> 
+	a smodule:ModulePort ; 
+	smodule:name "chebi".
 
-<#port-query> a todo:Port ; 
-	todo:name "query" ;
+<#port-query> 
+	a smodule:ModulePort ; 
+	smodule:name "query" ;
 	rdfs:domain xsd:string ;
-	todo:example "[C@]12(CCC3CCCC[C@]3(C)[C@@]1([H])CC[C@]1(C)[C@@]([H])([C@@](C)([H])CCCC(C)C)CC[C@@]21[H])[H]" .
+	smodule:example "[C@]12(CCC3CCCC[C@]3(C)[C@@]1([H])CC[C@]1(C)[C@@]([H])([C@@](C)([H])CCCC(C)C)CC[C@@]21[H])[H]" .
 	

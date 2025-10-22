@@ -3,12 +3,13 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix schema: <https://schema.org/> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
-@prefix todo: <https://example.org/TODO#> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
 @prefix up: <http://purl.uniprot.org/core/> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 ex:M40_module a sh:SPARQLExecutable, sh:SPARQLSelectExecutable;
-  rdfs:comment "protein, annotation and range"@en;
+  rdfs:comment "Protein to annotation range"@en;
   sh:prefixes _:genid-d07baa472d2843c69bb2a0c7daaafea42-sparql_examples_prefixes;
   sh:select """PREFIX up: <http://purl.uniprot.org/core/>
   PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
@@ -20,18 +21,18 @@ WHERE {
 }""";
   schema:keywords "protein annotation", "annotation range";
   schema:target <https://sparql.uniprot.org/sparql/> ;
-  todo:input <#port-protein>, <#port-annotation>, <#port-range> ;
-  todo:output <#port-protein>, <#port-annotation>, <#port-range> .
+  smodule:output <#port-protein>, <#port-annotation>, <#port-range> .
 
 <#port-annotation>
-  a <https://purl.expasy.org/sparql-examples/ontology#ModulePort>;
-  todo:name "annotation" .
+  a smodule:ModulePort;
+  rdfs:domain up:Annotation ;
+  smodule:name "annotation" .
 
 <#port-protein>
-  a <https://purl.expasy.org/sparql-examples/ontology#ModulePort>;
-  todo:name "protein" ;
+  a smodule:ModulePort;
+  smodule:name "protein" ;
   rdfs:domain up:Protein.
 
 <#port-range>
-  a <https://purl.expasy.org/sparql-examples/ontology#ModulePort>;
-  todo:name "range" .
+  a smodule:ModulePort;
+  smodule:name "range" .
