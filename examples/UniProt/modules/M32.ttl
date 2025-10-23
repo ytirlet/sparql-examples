@@ -29,7 +29,7 @@ WHERE {
   a smodule:ModulePort;
   rdfs:domain [
 		a owl:Class ;
-		smodule:option (up:Annotation up:Ressource up:Protein) .
+		smodule:option (up:Annotation up:Ressource up:Protein)
 		]; 
   smodule:name "entry" .
 

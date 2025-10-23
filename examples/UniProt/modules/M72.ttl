@@ -44,7 +44,7 @@ WHERE {
   a smodule:ModulePort;
   rdfs:domain [
 		a owl:Class ;
-		smodule:option (up:Protein up:Part) .
+		smodule:option (up:Protein up:Part)
 		]; 
   smodule:name "entry" .
 

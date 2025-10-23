@@ -33,7 +33,7 @@ WHERE {
 	smodule:name "entry" ; 
 	rdfs:domain [
 		a owl:Class ;
-		smodule:option (up:Cluster up:Protein up:Sequence) .
+		smodule:option (up:Cluster up:Protein up:Sequence)
 		]; 
 	smodule:example (uniprotkb:P01308 uniprotkb:A0A002 uniprotkb:A0A008ARC3).
 	
