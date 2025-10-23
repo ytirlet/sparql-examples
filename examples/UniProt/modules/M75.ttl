@@ -28,7 +28,7 @@ WHERE {
 
 <#port-compound> 
 	a smodule:ModulePort ;
-	rdfs:domain rh:Compound.
+	rdfs:domain rh:Compound ;
 	smodule:name "compound".
 
 <#port-chebi> 

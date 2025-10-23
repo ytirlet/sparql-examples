@@ -32,11 +32,12 @@ WHERE {
 
 <#port-compound>
   a smodule:ModulePort;
+  rdfs:domain rh:Compound;
   smodule:name "compound" .
 
 <#port-chebiRestriction>
   a smodule:ModulePort;
-  rdfs:domain <http://www.w3.org/2002/07/owl#Restriction>;
+  rdfs:domain owl:Restriction>;
   smodule:name "chebiRestriction" .
 
 <#port-chebi2>
