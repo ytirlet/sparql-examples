@@ -1,0 +1,59 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <https://schema.org/> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix up: <http://purl.uniprot.org/core/> .
+@prefix up_mod: <http://uniprot_module.biographs.org/> .
+
+up_mod:m14_moduleClone1 a smodule:SPARQLModule;
+  rdfs:label "englishLabelStr structured name"@en;
+  rdfs:comment "englishLabelStr structured name"@en;
+  smodule:clonedFrom <http://uniprot_module.biographs.org/m14_module> ;
+  schema:keywords "structured name";
+  smodule:prefixes """PREFIX up: <http://purl.uniprot.org/core/>
+  PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+  PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+  """ ;
+  smodule:fragmentSPARQL """
+  VALUES(?pdbIdClone1 ?pdbChainClone1) {('6VXC' 'A') ('1BG3' 'B')} .
+  BIND(iri(concat('http://rdf.wwpdb.org/pdb/', ?pdbIdClone1)) AS ?pdbClone1) .
+  BIND(STRBEFORE(?chainsPlusRangeClone1, '=') AS ?chainClone1) .
+  FILTER(CONTAINS(?chainClone1, ?pdbChainClone1)) .
+    """;
+  smodule:output up_mod:m14_module_port-pdbClone1, up_mod:m14_module_port-chainPlusRangeClone1, up_mod:m14_module_port-pdbIdClone1, up_mod:m14_module_port-pdbChainClone1, up_mod:m14_module_port-chainClone1.
+  
+up_mod:m14_module_port-pdbClone1
+  a smodule:ModulePortURI;
+  rdfs:domain xsd:anyURI ;
+  smodule:variableName "?pdbClone1" ;
+  rdfs:label "pdb entry" ;
+  smodule:isSelected "false"^^xsd:boolean .
+  
+up_mod:m14_module_port-chainPlusRangeClone1
+  a smodule:ModulePortDatatype ;
+  smodule:variableName "?chainPlusRangeClone1";
+  rdfs:domain xsd:string ;
+  rdfs:label "chainPlusRange" ;
+  smodule:isSelected "false"^^xsd:boolean.
+  
+up_mod:m14_module_port-pdbIdClone1
+  a smodule:ModulePortDatatype ;
+  smodule:variableName "?pdbIdClone1";
+  rdfs:domain xsd:string ;
+  rdfs:label "PDB ID" ;
+  smodule:isSelected "true"^^xsd:boolean.
+  
+up_mod:m14_module_port-pdbChainClone1
+  a smodule:ModulePortDatatype ;
+  smodule:variableName "?pdbChainClone1";
+  rdfs:domain xsd:string ;
+  rdfs:label "PDB Chain" ;
+  smodule:isSelected "true"^^xsd:boolean.
+  
+up_mod:m14_module_port-chainClone1
+  a smodule:ModulePortDatatype ;
+  smodule:variableName "?chainClone1";
+  rdfs:domain xsd:string ;
+  rdfs:label "Chain" ;
+  smodule:isSelected "true"^^xsd:boolean.

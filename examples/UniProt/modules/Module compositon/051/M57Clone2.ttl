@@ -1,0 +1,46 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://uniprot_module.biographs.org/M57_moduleClone2> a smodule:SPARQLModule ;
+    rdfs:label "entry mnemonic" ;
+    smodule:clonedFrom <http://uniprot_module.biographs.org/M57_module> ;
+    smodule:fragmentSPARQL """
+    ?entryClone2 rdf:type ?typeClone2.
+    ?entryClone2 up:mnemonic ?mnemonicClone2.
+    OPTIONAL {?entryClone2 up:oldMnemonic ?oldmnemonicClone2.}
+    """ ;
+    smodule:output <http://uniprot_module.biographs.org/M57_module_port-mnemonicClone2>,
+        <http://uniprot_module.biographs.org/M57_module_port-oldmnemonicClone2>,
+        <http://uniprot_module.biographs.org/M57_module_port-typeClone2>, <http://uniprot_module.biographs.org/M57_module_port-entryClone2> ;
+    smodule:prefixes """PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX up: <http://purl.uniprot.org/core/>
+
+""" .
+
+<http://uniprot_module.biographs.org/M57_module_port-mnemonicClone2> a smodule:ModulePortDatatype ;
+    rdfs:label "Mnemonic" ;
+    rdfs:domain xsd:string ;
+    smodule:isSelected true ;
+    smodule:variableName "?mnemonicClone2" .
+
+<http://uniprot_module.biographs.org/M57_module_port-oldmnemonicClone2> a smodule:ModulePortDatatype ;
+    rdfs:label "Old mnemonic" ;
+    rdfs:domain xsd:string ;
+    smodule:isSelected false ;
+    smodule:variableName "?oldmnemonicClone2" .
+
+<http://uniprot_module.biographs.org/M57_module_port-typeClone2> a smodule:ModulePortURI ;
+    rdfs:label "Entry type" ;
+    rdfs:domain xsd:anyURI ;
+    smodule:isSelected true ;
+    smodule:variableName "?typeClone2" .
+
+<http://uniprot_module.biographs.org/M57_module_port-entryClone2> a smodule:ModulePortURI ;
+    rdfs:label "Entry" ;
+    rdfs:domain xsd:anyURI ;
+    smodule:isSelected false ;
+    smodule:variableName "?entryClone2" .

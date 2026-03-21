@@ -1,0 +1,31 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix base_mod: <http://base_module.biographs.org/> .
+
+<http://base_module.biographs.org/Mb3_moduleClone1> a smodule:SPARQLModule ;
+    rdfs:label "rdfs comment" ;
+    smodule:clonedFrom <http://base_module.biographs.org/Mb3_module> ;
+    smodule:fragmentSPARQL """ 
+    ?subjectClone1 rdfs:comment ?commentClone1 .
+    """ ;
+    smodule:output <http://base_module.biographs.org/Mb3_module_port-subjectClone1>, base_mod:Mb3_module_port-commentClone1 ;
+    smodule:prefixes """PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+""" .
+
+<http://base_module.biographs.org/Mb3_module_port-subjectClone1> a smodule:ModulePortURI ;
+    rdfs:label "Subject" ;
+    rdfs:domain rdfs:Resource ;
+    smodule:isSelected false ;
+    smodule:variableName "?subjectClone1" .
+
+base_mod:Mb3_module_port-commentClone1
+  a smodule:ModulePortTyped;
+  rdfs:domain rdfs:Literal;
+  smodule:variableName "?commentClone1" ;
+  rdfs:label "Comment" ;
+  smodule:isSelected "true"^^xsd:boolean .

@@ -1,0 +1,49 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix up_mod: <http://uniprot_module.biographs.org/> .
+@prefix base_mod: <http://base_module.biographs.org/> .
+
+smodule:module_composition_055 dcterms:title "Number of proteins with binding sites for metals or metal sulfur clusters (and experimental evidence for the binding)".
+smodule:module_composition_055 rdfs:comment "Number of proteins with binding sites for metals or metal sulfur clusters (and experimental evidence for the binding)".
+smodule:module_composition_055 dcterms:subject "binding site", "evidence tag", "count".
+
+smodule:module_composition_055 rdf:type smodule:SPARQL_Module_Composition.
+smodule:module_composition_055 smodule:hasConnection smodule:055_c1 , smodule:055_c2, smodule:055_c3, smodule:055_c4, smodule:055_c5. #, smodule:055_c6, smodule:055_c7, smodule:055_c8, smodule:055_c9, smodule:055_c10.
+smodule:module_composition_055 smodule:hasComponent smodule:OperatorValuesClone74, smodule:OperatorValuesClone73, base_mod:Mb2_moduleClone1, up_mod:M50_moduleClone2, up_mod:M20_moduleClone4, up_mod:M14_moduleClone14. # smodule:OperatorOrderByDescClone4, smodule:OperatorGroupByClone12, smodule:OperatorCountClone7,
+smodule:module_composition_055 smodule:includeFile "VALUESClone74.ttl", "VALUESClone73.ttl", "Mb2Clone1.ttl", "M50Clone2.ttl", "M20Clone4.ttl", "M14Clone14.ttl".# "ORDERBYDESCClone4.ttl", "GROUPBYClone12.ttl", "COUNTClone7.ttl", 
+
+smodule:055_c1 rdf:type smodule:Connection.
+smodule:055_c1 smodule:connects up_mod:M14_module_port-annotationClone14, up_mod:M20_module_port-annotationClone4.
+
+smodule:055_c2 rdf:type smodule:Connection.
+smodule:055_c2 smodule:connects up_mod:M14_module_port-annotationClone14, up_mod:M50_module_port-annotationClone2.
+
+smodule:055_c3 rdf:type smodule:Connection.
+smodule:055_c3 smodule:connects up_mod:M50_module_port-chebiClone2, base_mod:Mb2_module_port-subjectClone1.
+
+smodule:055_c4 rdf:type smodule:Connection.
+smodule:055_c4 smodule:connects up_mod:M20_module_port-evidenceClone4, smodule:OperatorValuesPortResultClone74.
+
+smodule:OperatorValuesPortResultClone74 smodule:valuesEnumeration "obo:ECO_0000269 obo:ECO_0007744" .
+
+smodule:055_c5 rdf:type smodule:Connection.
+smodule:055_c5 smodule:connects up_mod:M50_module_port-chebiClone2, smodule:OperatorValuesPortResultClone73.
+
+smodule:OperatorValuesPortResultClone73 smodule:valuesEnumeration "CHEBI:25213 CHEBI:25214" .
+
+#smodule:055_c6 rdf:type smodule:Connection.
+#smodule:055_c6 smodule:connects up_mod:M50_module_port-entryClone2, smodule:OperatorGroupByPortParameter1Clone12.
+
+#smodule:055_c7 rdf:type smodule:Connection.
+#smodule:055_c7 smodule:connects base_mod:Mb2_module_port-labelClone1, smodule:OperatorGroupByPortParameter2Clone12.
+
+#smodule:055_c8 rdf:type smodule:Connection.
+#smodule:055_c8 smodule:connects smodule:OperatorCountPortParameter1Clone7, smodule:OperatorGroupByPortResultClone12 .
+
+#smodule:055_c9 rdf:type smodule:Connection.
+#smodule:055_c9 smodule:connects smodule:OperatorOrderByDescPortParameterClone4, smodule:OperatorCountPortResultClone7 .
+
+#smodule:055_c10 rdf:type smodule:Connection.
+#smodule:055_c10 smodule:connects smodule:OperatorCountPortParameter2Clone7, up_mod:M14_module_port-proteinClone14 .

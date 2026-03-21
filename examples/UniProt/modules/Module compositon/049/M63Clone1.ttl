@@ -1,0 +1,30 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://uniprot_module.biographs.org/M63_moduleClone1> a smodule:SPARQLModule ;
+    rdfs:label "Bgee IRI conversion" ;
+    smodule:clonedFrom <http://uniprot_module.biographs.org/M63_module> ;
+    smodule:fragmentSPARQL """
+    BIND( IRI(REPLACE(STR(?ensemblGeneClone1), "\\\\.[0-9]+$", "")) AS ?ensemblGeneNoVerClone1 )   # strip version from Ensembl ID
+    """ ;
+    smodule:output <http://uniprot_module.biographs.org/M63_module_port-ensemblGeneClone1>, <http://uniprot_module.biographs.org/M63_module_port-ensemblGeneNoVerClone1> ;
+    smodule:prefixes """PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+""" .
+
+<http://uniprot_module.biographs.org/M63_module_port-ensemblGeneClone1> a smodule:ModulePortURI ;
+    rdfs:label "Gene" ;
+    rdfs:domain <http://purl.uniprot.org/core/Gene> ;
+    smodule:isSelected true ;
+    smodule:variableName "?ensemblGeneClone1" .
+    
+<http://uniprot_module.biographs.org/M63_module_port-ensemblGeneNoVerClone1> a smodule:ModulePortURI ;
+    rdfs:label "ensemblGeneNoVer" ;
+    rdfs:domain <http://purl.uniprot.org/core/Gene> ;
+    smodule:isSelected true ;
+    smodule:variableName "?ensemblGeneNoVerClone1" .
+

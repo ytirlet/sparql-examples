@@ -1,0 +1,59 @@
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rh: <http://rdf.rhea-db.org/> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://uniprot_module.biographs.org/M37_moduleClone2> a smodule:SPARQLModule ;
+    rdfs:label "ChEBI restriction" ;
+    smodule:clonedFrom <http://uniprot_module.biographs.org/M37_module> ;
+    smodule:fragmentSPARQL """
+    ?compoundClone2 rh:chebi ?chebiClone2.
+    ?chebiRestrictionClone2 owl:someValuesFrom ?chebiClone2.
+    ?chebiRestrictionClone2 rdf:type owl:Restriction.
+    ?chebi2Clone2 rdfs:subClassOf ?chebiRestrictionClone2.
+    ?chebi2Clone2 (rdfs:subClassOf)+ ?chebiAncestorClone2.
+    """ ;
+    smodule:output <http://uniprot_module.biographs.org/M37_module_port-chebi2Clone2>,
+        <http://uniprot_module.biographs.org/M37_module_port-chebiClone2>,
+        <http://uniprot_module.biographs.org/M37_module_port-chebiRestrictionClone2>,
+        <http://uniprot_module.biographs.org/M37_module_port-compoundClone2>,
+        <http://uniprot_module.biographs.org/M37_module_port-chebiAncestorClone2> ;
+    smodule:prefixes """PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX rh: <http://rdf.rhea-db.org/>
+
+""" .
+
+<http://uniprot_module.biographs.org/M37_module_port-chebi2Clone2> a smodule:ModulePortURI ;
+    rdfs:label "ChEBI 2" ;
+    rdfs:domain xsd:anyURI ;
+    smodule:isSelected false ;
+    smodule:variableName "?chebi2Clone2" .
+
+<http://uniprot_module.biographs.org/M37_module_port-chebiClone2> a smodule:ModulePortURI ;
+    rdfs:label "ChEBI" ;
+    rdfs:domain xsd:anyURI ;
+    smodule:isSelected false ;
+    smodule:variableName "?chebiClone2" .
+
+<http://uniprot_module.biographs.org/M37_module_port-chebiRestrictionClone2> a smodule:ModulePortURI ;
+    rdfs:label "ChEBI Restriction" ;
+    rdfs:domain owl:Restriction ;
+    smodule:isSelected false ;
+    smodule:variableName "?chebiRestrictionClone2" .
+
+<http://uniprot_module.biographs.org/M37_module_port-compoundClone2> a smodule:ModulePortURI ;
+    rdfs:label "Compound" ;
+    rdfs:domain rh:Compound ;
+    smodule:isSelected false ;
+    smodule:variableName "?compoundClone2" .
+
+<http://uniprot_module.biographs.org/M37_module_port-chebiAncestorClone2> a smodule:ModulePortURI ;
+    rdfs:label "Ancestor ChEBI" ;
+    rdfs:domain xsd:anyURI ;
+    smodule:isSelected false ;
+    smodule:variableName "?chebiAncestorClone2" .
+

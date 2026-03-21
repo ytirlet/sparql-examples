@@ -1,0 +1,42 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix up_mod: <http://uniprot_module.biographs.org/> .
+
+smodule:module_composition_054 dcterms:title "Proteins with binding sites for ligands similar to heme".
+smodule:module_composition_054 rdfs:comment "Proteins with binding sites for ligands similar to heme".
+smodule:module_composition_054 dcterms:subject "binding site", "chemical similarity", "idms", "sachem", "federated query".
+
+smodule:module_composition_054 rdf:type smodule:SPARQL_Module_Composition.
+smodule:module_composition_054 smodule:hasConnection smodule:054_c1 , smodule:054_c2, smodule:054_c3, smodule:054_c4, smodule:054_c5, smodule:054_c6, smodule:054_c7. #, smodule:054_c8.
+smodule:module_composition_054 smodule:hasComponent smodule:OperatorValuesClone72, smodule:OperatorValuesClone71, up_mod:M72_moduleClone5, up_mod:M57_moduleClone3, up_mod:M50_moduleClone1, up_mod:M14_moduleClone13, up_mod:M68_moduleClone4, up_mod:m13_moduleClone1. # smodule:OperatorOrderByDescClone5, 
+smodule:module_composition_054 smodule:includeFile "VALUESClone72.ttl", "VALUESClone71.ttl", "M72Clone5.ttl", "M57Clone3.ttl", "M50Clone1.ttl", "M14Clone13.ttl", "M68Clone4.ttl", "m13Clone1.ttl". #  "ORDERBYDESCClone4.ttl",
+
+smodule:054_c1 rdf:type smodule:Connection.
+smodule:054_c1 smodule:connects up_mod:M14_module_port-annotationClone13, up_mod:M50_module_port-annotationClone1.
+
+smodule:054_c2 rdf:type smodule:Connection.
+smodule:054_c2 smodule:connects up_mod:M14_module_port-proteinClone13, up_mod:M57_module_port-entryClone3.
+
+smodule:054_c3 rdf:type smodule:Connection.
+smodule:054_c3 smodule:connects up_mod:M14_module_port-proteinClone13, up_mod:M72_module_port-entryClone5.
+
+smodule:054_c4 rdf:type smodule:Connection.
+smodule:054_c4 smodule:connects up_mod:M14_module_port-annotationTypeClone13, smodule:OperatorValuesPortResultClone72.
+
+smodule:OperatorValuesPortResultClone72 smodule:valuesEnumeration "up:Binding_Site_Annotation" .
+
+smodule:054_c5 rdf:type smodule:Connection.
+smodule:054_c5 smodule:connects up_mod:M50_module_port-ligandClone1, up_mod:m13_module_port-ligandClone1.
+
+smodule:054_c6 rdf:type smodule:Connection.
+smodule:054_c6 smodule:connects up_mod:M68_module_port-chebiClone4, up_mod:m13_module_port-sscClone1.
+
+smodule:054_c7 rdf:type smodule:Connection.
+smodule:054_c7 smodule:connects up_mod:M68_module_port-queryClone4, smodule:OperatorValuesPortResultClone71.
+
+smodule:OperatorValuesPortResultClone71 smodule:valuesEnumeration "'CC1=C(CCC([O-])=O)C2=[N+]3C1=Cc1c(C)c(C=C)c4C=C5C(C)=C(C=C)C6=[N+]5[Fe-]3(n14)n1c(=C6)c(C)c(CCC([O-])=O)c1=C2'" .
+
+#smodule:054_c8 rdf:type smodule:Connection.
+#smodule:054_c8 smodule:connects smodule:OperatorOrderByDescPortParameterClone5, up_mod:m13_module_port-ligandSimilarityScoreClone1 .

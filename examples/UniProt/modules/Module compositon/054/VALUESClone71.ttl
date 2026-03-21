@@ -1,0 +1,25 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+smodule:OperatorValuesClone71 a smodule:SPARQLModuleOperatorValues ;
+    rdfs:label "Operator VALUES" ;
+    smodule:clonedFrom smodule:OperatorValues ;
+    smodule:fragmentSPARQL """
+  # Result variable is ?operatorValuesResult
+  VALUES ?operatorValuesResult { 'CC1=C(CCC([O-])=O)C2=[N+]3C1=Cc1c(C)c(C=C)c4C=C5C(C)=C(C=C)C6=[N+]5[Fe-]3(n14)n1c(=C6)c(C)c(CCC([O-])=O)c1=C2' } .
+""" ;
+    smodule:output smodule:OperatorValuesPortResultClone71 ;
+    smodule:prefixes """PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+""" .
+
+smodule:OperatorValuesPortResultClone71 a smodule:ModulePortTyped ;
+    rdfs:label "Result" ;
+    rdfs:domain xsd:any ;
+    smodule:isSelected false ;
+    smodule:variableName "?operatorValuesResult" .
+

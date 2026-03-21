@@ -1,0 +1,45 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix up_mod: <http://uniprot_module.biographs.org/> .
+
+smodule:module_composition_051 dcterms:title "Find all proteins linked to arachidonate (CHEBI:32395)".
+smodule:module_composition_051 rdfs:comment "Find all proteins linked to arachidonate (CHEBI:32395)".
+smodule:module_composition_051 dcterms:subject "drug", "enzyme", "metabolite", "pathway","Rhea","Wikidata", "federated query".
+
+smodule:module_composition_051 rdf:type smodule:SPARQL_Module_Composition.
+smodule:module_composition_051 smodule:hasConnection smodule:051_c1 , smodule:051_c2, smodule:051_c3, smodule:051_c4, smodule:051_c5, smodule:051_c6, smodule:051_c7, smodule:051_c8, smodule:051_c9.
+smodule:module_composition_051 smodule:hasComponent smodule:OperatorValuesClone64, smodule:OperatorOptionalClone10, smodule:OperatorServiceClone17, up_mod:M75_moduleClone5, up_mod:M38_moduleClone5, up_mod:m10_moduleClone1, up_mod:M73_moduleClone4, up_mod:M72_moduleClone3, up_mod:M57_moduleClone2, up_mod:M39_moduleClone7.
+smodule:module_composition_051 smodule:includeFile "VALUESClone64.ttl", "OPTIONALClone10.ttl", "SERVICEClone17.ttl", "M75Clone5.ttl", "M38Clone5.ttl", "m10Clone1.ttl", "M73Clone4.ttl", "M72Clone3.ttl", "M57Clone2.ttl", "M39Clone7.ttl".
+
+smodule:051_c1 rdf:type smodule:Connection.
+smodule:051_c1 smodule:connects up_mod:M75_module_port-compoundClone5, up_mod:M38_module_port-compoundClone5.
+
+smodule:051_c2 rdf:type smodule:Connection.
+smodule:051_c2 smodule:connects up_mod:M39_module_port-proteinClone7, up_mod:M72_module_port-entryClone3.
+
+smodule:051_c3 rdf:type smodule:Connection.
+smodule:051_c3 smodule:connects up_mod:M39_module_port-proteinClone7, up_mod:M57_module_port-proteinClone2.
+
+smodule:051_c5 rdf:type smodule:Connection.
+smodule:051_c5 smodule:connects up_mod:M39_module_port-proteinClone7, smodule:OperatorOptionalPortResultClone10.
+
+smodule:051_c4 rdf:type smodule:Connection.
+smodule:051_c4 smodule:connects up_mod:M73_module_port-proteinClone4, smodule:OperatorOptionalPortParameter0Clone10.
+
+smodule:051_c6 rdf:type smodule:Connection.
+smodule:051_c6 smodule:connects up_mod:M75_module_port-chebiClone5, smodule:OperatorValuesPortResultClone64.
+
+smodule:OperatorValuesPortResultClone64 smodule:valuesEnumeration "CHEBI:32395" .
+
+smodule:051_c7 rdf:type smodule:Connection.
+smodule:051_c7 smodule:connects up_mod:M38_module_port-reactionClone5, smodule:OperatorServicePortParameterClone17.
+
+smodule:051_c8 rdf:type smodule:Connection.
+smodule:051_c8 smodule:connects up_mod:M39_module_port-reactionClone7, smodule:OperatorServicePortResultClone17.
+
+smodule:OperatorServicePortResultClone17 smodule:serviceInput "<https://sparql.rhea-db.org/sparql>".
+
+smodule:051_c9 rdf:type smodule:Connection.
+smodule:051_c9 smodule:connects up_mod:M75_module_port-chebiClone5, up_mod:m10_module_port-subjectClone1.

@@ -1,0 +1,36 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rh: <http://rdf.rhea-db.org/> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://uniprot_module.biographs.org/M38_moduleClone7> a smodule:SPARQLModule ;
+    rdfs:label "reaction to compound" ;
+    smodule:clonedFrom <http://uniprot_module.biographs.org/M38_module> ;
+    smodule:fragmentSPARQL """
+    ?reactionClone7 rdfs:subClassOf rh:Reaction.
+    ?reactionClone7 rh:side ?sideClone7.
+    ?sideClone7 rh:contains ?participantClone7.
+    ?participantClone7 rh:compound ?compoundClone7.
+    """ ;
+    smodule:output <http://uniprot_module.biographs.org/M38_module_port-compoundClone7>,
+        <http://uniprot_module.biographs.org/M38_module_port-reactionClone7> ;
+    smodule:prefixes """PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX rh: <http://rdf.rhea-db.org/>
+
+""" .
+
+<http://uniprot_module.biographs.org/M38_module_port-compoundClone7> a smodule:ModulePortURI ;
+    rdfs:label "Compound" ;
+    rdfs:domain xsd:anyURI ;
+    smodule:isSelected false ;
+    smodule:variableName "?compoundClone7" .
+
+<http://uniprot_module.biographs.org/M38_module_port-reactionClone7> a smodule:ModulePortURI ;
+    rdfs:label "Reaction" ;
+    rdfs:domain rh:Reaction ;
+    smodule:isSelected true ;
+    smodule:variableName "?reactionClone7" .
+

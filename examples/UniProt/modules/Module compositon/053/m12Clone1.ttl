@@ -1,0 +1,50 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <https://schema.org/> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix up: <http://purl.uniprot.org/core/> .
+@prefix up_mod: <http://uniprot_module.biographs.org/> .
+
+up_mod:m12_moduleClone1 a smodule:SPARQLModule;
+  rdfs:label "englishLabelStr structured name"@en;
+  rdfs:comment "englishLabelStr structured name"@en;
+  smodule:clonedFrom <http://uniprot_module.biographs.org/m12_module> ;
+  schema:keywords "structured name";
+  smodule:prefixes """PREFIX up: <http://purl.uniprot.org/core/>
+  PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+  PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+  """ ;
+  smodule:fragmentSPARQL """ 
+  SERVICE  <https://sparql.omabrowser.org/sparql/> {
+    ?clusterClone1 a orth:ParalogsCluster .
+    ?clusterClone1 orth:hasHomologousMember ?node1Clone1 , ?node2Clone1 .
+    ?node1Clone1 orth:hasHomologousMember* ?orthoProtein1Clone1 .
+    ?node2Clone1 orth:hasHomologousMember* ?orthoProtein2Clone1 .
+    ?orthoProtein1Clone1 lscr:xrefUniprot ?mouseProteinClone1 .
+    ?orthoProtein2Clone1 lscr:xrefUniprot ?humanProteinClone1 .
+    ?orthoProtein1Clone1 orth:organism/<http://purl.obolibrary.org/obo/RO_0002162> taxon:10090 . 
+  }
+    """;
+  smodule:output up_mod:m12_module_port-humanProteinClone1, up_mod:m12_module_port-mouseProteinClone1, up_mod:m12_module_port-clusterClone1.
+  
+up_mod:m12_module_port-humanProteinClone1
+  a smodule:ModulePortURI ;
+  smodule:variableName "?humanProteinClone1";
+  rdfs:domain up:Protein ;
+  rdfs:label "Protein" ;
+  smodule:isSelected "true"^^xsd:boolean.
+  
+up_mod:m12_module_port-mouseProteinClone1
+  a smodule:ModulePortURI ;
+  smodule:variableName "?mouseProteinClone1";
+  rdfs:domain up:Protein ;
+  rdfs:label " mouse Protein" ;
+  smodule:isSelected "true"^^xsd:boolean.
+  
+up_mod:m12_module_port-clusterClone1
+  a smodule:ModulePortURI ;
+  smodule:variableName "?clusterClone1";
+  rdfs:domain up:Protein ;
+  rdfs:label "Cluster" ;
+  smodule:isSelected "true"^^xsd:boolean.

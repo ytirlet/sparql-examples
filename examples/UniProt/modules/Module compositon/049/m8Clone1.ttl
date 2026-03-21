@@ -1,0 +1,34 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://uniprot_module.biographs.org/m8_moduleClone1> a smodule:SPARQLModule ;
+    rdfs:label "englishLabelStr structured name" ;
+    smodule:clonedFrom <http://uniprot_module.biographs.org/m8_module> ;
+    smodule:fragmentSPARQL """ 
+    SERVICE <https://www.bgee.org/sparql/> {
+    ?geneClone1 lscr:xrefEnsemblGene ?ensemblGeneNoVersionClone1 ;
+      genex:isExpressedIn ?anatomicEntityClone1 .
+    ?anatomicEntityClone1 rdfs:label ?anatomicEntityLabelClone1 .
+  }
+    """ ;
+    smodule:output <http://uniprot_module.biographs.org/m8_module_port-ensemblGeneNoVersionClone1>, <http://uniprot_module.biographs.org/m8_module_port-geneClone1> ;
+    smodule:prefixes """PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+""" .
+
+<http://uniprot_module.biographs.org/m8_module_port-ensemblGeneNoVersionClone1> a smodule:ModulePortURI ;
+    rdfs:label "ensemblGeneNoVersion" ;
+    rdfs:domain xsd:anyURI ;
+    smodule:isSelected false ;
+    smodule:variableName "?ensemblGeneNoVersionClone1" .
+
+<http://uniprot_module.biographs.org/m8_module_port-geneClone1> a smodule:ModulePortURI ;
+    rdfs:label "gene" ;
+    rdfs:domain xsd:anyURI ;
+    smodule:isSelected false ;
+    smodule:variableName "?geneClone1" .
+

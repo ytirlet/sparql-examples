@@ -1,0 +1,47 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix up_mod: <http://uniprot_module.biographs.org/> .
+
+smodule:module_composition_050 dcterms:title "Where are the human genes encoding enzymes metabolizing N-acyl sphingosines expressed in the human body (federated query, with Rhea and Bgee)".
+smodule:module_composition_050 rdfs:comment "Where are the human genes encoding enzymes metabolizing N-acyl sphingosines expressed in the human body (federated query, with Rhea and Bgee)".
+smodule:module_composition_050 dcterms:subject "enzyme", "tissue specificity", "federated query", "Ensembl", "Bgee", "Rhea".
+
+smodule:module_composition_050 rdf:type smodule:SPARQL_Module_Composition.
+smodule:module_composition_050 smodule:hasConnection smodule:050_c1 , smodule:050_c2, smodule:050_c3, smodule:050_c4, smodule:050_c5, smodule:050_c6 , smodule:050_c7, smodule:050_c8, smodule:050_c9.
+smodule:module_composition_050 smodule:hasComponent smodule:OperatorValuesClone63, smodule:OperatorValuesClone62, smodule:OperatorServiceClone18, up_mod:M75_moduleClone4, up_mod:M38_moduleClone4, up_mod:m9_moduleClone1, up_mod:m7_moduleClone2, up_mod:M67_moduleClone14, up_mod:M45_moduleClone2, up_mod:M39_moduleClone6.
+smodule:module_composition_050 smodule:includeFile "VALUESClone63.ttl", "VALUESClone62.ttl", "SERVICEClone18.ttl", "M75Clone4.ttl", "M38Clone4.ttl", "m9Clone1.ttl", "m7Clone2.ttl", "M67Clone14.ttl", "M45Clone2.ttl", "M39Clone6.ttl".
+
+smodule:050_c1 rdf:type smodule:Connection.
+smodule:050_c1 smodule:connects up_mod:M75_module_port-compoundClone4, up_mod:M38_module_port-compoundClone4.
+
+smodule:050_c2 rdf:type smodule:Connection.
+smodule:050_c2 smodule:connects up_mod:M39_module_port-proteinClone6, up_mod:M67_module_port-entryClone14.
+
+smodule:050_c3 rdf:type smodule:Connection.
+smodule:050_c3 smodule:connects up_mod:M39_module_port-proteinClone6, up_mod:M45_module_port-proteinClone2.
+
+smodule:050_c8 rdf:type smodule:Connection.
+smodule:050_c8 smodule:connects up_mod:M38_module_port-reactionClone4, smodule:OperatorServicePortParameterClone18.
+
+smodule:050_c5 rdf:type smodule:Connection.
+smodule:050_c5 smodule:connects up_mod:M39_module_port-reactionClone6, smodule:OperatorServicePortResultClone18.
+
+smodule:OperatorServicePortResultClone18 smodule:serviceInput "<https://sparql.rhea-db.org/sparql>".
+
+smodule:050_c6 rdf:type smodule:Connection.
+smodule:050_c6 smodule:connects up_mod:M75_module_port-chebiAncestorClone4, smodule:OperatorValuesPortResultClone63.
+
+smodule:OperatorValuesPortResultClone63 smodule:valuesEnumeration "CHEBI:15889" .
+
+smodule:050_c7 rdf:type smodule:Connection.
+smodule:050_c7 smodule:connects up_mod:M67_module_port-organismClone14, smodule:OperatorValuesPortResultClone62.
+
+smodule:OperatorValuesPortResultClone62 smodule:valuesEnumeration "taxon:9606" .
+
+smodule:050_c4 rdf:type smodule:Connection.
+smodule:050_c4 smodule:connects up_mod:M38_module_port-reactionClone4, up_mod:m7_module_port-reactionClone2.
+
+smodule:050_c9 rdf:type smodule:Connection.
+smodule:050_c9 smodule:connects up_mod:M45_module_port-geneClone2, up_mod:m9_module_port-ensemblGeneClone1.

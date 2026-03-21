@@ -1,0 +1,49 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix up: <http://purl.uniprot.org/core/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://uniprot_module.biographs.org/M31_moduleClone7> a smodule:SPARQLModule ;
+    rdfs:label "Entry and database" ;
+    smodule:clonedFrom <http://uniprot_module.biographs.org/M31_module> ;
+    smodule:fragmentSPARQL """
+    ?entryClone7 rdf:type ?entryTypeClone7.
+    ?entryClone7 rdfs:seeAlso ?dbentryClone7.
+    ?dbentryClone7 up:database ?databaseClone7.
+    """ ;
+    smodule:output <http://uniprot_module.biographs.org/M31_module_port-databaseClone7>,
+        <http://uniprot_module.biographs.org/M31_module_port-dbentryClone7>,
+        <http://uniprot_module.biographs.org/M31_module_port-entryClone7>,
+        <http://uniprot_module.biographs.org/M31_module_port-entryTypeClone7> ;
+    smodule:prefixes """PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX up: <http://purl.uniprot.org/core/>
+
+""" .
+
+<http://uniprot_module.biographs.org/M31_module_port-databaseClone7> a smodule:ModulePortURI ;
+    rdfs:label "Database" ;
+    rdfs:domain up:Database ;
+    smodule:isSelected false ;
+    smodule:variableName "?databaseClone7" .
+
+<http://uniprot_module.biographs.org/M31_module_port-dbentryClone7> a smodule:ModulePortURI ;
+    rdfs:label "Database entry" ;
+    rdfs:domain up:Ressource ;
+    smodule:isSelected false ;
+    smodule:variableName "?dbentryClone7" .
+
+<http://uniprot_module.biographs.org/M31_module_port-entryClone7> a smodule:ModulePortURI ;
+    rdfs:label "Entry" ;
+    rdfs:domain xsd:anyURI ;
+    smodule:isSelected true ;
+    smodule:variableName "?entryClone7" .
+
+<http://uniprot_module.biographs.org/M31_module_port-entryTypeClone7> a smodule:ModulePortURI ;
+    rdfs:label "Entry type" ;
+    rdfs:domain xsd:anyURI ;
+    smodule:isSelected false ;
+    smodule:variableName "?entryTypeClone7" .
+

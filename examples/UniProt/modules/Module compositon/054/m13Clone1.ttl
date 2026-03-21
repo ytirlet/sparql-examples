@@ -1,0 +1,46 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <https://schema.org/> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix up: <http://purl.uniprot.org/core/> .
+@prefix up_mod: <http://uniprot_module.biographs.org/> .
+
+up_mod:m13_moduleClone1 a smodule:SPARQLModule;
+  rdfs:label "englishLabelStr structured name"@en;
+  rdfs:comment "englishLabelStr structured name"@en;
+  smodule:clonedFrom <http://uniprot_module.biographs.org/m13_module> ;
+  schema:keywords "structured name";
+  smodule:prefixes """PREFIX up: <http://purl.uniprot.org/core/>
+  PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+  PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+  """ ;
+  smodule:fragmentSPARQL """ 
+  SERVICE <https://idsm.elixir-czech.cz/sparql/endpoint/chebi> {
+    ?sscClone1 sachem:compound ?ligandClone1; 
+      sachem:score ?ligandSimilarityScoreClone1 ;
+      sachem:cutoff "8e-1"^^xsd:double ;
+      sachem:aromaticityMode sachem:aromaticityDetect ;
+      sachem:similarityRadius 1 ;
+      sachem:tautomerMode sachem:ignoreTautomers .
+  }
+    """;
+  smodule:output up_mod:m13_module_port-sscClone1, up_mod:m13_module_port-ligandClone1, up_mod:m13_module_port-ligandSimilarityScoreClone1.
+  
+up_mod:m13_module_port-sscClone1
+  a smodule:ModulePortURI ;
+  smodule:variableName "?sscClone1";
+  rdfs:label "ssc" ;
+  smodule:isSelected "false"^^xsd:boolean.
+  
+up_mod:m13_module_port-ligandClone1
+  a smodule:ModulePortURI;
+  smodule:variableName "?ligandClone1" ;
+  rdfs:label "Ligand" ;
+  smodule:isSelected "true"^^xsd:boolean.
+  
+up_mod:m13_module_port-ligandSimilarityScoreClone1
+  a smodule:ModulePortTyped;
+  smodule:variableName "?ligandSimilarityScoreClone1" ;
+  rdfs:label "Ligand similarity score" ;
+  smodule:isSelected "true"^^xsd:boolean.

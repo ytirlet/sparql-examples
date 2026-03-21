@@ -1,0 +1,34 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix up_mod: <http://uniprot_module.biographs.org/> .
+@prefix base_mod: <http://base_module.biographs.org/> .
+
+smodule:module_composition_056 dcterms:title "Select enzymes that have ligands known to have an allosteric effect".
+smodule:module_composition_056 rdfs:comment "Select enzymes that have ligands known to have an allosteric effect".
+smodule:module_composition_056 dcterms:subject "enzyme", "binding site".
+
+smodule:module_composition_056 rdf:type smodule:SPARQL_Module_Composition.
+smodule:module_composition_056 smodule:hasConnection smodule:056_c1, smodule:056_c2, smodule:056_c3, smodule:056_c4.#, smodule:056_c5 .
+smodule:module_composition_056 smodule:hasComponent smodule:OperatorValuesClone75, base_mod:Mb3_moduleClone1, base_mod:Mb2_moduleClone2, up_mod:M50_moduleClone3, up_mod:M14_moduleClone15. #smodule:OperatorFilterClone8, 
+smodule:module_composition_056 smodule:includeFile "VALUESClone75.ttl", "Mb3Clone1.ttl", "Mb2Clone2.ttl", "M50Clone3.ttl", "M14Clone15.ttl". #"FILTERClone8.ttl", 
+
+smodule:056_c1 rdf:type smodule:Connection.
+smodule:056_c1 smodule:connects up_mod:M14_module_port-annotationClone15, up_mod:M50_module_port-annotationClone3.
+
+smodule:056_c2 rdf:type smodule:Connection.
+smodule:056_c2 smodule:connects up_mod:M50_module_port-ligandClone3, base_mod:Mb2_module_port-subjectClone2.
+
+smodule:056_c3 rdf:type smodule:Connection.
+smodule:056_c3 smodule:connects up_mod:M50_module_port-ligandClone3, base_mod:Mb3_module_port-subjectClone1.
+
+smodule:056_c4 rdf:type smodule:Connection.
+smodule:056_c4 smodule:connects up_mod:M14_module_port-annotationTypeClone15, smodule:OperatorValuesPortResultClone75.
+
+smodule:OperatorValuesPortResultClone75 smodule:valuesEnumeration "up:Binding_Site_Annotation" .
+
+#smodule:056_c5 rdf:type smodule:Connection.
+#smodule:056_c5 smodule:connects base_mod:Mb3_module_port-commentClone1, smodule:OperatorFilterPortParameterClone8.
+
+#smodule:OperatorFilterPortResultClone8 smodule:filterInput "REGEX(?parameter, 'allosteric', 'i')" .

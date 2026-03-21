@@ -1,0 +1,42 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <https://schema.org/> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix up: <http://purl.uniprot.org/core/> .
+@prefix up_mod: <http://uniprot_module.biographs.org/> .
+
+up_mod:M50_moduleClone3 a smodule:SPARQLModule;
+  rdfs:label "protein to ligand"@en;
+  rdfs:comment "protein to ligand"@en;
+  smodule:clonedFrom <http://uniprot_module.biographs.org/M50_module> ;
+  schema:keywords "protein annotation";
+  smodule:prefixes """PREFIX up: <http://purl.uniprot.org/core/>
+    PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+    PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+    PREFIX chebi: <http://purl.obolibrary.org/obo/CHEBI_>
+    """ ;
+  smodule:fragmentSPARQL """
+    ?annotationClone3 up:ligand ?ligandClone3.
+    ?ligandClone3 rdfs:subClassOf ?chebiClone3.
+    """;
+  smodule:output up_mod:M50_module_port-annotationClone3, up_mod:M50_module_port-ligandClone3, up_mod:M50_module_port-chebiClone3 .
+
+up_mod:M50_module_port-annotationClone3
+  a smodule:ModulePortURI;
+  rdfs:domain up:Annotation;
+  smodule:variableName "?annotationClone3" ;
+  rdfs:label "Annotation" ;
+  smodule:isSelected "false"^^xsd:boolean.
+
+up_mod:M50_module_port-chebiClone3
+  a smodule:ModulePortURI;
+  smodule:variableName "?chebiClone3" ;
+  rdfs:label "ChEBI" ;
+  smodule:isSelected "true"^^xsd:boolean.
+
+up_mod:M50_module_port-ligandClone3
+  a smodule:ModulePortURI;
+  smodule:variableName "?ligandClone3" ;
+  rdfs:label "Ligand" ;
+  smodule:isSelected "false"^^xsd:boolean.

@@ -1,0 +1,63 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix up_mod: <http://uniprot_module.biographs.org/> .
+
+smodule:module_composition_052 dcterms:title "Retrieve drugs that target human enzymes involved in sterol metabolism (federated query with Rhea and ChEMBL via IDSM/Elixir czech republic).".
+smodule:module_composition_052 rdfs:comment "Retrieve drugs that target human enzymes involved in sterol metabolism (federated query with Rhea and ChEMBL via IDSM/Elixir czech republic).".
+smodule:module_composition_052 dcterms:subject "drug", "enzyme", "metabolite", "pathway","Rhea","ChEMBL", "federated query".
+
+smodule:module_composition_052 rdf:type smodule:SPARQL_Module_Composition.
+smodule:module_composition_052 smodule:hasConnection smodule:052_c1 , smodule:052_c2, smodule:052_c3, smodule:052_c4, smodule:052_c5, smodule:052_c6, smodule:052_c7, smodule:052_c8, smodule:052_c9, smodule:052_c10, smodule:052_c11, smodule:052_c12, smodule:052_c13.
+smodule:module_composition_052 smodule:hasComponent smodule:OperatorValuesClone68, smodule:OperatorValuesClone67, smodule:OperatorValuesClone66, smodule:OperatorValuesClone65, smodule:OperatorUnionClone11, smodule:OperatorServiceClone16, up_mod:M75_moduleClone6, up_mod:M38_moduleClone6, up_mod:M37_moduleClone2, up_mod:m11_moduleClone1, up_mod:m3_moduleClone2, up_mod:M72_moduleClone4, up_mod:M67_moduleClone15, up_mod:M39_moduleClone8.
+smodule:module_composition_052 smodule:includeFile "VALUESClone68.ttl", "VALUESClone67.ttl", "VALUESClone66.ttl", "VALUESClone65.ttl", "UNIONClone11.ttl", "SERVICEClone16.ttl", "M75Clone6.ttl", "M38Clone6.ttl", "M37Clone2.ttl", "m11Clone1.ttl", "m3Clone2.ttl", "M72Clone4.ttl", "M67Clone15.ttl", "M39Clone8.ttl".
+
+smodule:052_c1 rdf:type smodule:Connection.
+smodule:052_c1 smodule:connects up_mod:M37_module_port-compoundClone2, smodule:OperatorUnionPortParameter1Clone11.
+
+smodule:052_c2 rdf:type smodule:Connection.
+smodule:052_c2 smodule:connects up_mod:M75_module_port-compoundClone6, smodule:OperatorUnionPortParameter0Clone11.
+
+smodule:052_c3 rdf:type smodule:Connection.
+smodule:052_c3 smodule:connects up_mod:M38_module_port-compoundClone6, smodule:OperatorUnionPortResultClone11.
+
+smodule:052_c4 rdf:type smodule:Connection.
+smodule:052_c4 smodule:connects up_mod:M39_module_port-proteinClone8, up_mod:M72_module_port-entryClone4.
+
+smodule:052_c5 rdf:type smodule:Connection.
+smodule:052_c5 smodule:connects up_mod:M39_module_port-proteinClone8, up_mod:M67_module_port-entryClone15.
+
+smodule:052_c11 rdf:type smodule:Connection.
+smodule:052_c11 smodule:connects up_mod:M38_module_port-reactionClone6, smodule:OperatorServicePortParameterClone16.
+
+smodule:052_c7 rdf:type smodule:Connection.
+smodule:052_c7 smodule:connects up_mod:M39_module_port-reactionClone8, smodule:OperatorServicePortResultClone16.
+
+smodule:OperatorServicePortResultClone16 smodule:serviceInput "<https://sparql.rhea-db.org/sparql>".
+
+smodule:052_c8 rdf:type smodule:Connection.
+smodule:052_c8 smodule:connects up_mod:M75_module_port-chebiAncestorClone6, smodule:OperatorValuesPortResultClone68.
+
+smodule:OperatorValuesPortResultClone68 smodule:valuesEnumeration "CHEBI:15889" .
+
+smodule:052_c9 rdf:type smodule:Connection.
+smodule:052_c9 smodule:connects up_mod:M37_module_port-chebiAncestorClone2, smodule:OperatorValuesPortResultClone67.
+
+smodule:OperatorValuesPortResultClone67 smodule:valuesEnumeration "CHEBI:15889" .
+
+smodule:052_c10 rdf:type smodule:Connection.
+smodule:052_c10 smodule:connects up_mod:M67_module_port-organismClone15, smodule:OperatorValuesPortResultClone66.
+
+smodule:OperatorValuesPortResultClone66 smodule:valuesEnumeration "taxon:9606" .
+
+smodule:052_c6 rdf:type smodule:Connection.
+smodule:052_c6 smodule:connects up_mod:m3_module_port-reactionClone2, up_mod:M38_module_port-reactionClone6.
+
+smodule:052_c12 rdf:type smodule:Connection.
+smodule:052_c12 smodule:connects up_mod:m3_module_port-statusClone2, smodule:OperatorValuesPortResultClone65.
+
+smodule:OperatorValuesPortResultClone65 smodule:valuesEnumeration "rh:Approved" .
+
+smodule:052_c13 rdf:type smodule:Connection.
+smodule:052_c13 smodule:connects up_mod:m11_module_port-proteinClone1, up_mod:M39_module_port-proteinClone8.
