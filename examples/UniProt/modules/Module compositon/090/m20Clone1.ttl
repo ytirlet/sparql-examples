@@ -1,0 +1,29 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://uniprot_module.biographs.org/m20_moduleClone1> a smodule:SPARQLModule ;
+    rdfs:label "englishLabelStr structured name" ;
+    smodule:clonedFrom <http://uniprot_module.biographs.org/m20_module> ;
+    smodule:fragmentSPARQL """ 
+    SERVICE<https://id.nlm.nih.gov/mesh/sparql> {
+    GRAPH <http://id.nlm.nih.gov/mesh> {
+      # Mesh M0013493 represents the concept 'Metabolic Diseases'
+	  ?meshClone1 <http://id.nlm.nih.gov/mesh/vocab#broaderDescriptor>* ?broaderClone1 .
+      ?broaderClone1 <http://id.nlm.nih.gov/mesh/vocab#preferredConcept> <http://id.nlm.nih.gov/mesh/M0013493> .
+    }
+    """ ;
+    smodule:output <http://uniprot_module.biographs.org/m20_module_port-meshClone1> ;
+    smodule:prefixes """PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+""" .
+
+<http://uniprot_module.biographs.org/m20_module_port-meshClone1> a smodule:ModulePortURI ;
+    rdfs:label "mesh" ;
+    rdfs:domain xsd:anyURI ;
+    smodule:isSelected false ;
+    smodule:variableName "?meshClone1" .
+

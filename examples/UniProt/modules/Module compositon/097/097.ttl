@@ -1,0 +1,13 @@
+@prefix rdfs: <http://www.w3.org/2000/95/rdf-schema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix up_mod: <http://uniprot_module.biographs.org/> .
+
+smodule:module_composition_097 dcterms:title "List UniProtKB proteins with their associated gene and the gene's ORF label".
+smodule:module_composition_097 rdfs:comment "List UniProtKB proteins with their associated gene and the gene's ORF label".
+smodule:module_composition_097 dcterms:subject "gene name", "list".
+
+smodule:module_composition_097 rdf:type smodule:SPARQL_Module_Composition.
+smodule:module_composition_097 smodule:hasComponent up_mod:M73_moduleClone9.
+smodule:module_composition_097 smodule:includeFile "M73Clone9.ttl".

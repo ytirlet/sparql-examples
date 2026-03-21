@@ -1,0 +1,20 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix up_mod: <http://uniprot_module.biographs.org/> .
+@prefix base_mod: <http://base_module.biographs.org/> .
+
+smodule:module_composition_089 dcterms:title "Predicates and objects, for a given UniParc accession as a subject".
+smodule:module_composition_089 rdfs:comment "Predicates and objects, for a given UniParc accession as a subject".
+smodule:module_composition_089 dcterms:subject "UniParc", "triples".
+
+smodule:module_composition_089 rdf:type smodule:SPARQL_Module_Composition.
+smodule:module_composition_089 smodule:hasConnection smodule:089_c1.
+smodule:module_composition_089 smodule:hasComponent smodule:OperatorValuesClone120, base_mod:Mb5_moduleClone1.
+smodule:module_composition_089 smodule:includeFile "VALUESClone120.ttl", "Mb5Clone1.ttl".
+
+smodule:089_c1 rdf:type smodule:Connection.
+smodule:089_c1 smodule:connects base_mod:Mb5_module_port-subjectClone1, smodule:OperatorValuesPortResultClone120.
+
+smodule:OperatorValuesPortResultClone120 smodule:valuesEnumeration "<http://purl.uniprot.org/uniparc/UPI000012A0AD>" .

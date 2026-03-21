@@ -1,0 +1,54 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix up_mod: <http://uniprot_module.biographs.org/> .
+
+smodule:module_composition_098 dcterms:title "Find GeneID's crosslinked to more than one human or mouse UniProtKB entry".
+smodule:module_composition_098 rdfs:comment "Find GeneID's crosslinked to more than one human or mouse UniProtKB entry".
+smodule:module_composition_098 dcterms:subject "cross-reference", "mapping", "count".
+
+smodule:module_composition_098 rdf:type smodule:SPARQL_Module_Composition.
+smodule:module_composition_098 smodule:hasConnection smodule:098_c1 , smodule:098_c2, smodule:098_c3. #, smodule:098_c4, smodule:098_c5, smodule:098_c6, smodule:098_c7, smodule:098_c8, smodule:098_c9, smodule:098_c10, smodule:098_c11.
+smodule:module_composition_098 smodule:hasComponent smodule:OperatorValuesClone123, smodule:OperatorValuesClone122, up_mod:M67_moduleClone27, up_mod:M31_moduleClone14. #smodule:OperatorGroupByClone6, smodule:OperatorCountClone2, smodule:OperatorHavingClone1, smodule:OperatorOrderByDescClone3, 
+smodule:module_composition_098 smodule:includeFile "VALUESClone123.ttl", "VALUESClone122.ttl", "M67Clone27.ttl", "M31Clone14.ttl". # "GROUPBYClone6.ttl", "COUNTClone2.ttl", "HAVINGClone1.ttl", "ORDERBYDESCClone3.ttl",
+
+smodule:098_c1 rdf:type smodule:Connection.
+smodule:098_c1 smodule:connects up_mod:M31_module_port-entryClone14, up_mod:M67_module_port-entryClone27.
+
+smodule:098_c2 rdf:type smodule:Connection.
+smodule:098_c2 smodule:connects up_mod:M67_module_port-organismClone27, smodule:OperatorValuesPortResultClone123.
+
+smodule:OperatorValuesPortResultClone123 smodule:valuesEnumeration "taxon:9606 taxon:10090" .
+
+smodule:098_c3 rdf:type smodule:Connection.
+smodule:098_c3 smodule:connects up_mod:M31_module_port-databaseClone14, smodule:OperatorValuesPortResultClone122.
+
+smodule:OperatorValuesPortResultClone122 smodule:valuesEnumeration "<http://purl.uniprot.org/database/GeneID>" .
+
+#smodule:098_c4 rdf:type smodule:Connection.
+#smodule:098_c4 smodule:connects up_mod:M31_module_port-dbentryClone14, smodule:OperatorGroupByPortParameter1Clone6.
+
+#smodule:098_c5 rdf:type smodule:Connection.
+#smodule:098_c5 smodule:connects up_mod:M67_module_port-organismClone27, smodule:OperatorGroupByPortParameter2Clone6.
+
+#smodule:098_c6 rdf:type smodule:Connection.
+#smodule:098_c6 smodule:connects smodule:OperatorCountPortParameter1Clone2, smodule:OperatorGroupByPortResultClone6 .
+
+#smodule:098_c7 rdf:type smodule:Connection.
+#smodule:098_c7 smodule:connects smodule:OperatorHavingPortParameterClone1, smodule:OperatorCountPortResultClone2 .
+
+#smodule:098_c8 rdf:type smodule:Connection.
+#smodule:098_c8 smodule:connects smodule:OperatorCountPortParameter2Clone2, up_mod:M67_module_port-entryClone27 .
+
+#smodule:OperatorHavingPortResultClone1 smodule:havingInput "?parameter > 1".
+
+#smodule:098_c9 rdf:type smodule:Connection.
+#smodule:098_c9 smodule:connects smodule:OperatorOrderByDescPortParameter1Clone3, smodule:OperatorHavingPortResultClone1 .
+
+#smodule:098_c10 rdf:type smodule:Connection.
+#smodule:098_c10 smodule:connects smodule:OperatorOrderByDescPortParameter2Clone3, up_mod:M67_module_port-organismClone27 .
+
+#smodule:098_c11 rdf:type smodule:Connection.
+#smodule:098_c11 smodule:connects smodule:OperatorOrderByDescPortParameter3Clone3, up_mod:M31_module_port-dbentryClone14 .
+

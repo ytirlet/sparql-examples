@@ -1,0 +1,20 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix up_mod: <http://uniprot_module.biographs.org/> .
+@prefix uniprotkb: <http://purl.uniprot.org/uniprot/>.
+
+smodule:module_composition_099 dcterms:title "Translate a selection of UniProtKB accession numbers into other options using the identifiers.org translating endpoint.".
+smodule:module_composition_099 rdfs:comment "does not run with QLever".
+smodule:module_composition_099 dcterms:subject "identifier", "mapping".
+
+smodule:module_composition_099 rdf:type smodule:SPARQL_Module_Composition.
+smodule:module_composition_099 smodule:hasConnection smodule:099_c1 .
+smodule:module_composition_099 smodule:hasComponent smodule:OperatorValuesClone124, up_mod:m21_moduleClone1.
+smodule:module_composition_099 smodule:includeFile "VALUESClone124.ttl", "m21Clone1.ttl".
+
+smodule:099_c1 rdf:type smodule:Connection.
+smodule:099_c1 smodule:connects up_mod:m21_module_port-proteinClone1, smodule:OperatorValuesPortResultClone124.
+
+smodule:OperatorValuesPortResultClone124 smodule:valuesEnumeration "uniprotkb:P00750 uniprotkb:P05067" .

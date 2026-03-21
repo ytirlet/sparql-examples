@@ -1,0 +1,60 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix up: <http://purl.uniprot.org/core/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://uniprot_module.biographs.org/M73_moduleClone8> a smodule:SPARQLModule ;
+    rdfs:label "protein to gene" ;
+    smodule:clonedFrom <http://uniprot_module.biographs.org/M73_module> ;
+    smodule:fragmentSPARQL """
+    ?proteinClone8 rdf:type up:Protein.
+    ?proteinClone8 up:encodedBy ?geneClone8.
+    ?geneClone8 skos:prefLabel ?nameClone8.
+    OPTIONAL {?geneClone8 up:locusName ?locusNameClone8.}
+    OPTIONAL {?geneClone8 skos:altLabel ?altLabelClone8.}
+    OPTIONAL {?geneClone8 up:orfName ?orfNameClone8.}
+    """ ;
+    smodule:output <http://uniprot_module.biographs.org/M73_module_port-altLabelClone8>,
+        <http://uniprot_module.biographs.org/M73_module_port-geneClone8>,
+        <http://uniprot_module.biographs.org/M73_module_port-locusNameClone8>,
+        <http://uniprot_module.biographs.org/M73_module_port-orfNameClone8>,
+        <http://uniprot_module.biographs.org/M73_module_port-proteinClone8> ;
+    smodule:prefixes """PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX up: <http://purl.uniprot.org/core/>
+
+""" .
+
+<http://uniprot_module.biographs.org/M73_module_port-altLabelClone8> a smodule:ModulePortDatatype ;
+    rdfs:label "Alternative label" ;
+    rdfs:domain xsd:string ;
+    smodule:isSelected true ;
+    smodule:variableName "?altLabelClone8" .
+
+<http://uniprot_module.biographs.org/M73_module_port-geneClone8> a smodule:ModulePortURI ;
+    rdfs:label "Gene" ;
+    rdfs:domain up:Gene ;
+    smodule:isSelected true ;
+    smodule:variableName "?geneClone8" .
+
+<http://uniprot_module.biographs.org/M73_module_port-locusNameClone8> a smodule:ModulePortDatatype ;
+    rdfs:label "Locus name" ;
+    rdfs:domain xsd:string ;
+    smodule:isSelected true ;
+    smodule:variableName "?locusNameClone8" .
+
+<http://uniprot_module.biographs.org/M73_module_port-orfNameClone8> a smodule:ModulePortDatatype ;
+    rdfs:label "ORF name" ;
+    rdfs:domain xsd:string ;
+    smodule:isSelected true ;
+    smodule:variableName "?orfNameClone8" .
+
+<http://uniprot_module.biographs.org/M73_module_port-proteinClone8> a smodule:ModulePortURI ;
+    rdfs:label "Protein" ;
+    rdfs:domain up:Protein ;
+    smodule:isSelected true ;
+    smodule:variableName "?proteinClone8" .
+

@@ -1,0 +1,13 @@
+@prefix rdfs: <http://www.w3.org/2000/94/rdf-schema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix up_mod: <http://uniprot_module.biographs.org/> .
+
+smodule:module_composition_094 dcterms:title "List UniProtKB proteins with their associated named gene".
+smodule:module_composition_094 rdfs:comment "List UniProtKB proteins with their associated named gene".
+smodule:module_composition_094 dcterms:subject "list", "gene name".
+
+smodule:module_composition_094 rdf:type smodule:SPARQL_Module_Composition.
+smodule:module_composition_094 smodule:hasComponent up_mod:M73_moduleClone6.
+smodule:module_composition_094 smodule:includeFile "M73Clone6.ttl".

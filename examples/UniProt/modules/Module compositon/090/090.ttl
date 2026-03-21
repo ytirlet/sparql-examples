@@ -1,0 +1,25 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix up_mod: <http://uniprot_module.biographs.org/> .
+
+smodule:module_composition_090 dcterms:title "Find UniProtKB proteins involved in metabolic diseases using the MeSH concept for 'Metabolic Diseases'".
+smodule:module_composition_090 rdfs:comment "does not run with QLever".
+smodule:module_composition_090 dcterms:subject "enzyme", "disease", "MeSH".
+
+smodule:module_composition_090 rdf:type smodule:SPARQL_Module_Composition.
+smodule:module_composition_090 smodule:hasConnection smodule:090_c1, smodule:090_c2, smodule:090_c3 .
+smodule:module_composition_090 smodule:hasComponent smodule:OperatorValuesClone121, up_mod:m20_moduleClone1, up_mod:M51_moduleClone8, up_mod:M31_moduleClone13.
+smodule:module_composition_090 smodule:includeFile "VALUESClone121.ttl", "m20Clone1.ttl", "M51Clone8.ttl", "M31Clone13.ttl".
+
+smodule:090_c1 rdf:type smodule:Connection.
+smodule:090_c1 smodule:connects up_mod:M51_module_port-diseaseClone8, up_mod:M31_module_port-entryClone13.
+
+smodule:090_c2 rdf:type smodule:Connection.
+smodule:090_c2 smodule:connects up_mod:M31_module_port-databaseClone13, smodule:OperatorValuesPortResultClone121.
+
+smodule:OperatorValuesPortResultClone121 smodule:valuesEnumeration "<http://purl.uniprot.org/database/MeSH>" .
+
+smodule:090_c3 rdf:type smodule:Connection.
+smodule:090_c3 smodule:connects up_mod:M31_module_port-dbentryClone13, up_mod:m20_module_port-meshClone1.
