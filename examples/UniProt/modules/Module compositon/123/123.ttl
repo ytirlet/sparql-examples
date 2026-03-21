@@ -1,0 +1,73 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix up_mod: <http://uniprot_module.biographs.org/> .
+@prefix base_mod: <http://base_module.biographs.org/> .
+
+smodule:module_composition_123 dcterms:title "EC numbers not linked to UniProt entries".
+smodule:module_composition_123 rdfs:comment "EC numbers not linked to UniProt entries".
+smodule:module_composition_123 dcterms:subject "".
+
+smodule:module_composition_123 rdf:type smodule:SPARQL_Module_Composition.
+smodule:module_composition_123 smodule:hasConnection smodule:123_c1 , smodule:123_c2, smodule:123_c3, smodule:123_c4, smodule:123_c5, smodule:123_c6, smodule:123_c7, smodule:123_c8, smodule:123_c9, smodule:123_c10, smodule:123_c11, smodule:123_c12, smodule:123_c13, smodule:123_c14, smodule:123_c15. #, smodule:123_c16.
+smodule:module_composition_123 smodule:hasComponent smodule:OperatorValuesClone149, smodule:OperatorValuesClone148, smodule:OperatorValuesClone147, smodule:OperatorValuesClone146, smodule:OperatorFNEClone1, smodule:OperatorFNEClone2, smodule:OperatorFNEClone3, smodule:OperatorFNEClone4, base_mod:Mb6_moduleClone2, up_mod:m27_moduleClone1, up_mod:M90_moduleClone5, up_mod:M89_moduleClone6, up_mod:M88_moduleClone12, up_mod:M17_moduleClone23, up_mod:M17_moduleClone22, up_mod:M17_moduleClone21. #smodule:OperatorFilterClone2, 
+smodule:module_composition_123 smodule:includeFile "VALUESClone149.ttl", "VALUESClone148.ttl", "VALUESClone147.ttl", "VALUESClone146.ttl", "FNEClone1.ttl", "FNEClone2.ttl", "FNEClone3.ttl", "FNEClone4.ttl",  "Mb6Clone2.ttl", "m27Clone1.ttl", "M90Clone5.ttl", "M89Clone6.ttl", "M88Clone12.ttl", "M17Clone23.ttl", "M17Clone22.ttl", "M17Clone21.ttl". #"FILTERClone2.ttl",
+
+smodule:123_c1 rdf:type smodule:Connection.
+smodule:123_c1 smodule:connects base_mod:Mb6_module_port-subjectClone2, smodule:OperatorFNEPortResultClone1.
+
+smodule:123_c2 rdf:type smodule:Connection.
+smodule:123_c2 smodule:connects base_mod:Mb6_module_port-subjectClone2, smodule:OperatorFNEPortResultClone2.
+
+smodule:123_c3 rdf:type smodule:Connection.
+smodule:123_c3 smodule:connects base_mod:Mb6_module_port-subjectClone2, smodule:OperatorFNEPortResultClone3.
+
+smodule:123_c4 rdf:type smodule:Connection.
+smodule:123_c4 smodule:connects up_mod:M88_module_port-ecClassClone12, smodule:OperatorFNEPortParameter0Clone1.
+
+smodule:123_c5 rdf:type smodule:Connection.
+smodule:123_c5 smodule:connects up_mod:M88_module_port-proteinClone12, up_mod:M17_module_port-proteinClone23.
+
+smodule:123_c6 rdf:type smodule:Connection.
+smodule:123_c6 smodule:connects up_mod:M17_module_port-proteinClone23, smodule:OperatorValuesPortResultClone149.
+
+smodule:OperatorValuesPortResultClone149 smodule:valuesEnumeration "true" .
+
+smodule:123_c7 rdf:type smodule:Connection.
+smodule:123_c7 smodule:connects up_mod:M89_module_port-ecClassClone6, smodule:OperatorFNEPortParameter0Clone2.
+
+smodule:123_c8 rdf:type smodule:Connection.
+smodule:123_c8 smodule:connects up_mod:M89_module_port-proteinClone6, up_mod:M17_module_port-proteinClone22.
+
+smodule:123_c9 rdf:type smodule:Connection.
+smodule:123_c9 smodule:connects up_mod:M17_module_port-reviewedClone22, smodule:OperatorValuesPortResultClone148.
+
+smodule:OperatorValuesPortResultClone148 smodule:valuesEnumeration "true" .
+
+smodule:123_c10 rdf:type smodule:Connection.
+smodule:123_c10 smodule:connects up_mod:M90_module_port-ecClassClone5, smodule:OperatorFNEPortParameter0Clone3.
+
+smodule:123_c11 rdf:type smodule:Connection.
+smodule:123_c11 smodule:connects up_mod:M90_module_port-proteinClone5, up_mod:M17_module_port-proteinClone21.
+
+smodule:123_c12 rdf:type smodule:Connection.
+smodule:123_c12 smodule:connects up_mod:M17_module_port-proteinClone21, smodule:OperatorValuesPortResultClone147.
+
+smodule:OperatorValuesPortResultClone147 smodule:valuesEnumeration "true" .
+
+smodule:123_c13 rdf:type smodule:Connection.
+smodule:123_c13 smodule:connects base_mod:Mb6_module_port-classClone2, smodule:OperatorValuesPortResultClone146.
+
+smodule:OperatorValuesPortResultClone146 smodule:valuesEnumeration "up:Enzyme" .
+
+smodule:123_c14 rdf:type smodule:Connection.
+smodule:123_c14 smodule:connects base_mod:Mb6_module_port-subjectClone2, smodule:OperatorFNEPortResultClone4.
+
+smodule:123_c15 rdf:type smodule:Connection.
+smodule:123_c15 smodule:connects up_mod:m27_module_port-entryClone1, smodule:OperatorFNEPortParameter0Clone4.
+
+#smodule:123_c16 rdf:type smodule:Connection.
+#smodule:123_c16 smodule:connects base_mod:Mb6_module_port-subjectClone2, smodule:OperatorFilterPortParameterClone2.
+
+#smodule:OperatorFilterPortResultClone2 smodule:filterInput "!regex(?parameter,'-')" .

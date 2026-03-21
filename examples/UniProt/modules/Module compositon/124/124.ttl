@@ -1,0 +1,25 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix up_mod: <http://uniprot_module.biographs.org/> .
+
+smodule:module_composition_124 dcterms:title "protein - components -ec".
+smodule:module_composition_124 rdfs:comment "protein - components -ec".
+smodule:module_composition_124 dcterms:subject "".
+
+smodule:module_composition_124 rdf:type smodule:SPARQL_Module_Composition.
+smodule:module_composition_124 smodule:hasConnection smodule:124_c1 , smodule:124_c2, smodule:124_c3.
+smodule:module_composition_124 smodule:hasComponent smodule:OperatorValuesClone150, up_mod:M89_moduleClone5, up_mod:M57_moduleClone5, up_mod:M17_moduleClone24.
+smodule:module_composition_124 smodule:includeFile "VALUESClone150.ttl", "M89Clone5.ttl", "M57Clone5.ttl", "M17Clone24.ttl".
+
+smodule:124_c1 rdf:type smodule:Connection.
+smodule:124_c1 smodule:connects up_mod:M17_module_port-proteinClone24, up_mod:M57_module_port-entryClone5.
+
+smodule:124_c2 rdf:type smodule:Connection.
+smodule:124_c2 smodule:connects up_mod:M17_module_port-reviewedClone24, smodule:OperatorValuesPortResultClone150.
+
+smodule:OperatorValuesPortResultClone150 smodule:valuesEnumeration "true" .
+
+smodule:124_c3 rdf:type smodule:Connection.
+smodule:124_c3 smodule:connects up_mod:M17_module_port-proteinClone24, up_mod:M89_module_port-proteinClone5.

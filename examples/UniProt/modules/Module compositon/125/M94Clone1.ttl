@@ -1,0 +1,43 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix up: <http://purl.uniprot.org/core/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://uniprot_module.biographs.org/M94_moduleClone1> a smodule:SPARQLModule ;
+    rdfs:label "entry citation" ;
+    smodule:clonedFrom <http://uniprot_module.biographs.org/M94_module> ;
+    smodule:fragmentSPARQL """ 
+    ?entryClone1 up:citation ?citationClone1 .
+    ?citationClone1 a up:Journal_Citation ;
+     dcterms:identifier ?doiClone1 .
+    """ ;
+    smodule:output <http://uniprot_module.biographs.org/M94_module_port-citationClone1>,
+        <http://uniprot_module.biographs.org/M94_module_port-doiClone1>,
+        <http://uniprot_module.biographs.org/M94_module_port-entryClone1> ;
+    smodule:prefixes """PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX up: <http://purl.uniprot.org/core/>
+
+""" .
+
+<http://uniprot_module.biographs.org/M94_module_port-citationClone1> a smodule:ModulePortURI ;
+    rdfs:label "Journal citation" ;
+    rdfs:domain up:Citation ;
+    smodule:isSelected true ;
+    smodule:variableName "?citationClone1" .
+
+<http://uniprot_module.biographs.org/M94_module_port-doiClone1> a smodule:ModulePortDatatype ;
+    rdfs:label "Citation DOI" ;
+    rdfs:domain xsd:string ;
+    smodule:isSelected true ;
+    smodule:variableName "?doiClone1" .
+
+<http://uniprot_module.biographs.org/M94_module_port-entryClone1> a smodule:ModulePortURI ;
+    rdfs:label "entry" ;
+    rdfs:domain up:entry ;
+    smodule:isSelected true ;
+    smodule:variableName "?entryClone1" .
+

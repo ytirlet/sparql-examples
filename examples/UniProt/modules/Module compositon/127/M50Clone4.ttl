@@ -1,0 +1,40 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix up_mod: <http://uniprot_module.biographs.org/> .
+
+<http://uniprot_module.biographs.org/M50_moduleClone4> a smodule:SPARQLModule ;
+    rdfs:label "protein to ligand" ;
+    smodule:clonedFrom <http://uniprot_module.biographs.org/M50_module> ;
+    smodule:fragmentSPARQL """
+    ?annotationClone4 up:ligand ?ligandClone4.
+    ?ligandClone4 rdfs:subClassOf ?chebiClone4.
+    """ ;
+    smodule:output up_mod:M50_module_port-annotationClone4,
+        up_mod:M50_module_port-chebiClone4,
+        up_mod:M50_module_port-ligandClone4 ;
+    smodule:prefixes """PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX up: <http://purl.uniprot.org/core/>
+""" .
+
+up_mod:M50_module_port-ligandClone4 a smodule:ModulePortTyped ;
+    rdfs:label "ligand" ;
+    rdfs:domain xsd:any ;
+    smodule:isSelected false ;
+    smodule:variableName "?ligandClone4" .
+
+up_mod:M50_module_port-chebiClone4 a smodule:ModulePortTyped ;
+    rdfs:label "chebi" ;
+    rdfs:domain xsd:any ;
+    smodule:isSelected false ;
+    smodule:variableName "?chebiClone4" .
+
+up_mod:M50_module_port-annotationClone4 a smodule:ModulePortTyped ;
+    rdfs:label "annotation" ;
+    rdfs:domain xsd:any ;
+    smodule:isSelected false ;
+    smodule:variableName "?annotationClone4" .
+

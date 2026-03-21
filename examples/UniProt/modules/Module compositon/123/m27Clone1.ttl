@@ -1,0 +1,26 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix up_mod: <http://uniprot_module.biographs.org/> .
+
+<http://uniprot_module.biographs.org/m27_moduleClone1> a smodule:SPARQLModule ;
+    rdfs:label "englishLabelStr structured name" ;
+    smodule:clonedFrom <http://uniprot_module.biographs.org/m27_module> ;
+    smodule:fragmentSPARQL """ 
+    ?entryClone1 up:obsolete true.
+    """ ;
+    smodule:output up_mod:m27_module_port-entryClone1 ;
+    smodule:prefixes """PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX up: <http://purl.uniprot.org/core/>
+
+""" .
+
+up_mod:m27_module_port-entryClone1 a smodule:ModulePortTyped ;
+    rdfs:label "entry" ;
+    rdfs:domain xsd:any ;
+    smodule:isSelected true ;
+    smodule:variableName "?entryClone1" .
+

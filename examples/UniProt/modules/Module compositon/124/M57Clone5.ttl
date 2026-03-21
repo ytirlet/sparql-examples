@@ -1,0 +1,47 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://uniprot_module.biographs.org/M57_moduleClone5> a smodule:SPARQLModule ;
+    rdfs:label "entry mnemonic" ;
+    smodule:clonedFrom <http://uniprot_module.biographs.org/M57_module> ;
+    smodule:fragmentSPARQL """
+    ?entryClone5 rdf:type ?typeClone5.
+    ?entryClone5 up:mnemonic ?mnemonicClone5.
+    OPTIONAL {?entryClone5 up:oldMnemonic ?oldmnemonicClone5.}
+    """ ;
+    smodule:output <http://uniprot_module.biographs.org/M57_module_port-mnemonicClone5>,
+        <http://uniprot_module.biographs.org/M57_module_port-oldmnemonicClone5>,
+        <http://uniprot_module.biographs.org/M57_module_port-typeClone5>, <http://uniprot_module.biographs.org/M57_module_port-entryClone5> ;
+    smodule:prefixes """PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX up: <http://purl.uniprot.org/core/>
+
+""" .
+
+<http://uniprot_module.biographs.org/M57_module_port-mnemonicClone5> a smodule:ModulePortDatatype ;
+    rdfs:label "Mnemonic" ;
+    rdfs:domain xsd:string ;
+    smodule:isSelected false ;
+    smodule:variableName "?mnemonicClone5" .
+
+<http://uniprot_module.biographs.org/M57_module_port-oldmnemonicClone5> a smodule:ModulePortDatatype ;
+    rdfs:label "Old mnemonic" ;
+    rdfs:domain xsd:string ;
+    smodule:isSelected false ;
+    smodule:variableName "?oldmnemonicClone5" .
+
+<http://uniprot_module.biographs.org/M57_module_port-typeClone5> a smodule:ModulePortURI ;
+    rdfs:label "Entry type" ;
+    rdfs:domain xsd:anyURI ;
+    smodule:isSelected false ;
+    smodule:variableName "?typeClone5" .
+
+<http://uniprot_module.biographs.org/M57_module_port-entryClone5> a smodule:ModulePortURI ;
+    rdfs:label "Entry" ;
+    rdfs:domain xsd:anyURI ;
+    smodule:isSelected false ;
+    smodule:variableName "?entryClone5" .
+

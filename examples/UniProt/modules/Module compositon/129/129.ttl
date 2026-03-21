@@ -1,0 +1,29 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix up_mod: <http://uniprot_module.biographs.org/> .
+@prefix ECO: <http://purl.obolibrary.org/obo/ECO_>.
+
+smodule:module_composition_129 dcterms:title "Which are the proteins associated with glioblastoma and the orthologs expressed in the rat brain?".
+smodule:module_composition_129 rdfs:comment "Which are the proteins associated with glioblastoma and the orthologs expressed in the rat brain?".
+smodule:module_composition_129 dcterms:subject "".
+
+smodule:module_composition_129 rdf:type smodule:SPARQL_Module_Composition.
+smodule:module_composition_129 smodule:hasConnection smodule:129_c1 , smodule:129_c2, smodule:129_c3. #, smodule:129_c4.
+smodule:module_composition_129 smodule:hasComponent smodule:OperatorValuesClone158, up_mod:M67_moduleClone40, up_mod:M39_moduleClone31, up_mod:M20_moduleClone7. #smodule:OperatorGroupByClone1, 
+smodule:module_composition_129 smodule:includeFile "VALUESClone158.ttl", "M67Clone40.ttl",  "M39Clone31.ttl",  "M20Clone7.ttl". #"GROUPBYClone1.ttl", 
+
+smodule:129_c1 rdf:type smodule:Connection.
+smodule:129_c1 smodule:connects up_mod:M67_module_port-entryClone40, up_mod:M39_module_port-proteinClone31.
+
+smodule:129_c2 rdf:type smodule:Connection.
+smodule:129_c2 smodule:connects up_mod:M20_module_port-annotationClone7, up_mod:M39_module_port-catalyticActivityClone31.
+
+smodule:129_c3 rdf:type smodule:Connection.
+smodule:129_c3 smodule:connects up_mod:M20_module_port-evidenceClone7, smodule:OperatorValuesPortResultClone158.
+
+smodule:OperatorValuesPortResultClone158 smodule:valuesEnumeration "ECO:0000269" .
+
+#smodule:129_c4 rdf:type smodule:Connection.
+#smodule:129_c4 smodule:connects up_mod:M67_module_port-organismClone40, smodule:OperatorGroupByPortParameterClone1.

@@ -1,0 +1,48 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://uniprot_module.biographs.org/m28_moduleClone1> a smodule:SPARQLModule ;
+    rdfs:label "englishLabelStr structured name" ;
+    smodule:clonedFrom <http://uniprot_module.biographs.org/m28_module> ;
+    smodule:fragmentSPARQL """ 
+    SERVICE <https://cordis.europa.eu/datalab/sparql> {
+  	?projectClone1 a eurio:Project ;
+            eurio:identifier ?identifierClone1 ;
+  		eurio:title ?project_titleClone1 ;
+  	 	eurio:hasResult ?resultClone1 .
+  	?resultClone1 eurio:doi ?doiClone1 .
+  }
+  #EURIO use literals of type xsd:anyURI to represent DOIs 
+  #without the leading doi: indicator
+  BIND(CONCAT("doi:", STR(?doi)) AS ?doi_string)
+  BIND(xsd:int(?identifier) AS ?intid)
+    """ ;
+    smodule:output <http://uniprot_module.biographs.org/m28_module_port-doi_stringClone1>,
+        <http://uniprot_module.biographs.org/m28_module_port-intidClone1>,
+        <http://uniprot_module.biographs.org/m28_module_port-projectClone1> ;
+    smodule:prefixes """PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+""" .
+
+<http://uniprot_module.biographs.org/m28_module_port-doi_stringClone1> a smodule:ModulePortDatatype ;
+    rdfs:label "doi_string" ;
+    rdfs:domain xsd:string ;
+    smodule:isSelected true ;
+    smodule:variableName "?doi_stringClone1" .
+
+<http://uniprot_module.biographs.org/m28_module_port-intidClone1> a smodule:ModulePortDatatype ;
+    rdfs:label "intid" ;
+    rdfs:domain xsd:int ;
+    smodule:isSelected true ;
+    smodule:variableName "?intidClone1" .
+
+<http://uniprot_module.biographs.org/m28_module_port-projectClone1> a smodule:ModulePortURI ;
+    rdfs:label "project" ;
+    rdfs:domain xsd:anyURI ;
+    smodule:isSelected true ;
+    smodule:variableName "?projectClone1" .
+

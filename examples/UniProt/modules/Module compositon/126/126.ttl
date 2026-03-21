@@ -1,0 +1,61 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix up_mod: <http://uniprot_module.biographs.org/> .
+
+smodule:module_composition_126 dcterms:title "Count the number of entries that are annotated to be related to venomous activity in selected taxonomic groups".
+smodule:module_composition_126 rdfs:comment "Count the number of entries that are annotated to be related to venomous activity in selected taxonomic groups".
+smodule:module_composition_126 dcterms:subject "statistics", "tissue", "venom".
+
+smodule:module_composition_126 rdf:type smodule:SPARQL_Module_Composition.
+smodule:module_composition_126 smodule:hasConnection smodule:126_c1 , smodule:126_c2, smodule:126_c3, smodule:126_c4, smodule:126_c5, smodule:126_c6, smodule:126_c7, smodule:126_c8. #, smodule:126_c9, smodule:126_c10, smodule:126_c11, smodule:126_c12, smodule:126_c13.
+smodule:module_composition_126 smodule:hasComponent smodule:OperatorValuesClone153, smodule:OperatorValuesClone152, smodule:OperatorValuesClone151, smodule:OperatorUnionClone2, up_mod:M74_moduleClone9, up_mod:M67_moduleClone37, up_mod:M52_moduleClone3, up_mod:M14_moduleClone25. #smodule:OperatorGroupByClone4, smodule:OperatorCountClone1, smodule:OperatorOrderByDescClone1, smodule:OperatorFilterClone1, 
+smodule:module_composition_126 smodule:includeFile "VALUESClone153.ttl", "VALUESClone152.ttl", "VALUESClone151.ttl", "UNIONClone2.ttl", "M74Clone9.ttl", "M67Clone37.ttl", "M52Clone3.ttl", "M14Clone25.ttl". #"GROUPBYClone4.ttl", "COUNTClone1.ttl", "ORDERBYDESCClone1.ttl",  "FILTERClone1.ttl", 
+
+smodule:126_c1 rdf:type smodule:Connection.
+smodule:126_c1 smodule:connects up_mod:M52_module_port-proteinClone3, smodule:OperatorUnionPortParameter0Clone2.
+
+smodule:126_c2 rdf:type smodule:Connection.
+smodule:126_c2 smodule:connects up_mod:M52_module_port-cellComponentClone3, smodule:OperatorValuesPortResultClone153.
+
+smodule:OperatorValuesPortResultClone153 smodule:valuesEnumeration "location:177" .
+
+smodule:126_c3 rdf:type smodule:Connection.
+smodule:126_c3 smodule:connects up_mod:M14_module_port-proteinClone25, smodule:OperatorUnionPortParameter1Clone2.
+
+smodule:126_c4 rdf:type smodule:Connection.
+smodule:126_c4 smodule:connects up_mod:M14_module_port-annotationTypeClone25, smodule:OperatorValuesPortResultClone152.
+
+smodule:OperatorValuesPortResultClone152 smodule:valuesEnumeration "up:Tissue_Specificity_Annotation" .
+
+#smodule:126_c5 rdf:type smodule:Connection.
+#smodule:126_c5 smodule:connects up_mod:M14_module_port-commentClone25, smodule:OperatorFilterPortParameterClone1.
+
+#smodule:OperatorFilterPortResultClone1 smodule:filterInput "REGEX(?parameter, 'venom', 'i')" .
+
+smodule:126_c6 rdf:type smodule:Connection.
+smodule:126_c6 smodule:connects up_mod:M67_module_port-entryClone37, smodule:OperatorUnionPortResultClone2.
+
+smodule:126_c7 rdf:type smodule:Connection.
+smodule:126_c7 smodule:connects up_mod:M67_module_port-taxonClone37, up_mod:M74_module_port-taxonClone9.
+
+smodule:126_c8 rdf:type smodule:Connection.
+smodule:126_c8 smodule:connects up_mod:M74_module_port-taxonClone9, smodule:OperatorValuesPortResultClone151.
+
+smodule:OperatorValuesPortResultClone151 smodule:valuesEnumeration "taxon:6103 taxon:8570 taxon:6855 taxon:6893 taxon:50557 taxon:37797" .
+
+#smodule:126_c9 rdf:type smodule:Connection.
+#smodule:126_c9 smodule:connects up_mod:M74_module_port-taxonClone9, smodule:OperatorGroupByPortParameter1Clone4.
+
+#smodule:126_c10 rdf:type smodule:Connection.
+#smodule:126_c10 smodule:connects up_mod:M74_module_port-nameClone9, smodule:OperatorGroupByPortParameter2Clone4.
+
+#smodule:126_c11 rdf:type smodule:Connection.
+#smodule:126_c11 smodule:connects smodule:OperatorCountPortParameter1Clone1, smodule:OperatorGroupByPortResultClone4 .
+
+#smodule:126_c12 rdf:type smodule:Connection.
+#smodule:126_c12 smodule:connects smodule:OperatorOrderByDescPortParameterClone1, smodule:OperatorCountPortResultClone1 .
+
+#smodule:126_c13 rdf:type smodule:Connection.
+#smodule:126_c13 smodule:connects smodule:OperatorCountPortParameter2Clone1, up_mod:M67_module_port-entryClone37 .

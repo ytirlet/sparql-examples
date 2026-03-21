@@ -1,0 +1,33 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://sparql_module.biographs.org/OperatorFNEClone4> a smodule:SPARQLModuleOperatorFNE ;
+    rdfs:label "Operator FILTER NOT EXISTS" ;
+    smodule:clonedFrom <https://sparql_module.biographs.org/OperatorFNE> ;
+    smodule:fragmentSPARQL """
+  FILTER NOT EXISTS {
+  # Result variable is ?operatorFilterNotExistsResult
+  [operatorParameter0]
+  }
+""" ;
+    smodule:output <https://sparql_module.biographs.org/OperatorFNEPortParameter0Clone4>,
+        <https://sparql_module.biographs.org/OperatorFNEPortResultClone4> ;
+    smodule:prefixes """PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+""" .
+
+<https://sparql_module.biographs.org/OperatorFNEPortParameter0Clone4> a smodule:ModulePortOperatorParameter ;
+    rdfs:label "Parameter" ;
+    smodule:isSelected false ;
+    smodule:variableName "[operatorParameter0]" .
+
+<https://sparql_module.biographs.org/OperatorFNEPortResultClone4> a smodule:ModulePortTyped ;
+    rdfs:label "Result" ;
+    rdfs:domain xsd:any ;
+    smodule:isSelected false ;
+    smodule:variableName "?operatorFilterNotExistsResult" .
+

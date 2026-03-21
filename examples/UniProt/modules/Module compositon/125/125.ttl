@@ -1,0 +1,26 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix up_mod: <http://uniprot_module.biographs.org/> .
+
+smodule:module_composition_125 dcterms:title "Use the CORDIS EURIO Knowledge Graph in combination with UniProt to find the count of outputs(DOIs) of their funded projects cited in UniProt.".
+smodule:module_composition_125 rdfs:comment "Use the CORDIS EURIO Knowledge Graph in combination with UniProt to find the count of outputs(DOIs) of their funded projects cited in UniProt.".
+smodule:module_composition_125 dcterms:subject "DOI", "count", "publication".
+
+smodule:module_composition_125 rdf:type smodule:SPARQL_Module_Composition.
+smodule:module_composition_125 smodule:hasConnection smodule:125_c1 . #, smodule:125_c2, smodule:125_c3, smodule:125_c4.
+smodule:module_composition_125 smodule:hasComponent up_mod:m28_moduleClone1, up_mod:M94_moduleClone1. #smodule:OperatorGroupByClone5, smodule:OperatorOrderByDescClone2, 
+smodule:module_composition_125 smodule:includeFile "m28Clone1.ttl", "M94Clone1.ttl". #"GROUPBYClone5.ttl", "ORDERBYDESCClone2.ttl", 
+
+smodule:125_c1 rdf:type smodule:Connection.
+smodule:125_c1 smodule:connects up_mod:M94_module_port-doiClone1, up_mod:m28_module_port-doi_stringClone1.
+
+#smodule:125_c2 rdf:type smodule:Connection.
+#smodule:125_c2 smodule:connects up_mod:m28_module_port-projectClone1, smodule:OperatorGroupByPortParameterClone5.
+
+#smodule:125_c3 rdf:type smodule:Connection.
+#smodule:125_c3 smodule:connects smodule:OperatorOrderByDescPortParameter1Clone2, smodule:OperatorGroupByPortResultClone5.
+
+#smodule:125_c4 rdf:type smodule:Connection.
+#smodule:125_c4 smodule:connects smodule:OperatorOrderByDescPortParameter2Clone2, up_mod:m28_module_port-intidClone1 .

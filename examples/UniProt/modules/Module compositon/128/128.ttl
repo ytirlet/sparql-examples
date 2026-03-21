@@ -1,0 +1,54 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix up_mod: <http://uniprot_module.biographs.org/> .
+
+smodule:module_composition_128 dcterms:title "Count of unique Rhea reactions/Evidence code pairs annotated in different taxa in Swiss-Prot".
+smodule:module_composition_128 rdfs:comment "Count of unique Rhea reactions/Evidence code pairs annotated in different taxa in Swiss-Prot".
+smodule:module_composition_128 dcterms:subject "Reaction", "taxonomy", "statistitcs".
+
+smodule:module_composition_128 rdf:type smodule:SPARQL_Module_Composition.
+smodule:module_composition_128 smodule:hasConnection smodule:128_c1 , smodule:128_c2, smodule:128_c3, smodule:128_c4, smodule:128_c5, smodule:128_c6. #, smodule:128_c7, smodule:128_c8, smodule:128_c9, smodule:128_c10, smodule:128_c11, smodule:128_c12.
+smodule:module_composition_128 smodule:hasComponent smodule:OperatorValuesClone157, smodule:OperatorValuesClone156, up_mod:M74_moduleClone10, up_mod:M67_moduleClone39, up_mod:M39_moduleClone30, up_mod:M20_moduleClone6, up_mod:M17_moduleClone10. #smodule:OperatorGroupByClone2, smodule:OperatorOrderByClone1, 
+smodule:module_composition_128 smodule:includeFile "VALUESClone157.ttl", "VALUESClone156.ttl", "M74Clone10.ttl", "M67Clone39.ttl", "M39Clone30.ttl", "M20Clone6.ttl", "M17Clone10.ttl". #"GROUPBYClone2.ttl", "ORDERBYClone1.ttl", 
+
+smodule:128_c1 rdf:type smodule:Connection.
+smodule:128_c1 smodule:connects up_mod:M67_module_port-taxonClone39, up_mod:M74_module_port-taxonClone10.
+
+smodule:128_c2 rdf:type smodule:Connection.
+smodule:128_c2 smodule:connects up_mod:M67_module_port-taxonClone39, smodule:OperatorValuesPortResultClone157.
+
+smodule:OperatorValuesPortResultClone157 smodule:valuesEnumeration "taxon:9606 taxon:7742 taxon:33208 taxon:33090 taxon:4751 taxon:2 taxon:2157 taxon:10239" .
+
+smodule:128_c3 rdf:type smodule:Connection.
+smodule:128_c3 smodule:connects up_mod:M67_module_port-entryClone39, up_mod:M17_module_port-proteinClone10.
+
+smodule:128_c4 rdf:type smodule:Connection.
+smodule:128_c4 smodule:connects up_mod:M17_module_port-reviewedClone10, smodule:OperatorValuesPortResultClone156.
+
+smodule:OperatorValuesPortResultClone156 smodule:valuesEnumeration "true" .
+
+smodule:128_c5 rdf:type smodule:Connection.
+smodule:128_c5 smodule:connects up_mod:M67_module_port-entryClone39, up_mod:M39_module_port-proteinClone30.
+
+smodule:128_c6 rdf:type smodule:Connection.
+smodule:128_c6 smodule:connects up_mod:M20_module_port-annotationClone6, up_mod:M39_module_port-catalyticActivityClone30.
+
+#smodule:128_c7 rdf:type smodule:Connection.
+#smodule:128_c7 smodule:connects up_mod:M67_module_port-taxonClone39, smodule:OperatorGroupByPortParameter1Clone2.
+
+#smodule:128_c8 rdf:type smodule:Connection.
+#smodule:128_c8 smodule:connects up_mod:M74_module_port-nameClone10, smodule:OperatorGroupByPortParameter2Clone2.
+
+#smodule:128_c9 rdf:type smodule:Connection.
+#smodule:128_c9 smodule:connects up_mod:M20_module_port-evidenceClone6, smodule:OperatorGroupByPortParameter3Clone2.
+
+#smodule:128_c10 rdf:type smodule:Connection.
+#smodule:128_c10 smodule:connects smodule:OperatorOrderByPortParameter1Clone1, smodule:OperatorGroupByPortResultClone2 .
+
+#smodule:128_c11 rdf:type smodule:Connection.
+#smodule:128_c11 smodule:connects smodule:OperatorOrderByPortParameter2Clone1, up_mod:M74_module_port-nameClone10 .
+
+#smodule:128_c12 rdf:type smodule:Connection.
+#smodule:128_c12 smodule:connects smodule:OperatorOrderByPortParameter3Clone1, up_mod:M20_module_port-evidenceClone6 .

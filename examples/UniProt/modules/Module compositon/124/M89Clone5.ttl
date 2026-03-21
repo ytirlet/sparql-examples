@@ -1,0 +1,49 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix up: <http://purl.uniprot.org/core/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://uniprot_module.biographs.org/M89_moduleClone5> a smodule:SPARQLModule ;
+    rdfs:label "Protein domain to enzyme " ;
+    smodule:clonedFrom <http://uniprot_module.biographs.org/M89_module> ;
+    smodule:fragmentSPARQL """ 
+    ?proteinClone5 up:domain ?domainClone5.
+    ?domainClone5 up:enzyme ?enzymeClone5 .
+    ?enzymeClone5 rdfs:subClassOf? ?ecClassClone5.
+    """ ;
+    smodule:output <http://uniprot_module.biographs.org/M89_module_port-domainClone5>,
+        <http://uniprot_module.biographs.org/M89_module_port-ecClassClone5>,
+        <http://uniprot_module.biographs.org/M89_module_port-enzymeClone5>,
+        <http://uniprot_module.biographs.org/M89_module_port-proteinClone5> ;
+    smodule:prefixes """PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX up: <http://purl.uniprot.org/core/>
+
+""" .
+
+<http://uniprot_module.biographs.org/M89_module_port-domainClone5> a smodule:ModulePortURI ;
+    rdfs:label "Protein domain" ;
+    rdfs:domain up:Part ;
+    smodule:isSelected false ;
+    smodule:variableName "?domainClone5" .
+
+<http://uniprot_module.biographs.org/M89_module_port-ecClassClone5> a smodule:ModulePortURI ;
+    rdfs:label "Enzyme Class" ;
+    rdfs:domain up:Enzyme ;
+    smodule:isSelected false ;
+    smodule:variableName "?ecClassClone5" .
+
+<http://uniprot_module.biographs.org/M89_module_port-enzymeClone5> a smodule:ModulePortURI ;
+    rdfs:label "Enzyme" ;
+    rdfs:domain up:Enzyme ;
+    smodule:isSelected true ;
+    smodule:variableName "?enzymeClone5" .
+
+<http://uniprot_module.biographs.org/M89_module_port-proteinClone5> a smodule:ModulePortURI ;
+    rdfs:label "Protein" ;
+    rdfs:domain up:protein ;
+    smodule:isSelected false ;
+    smodule:variableName "?proteinClone5" .
+

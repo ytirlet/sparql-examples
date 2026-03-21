@@ -1,0 +1,71 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix up_mod: <http://uniprot_module.biographs.org/> .
+
+smodule:module_composition_127 dcterms:title "UniProt entries use ChEBI in the following annotations: Ligands, Cofactors and Enzymatic Activity. This query shows how these can all be retrieved in one go, to make a UniProt to ChEBI mapping. The example query is made smaller by retrieving only human entries in Swiss-Prot.".
+smodule:module_composition_127 rdfs:comment "UniProt entries use ChEBI in the following annotations: Ligands, Cofactors and Enzymatic Activity. This query shows how these can all be retrieved in one go, to make a UniProt to ChEBI mapping. The example query is made smaller by retrieving only human entries in Swiss-Prot.".
+smodule:module_composition_127 dcterms:subject "ChEBI", "catalytic activity", "cofactor", "enzyme", "ligand".
+
+smodule:module_composition_127 rdf:type smodule:SPARQL_Module_Composition.
+smodule:module_composition_127 smodule:hasConnection smodule:127_c1 , smodule:127_c2, smodule:127_c3, smodule:127_c4, smodule:127_c5, smodule:127_c6, smodule:127_c7, smodule:127_c8, smodule:127_c9, smodule:127_c10, smodule:127_c11, smodule:127_c12, smodule:127_c13, smodule:127_c14, smodule:127_c15. #, smodule:127_c16.
+smodule:module_composition_127 smodule:hasComponent smodule:OperatorValuesClone155, smodule:OperatorValuesClone154, smodule:OperatorServiceClone5, smodule:OperatorUnionClone1, smodule:OperatorUnionClone22, up_mod:M75_moduleClone14, up_mod:M38_moduleClone15, up_mod:m30_moduleClone1, up_mod:m29_moduleClone1, up_mod:M67_moduleClone38, up_mod:M50_moduleClone4, up_mod:M39_moduleClone29, up_mod:M17_moduleClone25, up_mod:M14_moduleClone27, up_mod:M14_moduleClone26. #smodule:OperatorGroupByClone3, 
+smodule:module_composition_127 smodule:includeFile "VALUESClone155.ttl", "VALUESClone154.ttl", "SERVICEClone5.ttl", "UNIONClone1.ttl", "UNIONClone22.ttl", "M75Clone14.ttl", "M38Clone15.ttl", "m30Clone1.ttl", "m29Clone1.ttl", "M67Clone38.ttl", "M50Clone4.ttl", "M39Clone29.ttl", "M17Clone25.ttl", "M14Clone27.ttl", "M14Clone26.ttl". #"GROUPBYClone3.ttl", 
+
+smodule:127_c1 rdf:type smodule:Connection.
+smodule:127_c1 smodule:connects up_mod:M14_module_port-proteinClone27, smodule:OperatorUnionPortParameter0Clone1.
+
+smodule:127_c2 rdf:type smodule:Connection.
+smodule:127_c2 smodule:connects up_mod:M14_module_port-annotationClone27, up_mod:m29_module_port-entryClone1.
+
+smodule:127_c3 rdf:type smodule:Connection.
+smodule:127_c3 smodule:connects up_mod:M14_module_port-proteinClone26, smodule:OperatorUnionPortParameter1Clone1.
+
+smodule:127_c4 rdf:type smodule:Connection.
+smodule:127_c4 smodule:connects up_mod:M14_module_port-annotationClone26, up_mod:M50_module_port-annotationClone4.
+
+smodule:127_c5 rdf:type smodule:Connection.
+smodule:127_c5 smodule:connects up_mod:M39_module_port-proteinClone29, smodule:OperatorUnionPortParameter0Clone22.
+
+smodule:127_c16 rdf:type smodule:Connection.
+smodule:127_c16 smodule:connects smodule:OperatorUnionPortResultClone1, smodule:OperatorUnionPortParameter1Clone22.
+
+smodule:127_c6 rdf:type smodule:Connection.
+smodule:127_c6 smodule:connects up_mod:M38_module_port-reactionClone15, smodule:OperatorServicePortParameterClone5.
+
+smodule:127_c7 rdf:type smodule:Connection.
+smodule:127_c7 smodule:connects up_mod:M39_module_port-reactionClone29, smodule:OperatorServicePortResultClone5.
+
+smodule:OperatorServicePortResultClone5 smodule:serviceInput "<https://sparql.rhea-db.org/sparql>".
+
+smodule:127_c8 rdf:type smodule:Connection.
+smodule:127_c8 smodule:connects up_mod:M38_module1_port-compoundClone15, up_mod:M75_module_port-compoundClone14.
+
+smodule:127_c9 rdf:type smodule:Connection.
+smodule:127_c9 smodule:connects up_mod:M17_module_port-proteinClone25, smodule:OperatorUnionPortResultClone1.
+
+smodule:127_c10 rdf:type smodule:Connection.
+smodule:127_c10 smodule:connects up_mod:M17_module_port-reviewedClone25, smodule:OperatorValuesPortResultClone155.
+
+smodule:OperatorValuesPortResultClone155 smodule:valuesEnumeration "true" .
+
+smodule:127_c11 rdf:type smodule:Connection.
+smodule:127_c11 smodule:connects up_mod:M17_module_port-proteinClone25,  up_mod:M67_module_port-entryClone38.
+
+smodule:127_c12 rdf:type smodule:Connection.
+smodule:127_c12 smodule:connects up_mod:M67_module_port-organismClone38, smodule:OperatorValuesPortResultClone154.
+
+smodule:OperatorValuesPortResultClone154 smodule:valuesEnumeration "taxon:9606" .
+
+smodule:127_c13 rdf:type smodule:Connection.
+smodule:127_c13 smodule:connects up_mod:M50_module_port-chebiClone4, up_mod:m30_module_port-chebiClone1.
+
+smodule:127_c14 rdf:type smodule:Connection.
+smodule:127_c14 smodule:connects up_mod:M75_module_port-chebiClone14, up_mod:m30_module_port-chebiClone1.
+
+smodule:127_c15 rdf:type smodule:Connection.
+smodule:127_c15 smodule:connects up_mod:m29_module_port-cofactorClone1, up_mod:m30_module_port-chebiClone1.
+
+#smodule:127_c16 rdf:type smodule:Connection.
+#smodule:127_c16 smodule:connects up_mod:M17_module_port-proteinClone25, smodule:OperatorGroupByPortParameterClone3.
