@@ -1,0 +1,30 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix up_mod: <http://uniprot_module.biographs.org/> .
+
+smodule:module_composition_112 dcterms:title "Count the number of Human Transporter Proteins".
+smodule:module_composition_112 rdfs:comment "Count the number of Human Transporter Proteins".
+smodule:module_composition_112 dcterms:subject "rhea", "transport", "enzyme".
+
+smodule:module_composition_112 rdf:type smodule:SPARQL_Module_Composition.
+smodule:module_composition_112 smodule:hasConnection smodule:112_c1, smodule:112_c2, smodule:112_c3, smodule:112_c4.
+smodule:module_composition_112 smodule:hasComponent smodule:OperatorValuesClone130, smodule:OperatorServiceClone1, up_mod:m17_moduleClone2, up_mod:M67_moduleClone32, up_mod:M39_moduleClone26.
+smodule:module_composition_112 smodule:includeFile "VALUESClone130.ttl", "SERVICEClone1.ttl", "m17Clone2.ttl", "M67Clone32.ttl", "M39Clone26.ttl".
+
+smodule:112_c1 rdf:type smodule:Connection.
+smodule:112_c1 smodule:connects up_mod:M67_module_port-entryClone32, up_mod:M39_module_port-proteinClone26.
+
+smodule:112_c2 rdf:type smodule:Connection.
+smodule:112_c2 smodule:connects up_mod:M67_module_port-organismClone32, smodule:OperatorValuesPortResultClone130.
+
+smodule:OperatorValuesPortResultClone130 smodule:valuesEnumeration "taxon:9606" .
+
+smodule:112_c3 rdf:type smodule:Connection.
+smodule:112_c3 smodule:connects up_mod:m17_module_port-reactionClone2, smodule:OperatorServicePortParameterClone1.
+
+smodule:112_c4 rdf:type smodule:Connection.
+smodule:112_c4 smodule:connects up_mod:M39_module_port-reactionClone26, smodule:OperatorServicePortResultClone1.
+
+smodule:OperatorServicePortResultClone1 smodule:serviceInput "<https://sparql.rhea-db.org/sparql>".

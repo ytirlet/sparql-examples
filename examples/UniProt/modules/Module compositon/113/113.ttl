@@ -1,0 +1,46 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix up_mod: <http://uniprot_module.biographs.org/> .
+
+smodule:module_composition_113 dcterms:title "UniProtKB/Swiss-Prot entries annotated with CC-CA/Rhea involving lipids".
+smodule:module_composition_113 rdfs:comment "UniProtKB/Swiss-Prot entries annotated with CC-CA/Rhea involving lipids".
+smodule:module_composition_113 dcterms:subject "transmembrane", "search within sequence".
+
+smodule:module_composition_113 rdf:type smodule:SPARQL_Module_Composition.
+smodule:module_composition_113 smodule:hasConnection smodule:113_c1 , smodule:113_c2, smodule:113_c3, smodule:113_c4, smodule:113_c4, smodule:113_c6, smodule:113_c7, smodule:113_c8.
+smodule:module_composition_113 smodule:hasComponent smodule:OperatorValuesClone133, smodule:OperatorValuesClone132, smodule:OperatorValuesClone131, smodule:OperatorServiceClone7, up_mod:M75_moduleClone12, up_mod:M38_moduleClone13, up_mod:m3_moduleClone3, up_mod:M39_moduleClone27, up_mod:M17_moduleClone17.
+smodule:module_composition_113 smodule:includeFile "VALUESClone133.ttl", "VALUESClone132.ttl", "VALUESClone131.ttl", "SERVICEClone7.ttl", "M75Clone12.ttl", "M38Clone13.ttl", "m3Clone3.ttl", "M39Clone27.ttl", "M17Clone17.ttl".
+
+smodule:113_c1 rdf:type smodule:Connection.
+smodule:113_c1 smodule:connects up_mod:M75_module_port-compoundClone12, up_mod:M38_module_port-compoundClone13.
+
+smodule:113_c2 rdf:type smodule:Connection.
+smodule:113_c2 smodule:connects up_mod:M39_module_port-proteinClone27, up_mod:M17_module_port-proteinClone17.
+
+smodule:113_c3 rdf:type smodule:Connection.
+smodule:113_c3 smodule:connects up_mod:M38_module_port-reactionClone13, smodule:OperatorServicePortParameterClone7.
+
+smodule:113_c4 rdf:type smodule:Connection.
+smodule:113_c4 smodule:connects up_mod:M39_module_port-reactionClone27, smodule:OperatorServicePortResultClone7.
+
+smodule:OperatorServicePortResultClone7 smodule:serviceInput "<https://sparql.rhea-db.org/sparql>".
+
+smodule:113_c5 rdf:type smodule:Connection.
+smodule:113_c5 smodule:connects up_mod:M75_module_port-chebiAncestorClone12, smodule:OperatorValuesPortResultClone133.
+
+smodule:OperatorValuesPortResultClone133 smodule:valuesEnumeration "CHEBI:18059" .
+
+smodule:113_c6 rdf:type smodule:Connection.
+smodule:113_c6 smodule:connects up_mod:M17_module_port-reviewedClone17, smodule:OperatorValuesPortResultClone132.
+
+smodule:OperatorValuesPortResultClone132 smodule:valuesEnumeration "true" .
+
+smodule:113_c7 rdf:type smodule:Connection.
+smodule:113_c7 smodule:connects up_mod:M38_module_port-reactionClone13, up_mod:m3_module_port-reactionClone3.
+
+smodule:113_c8 rdf:type smodule:Connection.
+smodule:113_c8 smodule:connects up_mod:m3_module_port-statusClone3, smodule:OperatorValuesPortResultClone131.
+
+smodule:OperatorValuesPortResultClone131 smodule:valuesEnumeration "rh:Approved" .

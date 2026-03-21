@@ -1,0 +1,48 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <https://schema.org/> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix up: <http://purl.uniprot.org/core/> .
+@prefix up_mod: <http://uniprot_module.biographs.org/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+
+up_mod:M92_moduleClone1 a smodule:SPARQLModule;
+  rdfs:label "Protein cluster identity"@en;
+  rdfs:comment "Protein cluster identity"@en;
+  smodule:clonedFrom <http://uniprot_module.biographs.org/M92_module> ;
+  schema:keywords "cluster";
+  smodule:prefixes """PREFIX up: <http://purl.uniprot.org/core/>
+  PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+  PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+  """ ;
+  smodule:fragmentSPARQL """ 
+    ?proteinClone1 rdf:type up:Protein.
+    ?proteinClone1 up:seedFor ?clusterClone1 .
+    ?clusterClone1 up:identity ?identityClone1 .
+    """;
+  smodule:output up_mod:M92_module_port-proteinClone1, up_mod:M92_module_port-clusterClone1, up_mod:M92_module_port-identityClone1 .
+  
+up_mod:M92_module_port-clusterClone1
+  a smodule:ModulePortURI;
+  rdfs:domain up:Cluster ;
+  smodule:variableName "?clusterClone1" ;
+  rdfs:label "Cluster of proteins" ;
+  smodule:isSelected "false"^^xsd:boolean .
+
+up_mod:M92_module_port-proteinClone1
+  a smodule:ModulePortURI;
+  rdfs:domain up:Protein;
+  smodule:variableName "?proteinClone1" ;
+  rdfs:label "Protein" ;
+  smodule:isSelected "false"^^xsd:boolean .
+
+up_mod:M92_module_port-identityClone1
+  a smodule:ModulePortDatatype;
+  smodule:variableName "?identityClone1" ;
+  rdfs:domain [
+		a owl:Class ;
+		smodule:option ("0.5" "0.9" "1.0")
+		]; 
+  rdfs:label "Cluster identity" ;
+  smodule:isSelected "false"^^xsd:boolean .

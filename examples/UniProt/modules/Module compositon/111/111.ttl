@@ -1,0 +1,26 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix up_mod: <http://uniprot_module.biographs.org/> .
+@prefix base_mod: <http://base_module.biographs.org/> .
+
+smodule:module_composition_111 dcterms:title "Given an UniProt chain identifier, generate the matching sequence as a FASTA".
+smodule:module_composition_111 rdfs:comment "Given an UniProt chain identifier, generate the matching sequence as a FASTA".
+smodule:module_composition_111 dcterms:subject "chain", "sequence", "fasta".
+
+smodule:module_composition_111 rdf:type smodule:SPARQL_Module_Composition.
+smodule:module_composition_111 smodule:hasConnection smodule:111_c1, smodule:111_c2, smodule:111_c3 .
+smodule:module_composition_111 smodule:hasComponent smodule:OperatorValuesClone129, up_mod:M76_moduleClone8, base_mod:Mb1_moduleClone5, up_mod:M40_moduleClone8.
+smodule:module_composition_111 smodule:includeFile "VALUESClone129.ttl", "M76Clone8.ttl", "Mb1Clone5.ttl", "M40Clone8.ttl".
+
+smodule:111_c1 rdf:type smodule:Connection.
+smodule:111_c1 smodule:connects up_mod:M40_module_port-rangeClone8, up_mod:M76_module_port-entryClone8.
+
+smodule:111_c2 rdf:type smodule:Connection.
+smodule:111_c2 smodule:connects up_mod:M76_module_port-referenceClone8, base_mod:Mb1_module_port-subjectClone5.
+
+smodule:111_c3 rdf:type smodule:Connection.
+smodule:111_c3 smodule:connects up_mod:M40_module_port-annotationClone8, smodule:OperatorValuesPortResultClone129.
+
+smodule:OperatorValuesPortResultClone129 smodule:valuesEnumeration "<http://purl.uniprot.org/annotation/PRO_0000268053>" .

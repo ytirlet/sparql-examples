@@ -1,0 +1,48 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix up_mod: <http://uniprot_module.biographs.org/> .
+
+smodule:module_composition_114 dcterms:title "Number of EC numbers described at protein, domain and component levels".
+smodule:module_composition_114 rdfs:comment "Number of EC numbers described at protein, domain and component levels".
+smodule:module_composition_114 dcterms:subject "".
+
+smodule:module_composition_114 rdf:type smodule:SPARQL_Module_Composition.
+smodule:module_composition_114 smodule:hasConnection smodule:114_c1 , smodule:114_c2, smodule:114_c3, smodule:114_c4, smodule:114_c5, smodule:114_c6, smodule:114_c7.#, smodule:114_c8, smodule:114_c9, smodule:114_c10.
+smodule:module_composition_114 smodule:hasComponent smodule:OperatorValuesClone134, smodule:OperatorOptionalClone4, smodule:OperatorOptionalClone5, smodule:OperatorOptionalClone5, up_mod:M90_moduleClone2, up_mod:M89_moduleClone2, up_mod:M88_moduleClone91, up_mod:M17_moduleClone18. #smodule:OperatorFilterClone5, 
+smodule:module_composition_114 smodule:includeFile "VALUESClone134.ttl", "OPTIONALClone4.ttl", "OPTIONALClone5.ttl", "OPTIONALClone6.ttl", "M90Clone2.ttl", "M89Clone2.ttl", "M88Clone9.ttl", "M17Clone18.ttl". #"FILTERClone5.ttl", 
+
+smodule:114_c1 rdf:type smodule:Connection.
+smodule:114_c1 smodule:connects up_mod:M17_module_port-proteinClone18, smodule:OperatorOptionalPortResultClone4.
+
+smodule:114_c2 rdf:type smodule:Connection.
+smodule:114_c2 smodule:connects up_mod:M17_module_port-proteinClone18, smodule:OperatorOptionalPortResultClone5.
+
+smodule:114_c3 rdf:type smodule:Connection.
+smodule:114_c3 smodule:connects up_mod:M17_module_port-proteinClone18, smodule:OperatorOptionalPortResultClone6.
+
+smodule:114_c4 rdf:type smodule:Connection.
+smodule:114_c4 smodule:connects up_mod:M17_module_port-reviewedClone18, smodule:OperatorValuesPortResultClone134.
+
+smodule:OperatorValuesPortResultClone134 smodule:valuesEnumeration "true" .
+
+smodule:114_c5 rdf:type smodule:Connection.
+smodule:114_c5 smodule:connects up_mod:M88_module_port-proteinClone9, smodule:OperatorOptionalPortParameter0Clone4.
+
+smodule:114_c6 rdf:type smodule:Connection.
+smodule:114_c6 smodule:connects up_mod:M89_module_port-proteinClone2, smodule:OperatorOptionalPortParameter0Clone5.
+
+smodule:114_c7 rdf:type smodule:Connection.
+smodule:114_c7 smodule:connects up_mod:M90_module_port-proteinClone2, smodule:OperatorOptionalPortParameter0Clone6.
+
+#smodule:114_c8 rdf:type smodule:Connection.
+#smodule:114_c8 smodule:connects up_mod:M88_module_port-ecClassClone9, smodule:OperatorFilterPortParameter1Clone5.
+
+#smodule:114_c9 rdf:type smodule:Connection.
+#smodule:114_c9 smodule:connects up_mod:M89_module_port-ecClassClone2, smodule:OperatorFilterPortParameter2Clone5.
+
+#smodule:114_c10 rdf:type smodule:Connection.
+#smodule:114_c10 smodule:connects up_mod:M90_module_port-ecClassClone2, smodule:OperatorFilterPortParameter3Clone5.
+
+#smodule:OperatorFilterPortResultClone5 smodule:filterInput "bound(?parameter1) | bound(?parameter2) | bound(?parameter3)" .

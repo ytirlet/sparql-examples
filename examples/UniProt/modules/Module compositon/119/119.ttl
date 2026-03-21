@@ -1,0 +1,34 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix up_mod: <http://uniprot_module.biographs.org/> .
+
+smodule:module_composition_119 dcterms:title "Get the list of UniProtKB entries for the chromosome of proteome UP000000625".
+smodule:module_composition_119 rdfs:comment "Get the list of UniProtKB entries for the chromosome of proteome UP000000625".
+smodule:module_composition_119 dcterms:subject "proteome", "chromosome".
+
+smodule:module_composition_119 rdf:type smodule:SPARQL_Module_Composition.
+smodule:module_composition_119 smodule:hasConnection smodule:119_c1 , smodule:119_c2, smodule:119_c3, smodule:119_c4, smodule:119_c5, smodule:119_c6.
+smodule:module_composition_119 smodule:hasComponent smodule:OperatorValuesClone140, smodule:OperatorUnionClone3, smodule:OperatorUnionClone21, up_mod:M90_moduleClone4, up_mod:M89_moduleClone4, up_mod:M88_moduleClone11, up_mod:M92_moduleClone1 .
+smodule:module_composition_119 smodule:includeFile "VALUESClone140.ttl", "UNIONClone3.ttl", "UNIONClone21.ttl", "M90Clone4.ttl", "M89Clone4.ttl", "M88Clone11.ttl", "M92Clone1.ttl".
+
+smodule:119_c1 rdf:type smodule:Connection.
+smodule:119_c1 smodule:connects up_mod:M92_module_port-proteinClone1, smodule:OperatorUnionPortResultClone21.
+
+smodule:119_c2 rdf:type smodule:Connection.
+smodule:119_c2 smodule:connects up_mod:M92_module_port-identityClone1, smodule:OperatorValuesPortResultClone140.
+
+smodule:OperatorValuesPortResultClone140 smodule:valuesEnumeration "'0.5'" .
+
+smodule:119_c3 rdf:type smodule:Connection.
+smodule:119_c3 smodule:connects up_mod:M88_module_port-proteinClone11, smodule:OperatorUnionPortParameter0Clone3.
+
+smodule:119_c4 rdf:type smodule:Connection.
+smodule:119_c4 smodule:connects up_mod:M89_module_port-proteinClone4, smodule:OperatorUnionPortParameter1Clone3.
+
+smodule:119_c5 rdf:type smodule:Connection.
+smodule:119_c5 smodule:connects up_mod:M90_module_port-proteinClone4, smodule:OperatorUnionPortParameter0Clone21.
+
+smodule:119_c6 rdf:type smodule:Connection.
+smodule:119_c6 smodule:connects smodule:OperatorUnionPortResultClone3, smodule:OperatorUnionPortParameter1Clone21.

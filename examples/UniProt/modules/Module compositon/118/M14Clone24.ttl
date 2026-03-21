@@ -1,0 +1,50 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix up: <http://purl.uniprot.org/core/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://uniprot_module.biographs.org/M14_moduleClone24> a smodule:SPARQLModule ;
+    rdfs:label "Protein annotation" ;
+    smodule:clonedFrom <http://uniprot_module.biographs.org/M14_module> ;
+    smodule:fragmentSPARQL """ 
+    ?proteinClone24 rdf:type up:Protein.
+    ?proteinClone24 up:annotation ?annotationClone24.
+    ?annotationClone24 rdf:type ?annotationTypeClone24.
+    ?annotationClone24 rdfs:comment ?commentClone24.
+    """ ;
+    smodule:output <http://uniprot_module.biographs.org/M14_module_port-annotationClone24>,
+        <http://uniprot_module.biographs.org/M14_module_port-annotationTypeClone24>,
+        <http://uniprot_module.biographs.org/M14_module_port-commentClone24>,
+        <http://uniprot_module.biographs.org/M14_module_port-proteinClone24> ;
+    smodule:prefixes """PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX up: <http://purl.uniprot.org/core/>
+
+""" .
+
+<http://uniprot_module.biographs.org/M14_module_port-annotationClone24> a smodule:ModulePortURI ;
+    rdfs:label "Annotation" ;
+    rdfs:domain up:Annotation ;
+    smodule:isSelected false ;
+    smodule:variableName "?annotationClone24" .
+
+<http://uniprot_module.biographs.org/M14_module_port-annotationTypeClone24> a smodule:ModulePortURI ;
+    rdfs:label "Type of annotation" ;
+    rdfs:domain up:Annotation ;
+    smodule:isSelected false ;
+    smodule:variableName "?annotationTypeClone24" .
+
+<http://uniprot_module.biographs.org/M14_module_port-commentClone24> a smodule:ModulePortDatatype ;
+    rdfs:label "Annotation comment" ;
+    rdfs:domain xsd:string ;
+    smodule:isSelected false ;
+    smodule:variableName "?commentClone24" .
+
+<http://uniprot_module.biographs.org/M14_module_port-proteinClone24> a smodule:ModulePortURI ;
+    rdfs:label "Protein" ;
+    rdfs:domain up:Protein ;
+    smodule:isSelected false ;
+    smodule:variableName "?proteinClone24" .
+

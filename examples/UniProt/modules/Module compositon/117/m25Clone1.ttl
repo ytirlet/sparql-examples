@@ -1,0 +1,48 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <https://schema.org/> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix up: <http://purl.uniprot.org/core/> .
+@prefix up_mod: <http://uniprot_module.biographs.org/> .
+
+up_mod:m25_moduleClone1 a smodule:SPARQLModule;
+  rdfs:label "englishLabelStr structured name"@en;
+  rdfs:comment "englishLabelStr structured name"@en;
+  smodule:clonedFrom <http://uniprot_module.biographs.org/M73_module> ;
+  schema:keywords "structured name";
+  smodule:prefixes """PREFIX up: <http://purl.uniprot.org/core/>
+  PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+  PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+  """ ;
+  smodule:fragmentSPARQL """ 
+  SERVICE <https://sparql.omabrowser.org/sparql/> {
+    SELECT ?orthologous_proteinClone1 ?proteinClone1 ?geneClone1 WHERE {
+    ?protein_OMAClone1 a orth:Protein .
+    ?orthologous_proteinClone1 a orth:Protein .
+    ?clusterClone1 a orth:OrthologsCluster .
+    ?clusterClone1 orth:hasHomologousMember ?node1Clone1 .
+    ?clusterClone1 orth:hasHomologousMember ?node2Clone1 .
+    ?node2Clone1 orth:hasHomologousMember* ?protein_OMAClone1 .
+    ?node1Clone1 orth:hasHomologousMember* ?orthologous_proteinClone1 .
+    ?orthologous_proteinClone1 orth:organism/obo:RO_0002162 taxon:10116 . # rattus norvegicus
+    ?orthologous_proteinClone1 sio:SIO_010079 ?geneClone1 .
+    ?protein_OMAClone1 lscr:xrefUniprot ?proteinClone1 .
+    FILTER(?node1Clone1 != ?node2Clone1)
+		}
+	}
+  SERVICE <https://www.bgee.org/sparql/> {
+    ?geneClone1 genex:isExpressedIn ?aClone1 .
+    ?aClone1 rdfs:label "brain" .
+    ?geneClone1 orth:organism ?sClone1 . 
+    ?sClone1 obo:RO_0002162 taxon:10116.
+	}
+    """;
+  smodule:output up_mod:m25_module_port-proteinClone1.
+  
+up_mod:m25_module_port-proteinClone1
+  a smodule:ModulePortURI ;
+  smodule:variableName "?proteinClone1";
+  rdfs:domain up:Protein ;
+  rdfs:label "protein" ;
+  smodule:isSelected "true"^^xsd:boolean.

@@ -1,0 +1,34 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix up_mod: <http://uniprot_module.biographs.org/> .
+@prefix base_mod: <http://base_module.biographs.org/> .
+
+smodule:module_composition_120 dcterms:title "For a ncbi taxon identifier as a digit find it's reference proteome(s) if they exist".
+smodule:module_composition_120 rdfs:comment "For a ncbi taxon identifier as a digit find it's reference proteome(s) if they exist".
+smodule:module_composition_120 dcterms:subject "".
+
+smodule:module_composition_120 rdf:type smodule:SPARQL_Module_Composition.
+smodule:module_composition_120 smodule:hasConnection smodule:120_c1 , smodule:120_c2, smodule:120_c3, smodule:120_c4, smodule:120_c5.
+smodule:module_composition_120 smodule:hasComponent smodule:OperatorValuesClone142, smodule:OperatorValuesClone141, smodule:OperatorOptionalClone12, base_mod:Mb4_moduleClone4, up_mod:M74_moduleClone8, up_mod:M67_moduleClone35.
+smodule:module_composition_120 smodule:includeFile "VALUESClone142.ttl", "VALUESClone141.ttl", "OPTIONALClone12.ttl", "Mb4Clone4.ttl", "M74Clone8.ttl", "M67Clone35.ttl".
+
+smodule:120_c1 rdf:type smodule:Connection.
+smodule:120_c1 smodule:connects up_mod:M67_module_port-entryClone35, base_mod:Mb4_module_port-subjectClone4.
+
+smodule:120_c2 rdf:type smodule:Connection.
+smodule:120_c2 smodule:connects base_mod:Mb4_module_port-typeClone4, smodule:OperatorValuesPortResultClone142.
+
+smodule:OperatorValuesPortResultClone142 smodule:valuesEnumeration "up:Reference_Proteome" .
+
+smodule:120_c3 rdf:type smodule:Connection.
+smodule:120_c3 smodule:connects up_mod:M67_module_port-organismClone35, smodule:OperatorOptionalPortParameter0Clone12.
+
+smodule:120_c4 rdf:type smodule:Connection.
+smodule:120_c4 smodule:connects up_mod:M74_module_port-taxonClone8, smodule:OperatorOptionalPortResultClone12.
+
+smodule:120_c5 rdf:type smodule:Connection.
+smodule:120_c5 smodule:connects up_mod:M74_module_port-taxonClone8, smodule:OperatorValuesPortResultClone141.
+
+smodule:OperatorValuesPortResultClone141 smodule:valuesEnumeration "taxon:623 taxon:633" .

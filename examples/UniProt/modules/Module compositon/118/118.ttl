@@ -1,0 +1,38 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix up_mod: <http://uniprot_module.biographs.org/> .
+
+smodule:module_composition_118 dcterms:title "What are the Homo sapiens genes associated with cancer and their orthologs expressed in the Rattus norvegicus brain?".
+smodule:module_composition_118 rdfs:comment "What are the Homo sapiens genes associated with cancer and their orthologs expressed in the Rattus norvegicus brain?".
+smodule:module_composition_118 dcterms:subject "".
+
+smodule:module_composition_118 rdf:type smodule:SPARQL_Module_Composition.
+smodule:module_composition_118 smodule:hasConnection smodule:118_c1 , smodule:118_c2, smodule:118_c3, smodule:118_c4, smodule:118_c6. #, smodule:118_c5.
+smodule:module_composition_118 smodule:hasComponent smodule:OperatorValuesClone139, smodule:OperatorValuesClone138, up_mod:M74_moduleClone7, up_mod:M67_moduleClone34, up_mod:M14_moduleClone24, up_mod:m26_moduleClone1. #smodule:OperatorFilterClone3, 
+smodule:module_composition_118 smodule:includeFile "VALUESClone139.ttl", "VALUESClone138.ttl", "M74Clone7.ttl", "M67Clone34.ttl", "M14Clone24.ttl", "m26Clone1.ttl".# "FILTERClone3.ttl",
+
+smodule:118_c1 rdf:type smodule:Connection.
+smodule:118_c1 smodule:connects up_mod:M14_module_port-proteinClone24, up_mod:M67_module_port-entryClone34.
+
+smodule:118_c2 rdf:type smodule:Connection.
+smodule:118_c2 smodule:connects up_mod:M67_module_port-organismClone34, up_mod:M74_module_port-taxonClone7.
+
+smodule:118_c3 rdf:type smodule:Connection.
+smodule:118_c3 smodule:connects up_mod:M14_module_port-annotationClone24, smodule:OperatorValuesPortResultClone139.
+
+smodule:OperatorValuesPortResultClone139 smodule:valuesEnumeration "up:Disease_Annotation" .
+
+smodule:118_c4 rdf:type smodule:Connection.
+smodule:118_c4 smodule:connects up_mod:M74_module_port-nameClone7, smodule:OperatorValuesPortResultClone138.
+
+smodule:OperatorValuesPortResultClone138 smodule:valuesEnumeration "'Homo sapiens'" .
+
+#smodule:118_c5 rdf:type smodule:Connection.
+#smodule:118_c5 smodule:connects up_mod:M14_module_port-commentClone24, smodule:OperatorFilterPortParameterClone3.
+
+#smodule:OperatorFilterPortResultClone3 smodule:filterInput "CONTAINS (?parameter, 'cancer')" .
+
+smodule:118_c6 rdf:type smodule:Connection.
+smodule:118_c6 smodule:connects up_mod:M14_module_port-proteinClone24, up_mod:m26_module_port-protein1Clone1.

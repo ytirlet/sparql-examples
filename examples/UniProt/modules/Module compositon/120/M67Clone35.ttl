@@ -1,0 +1,41 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix up: <http://purl.uniprot.org/core/> .
+@prefix up_mod: <http://uniprot_module.biographs.org/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+
+<http://uniprot_module.biographs.org/M67_moduleClone35> a smodule:SPARQLModule ;
+    rdfs:label "Entry to taxon" ;
+    smodule:clonedFrom <http://uniprot_module.biographs.org/M67_module> ;
+    smodule:fragmentSPARQL """
+    ?entryClone35 up:organism ?organismClone35.
+    ?organismClone35 rdfs:subClassOf? ?taxonClone35. # Hierarchy of taxon is materialized
+    """ ;
+    smodule:output up_mod:M67_module_port-taxonClone35, up_mod:M67_module_port-entryClone35, up_mod:M67_module_port-organismClone35 ;
+    smodule:prefixes """PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX up: <http://purl.uniprot.org/core/>
+""" .
+
+up_mod:M67_module_port-taxonClone35 a smodule:ModulePortTyped ;
+    rdfs:label "taxon" ;
+    rdfs:domain xsd:any ;
+    smodule:isSelected false ;
+    smodule:variableName "?taxonClone35" .
+
+up_mod:M67_module_port-organismClone35 a smodule:ModulePortTyped ;
+    rdfs:label "organism" ;
+    rdfs:domain xsd:any ;
+    smodule:isSelected true ;
+    smodule:variableName "?organismClone35" .
+
+up_mod:M67_module_port-entryClone35 a smodule:ModulePortTyped ;
+    rdfs:label "entry" ;
+    rdfs:domain xsd:any ;
+    smodule:isSelected true ;
+    smodule:variableName "?entryClone35" .
+

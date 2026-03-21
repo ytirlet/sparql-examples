@@ -1,0 +1,35 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix up_mod: <http://uniprot_module.biographs.org/> .
+
+smodule:module_composition_117 dcterms:title "Which are the proteins associated with glioblastoma and the orthologs expressed in the rat brain?".
+smodule:module_composition_117 rdfs:comment "Which are the proteins associated with glioblastoma and the orthologs expressed in the rat brain?".
+smodule:module_composition_117 dcterms:subject "".
+
+smodule:module_composition_117 rdf:type smodule:SPARQL_Module_Composition.
+smodule:module_composition_117 smodule:hasConnection smodule:117_c1 , smodule:117_c2, smodule:117_c3, smodule:117_c5.#, smodule:117_c4.
+smodule:module_composition_117 smodule:hasComponent smodule:OperatorValuesClone137, smodule:OperatorValuesClone136, up_mod:M67_moduleClone33, up_mod:M14_moduleClone23, up_mod:m25_moduleClone1. #smodule:OperatorFilterClone4, 
+smodule:module_composition_117 smodule:includeFile "VALUESClone137.ttl", "VALUESClone136.ttl", "M67Clone33.ttl", "M14Clone23.ttl", "m25Clone1.ttl". #"FILTERClone4.ttl", 
+
+smodule:117_c1 rdf:type smodule:Connection.
+smodule:117_c1 smodule:connects up_mod:M14_module_port-proteinClone23, up_mod:M67_module_port-entryClone33.
+
+smodule:117_c2 rdf:type smodule:Connection.
+smodule:117_c2 smodule:connects up_mod:M14_module_port-annotationClone23, smodule:OperatorValuesPortResultClone137.
+
+smodule:OperatorValuesPortResultClone137 smodule:valuesEnumeration "up:Disease_Annotation" .
+
+smodule:117_c3 rdf:type smodule:Connection.
+smodule:117_c3 smodule:connects up_mod:M67_module_port-organismClone33, smodule:OperatorValuesPortResultClone136.
+
+smodule:OperatorValuesPortResultClone136 smodule:valuesEnumeration "taxon:9606" .
+
+#smodule:117_c4 rdf:type smodule:Connection.
+#smodule:117_c4 smodule:connects up_mod:M14_module_port-commentClone23, smodule:OperatorFilterPortParameterClone4.
+
+#smodule:OperatorFilterPortResultClone4 smodule:filterInput "CONTAINS (?parameter, 'glioblastoma')" .
+
+smodule:117_c5 rdf:type smodule:Connection.
+smodule:117_c5 smodule:connects up_mod:M14_module_port-proteinClone23, up_mod:m25_module_port-proteinClone1.

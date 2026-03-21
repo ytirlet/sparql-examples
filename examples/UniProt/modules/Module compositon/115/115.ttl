@@ -1,0 +1,37 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix up_mod: <http://uniprot_module.biographs.org/> .
+
+smodule:module_composition_115 dcterms:title "Number of complete EC numbers described at protein level, at domain levels, at component level".
+smodule:module_composition_115 rdfs:comment "Number of complete EC numbers described at protein level, at domain levels, at component level".
+smodule:module_composition_115 dcterms:subject "".
+
+smodule:module_composition_115 rdf:type smodule:SPARQL_Module_Composition.
+smodule:module_composition_115 smodule:hasConnection smodule:115_c1 , smodule:115_c2, smodule:115_c3, smodule:115_c4, smodule:115_c5, smodule:115_c6, smodule:115_c7.
+smodule:module_composition_115 smodule:hasComponent smodule:OperatorValuesClone135, smodule:OperatorOptionalClone1, smodule:OperatorOptionalClone2, smodule:OperatorOptionalClone3, up_mod:M90_moduleClone3, up_mod:M89_moduleClone3, up_mod:M88_moduleClone10, up_mod:M17_moduleClone19.
+smodule:module_composition_115 smodule:includeFile "VALUESClone135.ttl", "OPTIONALClone1.ttl", "OPTIONALClone2.ttl", "OPTIONALClone3.ttl", "M90Clone3.ttl", "M89Clone3.ttl", "M88Clone10.ttl", "M17Clone19.ttl".
+
+smodule:115_c1 rdf:type smodule:Connection.
+smodule:115_c1 smodule:connects up_mod:M17_module_port-proteinClone19, smodule:OperatorOptionalPortResultClone1.
+
+smodule:115_c2 rdf:type smodule:Connection.
+smodule:115_c2 smodule:connects up_mod:M17_module_port-proteinClone19, smodule:OperatorOptionalPortResultClone2.
+
+smodule:115_c3 rdf:type smodule:Connection.
+smodule:115_c3 smodule:connects up_mod:M17_module_port-proteinClone19, smodule:OperatorOptionalPortResultClone3.
+
+smodule:115_c4 rdf:type smodule:Connection.
+smodule:115_c4 smodule:connects up_mod:M17_module_port-reviewedClone19, smodule:OperatorValuesPortResultClone135.
+
+smodule:OperatorValuesPortResultClone135 smodule:valuesEnumeration "true" .
+
+smodule:115_c5 rdf:type smodule:Connection.
+smodule:115_c5 smodule:connects up_mod:M88_module_port-proteinClone10, smodule:OperatorOptionalPortParameter0Clone1.
+
+smodule:115_c6 rdf:type smodule:Connection.
+smodule:115_c6 smodule:connects up_mod:M89_module_port-proteinClone3, smodule:OperatorOptionalPortParameter0Clone2.
+
+smodule:115_c7 rdf:type smodule:Connection.
+smodule:115_c7 smodule:connects up_mod:M90_module_port-proteinClone3, smodule:OperatorOptionalPortParameter0Clone3.
