@@ -1,0 +1,33 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix up_mod: <http://uniprot_module.biographs.org/> .
+
+smodule:module_composition_032 dcterms:title "Find UniProtKB entries with more than 1 Topological domain annotation".
+smodule:module_composition_032 rdfs:comment "Find UniProtKB entries with more than 1 Topological domain annotation".
+smodule:module_composition_032 dcterms:subject "transmembrane", "topology", "count".
+
+smodule:module_composition_032 rdf:type smodule:SPARQL_Module_Composition.
+smodule:module_composition_032 smodule:hasConnection smodule:032_c1. #, smodule:032_c2, smodule:032_c3, smodule:032_c4, smodule:032_c5 .
+smodule:module_composition_032 smodule:hasComponent smodule:OperatorValuesClone39, up_mod:M14_moduleClone6. # smodule:OperatorGroupByClone14, smodule:OperatorCountClone9, smodule:OperatorHavingClone6,
+smodule:module_composition_032 smodule:includeFile "VALUESClone39.ttl", "M14Clone6.ttl". # "GROUPBYClone14.ttl", "COUNTClone9.ttl", "HAVINGClone6.ttl",
+
+smodule:032_c1 rdf:type smodule:Connection.
+smodule:032_c1 smodule:connects up_mod:M14_module_port-annotationTypeClone6, smodule:OperatorValuesPortResultClone39.
+
+smodule:OperatorValuesPortResultClone39 smodule:valuesEnumeration "up:Topological_Domain_Annotation" .
+
+#smodule:032_c2 rdf:type smodule:Connection.
+#smodule:032_c2 smodule:connects up_mod:M14_module_port-proteinClone6, smodule:OperatorGroupByPortParameterClone14.
+
+#smodule:032_c3 rdf:type smodule:Connection.
+#smodule:032_c3 smodule:connects smodule:OperatorCountPortParameter1Clone9, up_mod:M14_module_port-annotationClone6 .
+
+#smodule:032_c4 rdf:type smodule:Connection.
+#smodule:032_c4 smodule:connects smodule:OperatorCountPortParameter2Clone9, smodule:OperatorGroupByPortResultClone14 .
+
+#smodule:032_c5 rdf:type smodule:Connection.
+#smodule:032_c5 smodule:connects smodule:OperatorHavingPortParameterClone6, smodule:OperatorCountPortResultClone9 .
+
+#smodule:OperatorHavingPortResultClone6 smodule:havingInput "?parameter > 1" .

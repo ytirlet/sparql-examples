@@ -1,0 +1,27 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix up_mod: <http://uniprot_module.biographs.org/> .
+
+smodule:module_composition_025 dcterms:title "Find UniProtKB entry which has a protein name 'HLA class I histocompatibility antigen, B-73 alpha chain'".
+smodule:module_composition_025 rdfs:comment "Find UniProtKB entry which has a protein name 'HLA class I histocompatibility antigen, B-73 alpha chain'".
+smodule:module_composition_025 dcterms:subject "protein name".
+
+smodule:module_composition_025 rdf:type smodule:SPARQL_Module_Composition.
+smodule:module_composition_025 smodule:hasConnection smodule:025_c1 , smodule:025_c2, smodule:025_c3.
+smodule:module_composition_025 smodule:hasComponent smodule:OperatorValuesClone29, smodule:OperatorValuesClone161, up_mod:M82_moduleClone1, up_mod:M80_moduleClone1.
+smodule:module_composition_025 smodule:includeFile "VALUESClone29.ttl", "VALUESClone161.ttl", "M82Clone1.ttl", "M80Clone1.ttl".
+
+smodule:025_c1 rdf:type smodule:Connection.
+smodule:025_c1 smodule:connects up_mod:M80_module_port-structuredNameClone1, up_mod:M82_module_port-structuredNameClone1.
+
+smodule:025_c2 rdf:type smodule:Connection.
+smodule:025_c2 smodule:connects up_mod:M82_module_port-namesClone1, smodule:OperatorValuesPortResultClone29.
+
+smodule:OperatorValuesPortResultClone29 smodule:valuesEnumeration "'HLA class I histocompatibility antigen, B alpha chain'" .
+
+smodule:025_c3 rdf:type smodule:Connection.
+smodule:025_c3 smodule:connects up_mod:M80_module_port-entryTypeClone1, smodule:OperatorValuesPortResultClone161.
+
+smodule:OperatorValuesPortResultClone161 smodule:valuesEnumeration "up:Protein" .

@@ -1,0 +1,29 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://uniprot_module.biographs.org/m1_moduleClone1> a smodule:SPARQLModule ;
+    rdfs:label "englishLabelStr structured name" ;
+    smodule:clonedFrom <http://uniprot_module.biographs.org/m1_module> ;
+    smodule:fragmentSPARQL """ 
+    SERVICE <https://data.allie.dbcls.jp/sparql>{
+        ?xClone1 rdfs:label "アミロイド前駆体タンパク質"@ja ;
+            rdfs:label ?englishLabelClone1 .
+        FILTER(lang(?englishLabel) = "en")
+    }
+    BIND (STR(?englishLabel) AS ?englishLabelStr)
+    """ ;
+    smodule:output <http://uniprot_module.biographs.org/m1_module_port-englishLabelStrClone1> ;
+    smodule:prefixes """PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+""" .
+
+<http://uniprot_module.biographs.org/m1_module_port-englishLabelStrClone1> a smodule:ModulePortDatatype ;
+    rdfs:label "englishLabelStr" ;
+    rdfs:domain xsd:string ;
+    smodule:isSelected true ;
+    smodule:variableName "?englishLabelStrClone1" .
+

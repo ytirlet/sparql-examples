@@ -1,0 +1,35 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix up_mod: <http://uniprot_module.biographs.org/> .
+
+smodule:module_composition_023 dcterms:title "Number of reviewed entries (UniProtKB/Swiss-Prot) that are related to kinase activity".
+smodule:module_composition_023 rdfs:comment "Number of reviewed entries (UniProtKB/Swiss-Prot) that are related to kinase activity".
+smodule:module_composition_023 dcterms:subject "entry status", "gene ontology", "count".
+
+smodule:module_composition_023 rdf:type smodule:SPARQL_Module_Composition.
+smodule:module_composition_023 smodule:hasConnection smodule:023_c1 , smodule:023_c2, smodule:023_c3, smodule:023_c4, smodule:023_c5.
+smodule:module_composition_023 smodule:hasComponent smodule:OperatorValuesClone28, smodule:OperatorValuesClone27, smodule:OperatorValuesClone26, up_mod:M17_moduleClone4, up_mod:M67_moduleClone7, up_mod:M66_moduleClone1.
+smodule:module_composition_023 smodule:includeFile "VALUESClone28.ttl", "VALUESClone27.ttl", "VALUESClone26.ttl", "M67Clone7.ttl", "M66Clone1.ttl", "M17Clone4.ttl".
+
+smodule:023_c1 rdf:type smodule:Connection.
+smodule:023_c1 smodule:connects up_mod:M17_module_port-proteinClone4, up_mod:M67_module_port-entryClone7.
+
+smodule:023_c2 rdf:type smodule:Connection.
+smodule:023_c2 smodule:connects up_mod:M17_module_port-proteinClone4, up_mod:M66_module_port-proteinClone1.
+
+smodule:023_c3 rdf:type smodule:Connection.
+smodule:023_c3 smodule:connects up_mod:M67_module_port-organismClone7, smodule:OperatorValuesPortResultClone28.
+
+smodule:OperatorValuesPortResultClone28 smodule:valuesEnumeration "taxon:9606" .
+
+smodule:023_c4 rdf:type smodule:Connection.
+smodule:023_c4 smodule:connects up_mod:M66_module_port-goClone1, smodule:OperatorValuesPortResultClone27.
+
+smodule:OperatorValuesPortResultClone27 smodule:valuesEnumeration "GO:0016301" .
+
+smodule:023_c5 rdf:type smodule:Connection.
+smodule:023_c5 smodule:connects up_mod:M17_module_port-reviewedClone4, smodule:OperatorValuesPortResultClone26.
+
+smodule:OperatorValuesPortResultClone26 smodule:valuesEnumeration "true" .

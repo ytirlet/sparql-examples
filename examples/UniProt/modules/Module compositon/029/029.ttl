@@ -1,0 +1,34 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix up_mod: <http://uniprot_module.biographs.org/> .
+
+smodule:module_composition_029 dcterms:title "Use ALLIE a service for Abbreviation / Long Form in Japanese and English to search in UniProt using Japanese.".
+smodule:module_composition_029 rdfs:comment "Use ALLIE a service for Abbreviation / Long Form in Japanese and English to search in UniProt using Japanese.".
+smodule:module_composition_029 dcterms:subject "language".
+
+smodule:module_composition_029 rdf:type smodule:SPARQL_Module_Composition.
+smodule:module_composition_029 smodule:hasConnection smodule:029_c1 , smodule:029_c2, smodule:029_c3, smodule:029_c4, smodule:029_c5, smodule:029_c6.
+smodule:module_composition_029 smodule:hasComponent smodule:OperatorValuesClone37, smodule:OperatorUnionClone13, up_mod:m1_moduleClone1, up_mod:M82_moduleClone4, up_mod:M81_moduleClone3, up_mod:M80_moduleClone2, up_mod:M80_moduleClone3.
+smodule:module_composition_029 smodule:includeFile "VALUESClone37.ttl", "UNIONClone13.ttl", "m1Clone1.ttl", "M82Clone4.ttl", "M81Clone3.ttl", "M80Clone2.ttl", "M80Clone3.ttl".
+
+smodule:029_c1 rdf:type smodule:Connection.
+smodule:029_c1 smodule:connects up_mod:M80_module_port-entryTypeClone2, smodule:OperatorValuesPortResultClone37.
+
+smodule:OperatorValuesPortResultClone37 smodule:valuesEnumeration "up:Protein" .
+
+smodule:029_c2 rdf:type smodule:Connection.
+smodule:029_c2 smodule:connects up_mod:M80_module_port-structuredNameClone2, smodule:OperatorUnionPortParameter0Clone13.
+
+smodule:029_c3 rdf:type smodule:Connection.
+smodule:029_c3 smodule:connects up_mod:M81_module_port-partClone3, up_mod:M80_module_port-entryClone3.
+
+smodule:029_c4 rdf:type smodule:Connection.
+smodule:029_c4 smodule:connects up_mod:M80_module_port-structuredNameClone3, smodule:OperatorUnionPortParameter1Clone13.
+
+smodule:029_c5 rdf:type smodule:Connection.
+smodule:029_c5 smodule:connects smodule:OperatorUnionPortResultClone13, up_mod:M82_module_port-structuredNameClone4.
+
+smodule:029_c6 rdf:type smodule:Connection.
+smodule:029_c6 smodule:connects up_mod:M82_module_port-namesClone4, up_mod:m1_module_port-englishLabelStrClone1.

@@ -1,0 +1,27 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix up_mod: <http://uniprot_module.biographs.org/> .
+
+smodule:module_composition_028 dcterms:title "Get the list of UniProtKB entries for the chromosome of proteome UP000000625".
+smodule:module_composition_028 rdfs:comment "Get the list of UniProtKB entries for the chromosome of proteome UP000000625".
+smodule:module_composition_028 dcterms:subject "proteome", "chromosome".
+
+smodule:module_composition_028 rdf:type smodule:SPARQL_Module_Composition.
+smodule:module_composition_028 smodule:hasConnection smodule:028_c1 , smodule:028_c2, smodule:028_c3.
+smodule:module_composition_028 smodule:hasComponent smodule:OperatorValuesClone36, smodule:OperatorValuesClone35, up_mod:M77_moduleClone1, up_mod:M17_moduleClone5.
+smodule:module_composition_028 smodule:includeFile "VALUESClone35.ttl", "VALUESClone36.ttl", "M77Clone1.ttl", "M17Clone5.ttl".
+
+smodule:028_c1 rdf:type smodule:Connection.
+smodule:028_c1 smodule:connects up_mod:M17_module_port-proteinClone5, up_mod:M77_module_port-proteinClone1.
+
+smodule:028_c2 rdf:type smodule:Connection.
+smodule:028_c2 smodule:connects up_mod:M77_module_port-proteomeClone1, smodule:OperatorValuesPortResultClone36.
+
+smodule:OperatorValuesPortResultClone36 smodule:valuesEnumeration "<http://purl.uniprot.org/proteomes/UP000000625#Chromosome>" .
+
+smodule:028_c3 rdf:type smodule:Connection.
+smodule:028_c3 smodule:connects up_mod:M17_module_port-reviewedClone5, smodule:OperatorValuesPortResultClone35.
+
+smodule:OperatorValuesPortResultClone35 smodule:valuesEnumeration "true" .

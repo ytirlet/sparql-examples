@@ -1,0 +1,47 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <https://schema.org/> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix up: <http://purl.uniprot.org/core/> .
+@prefix up_mod: <http://uniprot_module.biographs.org/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+
+up_mod:M80_moduleClone2 a smodule:SPARQLModule;
+  rdfs:label "Entry structured name"@en;
+  rdfs:comment "Entry structured name"@en;
+  smodule:clonedFrom <http://uniprot_module.biographs.org/M80_module> ;
+  schema:keywords "structured name";
+  smodule:prefixes """PREFIX up: <http://purl.uniprot.org/core/>
+  PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+  PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+  """ ;
+  smodule:fragmentSPARQL """ 
+    ?entryClone2 rdf:type ?entryTypeClone2.
+    ?entryClone2 (up:recommendedName|up:alternativeName) ?structuredNameClone2.
+    """;
+  smodule:output up_mod:M80_module_port-entryClone2, up_mod:M80_module_port-structuredNameClone2, up_mod:M80_module_port-entryTypeClone2.
+  
+up_mod:M80_module_port-structuredNameClone2
+  a smodule:ModulePortURI;
+  rdfs:domain up:StructuredName ;
+  smodule:variableName "?structuredNameClone2" ;
+  rdfs:label "Structured Name" ;
+  smodule:isSelected "false"^^xsd:boolean .
+  
+up_mod:M80_module_port-entryTypeClone2
+  a smodule:ModulePortURI;
+  rdfs:domain [owl:unionOf (up:Protein up:Part)];
+  smodule:variableName "?entryTypeClone2" ;
+  rdfs:label "Entry type" ;
+  smodule:isSelected "false"^^xsd:boolean .
+
+up_mod:M80_module_port-entryClone2
+  a smodule:ModulePortURI;
+  rdfs:domain [
+		a owl:Class ;
+		smodule:option (up:Protein up:Part)
+		]; 
+  smodule:variableName "?entryClone2" ;
+  rdfs:label "Entry" ;
+  smodule:isSelected "true"^^xsd:boolean .

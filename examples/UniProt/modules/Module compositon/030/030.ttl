@@ -1,0 +1,37 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix up_mod: <http://uniprot_module.biographs.org/> .
+@prefix taxon: <http://purl.uniprot.org/taxonomy/>.
+
+smodule:module_composition_030 dcterms:title "Find UniProtKB entries with merged loci in Bordetella avium".
+smodule:module_composition_030 rdfs:comment "Find UniProtKB entries with merged loci in Bordetella avium".
+smodule:module_composition_030 dcterms:subject "".
+
+smodule:module_composition_030 rdf:type smodule:SPARQL_Module_Composition.
+smodule:module_composition_030 smodule:hasConnection smodule:030_c1, smodule:030_c2. #, smodule:030_c3, smodule:030_c4, smodule:030_c5, smodule:030_c6.
+smodule:module_composition_030 smodule:hasComponent smodule:OperatorValuesClone38, up_mod:M73_moduleClone3, up_mod:M67_moduleClone8. # smodule:OperatorGroupByClone16, smodule:OperatorCountClone11, smodule:OperatorHavingClone7, 
+smodule:module_composition_030 smodule:includeFile "VALUESClone38.ttl", "M73Clone3.ttl", "M67Clone8.ttl". #  "GROUPBYClone16.ttl", "COUNTClone11.ttl", "HAVINGClone7.ttl",
+
+smodule:030_c1 rdf:type smodule:Connection.
+smodule:030_c1 smodule:connects up_mod:M73_module_port-proteinClone3, up_mod:M67_module_port-entryClone8.
+
+smodule:030_c2 rdf:type smodule:Connection.
+smodule:030_c2 smodule:connects up_mod:M67_module_port-organismClone8, smodule:OperatorValuesPortResultClone38.
+
+smodule:OperatorValuesPortResultClone38 smodule:valuesEnumeration "taxon:360910" .
+
+#smodule:030_c3 rdf:type smodule:Connection.
+#smodule:030_c3 smodule:connects up_mod:M67_module_port-entryClone8, smodule:OperatorGroupByPortParameterClone16.
+
+#smodule:030_c4 rdf:type smodule:Connection.
+#smodule:030_c4 smodule:connects smodule:OperatorCountPortParameter1Clone11, up_mod:M73_module_port-locusNameClone3 .
+
+#smodule:030_c5 rdf:type smodule:Connection.
+#smodule:030_c5 smodule:connects smodule:OperatorCountPortParameter2Clone11, smodule:OperatorGroupByPortResultClone16 .
+
+#smodule:030_c6 rdf:type smodule:Connection.
+#smodule:030_c6 smodule:connects smodule:OperatorHavingPortParameterClone7, smodule:OperatorCountPortResultClone11 .
+
+#smodule:OperatorHavingPortResultClone7 smodule:havingInput "?parameter > 1" .

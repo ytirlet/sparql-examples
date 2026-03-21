@@ -1,0 +1,41 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix up_mod: <http://uniprot_module.biographs.org/> .
+
+smodule:module_composition_027 dcterms:title "Find all names associated with UniProtKB entry P05067, and if the name is associated with the entry it's domains or its components Retrieve all protein names, including peptide names, associated with UniProtKB entry P05067.".
+smodule:module_composition_027 rdfs:comment "Find all names associated with UniProtKB entry P05067, and if the name is associated with the entry it's domains or its components Retrieve all protein names, including peptide names, associated with UniProtKB entry P05067.".
+smodule:module_composition_027 dcterms:subject "protein name", "peptide name".
+
+smodule:module_composition_027 rdf:type smodule:SPARQL_Module_Composition.
+smodule:module_composition_027 smodule:hasConnection smodule:c1 , smodule:c2, smodule:c3, smodule:c4, smodule:c5, smodule:c6, smodule:c7.
+smodule:module_composition_027 smodule:hasComponent smodule:OperatorValuesClone34, smodule:OperatorValuesClone33, smodule:OperatorValuesClone32, smodule:OperatorUnionClone15, up_mod:M82_moduleClone3, up_mod:M81_moduleClone2, up_mod:M80_moduleClone6, up_mod:M80_moduleClone7.
+smodule:module_composition_027 smodule:includeFile "VALUESClone34.ttl", "VALUESClone33.ttl", "VALUESClone32.ttl", "UNIONClone15.ttl", "M82Clone3.ttl", "M81Clone2.ttl", "M80Clone6.ttl", "M80Clone7.ttl".
+
+smodule:c1 rdf:type smodule:Connection.
+smodule:c1 smodule:connects up_mod:M80_module_port-entryTypeClone6, smodule:OperatorValuesPortResultClone34.
+
+smodule:OperatorValuesPortResultClone34 smodule:valuesEnumeration "up:Protein" .
+
+smodule:c2 rdf:type smodule:Connection.
+smodule:c2 smodule:connects up_mod:M80_module_port-entryClone6, smodule:OperatorValuesPortResultClone33.
+
+smodule:OperatorValuesPortResultClone33 smodule:valuesEnumeration "<http://purl.uniprot.org/uniprot/P05067>" .
+
+smodule:c3 rdf:type smodule:Connection.
+smodule:c3 smodule:connects up_mod:M80_module_port-structuredNameClone6, smodule:OperatorUnionPortParameter0Clone15.
+
+smodule:c4 rdf:type smodule:Connection.
+smodule:c4 smodule:connects up_mod:M81_module_port-partClone2, up_mod:M80_module_port-entryClone7.
+
+smodule:c5 rdf:type smodule:Connection.
+smodule:c5 smodule:connects up_mod:M81_module_port-proteinClone2, smodule:OperatorValuesPortResultClone32.
+
+smodule:OperatorValuesPortResultClone32 smodule:valuesEnumeration "<http://purl.uniprot.org/uniprot/P05067>" .
+
+smodule:c6 rdf:type smodule:Connection.
+smodule:c6 smodule:connects up_mod:M80_module_port-structuredNameClone7, smodule:OperatorUnionPortParameter1Clone15.
+
+smodule:c7 rdf:type smodule:Connection.
+smodule:c7 smodule:connects smodule:OperatorUnionPortResultClone15, up_mod:M82_module_port-structuredNameClone3.

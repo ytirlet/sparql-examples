@@ -1,0 +1,41 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix up: <http://purl.uniprot.org/core/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://uniprot_module.biographs.org/M82_moduleClone1> a smodule:SPARQLModule ;
+    rdfs:label "Structured name type" ;
+    smodule:clonedFrom <http://uniprot_module.biographs.org/M82_module> ;
+    smodule:fragmentSPARQL """ 
+    ?structuredNameClone1 ?anyKindOfNameClone1  ?namesClone1 .
+    ?anyKindOfNameClone1 rdfs:subPropertyOf up:structuredNameType .
+    """ ;
+    smodule:output <http://uniprot_module.biographs.org/M82_module_port-anyKindOfNameClone1>,
+        <http://uniprot_module.biographs.org/M82_module_port-namesClone1>,
+        <http://uniprot_module.biographs.org/M82_module_port-structuredNameClone1> ;
+    smodule:prefixes """PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX up: <http://purl.uniprot.org/core/>
+
+""" .
+
+<http://uniprot_module.biographs.org/M82_module_port-anyKindOfNameClone1> a smodule:ModulePortURI ;
+    rdfs:label "Structured Name Type" ;
+    rdfs:domain up:structuredNameType ;
+    smodule:isSelected true ;
+    smodule:variableName "?anyKindOfNameClone1" .
+
+<http://uniprot_module.biographs.org/M82_module_port-namesClone1> a smodule:ModulePortDatatype ;
+    rdfs:label "Other name" ;
+    rdfs:domain xsd:string ;
+    smodule:isSelected false ;
+    smodule:variableName "?namesClone1" .
+
+<http://uniprot_module.biographs.org/M82_module_port-structuredNameClone1> a smodule:ModulePortURI ;
+    rdfs:label "Structured Name" ;
+    rdfs:domain up:StructuredName ;
+    smodule:isSelected false ;
+    smodule:variableName "?structuredNameClone1" .
+

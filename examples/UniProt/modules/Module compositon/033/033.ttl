@@ -1,0 +1,25 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix up_mod: <http://uniprot_module.biographs.org/> .
+
+smodule:module_composition_033 dcterms:title "Find longest comment text associated with a UniProtKB natural variant annotation".
+smodule:module_composition_033 rdfs:comment "Find longest comment text associated with a UniProtKB natural variant annotation".
+smodule:module_composition_033 dcterms:subject "variant annotation", "count".
+
+smodule:module_composition_033 rdf:type smodule:SPARQL_Module_Composition.
+smodule:module_composition_033 smodule:hasConnection smodule:033_c1. #, smodule:033_c2, smodule:033_c3 .
+smodule:module_composition_033 smodule:hasComponent smodule:OperatorValuesClone40, up_mod:M14_moduleClone7. #  smodule:OperatorStrlenClone1, smodule:OperatorOrderByDescClone8,
+smodule:module_composition_033 smodule:includeFile "VALUESClone40.ttl", "M14Clone7.ttl". # "STRLENClone1.ttl", "ORDERBYDESCClone8.ttl",
+
+smodule:033_c1 rdf:type smodule:Connection.
+smodule:033_c1 smodule:connects up_mod:M14_module_port-annotationTypeClone7, smodule:OperatorValuesPortResultClone40.
+
+smodule:OperatorValuesPortResultClone40 smodule:valuesEnumeration "up:Natural_Variant_Annotation" .
+
+#smodule:033_c2 rdf:type smodule:Connection.
+#smodule:033_c2 smodule:connects smodule:OperatorStrlenPortParameterClone1, up_mod:M14_module_port-commentClone7 .
+
+#smodule:033_c3 rdf:type smodule:Connection.
+#smodule:033_c3 smodule:connects smodule:OperatorOrderByDescPortParameterClone8, smodule:OperatorStrlenPortResultClone1 .

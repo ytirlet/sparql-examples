@@ -1,0 +1,26 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix taxon: <http://purl.uniprot.org/taxonomy/>.
+
+smodule:OperatorValuesClone38 a smodule:SPARQLModuleOperatorValues ;
+    rdfs:label "Operator VALUES" ;
+    smodule:clonedFrom smodule:OperatorValues ;
+    smodule:fragmentSPARQL """
+  # Result variable is ?operatorValuesResult
+  VALUES ?operatorValuesResult { taxon:360910 } .
+""" ;
+    smodule:output smodule:OperatorValuesPortResultClone38 ;
+    smodule:prefixes """PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX taxon: <http://purl.uniprot.org/taxonomy/>
+""" .
+
+smodule:OperatorValuesPortResultClone38 a smodule:ModulePortTyped ;
+    rdfs:label "Result" ;
+    rdfs:domain xsd:any ;
+    smodule:isSelected false ;
+    smodule:variableName "?operatorValuesResult" .
+

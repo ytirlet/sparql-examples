@@ -1,0 +1,13 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix up_mod: <http://uniprot_module.biographs.org/> .
+
+smodule:module_composition_031 dcterms:title "Find UniParc records whose sequence point to the most database entries".
+smodule:module_composition_031 rdfs:comment "Find UniParc records whose sequence point to the most database entries".
+smodule:module_composition_031 dcterms:subject "cross-reference", "UniParc", "count".
+
+smodule:module_composition_031 rdf:type smodule:SPARQL_Module_Composition.
+smodule:module_composition_031 smodule:hasComponent up_mod:M29_moduleClone4.
+smodule:module_composition_031 smodule:includeFile "M29Clone4.ttl".

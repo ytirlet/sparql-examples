@@ -1,0 +1,36 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix up_mod: <http://uniprot_module.biographs.org/> .
+
+smodule:module_composition_026 dcterms:title "Find UniProtKB entry, or an UniProtKB entries domain or component which has a name 'HLA class I histocompatibility antigen, B-73 alpha chain' Find UniProtKB proteins which are cleaved and contain a domain or component named 'HLA class I histocompatibility antigen, B-73 alpha chain'".
+smodule:module_composition_026 rdfs:comment "Find UniProtKB entry, or an UniProtKB entries domain or component which has a name 'HLA class I histocompatibility antigen, B-73 alpha chain' Find UniProtKB proteins which are cleaved and contain a domain or component named 'HLA class I histocompatibility antigen, B-73 alpha chain'".
+smodule:module_composition_026 dcterms:subject "protein name", "peptide name".
+
+smodule:module_composition_026 rdf:type smodule:SPARQL_Module_Composition.
+smodule:module_composition_026 smodule:hasConnection smodule:026_c1 , smodule:026_c2, smodule:026_c3, smodule:026_c4, smodule:026_c5, smodule:026_c6.
+smodule:module_composition_026 smodule:hasComponent smodule:OperatorValuesClone31, smodule:OperatorValuesClone30, smodule:OperatorUnionClone14, up_mod:M82_moduleClone2, up_mod:M81_moduleClone1, up_mod:M80_moduleClone4, up_mod:M80_moduleClone5.
+smodule:module_composition_026 smodule:includeFile "VALUESClone31.ttl", "VALUESClone30.ttl", "UNIONClone14.ttl", "M82Clone2.ttl", "M81Clone1.ttl", "M80Clone4.ttl", "M80Clone5.ttl".
+
+smodule:026_c1 rdf:type smodule:Connection.
+smodule:026_c1 smodule:connects up_mod:M80_module_port-entryTypeClone4, smodule:OperatorValuesPortResultClone31.
+
+smodule:OperatorValuesPortResultClone31 smodule:valuesEnumeration "up:Protein" .
+
+smodule:026_c2 rdf:type smodule:Connection.
+smodule:026_c2 smodule:connects up_mod:M80_module_port-structuredNameClone4, smodule:OperatorUnionPortParameter0Clone14.
+
+smodule:026_c3 rdf:type smodule:Connection.
+smodule:026_c3 smodule:connects up_mod:M81_module_port-partClone1, up_mod:M80_module_port-entryClone5.
+
+smodule:026_c4 rdf:type smodule:Connection.
+smodule:026_c4 smodule:connects up_mod:M80_module_port-structuredNameClone5, smodule:OperatorUnionPortParameter1Clone14.
+
+smodule:026_c5 rdf:type smodule:Connection.
+smodule:026_c5 smodule:connects smodule:OperatorUnionPortResultClone14, up_mod:M82_module_port-structuredNameClone2.
+
+smodule:026_c6 rdf:type smodule:Connection.
+smodule:026_c6 smodule:connects up_mod:M82_module_port-namesClone2, smodule:OperatorValuesPortResultClone30.
+
+smodule:OperatorValuesPortResultClone30 smodule:valuesEnumeration "'HLA class I histocompatibility antigen, B-73 alpha chain'" .
