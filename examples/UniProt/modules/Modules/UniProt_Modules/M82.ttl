@@ -1,0 +1,42 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <https://schema.org/> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix up: <http://purl.uniprot.org/core/> .
+@prefix up_mod: <http://uniprot_module.biographs.org/> .
+
+up_mod:M82_module a smodule:SPARQLModule;
+  rdfs:label "Structured name type"@en;
+  rdfs:comment "Structured name type"@en;
+  schema:keywords "structured name";
+  smodule:prefixes """PREFIX up: <http://purl.uniprot.org/core/>
+  PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+  PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+  """ ;
+  smodule:fragmentSPARQL """ 
+    ?structuredName ?anyKindOfName  ?names .
+    ?anyKindOfName rdfs:subPropertyOf up:structuredNameType .
+    """;
+  smodule:output up_mod:M82_module_port-names, up_mod:M82_module_port-structuredName, up_mod:M82_module_port-anyKindOfName.
+  
+up_mod:M82_module_port-structuredName
+  a smodule:ModulePortURI;
+  rdfs:domain up:StructuredName ;
+  smodule:variableName "?structuredName" ;
+  rdfs:label "Structured Name" ;
+  smodule:isSelected "true"^^xsd:boolean .
+
+up_mod:M82_module_port-names
+  a smodule:ModulePortDatatype;
+  rdfs:domain xsd:string ;
+  smodule:variableName "?names" ;
+  rdfs:label "Other name" ;
+  smodule:isSelected "true"^^xsd:boolean .
+  
+up_mod:M82_module_port-anyKindOfName
+  a smodule:ModulePortURI;
+  rdfs:domain up:structuredNameType ;
+  smodule:variableName "?anyKindOfName" ;
+  rdfs:label "Structured Name Type" ;
+  smodule:isSelected "true"^^xsd:boolean .

@@ -1,0 +1,41 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <https://schema.org/> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix up: <http://purl.uniprot.org/core/> .
+@prefix up_mod: <http://uniprot_module.biographs.org/> .
+
+up_mod:m11_module a smodule:SPARQLModule;
+  rdfs:label "englishLabelStr structured name"@en;
+  rdfs:comment "englishLabelStr structured name"@en;
+  schema:keywords "structured name";
+  smodule:prefixes """PREFIX up: <http://purl.uniprot.org/core/>
+  PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+  PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+  """ ;
+  smodule:fragmentSPARQL """ 
+    SERVICE <https://idsm.elixir-czech.cz/sparql/endpoint/idsm> {
+    ?activity a cco:Activity ;
+      cco:hasMolecule ?chemblMolecule ;
+      cco:hasAssay ?assay ;
+      cco:standardType ?activityType ;
+      cco:standardValue ?standardActivityValue ;
+      cco:standardUnits ?standardActivityUnit .
+    ?chemblMolecule cco:highestDevelopmentPhase ?highestDevelopmentPhase ;
+      rdfs:label ?chemblMoleculeLabel ;
+      skos:prefLabel ?chemlbMoleculePrefLabel .
+    FILTER (?highestDevelopmentPhase > 3)
+    ?assay cco:hasTarget ?target .
+    ?target cco:hasTargetComponent/cco:targetCmptXref ?protein .
+    ?protein a cco:UniprotRef .
+  }
+    """;
+  smodule:output up_mod:m11_module_port-protein.
+  
+up_mod:m11_module_port-protein
+  a smodule:ModulePortURI ;
+  smodule:variableName "?protein";
+  rdfs:domain up:Protein ;
+  rdfs:label "pProtein" ;
+  smodule:isSelected "true"^^xsd:boolean.

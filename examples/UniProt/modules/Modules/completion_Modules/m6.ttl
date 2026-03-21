@@ -1,0 +1,36 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <https://schema.org/> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix up: <http://purl.uniprot.org/core/> .
+@prefix up_mod: <http://uniprot_module.biographs.org/> .
+
+up_mod:m6_module a smodule:SPARQLModule;
+  rdfs:label "begin structured name"@en;
+  rdfs:comment "begin structured name"@en;
+  schema:keywords "structured name";
+  smodule:prefixes """PREFIX up: <http://purl.uniprot.org/core/>
+  PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+  PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+  """ ;
+  smodule:fragmentSPARQL """ 
+    BIND(?begin - 10 AS ?tenBeforeBegin)
+    BIND(IF(?tenBeforeBegin < 1, 0, ?tenBeforeBegin) AS ?from)
+    BIND(SUBSTR(?aas, ?from, 15) AS ?interestingRegion)
+    FILTER(CONTAINS(?interestingRegion, 'A'))
+    """;
+  smodule:output up_mod:m6_module_port-begin, up_mod:m6_module_port-aas.
+  
+up_mod:m6_module_port-begin
+  a smodule:ModulePortURI;
+  smodule:variableName "?begin" ;
+  rdfs:label "Begin Position" ;
+  smodule:isSelected "true"^^xsd:boolean.
+  
+up_mod:m6_module_port-aas
+  a smodule:ModulePortResource;
+  rdfs:domain rdfs:Resource;
+  smodule:variableName "?aas" ;
+  rdfs:label "Value" ;
+  smodule:isSelected "true"^^xsd:boolean .

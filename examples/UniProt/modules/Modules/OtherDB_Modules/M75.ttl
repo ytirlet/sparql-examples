@@ -1,0 +1,44 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <https://schema.org/> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix : <http://biographs.org/> .
+@prefix up: <http://purl.uniprot.org/core/> .
+@prefix rh: <http://rdf.rhea-db.org/> .
+@prefix up_mod: <http://uniprot_module.biographs.org/> .
+
+up_mod:M75_module a smodule:SPARQLModule ;
+  rdfs:label "compound to ChEBI"@en ;
+  rdfs:comment "compound to ChEBI"@en ;
+  schema:keywords "ChEBI" ;
+  smodule:prefixes """PREFIX up: <http://purl.uniprot.org/core/>
+    PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+    PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+    PREFIX rh: <http://rdf.rhea-db.org/>
+    PREFIX chebi: <http://purl.obolibrary.org/obo/CHEBI_>
+    """ ;
+  smodule:fragmentSPARQL """
+    ?compound (rh:chebi|(rh:reactivePart/rh:chebi)|(rh:underlyingChebi)) ?chebi .
+    ?chebi (rdfs:subClassOf)+ ?chebiAncestor.
+    """ ;
+  smodule:output up_mod:M75_module_port-compound, up_mod:M75_module_port-chebi, up_mod:M75_module_port-chebiAncestor.
+
+up_mod:M75_module_port-compound
+  a smodule:ModulePortURI ;
+  rdfs:domain rh:Compound ;
+  smodule:variableName "?compound" ;
+  rdfs:label "Compound" ;
+  smodule:isSelected "true"^^xsd:boolean.
+
+up_mod:M75_module_port-chebi
+  a smodule:ModulePortURI ;
+  smodule:variableName "?chebi" ;
+  rdfs:label "ChEBI" ;
+  smodule:isSelected "true"^^xsd:boolean.
+	
+up_mod:M75_module_port-chebiAncestor
+  a smodule:ModulePortURI ;
+  smodule:variableName "?chebiAncestor" ;
+  rdfs:label "Ancestor ChEBI" ;
+  smodule:isSelected "true"^^xsd:boolean.

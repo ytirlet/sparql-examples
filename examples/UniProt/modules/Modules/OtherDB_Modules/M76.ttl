@@ -1,0 +1,63 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <https://schema.org/> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix up: <http://purl.uniprot.org/core/> .
+@prefix faldo: <http://biohackathon.org/resource/faldo#> .
+@prefix up_mod: <http://uniprot_module.biographs.org/> .
+
+up_mod:M76_module a smodule:SPARQLModule;
+  rdfs:label "faldo: start/end position and reference"@en;
+  rdfs:comment "faldo: start/end position and reference"@en;
+  schema:keywords "faldo begin", "faldo position", "falso reference";
+  smodule:prefixes """PREFIX up: <http://purl.uniprot.org/core/>
+    PREFIX faldo: <http://biohackathon.org/resource/faldo#>
+    PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+    PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+    """ ;
+  smodule:fragmentSPARQL """
+    ?entry faldo:begin ?faldoBegin.
+    ?faldoBegin faldo:position ?beginPosition.
+    ?faldoBegin faldo:reference ?reference.
+    ?entry faldo:end ?faldoEnd.
+    ?faldoEnd faldo:position ?endPosition.
+    """;
+  smodule:output up_mod:M76_module_port-entry, up_mod:M76_module_port-faldoBegin, up_mod:M76_module_port-faldoEnd, up_mod:M76_module_port-beginPosition, up_mod:M76_module_port-endPosition, up_mod:M76_module_port-reference .
+
+up_mod:M76_module_port-entry
+  a smodule:ModulePortURI;
+  rdfs:domain xsd:anyURI ;
+  smodule:variableName "?entry" ;
+  rdfs:label "Entry" ;
+  smodule:isSelected "true"^^xsd:boolean.
+
+up_mod:M76_module_port-reference
+  a smodule:ModulePortURI;
+  smodule:variableName "?reference" ;
+  rdfs:label "Reference" ;
+  smodule:isSelected "true"^^xsd:boolean.
+
+up_mod:M76_module_port-endPosition
+  a smodule:ModulePortURI;
+  smodule:variableName "?endPosition" ;
+  rdfs:label "End Position" ;
+  smodule:isSelected "true"^^xsd:boolean.
+
+up_mod:M76_module_port-faldoBegin
+  a smodule:ModulePortURI;
+  smodule:variableName "?faldoBegin" ;
+  rdfs:label "FALDO begin" ;
+  smodule:isSelected "true"^^xsd:boolean.
+
+up_mod:M76_module_port-faldoEnd
+  a smodule:ModulePortURI;
+  smodule:variableName "?faldoEnd" ;
+  rdfs:label "FALDO end" ;
+  smodule:isSelected "true"^^xsd:boolean.
+
+up_mod:M76_module_port-beginPosition
+  a smodule:ModulePortURI;
+  smodule:variableName "?beginPosition" ;
+  rdfs:label "Begin Position" ;
+  smodule:isSelected "true"^^xsd:boolean.

@@ -1,0 +1,31 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <https://schema.org/> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix base_mod: <http://base_module.biographs.org/> .
+
+base_mod:Mb2_module a smodule:SPARQLModule;
+  rdfs:label "rdfs label"@en;
+  rdfs:comment "Gives label of element"@en;
+  schema:keywords "label";
+  smodule:prefixes """PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+  """ ;
+  smodule:fragmentSPARQL """ 
+    ?subject rdfs:label ?label .
+    """;
+  smodule:output base_mod:Mb2_module_port-subject, base_mod:Mb2_module_port-label.
+  
+base_mod:Mb2_module_port-subject
+  a smodule:ModulePortURI;
+  rdfs:domain rdfs:Resource ;
+  smodule:variableName "?subject" ;
+  rdfs:label "Subject" ;
+  smodule:isSelected "true"^^xsd:boolean .
+
+base_mod:Mb2_module_port-label
+  a smodule:ModulePortTyped;
+  rdfs:domain rdfs:Literal;
+  smodule:variableName "?label" ;
+  rdfs:label "Label" ;
+  smodule:isSelected "true"^^xsd:boolean .

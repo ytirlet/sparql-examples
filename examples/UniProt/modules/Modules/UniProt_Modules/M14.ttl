@@ -1,0 +1,51 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <https://schema.org/> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix up: <http://purl.uniprot.org/core/> .
+@prefix up_mod: <http://uniprot_module.biographs.org/> .
+
+up_mod:M14_module a smodule:SPARQLModule;
+  rdfs:label "Protein annotation"@en;
+  rdfs:comment "Protein annotation"@en;
+  schema:keywords "annotation";
+  smodule:prefixes """PREFIX up: <http://purl.uniprot.org/core/>
+  PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+  PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+  """ ;
+  smodule:fragmentSPARQL """ 
+    ?protein rdf:type up:Protein.
+    ?protein up:annotation ?annotation.
+    ?annotation rdf:type ?annotationType.
+    ?annotation rdfs:comment ?comment.
+    """;
+  smodule:output up_mod:M14_module_port-protein, up_mod:M14_module_port-annotation, up_mod:M14_module_port-annotationType, up_mod:M14_module_port-comment .
+  
+up_mod:M14_module_port-annotation
+  a smodule:ModulePortURI;
+  rdfs:domain up:Annotation ;
+  smodule:variableName "?annotation" ;
+  rdfs:label "Annotation" ;
+  smodule:isSelected "true"^^xsd:boolean .
+
+up_mod:M14_module_port-protein
+  a smodule:ModulePortURI;
+  rdfs:domain up:Protein;
+  smodule:variableName "?protein" ;
+  rdfs:label "Protein" ;
+  smodule:isSelected "true"^^xsd:boolean .
+
+up_mod:M14_module_port-annotationType
+  a smodule:ModulePortURI;
+  smodule:variableName "?annotationType" ;
+  rdfs:domain up:Annotation;
+  rdfs:label "Type of annotation" ;
+  smodule:isSelected "true"^^xsd:boolean .
+  
+up_mod:M14_module_port-comment
+  a smodule:ModulePortDatatype;
+  rdfs:domain xsd:string ;
+  smodule:variableName "?comment" ;
+  rdfs:label "Annotation comment" ;
+  smodule:isSelected "true"^^xsd:boolean .

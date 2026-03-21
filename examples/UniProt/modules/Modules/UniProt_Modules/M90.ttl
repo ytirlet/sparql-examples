@@ -1,0 +1,50 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <https://schema.org/> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix up: <http://purl.uniprot.org/core/> .
+@prefix up_mod: <http://uniprot_module.biographs.org/> .
+
+up_mod:M90_module a smodule:SPARQLModule;
+  rdfs:label "Protein component to enzyme "@en;
+  rdfs:comment "Protein component to enzyme"@en;
+  schema:keywords "enzyme";
+  smodule:prefixes """PREFIX up: <http://purl.uniprot.org/core/>
+  PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+  PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+  """ ;
+  smodule:fragmentSPARQL """ 
+    ?protein up:component ?component.
+    ?component up:enzyme ?enzyme .
+    ?enzyme rdfs:subClassOf? ?ecClass.
+    """;
+  smodule:output up_mod:M90_module_port-protein, up_mod:M90_module_port-enzyme, up_mod:M90_module_port-component, up_mod:M90_module_port-ecClass.
+  
+up_mod:M90_module_port-enzyme
+  a smodule:ModulePortURI;
+  rdfs:component up:Enzyme ;
+  smodule:variableName "?enzyme" ;
+  rdfs:label "Enzyme" ;
+  smodule:isSelected "true"^^xsd:boolean .
+
+up_mod:M90_module_port-protein
+  a smodule:ModulePortURI;
+  rdfs:component up:protein;
+  smodule:variableName "?protein" ;
+  rdfs:label "Protein" ;
+  smodule:isSelected "true"^^xsd:boolean .
+  
+up_mod:M90_module_port-component
+  a smodule:ModulePortURI;
+  rdfs:component up:Part ;
+  smodule:variableName "?component" ;
+  rdfs:label "Protein component" ;
+  smodule:isSelected "true"^^xsd:boolean .
+  
+up_mod:M90_module_port-ecClass
+  a smodule:ModulePortURI;
+  rdfs:domain up:Enzyme ;
+  smodule:variableName "?ecClass" ;
+  rdfs:label "Enzyme Class" ;
+  smodule:isSelected "true"^^xsd:boolean .

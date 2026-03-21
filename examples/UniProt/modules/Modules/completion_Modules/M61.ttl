@@ -1,0 +1,44 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <https://schema.org/> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix up: <http://purl.uniprot.org/core/> .
+@prefix up_mod: <http://uniprot_module.biographs.org/> .
+
+up_mod:M61_module a smodule:SPARQLModule;
+  rdfs:label "protein encoded in compartment"@en;
+  rdfs:comment "protein encoded in compartment"@en;
+  schema:keywords "encoded in";
+  smodule:prefixes """PREFIX up: <http://purl.uniprot.org/core/>
+    PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+    PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+    """ ;
+  smodule:fragmentSPARQL """
+    ?protein rdf:type up:Protein.
+    ?protein up:encodedIn ?compartment.
+    OPTIONAL {
+        ?compartement rdfs:label ?label .
+    }
+    """;
+  smodule:output up_mod:M61_module_port-protein, up_mod:M61_module_port-compartment, up_mod:M61_module_port-label .
+
+up_mod:M61_module_port-compartment
+  a smodule:ModulePortURI;
+  smodule:variableName "?compartment" ;
+  rdfs:label "Compartment" ;
+  smodule:isSelected "true"^^xsd:boolean.
+
+up_mod:M61_module_port-protein
+  a smodule:ModulePortURI;
+  rdfs:domain up:Protein ;
+  smodule:variableName "?protein" ;
+  rdfs:label "Protein" ;
+  smodule:isSelected "true"^^xsd:boolean.
+  
+up_mod:M61_module_port-label
+  a smodule:ModulePortDatatype;
+  rdfs:domain xsd:string ;
+  smodule:variableName "?label" ;
+  rdfs:label "Compartment label" ;
+  smodule:isSelected "true"^^xsd:boolean.
