@@ -1,0 +1,51 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <https://schema.org/> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix up: <http://purl.uniprot.org/core/> .
+@prefix up_mod: <http://uniprot_module.biographs.org/> .
+
+up_mod:m28_module a smodule:SPARQLModule;
+  rdfs:label "englishLabelStr structured name"@en;
+  rdfs:comment "englishLabelStr structured name"@en;
+  schema:keywords "structured name";
+  smodule:prefixes """PREFIX up: <http://purl.uniprot.org/core/>
+  PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+  PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+  """ ;
+  smodule:fragmentSPARQL """ 
+    SERVICE <https://cordis.europa.eu/datalab/sparql> {
+  	?project a eurio:Project ;
+            eurio:identifier ?identifier ;
+  		eurio:title ?project_title ;
+  	 	eurio:hasResult ?result .
+  	?result eurio:doi ?doi .
+  }
+  #EURIO use literals of type xsd:anyURI to represent DOIs 
+  #without the leading doi: indicator
+  BIND(CONCAT("doi:", STR(?doi)) AS ?doi_string)
+  BIND(xsd:int(?identifier) AS ?intid)
+    """;
+  smodule:output up_mod:m28_module_port-doi_string, up_mod:m28_module_port-intid, up_mod:m28_module_port-project.
+  
+up_mod:m28_module_port-doi_string
+  a smodule:ModulePortDatatype ;
+  smodule:variableName "?doi_string";
+  rdfs:domain xsd:string ;
+  rdfs:label "doi_string" ;
+  smodule:isSelected "true"^^xsd:boolean.
+  
+up_mod:m28_module_port-project
+  a smodule:ModulePortURI ;
+  smodule:variableName "?project";
+  rdfs:domain xsd:anyURI ;
+  rdfs:label "project" ;
+  smodule:isSelected "true"^^xsd:boolean.
+  
+up_mod:m28_module_port-intid
+  a smodule:ModulePortDatatype ;
+  smodule:variableName "?intid";
+  rdfs:domain xsd:int ;
+  rdfs:label "intid" ;
+  smodule:isSelected "true"^^xsd:boolean.

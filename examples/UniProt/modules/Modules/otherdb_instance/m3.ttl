@@ -1,0 +1,36 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <https://schema.org/> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix up: <http://purl.uniprot.org/core/> .
+@prefix up_mod: <http://uniprot_module.biographs.org/> .
+@prefix rh: <http://rdf.rhea-db.org/> .
+
+up_mod:m3_module a smodule:SPARQLModule;
+  rdfs:label "englishLabelStr structured name"@en;
+  rdfs:comment "englishLabelStr structured name"@en;
+  schema:keywords "structured name";
+  smodule:prefixes """PREFIX up: <http://purl.uniprot.org/core/>
+  PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+  PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+  """ ;
+  smodule:fragmentSPARQL """ 
+    ?reaction rdfs:subClassOf rh:Reaction ;
+      rh:status ?status .
+    """;
+  smodule:output up_mod:m3_module_port-reaction, up_mod:m3_module_port-status.
+  
+up_mod:m3_module_port-reaction
+  a smodule:ModulePortURI ;
+  smodule:variableName "?reaction";
+  rdfs:domain rh:Reaction ;
+  rdfs:label "Reaction" ;
+  smodule:isSelected "true"^^xsd:boolean.
+  
+up_mod:m3_module_port-status
+  a smodule:ModulePortURI ;
+  smodule:variableName "?status";
+  rdfs:domain xsd:anyURI ;
+  rdfs:label "Status" ;
+  smodule:isSelected "true"^^xsd:boolean.

@@ -1,0 +1,34 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <https://schema.org/> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix up: <http://purl.uniprot.org/core/> .
+@prefix up_mod: <http://uniprot_module.biographs.org/> .
+
+up_mod:m29_module a smodule:SPARQLModule;
+  rdfs:label "englishLabelStr structured name"@en;
+  rdfs:comment "englishLabelStr structured name"@en;
+  schema:keywords "structured name";
+  smodule:prefixes """PREFIX up: <http://purl.uniprot.org/core/>
+  PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+  PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+  """ ;
+  smodule:fragmentSPARQL """ 
+    ?entry up:cofactor ?cofactor .
+    """;
+  smodule:output up_mod:m29_module_port-entry, up_mod:m29_module_port-cofactor.
+  
+up_mod:m29_module_port-entry
+  a smodule:ModulePortURI ;
+  smodule:variableName "?entry";
+  rdfs:domain xsd:anyURI ;
+  rdfs:label "entry" ;
+  smodule:isSelected "true"^^xsd:boolean.
+  
+up_mod:m29_module_port-cofactor
+  a smodule:ModulePortURI ;
+  smodule:variableName "?cofactor";
+  rdfs:domain xsd:anyURI ;
+  rdfs:label "cofactor" ;
+  smodule:isSelected "true"^^xsd:boolean.

@@ -1,0 +1,33 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <https://schema.org/> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix up: <http://purl.uniprot.org/core/> .
+@prefix up_mod: <http://uniprot_module.biographs.org/> .
+
+up_mod:m10_module a smodule:SPARQLModule;
+  rdfs:label "englishLabelStr structured name"@en;
+  rdfs:comment "englishLabelStr structured name"@en;
+  schema:keywords "structured name";
+  smodule:prefixes """PREFIX up: <http://purl.uniprot.org/core/>
+  PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+  PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+  """ ;
+  smodule:fragmentSPARQL """ 
+    ?subject up:name ?name
+    """;
+  smodule:output up_mod:m10_module_port-subject, up_mod:m10_module_port-name.
+  
+up_mod:m10_module_port-subject
+  a smodule:ModulePortURI ;
+  smodule:variableName "?subject";
+  rdfs:label "Subject" ;
+  smodule:isSelected "true"^^xsd:boolean.
+  
+up_mod:m10_module_port-name
+  a smodule:ModulePortDatatype ;
+  smodule:variableName "?name";
+  rdfs:domain xsd:string ;
+  rdfs:label "Name" ;
+  smodule:isSelected "true"^^xsd:boolean.

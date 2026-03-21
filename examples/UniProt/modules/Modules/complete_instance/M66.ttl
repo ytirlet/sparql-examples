@@ -1,0 +1,39 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <https://schema.org/> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix up: <http://purl.uniprot.org/core/> .
+@prefix up_mod: <http://uniprot_module.biographs.org/> .
+
+up_mod:M66_module a smodule:SPARQLModule ;
+  rdfs:label "GO classification of protein"@en ;
+  rdfs:comment "GO classification of protein"@en ;
+  schema:keywords "GO" ;
+  smodule:prefixes """PREFIX up: <http://purl.uniprot.org/core/>
+    PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+    PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+    PREFIX owl: <http://www.w3.org/2002/07/owl#>
+    PREFIX GO:<http://purl.obolibrary.org/obo/GO_>
+    """ ;
+  smodule:fragmentSPARQL """
+    ?protein up:classifiedWith/rdfs:subClassOf* ?go .
+    GRAPH <https://sparql.uniprot.org/go> {
+      ?go a owl:Class .
+    }
+    """ ;
+  smodule:output up_mod:M66_module_port-protein, up_mod:M66_module_port-go .
+    
+up_mod:M66_module_port-protein 
+  a smodule:ModulePortURI ; 
+  smodule:variableName "?protein" ; 
+  rdfs:domain up:Protein ;
+  rdfs:label "Protein" ;
+  smodule:isSelected "true"^^xsd:boolean.
+
+up_mod:M66_module_port-go
+  a smodule:ModulePortURI ; 
+  smodule:variableName "?go" ;
+  rdfs:label "Go term" ;
+  smodule:isSelected "true"^^xsd:boolean.
+

@@ -1,0 +1,50 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <https://schema.org/> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix up: <http://purl.uniprot.org/core/> .
+@prefix up_mod: <http://uniprot_module.biographs.org/> .
+
+up_mod:M31_module a smodule:SPARQLModule;
+  rdfs:label "Entry and database"@en;
+  rdfs:comment "Entry and database"@en;
+  schema:keywords "database";
+  smodule:prefixes """PREFIX up: <http://purl.uniprot.org/core/>
+    PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+    PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+    """ ;
+  smodule:fragmentSPARQL """
+    ?entry rdf:type ?entryType.
+    ?entry rdfs:seeAlso ?dbentry.
+    ?dbentry up:database ?database.
+    """;
+  smodule:output up_mod:M31_module_port-entry, up_mod:M31_module_port-dbentry, up_mod:M31_module_port-database, up_mod:M31_module_port-entryType .
+
+up_mod:M31_module_port-database
+  a smodule:ModulePortURI;
+  rdfs:domain up:Database;
+  smodule:variableName "?database" ;
+  rdfs:label "Database" ;
+  smodule:isSelected "true"^^xsd:boolean .
+
+up_mod:M31_module_port-entryType
+  a smodule:ModulePortURI;
+  rdfs:domain xsd:anyURI;
+  smodule:variableName "?entryType" ;
+  rdfs:label "Entry type" ;
+  smodule:isSelected "true"^^xsd:boolean .
+
+up_mod:M31_module_port-entry
+  a smodule:ModulePortURI;
+  rdfs:domain xsd:anyURI ;
+  smodule:variableName "?entry" ;
+  rdfs:label "Entry" ;
+  smodule:isSelected "true"^^xsd:boolean .
+
+up_mod:M31_module_port-dbentry
+  a smodule:ModulePortURI;
+  rdfs:domain up:Ressource ;
+  smodule:variableName "?dbentry" ;
+  rdfs:label "Database entry" ;
+  smodule:isSelected "true"^^xsd:boolean .

@@ -1,0 +1,44 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <https://schema.org/> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix up: <http://purl.uniprot.org/core/> .
+@prefix up_mod: <http://uniprot_module.biographs.org/> .
+
+up_mod:M74_module a smodule:SPARQLModule;
+  rdfs:label "Taxon, Scientific name and ancestor Class"@en;
+  rdfs:comment "Taxon, Scientific name and ancestor Class"@en;
+  schema:keywords "taxonomy";
+  smodule:prefixes """PREFIX up: <http://purl.uniprot.org/core/>
+    PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+    PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+    PREFIX taxon: <http://purl.uniprot.org/taxonomy/>
+    """ ;
+  smodule:fragmentSPARQL """
+    ?taxon rdf:type up:Taxon.
+    ?taxon up:scientificName ?name.
+    ?taxon rdfs:subClassOf ?ancestorTaxon.
+    """;
+  smodule:output up_mod:M74_module_port-taxon, up_mod:M74_module_port-name, up_mod:M74_module_port-ancestorTaxon.
+
+up_mod:M74_module_port-name
+  a smodule:ModulePortDatatype;
+  rdfs:domain xsd:string ;
+  smodule:variableName "?name" ;
+  rdfs:label "Taxon name" ;
+  smodule:isSelected "true"^^xsd:boolean.
+
+up_mod:M74_module_port-taxon
+  a smodule:ModulePortURI;
+  rdfs:domain up:Taxon;
+  smodule:variableName "?taxon" ;
+  rdfs:label "Taxon" ;
+  smodule:isSelected "true"^^xsd:boolean.
+
+up_mod:M74_module_port-ancestorTaxon
+  a smodule:ModulePortURI;
+  rdfs:domain up:Taxon ;
+  smodule:variableName "?ancestorTaxon" ;
+  rdfs:label "Ancestor taxon" ;
+  smodule:isSelected "true"^^xsd:boolean.

@@ -1,0 +1,31 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <https://schema.org/> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix base_mod: <http://base_module.biographs.org/> .
+
+base_mod:Mb1_module a smodule:SPARQLModule;
+  rdfs:label "rdf value"@en;
+  rdfs:comment "Gives value of element"@en;
+  schema:keywords "value";
+  smodule:prefixes """PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+  """ ;
+  smodule:fragmentSPARQL """ 
+    ?subject rdf:value ?value .
+    """;
+  smodule:output base_mod:Mb1_module_port-subject, base_mod:Mb1_module_port-value.
+  
+base_mod:Mb1_module_port-subject
+  a smodule:ModulePortURI;
+  rdfs:domain rdfs:Resource ;
+  smodule:variableName "?subject" ;
+  rdfs:label "Subject" ;
+  smodule:isSelected "true"^^xsd:boolean .
+
+base_mod:Mb1_module_port-value
+  a smodule:ModulePortTyped;
+  rdfs:domain rdfs:Resource;
+  smodule:variableName "?value" ;
+  rdfs:label "Value" ;
+  smodule:isSelected "true"^^xsd:boolean .

@@ -1,0 +1,37 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <https://schema.org/> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix up: <http://purl.uniprot.org/core/> .
+@prefix up_mod: <http://uniprot_module.biographs.org/> .
+
+up_mod:m14_module a smodule:SPARQLModule;
+  rdfs:label "englishLabelStr structured name"@en;
+  rdfs:comment "englishLabelStr structured name"@en;
+  schema:keywords "structured name";
+  smodule:prefixes """PREFIX up: <http://purl.uniprot.org/core/>
+  PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+  PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+  """ ;
+  smodule:fragmentSPARQL """
+  VALUES(?pdbId ?pdbChain) {('6VXC' 'A') ('1BG3' 'B')} .
+  BIND(iri(concat('http://rdf.wwpdb.org/pdb/', ?pdbId)) AS ?pdb) .
+  BIND(STRBEFORE(?chainsPlusRange, '=') AS ?chain) .
+  FILTER(CONTAINS(?chain, ?pdbChain)) .
+    """;
+  smodule:output up_mod:m14_module_port-pdb, up_mod:m14_module_port-chainPlusRange.
+  
+up_mod:m14_module_port-pdb
+  a smodule:ModulePortURI;
+  rdfs:domain xsd:anyURI ;
+  smodule:variableName "?pdb" ;
+  rdfs:label "pdb entry" ;
+  smodule:isSelected "true"^^xsd:boolean .
+  
+up_mod:m14_module_port-chainPlusRange
+  a smodule:ModulePortDatatype ;
+  smodule:variableName "?chainPlusRange";
+  rdfs:domain xsd:string ;
+  rdfs:label "chainPlusRange" ;
+  smodule:isSelected "true"^^xsd:boolean.

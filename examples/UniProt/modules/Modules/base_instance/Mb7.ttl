@@ -1,0 +1,32 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <https://schema.org/> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix base_mod: <http://base_module.biographs.org/> .
+
+base_mod:Mb7_module a smodule:SPARQLModule;
+  rdfs:label "skos related"@en;
+  rdfs:comment "skos related"@en;
+  schema:keywords "";
+  smodule:prefixes """PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+  PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+  """ ;
+  smodule:fragmentSPARQL """ 
+    ?subject skos:related ?object .
+    """;
+  smodule:output base_mod:Mb7_module_port-subject, base_mod:Mb7_module_port-object.
+  
+base_mod:Mb7_module_port-subject
+  a smodule:ModulePortURI;
+  rdfs:domain rdfs:Resource ;
+  smodule:variableName "?subject" ;
+  rdfs:label "Subject" ;
+  smodule:isSelected "true"^^xsd:boolean .
+
+base_mod:Mb7_module_port-object
+  a smodule:ModulePortTyped;
+  rdfs:domain rdfs:Resource;
+  smodule:variableName "?object" ;
+  rdfs:label "object" ;
+  smodule:isSelected "true"^^xsd:boolean .

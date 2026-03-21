@@ -1,0 +1,35 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <https://schema.org/> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix up: <http://purl.uniprot.org/core/> .
+@prefix up_mod: <http://uniprot_module.biographs.org/> .
+
+up_mod:m23_module a smodule:SPARQLModule;
+  rdfs:label "englishLabelStr structured name"@en;
+  rdfs:comment "englishLabelStr structured name"@en;
+  schema:keywords "structured name";
+  smodule:prefixes """PREFIX up: <http://purl.uniprot.org/core/>
+  PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+  PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+  """ ;
+  smodule:fragmentSPARQL """ 
+    OPTIONAL {
+       	?sequence a up:Simple_Sequence .
+        BIND(true AS ?likelyIsCanonical)
+      }
+      OPTIONAL {
+       	FILTER(?likelyIsCanonical)
+        ?sequence a up:External_Sequence .
+        BIND(true AS ?isComplicated)
+      }
+      BIND(IF(BOUND(?isComplicated), STRENDS(STR(?entry), STRBEFORE(SUBSTR(STR(?sequence), 34),'-')),?likelyIsCanonical) AS ?isCanonical)
+    """;
+  smodule:output up_mod:m23_module_port-sequence.
+  
+up_mod:m23_module_port-sequence
+  a smodule:ModulePortURI;
+  smodule:variableName "?sequence" ;
+  rdfs:label "Sequence" ;
+  smodule:isSelected "true"^^xsd:boolean.

@@ -1,0 +1,53 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <https://schema.org/> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix up: <http://purl.uniprot.org/core/> .
+@prefix up_mod: <http://uniprot_module.biographs.org/> .
+@prefix uniprotkb: <http://purl.uniprot.org/uniprot/> .
+
+up_mod:M52_module a smodule:SPARQLModule ;
+  rdfs:label "protein and location"@en ;
+  rdfs:comment "protein and location"@en ;
+  schema:keywords "protein annotation", "cellular component" ;
+  smodule:prefixes """PREFIX up: <http://purl.uniprot.org/core/>
+    PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+    PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+    PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+    """ ;
+  smodule:fragmentSPARQL """
+    ?protein up:annotation ?annotation.
+    ?protein rdf:type up:Protein.
+    ?annotation up:locatedIn/up:cellularComponent ?cellComponent.
+    ?cellComponent skos:prefLabel ?location_inside_cell.
+    """ ;
+  smodule:output up_mod:M52_module_port-protein, up_mod:M52_module_port-annotation, up_mod:M52_module_port-cellComponent, up_mod:M52_module_port-location_inside_cell .
+    
+up_mod:M52_module_port-protein 
+  a smodule:ModulePortURI ;
+  smodule:variableName "?protein" ;
+  rdfs:domain up:Protein ;
+  smodule:example uniprotkb:P01308, uniprotkb:A0A002, uniprotkb:A0A008ARC3 ;
+  rdfs:label "Protein" ;
+  smodule:isSelected "true"^^xsd:boolean.
+	
+up_mod:M52_module_port-annotation
+  a smodule:ModulePortURI ;
+  smodule:variableName "?annotation" ;
+  rdfs:domain up:Subcellular_Location_Annotation ;
+  rdfs:label "Annotation" ;
+  smodule:isSelected "true"^^xsd:boolean.
+
+up_mod:M52_module_port-location_inside_cell
+  a smodule:ModulePortDatatype ;
+  smodule:variableName "?location_inside_cell" ;
+  rdfs:domain xsd:string ;
+  rdfs:label "Location inside cell" ;
+  smodule:isSelected "true"^^xsd:boolean.
+
+up_mod:M52_module_port-cellComponent
+  a smodule:ModulePortURI ; 
+  smodule:variableName "?cellComponent" ;
+  rdfs:label "Cell component" ;
+  smodule:isSelected "true"^^xsd:boolean.
