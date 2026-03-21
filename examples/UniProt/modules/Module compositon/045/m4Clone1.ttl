@@ -1,0 +1,33 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://uniprot_module.biographs.org/m4_moduleClone1> a smodule:SPARQLModule ;
+    rdfs:label "proteinIRI structured name" ;
+    smodule:clonedFrom <http://uniprot_module.biographs.org/m4_module> ;
+    smodule:fragmentSPARQL """ 
+    BIND (SUBSTR(STR(?proteinIRIClone1), STRLEN(STR(uniprotkb:))+1) AS ?proteinClone1)
+  SERVICE <https://query.wikidata.org/sparql> {
+    ?wpClone1 wdt:P352  ?proteinClone1 .
+    ?wikiChemicalClone1 wdt:P129 ?wpClone1 . # Physically interacts with
+    ?wikiChemicalClone1 rdfs:label ?wikiChemicalLabelClone1 .
+    ?wikiChemicalClone1 wdt:P2175 ?wmcClone1 . # Medical conndition treated
+    ?wmcClone1 rdfs:label ?medicalConditionTreatedLabelClone1 .
+    FILTER(lang(?medicalConditionTreatedLabelClone1) = 'en')
+    FILTER(lang(?wikiChemicalLabelClone1) = 'en')
+  }
+    """ ;
+    smodule:output <http://uniprot_module.biographs.org/m4_module_port-proteinIRIClone1> ;
+    smodule:prefixes """PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+""" .
+
+<http://uniprot_module.biographs.org/m4_module_port-proteinIRIClone1> a smodule:ModulePortURI ;
+    rdfs:label "Protein" ;
+    rdfs:domain <http://purl.uniprot.org/core/Protein> ;
+    smodule:isSelected false ;
+    smodule:variableName "?proteinIRIClone1" .
+

@@ -1,0 +1,34 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rh: <http://rdf.rhea-db.org/> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://uniprot_module.biographs.org/m3_moduleClone1> a smodule:SPARQLModule ;
+    rdfs:label "englishLabelStr structured name" ;
+    smodule:clonedFrom <http://uniprot_module.biographs.org/m3_module> ;
+    smodule:fragmentSPARQL """ 
+    ?reactionClone1 rdfs:subClassOf rh:Reaction ;
+      rh:status ?statusClone1 .
+    """ ;
+    smodule:output <http://uniprot_module.biographs.org/m3_module_port-reactionClone1>,
+        <http://uniprot_module.biographs.org/m3_module_port-statusClone1> ;
+    smodule:prefixes """PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX rh: <http://rdf.rhea-db.org/>
+
+""" .
+
+<http://uniprot_module.biographs.org/m3_module_port-reactionClone1> a smodule:ModulePortURI ;
+    rdfs:label "Reaction" ;
+    rdfs:domain rh:Reaction ;
+    smodule:isSelected false ;
+    smodule:variableName "?reactionClone1" .
+
+<http://uniprot_module.biographs.org/m3_module_port-statusClone1> a smodule:ModulePortURI ;
+    rdfs:label "Status" ;
+    rdfs:domain xsd:anyURI ;
+    smodule:isSelected false ;
+    smodule:variableName "?statusClone1" .
+

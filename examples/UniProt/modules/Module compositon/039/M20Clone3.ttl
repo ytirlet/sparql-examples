@@ -1,0 +1,65 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix up: <http://purl.uniprot.org/core/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://uniprot_module.biographs.org/M20_moduleClone3> a smodule:SPARQLModule ;
+    rdfs:label "Annotation attribution" ;
+    smodule:clonedFrom <http://uniprot_module.biographs.org/M20_module> ;
+    smodule:fragmentSPARQL """
+    ?objectClone3 rdf:object ?annotationClone3.
+    ?objectClone3 up:attribution ?attributionClone3.
+    ?attributionClone3 up:source ?sourceClone3.
+    ?sourceClone3 rdf:type ?sourceTypeClone3.
+    ?attributionClone3 up:evidence ?evidenceClone3.
+    """ ;
+    smodule:output <http://uniprot_module.biographs.org/M20_module_port-annotationClone3>,
+        <http://uniprot_module.biographs.org/M20_module_port-attributionClone3>,
+        <http://uniprot_module.biographs.org/M20_module_port-evidenceClone3>,
+        <http://uniprot_module.biographs.org/M20_module_port-objectClone3>,
+        <http://uniprot_module.biographs.org/M20_module_port-sourceClone3>,
+        <http://uniprot_module.biographs.org/M20_module_port-sourceTypeClone3> ;
+    smodule:prefixes """PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX up: <http://purl.uniprot.org/core/>
+
+""" .
+
+<http://uniprot_module.biographs.org/M20_module_port-annotationClone3> a smodule:ModulePortURI ;
+    rdfs:label "Annotation" ;
+    rdfs:domain up:Annotation ;
+    smodule:isSelected false ;
+    smodule:variableName "?annotationClone3" .
+
+<http://uniprot_module.biographs.org/M20_module_port-attributionClone3> a smodule:ModulePortURI ;
+    rdfs:label "Attribution" ;
+    rdfs:domain xsd:anyURI ;
+    smodule:isSelected false ;
+    smodule:variableName "?attributionClone3" .
+
+<http://uniprot_module.biographs.org/M20_module_port-evidenceClone3> a smodule:ModulePortURI ;
+    rdfs:label "Evidence" ;
+    rdfs:domain xsd:anyURI ;
+    smodule:isSelected false ;
+    smodule:variableName "?evidenceClone3" .
+
+<http://uniprot_module.biographs.org/M20_module_port-objectClone3> a smodule:ModulePortURI ;
+    rdfs:label "Object" ;
+    rdfs:domain xsd:anyURI ;
+    smodule:isSelected false ;
+    smodule:variableName "?objectClone3" .
+
+<http://uniprot_module.biographs.org/M20_module_port-sourceClone3> a smodule:ModulePortURI ;
+    rdfs:label "Source" ;
+    rdfs:domain xsd:anyURI ;
+    smodule:isSelected false ;
+    smodule:variableName "?sourceClone3" .
+
+<http://uniprot_module.biographs.org/M20_module_port-sourceTypeClone3> a smodule:ModulePortURI ;
+    rdfs:label "Source type" ;
+    rdfs:domain xsd:anyURI ;
+    smodule:isSelected false ;
+    smodule:variableName "?sourceTypeClone3" .
+

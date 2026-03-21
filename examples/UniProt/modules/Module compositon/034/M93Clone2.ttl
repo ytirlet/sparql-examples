@@ -1,0 +1,33 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://uniprot_module.biographs.org/M93_moduleClone2> a smodule:SPARQLModule ;
+    rdfs:label "Comment modification for rq 34" ;
+    smodule:clonedFrom <http://uniprot_module.biographs.org/M93_module> ;
+    smodule:fragmentSPARQL """ 
+    BIND(IF(contains(?rawCommentClone2, ';'), 
+            STRBEFORE(?rawCommentClone2,';'), 
+            ?rawComment) AS ?comment)
+    """ ;
+    smodule:output <http://uniprot_module.biographs.org/M93_module_port-commentClone2>,
+        <http://uniprot_module.biographs.org/M93_module_port-rawCommentClone2> ;
+    smodule:prefixes """PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+""" .
+
+<http://uniprot_module.biographs.org/M93_module_port-commentClone2> a smodule:ModulePortDatatype ;
+    rdfs:label "comment" ;
+    rdfs:domain xsd:string ;
+    smodule:isSelected true ;
+    smodule:variableName "?commentClone2" .
+
+<http://uniprot_module.biographs.org/M93_module_port-rawCommentClone2> a smodule:ModulePortDatatype ;
+    rdfs:label "rawComment" ;
+    rdfs:domain xsd:string ;
+    smodule:isSelected false ;
+    smodule:variableName "?rawCommentClone2" .
+

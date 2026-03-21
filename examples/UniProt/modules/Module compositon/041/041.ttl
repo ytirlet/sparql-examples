@@ -1,0 +1,23 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix up_mod: <http://uniprot_module.biographs.org/> .
+
+smodule:module_composition_041 dcterms:title "Retrieve UniProtKB entries with sequences that are composed of fragments".
+smodule:module_composition_041 rdfs:comment "Retrieve UniProtKB entries with sequences that are composed of fragments".
+smodule:module_composition_041 dcterms:subject "protein fragment", "sequence".
+
+smodule:module_composition_041 rdf:type smodule:SPARQL_Module_Composition.
+smodule:module_composition_041 smodule:hasConnection smodule:041_c1, smodule:041_c2.
+smodule:module_composition_041 smodule:hasComponent smodule:OperatorValuesClone160, up_mod:M32_moduleClone2, up_mod:M95_moduleClone1.
+smodule:module_composition_041 smodule:includeFile "VALUESClone160.ttl", "M32Clone2.ttl", "M95Clone1.ttl".
+
+
+smodule:041_c1 rdf:type smodule:Connection.
+smodule:041_c1 smodule:connects up_mod:M32_module_port-sequenceClone2, up_mod:M95_module_port-sequenceClone1.
+
+smodule:041_c2 rdf:type smodule:Connection.
+smodule:041_c2 smodule:connects up_mod:M32_module_port-entryTypeClone2, smodule:OperatorValuesPortResultClone160.
+
+smodule:OperatorValuesPortResultClone160 smodule:valuesEnumeration "up:Protein" .

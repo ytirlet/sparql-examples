@@ -1,0 +1,46 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix up_mod: <http://uniprot_module.biographs.org/> .
+
+smodule:module_composition_040 dcterms:title "Retrieve human enzymes that metabolize sphingolipids and are annotated in ChEMBL".
+smodule:module_composition_040 rdfs:comment "Retrieve human enzymes that metabolize sphingolipids and are annotated in ChEMBL".
+smodule:module_composition_040 dcterms:subject "enzyme", "small molecule", "cross-reference", "ChEMBL", "federated query".
+
+smodule:module_composition_040 rdf:type smodule:SPARQL_Module_Composition.
+smodule:module_composition_040 smodule:hasConnection smodule:040_c1, smodule:040_c2, smodule:040_c3, smodule:040_c4, smodule:040_c5, smodule:040_c6, smodule:040_c7, smodule:040_c8, smodule:040_c9 .
+smodule:module_composition_040 smodule:hasComponent smodule:OperatorValuesClone52, smodule:OperatorValuesClone51, smodule:OperatorValuesClone50, smodule:OperatorServiceClone4, up_mod:M75_moduleClone1, up_mod:M38_moduleClone1, up_mod:M67_moduleClone11, up_mod:M39_moduleClone2, up_mod:M31_moduleClone5.
+smodule:module_composition_040 smodule:includeFile "VALUESClone52.ttl", "VALUESClone51.ttl", "VALUESClone50.ttl", "SERVICEClone4.ttl", "M75Clone1.ttl", "M38Clone1.ttl", "M67Clone11.ttl", "M39Clone2.ttl", "M31Clone5.ttl".
+
+smodule:040_c1 rdf:type smodule:Connection.
+smodule:040_c1 smodule:connects up_mod:M31_module_port-entryClone5, up_mod:M39_module_port-proteinClone2.
+
+smodule:040_c3 rdf:type smodule:Connection.
+smodule:040_c3 smodule:connects up_mod:M38_module_port-compoundClone1, up_mod:M75_module_port-compoundClone1.
+
+smodule:040_c4 rdf:type smodule:Connection.
+smodule:040_c4 smodule:connects up_mod:M31_module_port-entryClone5, up_mod:M67_module_port-entryClone11.
+
+smodule:040_c5 rdf:type smodule:Connection.
+smodule:040_c5 smodule:connects up_mod:M31_module_port-databaseClone5, smodule:OperatorValuesPortResultClone52.
+
+smodule:OperatorValuesPortResultClone52 smodule:valuesEnumeration "<http://purl.uniprot.org/database/ChEMBL>" .
+
+smodule:040_c6 rdf:type smodule:Connection.
+smodule:040_c6 smodule:connects up_mod:M67_module_port-organismClone11, smodule:OperatorValuesPortResultClone51.
+
+smodule:OperatorValuesPortResultClone51 smodule:valuesEnumeration "taxon:9606" .
+
+smodule:040_c7 rdf:type smodule:Connection.
+smodule:040_c7 smodule:connects up_mod:M75_module_port-chebiAncestorClone1, smodule:OperatorValuesPortResultClone50.
+
+smodule:OperatorValuesPortResultClone50 smodule:valuesEnumeration "CHEBI:26739" .
+
+smodule:040_c8 rdf:type smodule:Connection.
+smodule:040_c8 smodule:connects up_mod:M38_module_port-reactionClone1, smodule:OperatorServicePortParameterClone4.
+
+smodule:040_c9 rdf:type smodule:Connection.
+smodule:040_c9 smodule:connects up_mod:M39_module_port-reactionClone2, smodule:OperatorServicePortResultClone4.
+
+smodule:OperatorServicePortResultClone4 smodule:serviceInput "<https://sparql.rhea-db.org/sparql>".

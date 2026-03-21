@@ -1,0 +1,42 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rh: <http://rdf.rhea-db.org/> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://uniprot_module.biographs.org/M75_moduleClone1> a smodule:SPARQLModule ;
+    rdfs:label "compound to ChEBI" ;
+    smodule:clonedFrom <http://uniprot_module.biographs.org/M75_module> ;
+    smodule:fragmentSPARQL """
+    ?compoundClone1 (rh:chebi|(rh:reactivePart/rh:chebi)|(rh:underlyingChebi)) ?chebiClone1 .
+    ?chebiClone1 (rdfs:subClassOf)+ ?chebiAncestorClone1.
+    """ ;
+    smodule:output <http://uniprot_module.biographs.org/M75_module_port-chebiAncestorClone1>,
+        <http://uniprot_module.biographs.org/M75_module_port-chebiClone1>,
+        <http://uniprot_module.biographs.org/M75_module_port-compoundClone1> ;
+    smodule:prefixes """PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX : <http://biographs.org/>
+PREFIX rh: <http://rdf.rhea-db.org/>
+
+""" .
+
+<http://uniprot_module.biographs.org/M75_module_port-chebiAncestorClone1> a smodule:ModulePortURI ;
+    rdfs:label "Ancestor ChEBI" ;
+    rdfs:domain xsd:anyURI ;
+    smodule:isSelected false ;
+    smodule:variableName "?chebiAncestorClone1" .
+
+<http://uniprot_module.biographs.org/M75_module_port-chebiClone1> a smodule:ModulePortURI ;
+    rdfs:label "ChEBI" ;
+    rdfs:domain xsd:anyURI ;
+    smodule:isSelected false ;
+    smodule:variableName "?chebiClone1" .
+
+<http://uniprot_module.biographs.org/M75_module_port-compoundClone1> a smodule:ModulePortURI ;
+    rdfs:label "Compound" ;
+    rdfs:domain rh:Compound ;
+    smodule:isSelected false ;
+    smodule:variableName "?compoundClone1" .
+

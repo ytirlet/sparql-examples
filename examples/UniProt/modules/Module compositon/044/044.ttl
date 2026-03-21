@@ -1,0 +1,33 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix up_mod: <http://uniprot_module.biographs.org/> .
+
+smodule:module_composition_044 dcterms:title "Find the Rhea and InterPro combinations in UniProtKB entries.".
+smodule:module_composition_044 rdfs:comment "Find the Rhea and InterPro combinations in UniProtKB entries.".
+smodule:module_composition_044 dcterms:subject "enzyme", "domain", "InterPro", "Rhea".
+
+smodule:module_composition_044 rdf:type smodule:SPARQL_Module_Composition.
+smodule:module_composition_044 smodule:hasConnection smodule:044_c1 , smodule:044_c2, smodule:044_c3, smodule:044_c4. #, smodule:044_c5.
+smodule:module_composition_044 smodule:hasComponent smodule:OperatorValuesClone54, smodule:OperatorValuesClone53, up_mod:M39_moduleClone3, up_mod:M31_moduleClone6, up_mod:M17_moduleClone7. #smodule:OperatorOrderByClone3, 
+smodule:module_composition_044 smodule:includeFile "VALUESClone54.ttl", "VALUESClone53.ttl", "M39Clone3.ttl",  "M31Clone6.ttl",  "M17Clone7.ttl". # "ORDERBYClone3.ttl",
+
+smodule:044_c1 rdf:type smodule:Connection.
+smodule:044_c1 smodule:connects up_mod:M17_module_port-proteinClone7, up_mod:M39_module_port-proteinClone3.
+
+smodule:044_c2 rdf:type smodule:Connection.
+smodule:044_c2 smodule:connects up_mod:M17_module_port-proteinClone7, up_mod:M31_module_port-entryClone6.
+
+smodule:044_c3 rdf:type smodule:Connection.
+smodule:044_c3 smodule:connects up_mod:M31_module_port-databaseClone6, smodule:OperatorValuesPortResultClone54.
+
+smodule:OperatorValuesPortResultClone54 smodule:valuesEnumeration "<http://purl.uniprot.org/database/InterPro>" .
+
+smodule:044_c4 rdf:type smodule:Connection.
+smodule:044_c4 smodule:connects up_mod:M17_module_port-reviewedClone7, smodule:OperatorValuesPortResultClone53.
+
+smodule:OperatorValuesPortResultClone53 smodule:valuesEnumeration "true" .
+
+#smodule:044_c5 rdf:type smodule:Connection.
+#smodule:044_c5 smodule:connects smodule:OperatorOrderByPortParameterClone3, up_mod:M39_module_port-reactionClone3 .

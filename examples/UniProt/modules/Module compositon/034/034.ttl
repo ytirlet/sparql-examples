@@ -1,0 +1,56 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix up_mod: <http://uniprot_module.biographs.org/> .
+
+smodule:module_composition_034 dcterms:title "Find the co-occurence count of topological domain comment text in UniProtKB entries".
+smodule:module_composition_034 rdfs:comment "Find the co-occurence count of topological domain comment text in UniProtKB entries".
+smodule:module_composition_034 dcterms:subject "transmembrane", "topology", "count".
+
+smodule:module_composition_034 rdf:type smodule:SPARQL_Module_Composition.
+smodule:module_composition_034 smodule:hasConnection smodule:034_c1, smodule:034_c2, smodule:034_c3, smodule:034_c4, smodule:034_c5. #, smodule:034_c6, smodule:034_c7, smodule:034_c8, smodule:034_c9, smodule:034_c10, smodule:034_c11, smodule:034_c12 .
+smodule:module_composition_034 smodule:hasComponent smodule:OperatorValuesClone42, smodule:OperatorValuesClone41, up_mod:M93_moduleClone1, up_mod:M93_moduleClone2, up_mod:M14_moduleClone9, up_mod:M14_moduleClone8. #smodule:OperatorFilterClone13, smodule:OperatorGroupByClone13, smodule:OperatorCountClone8, smodule:OperatorOrderByDescClone7, 
+smodule:module_composition_034 smodule:includeFile "VALUESClone42.ttl", "VALUESClone41.ttl", "M93Clone2.ttl",  "M93Clone1.ttl", "M14Clone9.ttl" ,"M14Clone8.ttl". #  "FILTERClone13.ttl", "GROUPBYClone13.ttl", "COUNTClone8.ttl", "ORDERBYDESCClone7.ttl",
+
+smodule:034_c1 rdf:type smodule:Connection.
+smodule:034_c1 smodule:connects up_mod:M14_module_port-proteinClone9, up_mod:M14_module_port-proteinClone8.
+
+smodule:034_c2 rdf:type smodule:Connection.
+smodule:034_c2 smodule:connects up_mod:M14_module_port-annotationTypeClone9, smodule:OperatorValuesPortResultClone42.
+
+smodule:OperatorValuesPortResultClone42 smodule:valuesEnumeration "up:Topological_Domain_Annotation" .
+
+smodule:034_c3 rdf:type smodule:Connection.
+smodule:034_c3 smodule:connects up_mod:M14_module_port-annotationTypeClone8, smodule:OperatorValuesPortResultClone41.
+
+smodule:OperatorValuesPortResultClone41 smodule:valuesEnumeration "up:Topological_Domain_Annotation" .
+
+smodule:034_c4 rdf:type smodule:Connection.
+smodule:034_c4 smodule:connects up_mod:M14_module_port-commentClone9, up_mod:M93_module_port-rawCommentClone1.
+
+smodule:034_c5 rdf:type smodule:Connection.
+smodule:034_c5 smodule:connects up_mod:M14_module_port-commentClone8, up_mod:M93_module_port-rawCommentClone2.
+
+#smodule:034_c6 rdf:type smodule:Connection.
+#smodule:034_c6 smodule:connects up_mod:M14_module_port-annotationClone9, smodule:OperatorFilterPortParameter1Clone13.
+
+#smodule:034_c7 rdf:type smodule:Connection.
+#smodule:034_c7 smodule:connects up_mod:M14_module_port-annotationClone8, smodule:OperatorFilterPortParameter2Clone13.
+
+#smodule:OperatorFilterPortResultClone13 smodule:filterInput "?parameter1 != ?parameter2" .
+
+#smodule:034_c8 rdf:type smodule:Connection.
+#smodule:034_c8 smodule:connects up_mod:M93_module_port-commentClone1, smodule:OperatorGroupByPortParameter1Clone13.
+
+#smodule:034_c9 rdf:type smodule:Connection.
+#smodule:034_c9 smodule:connects up_mod:M93_module_port-commentClone2, smodule:OperatorGroupByPortParameter2Clone13.
+
+#smodule:034_c10 rdf:type smodule:Connection.
+#smodule:034_c10 smodule:connects smodule:OperatorCountPortParameter1Clone8, smodule:OperatorGroupByPortResultClone13 .
+
+#smodule:034_c11 rdf:type smodule:Connection.
+#smodule:034_c11 smodule:connects smodule:OperatorOrderByDescPortParameterClone7, smodule:OperatorCountPortResultClone8 .
+
+#smodule:034_c12 rdf:type smodule:Connection.
+#smodule:034_c12 smodule:connects smodule:OperatorCountPortParameter2Clone8, up_mod:M93_module_port-commentClone1 .

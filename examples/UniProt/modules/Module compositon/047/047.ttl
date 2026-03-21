@@ -1,0 +1,38 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix up_mod: <http://uniprot_module.biographs.org/> .
+@prefix base_mod: <http://base_module.biographs.org/> .
+
+smodule:module_composition_047 dcterms:title "Find UniProtKB entries with a transmembrane region, with an alanine in the 15 amino acid region preceding the transmembrane".
+smodule:module_composition_047 rdfs:comment "Find UniProtKB entries with a transmembrane region, with an alanine in the 15 amino acid region preceding the transmembrane".
+smodule:module_composition_047 dcterms:subject "transmembrane", "search within sequence".
+
+smodule:module_composition_047 rdf:type smodule:SPARQL_Module_Composition.
+smodule:module_composition_047 smodule:hasConnection smodule:047_c1 , smodule:047_c2, smodule:047_c3, smodule:047_c4, smodule:047_c5, smodule:047_c6, smodule:047_c7.
+smodule:module_composition_047 smodule:hasComponent smodule:OperatorValuesClone59, up_mod:M76_moduleClone4, up_mod:M40_moduleClone4, up_mod:M14_moduleClone12, base_mod:Mb1_moduleClone3, up_mod:m6_moduleClone1.
+smodule:module_composition_047 smodule:includeFile "VALUESClone59.ttl", "M76Clone4.ttl", "M40Clone4.ttl", "M14Clone12.ttl", "Mb1Clone3.ttl", "m6Clone1.ttl".
+
+smodule:047_c1 rdf:type smodule:Connection.
+smodule:047_c1 smodule:connects up_mod:M14_module_port-proteinClone12, up_mod:M40_module_port-proteinClone4.
+
+smodule:047_c2 rdf:type smodule:Connection.
+smodule:047_c2 smodule:connects up_mod:M14_module_port-annotationClone12, up_mod:M40_module_port-annotationClone4.
+
+smodule:047_c3 rdf:type smodule:Connection.
+smodule:047_c3 smodule:connects up_mod:M40_module_port-rangeClone4, up_mod:M76_module_port-entryClone4.
+
+smodule:047_c4 rdf:type smodule:Connection.
+smodule:047_c4 smodule:connects up_mod:M14_module_port-annotationTypeClone12, smodule:OperatorValuesPortResultClone59.
+
+smodule:OperatorValuesPortResultClone59 smodule:valuesEnumeration "up:Transmembrane_Annotation" .
+
+smodule:047_c5 rdf:type smodule:Connection.
+smodule:047_c5 smodule:connects up_mod:M76_module_port-referenceClone4, base_mod:Mb1_module_port-subjectClone3.
+
+smodule:047_c6 rdf:type smodule:Connection.
+smodule:047_c6 smodule:connects up_mod:M76_module_port-beginPositionClone4, up_mod:m6_module_port-beginClone1.
+
+smodule:047_c7 rdf:type smodule:Connection.
+smodule:047_c7 smodule:connects base_mod:Mb1_module_port-valueClone3, up_mod:m6_module_port-aasClone1.

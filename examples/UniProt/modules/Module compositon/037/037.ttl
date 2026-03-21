@@ -1,0 +1,56 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix up_mod: <http://uniprot_module.biographs.org/> .
+@prefix base_mod: <http://base_module.biographs.org/> .
+
+smodule:module_composition_037 dcterms:title "Find the human protein which contains an epitope VSTQ, where T is a phosphorylated threonine".
+smodule:module_composition_037 rdfs:comment "Find the human protein which contains an epitope VSTQ, where T is a phosphorylated threonine".
+smodule:module_composition_037 dcterms:subject "proteome", "chromosome".
+
+smodule:module_composition_037 rdf:type smodule:SPARQL_Module_Composition.
+smodule:module_composition_037 smodule:hasConnection smodule:037_c1 , smodule:037_c2, smodule:037_c3, smodule:037_c4, smodule:037_c5, smodule:037_c6, smodule:037_c7, smodule:037_c8. #, smodule:037_c9, smodule:037_c10, smodule:037_c11.
+smodule:module_composition_037 smodule:hasComponent smodule:OperatorValuesClone47, smodule:OperatorValuesClone46, up_mod:M76_moduleClone3, base_mod:Mb1_moduleClone2, up_mod:M67_moduleClone10, up_mod:M40_moduleClone3, up_mod:M14_moduleClone11, up_mod:M32_moduleClone6. #smodule:OperatorFilterClone9, smodule:OperatorFilterClone10, 
+smodule:module_composition_037 smodule:includeFile "VALUESClone47.ttl", "VALUESClone46.ttl", "M76Clone3.ttl", "Mb1Clone2.ttl", "M67Clone10.ttl", "M40Clone3.ttl", "M14Clone11.ttl", "M32Clone6.ttl". # "FILTERClone9.ttl", "FILTERClone10.ttl",
+
+smodule:037_c1 rdf:type smodule:Connection.
+smodule:037_c1 smodule:connects up_mod:M14_module_port-proteinClone11, up_mod:M67_module_port-entryClone10.
+
+smodule:037_c2 rdf:type smodule:Connection.
+smodule:037_c2 smodule:connects up_mod:M14_module_port-annotationTypeClone11, smodule:OperatorValuesPortResultClone47.
+
+smodule:OperatorValuesPortResultClone47 smodule:valuesEnumeration "up:Modified_Residue_Annotation" .
+
+smodule:037_c3 rdf:type smodule:Connection.
+smodule:037_c3 smodule:connects up_mod:M67_module_port-organismClone10, smodule:OperatorValuesPortResultClone46.
+
+smodule:OperatorValuesPortResultClone46 smodule:valuesEnumeration "taxon:9606" .
+
+smodule:037_c4 rdf:type smodule:Connection.
+smodule:037_c4 smodule:connects up_mod:M14_module_port-proteinClone11, up_mod:M32_module_port-entryClone6.
+
+smodule:037_c5 rdf:type smodule:Connection.
+smodule:037_c5 smodule:connects up_mod:M14_module_port-proteinClone11, up_mod:M40_module_port-proteinClone3.
+
+smodule:037_c6 rdf:type smodule:Connection.
+smodule:037_c6 smodule:connects up_mod:M14_module_port-annotationClone11, up_mod:M40_module_port-annotationClone3.
+
+smodule:037_c7 rdf:type smodule:Connection.
+smodule:037_c7 smodule:connects up_mod:M40_module_port-rangeClone3, up_mod:M76_module_port-entryClone3.
+
+smodule:037_c8 rdf:type smodule:Connection.
+smodule:037_c8 smodule:connects up_mod:M76_module_port-referenceClone3, base_mod:Mb1_module_port-subjectClone2.
+
+#smodule:037_c9 rdf:type smodule:Connection.
+#smodule:037_c9 smodule:connects base_mod:Mb1_module_port-valueClone2, smodule:OperatorFilterPortParameter1Clone9.
+
+#smodule:037_c10 rdf:type smodule:Connection.
+#smodule:037_c10 smodule:connects up_mod:M76_module_port-beginPositionClone3, smodule:OperatorFilterPortParameter2Clone9.
+
+#smodule:OperatorFilterPortResultClone9 smodule:filterInput "substr(?parameter1, ?parameter2 -2 , 4)  = 'VSTQ'" .
+
+#smodule:037_c11 rdf:type smodule:Connection.
+#smodule:037_c11 smodule:connects up_mod:M14_module_port-commentClone11, smodule:OperatorFilterPortParameterClone10.
+
+#smodule:OperatorFilterPortResultClone10 smodule:filterInput "contains(?parameter, "Phosphothreonine")" .

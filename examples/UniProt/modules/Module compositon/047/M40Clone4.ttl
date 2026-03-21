@@ -1,0 +1,41 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix up: <http://purl.uniprot.org/core/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://uniprot_module.biographs.org/M40_moduleClone4> a smodule:SPARQLModule ;
+    rdfs:label "Protein to annotation range" ;
+    smodule:clonedFrom <http://uniprot_module.biographs.org/M40_module> ;
+    smodule:fragmentSPARQL """
+    ?proteinClone4 up:annotation ?annotationClone4.
+    ?annotationClone4 up:range ?rangeClone4.
+    """ ;
+    smodule:output <http://uniprot_module.biographs.org/M40_module_port-annotationClone4>,
+        <http://uniprot_module.biographs.org/M40_module_port-proteinClone4>,
+        <http://uniprot_module.biographs.org/M40_module_port-rangeClone4> ;
+    smodule:prefixes """PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX up: <http://purl.uniprot.org/core/>
+
+""" .
+
+<http://uniprot_module.biographs.org/M40_module_port-annotationClone4> a smodule:ModulePortURI ;
+    rdfs:label "Annotation" ;
+    rdfs:domain up:Annotation ;
+    smodule:isSelected false ;
+    smodule:variableName "?annotationClone4" .
+
+<http://uniprot_module.biographs.org/M40_module_port-proteinClone4> a smodule:ModulePortURI ;
+    rdfs:label "Protein" ;
+    rdfs:domain up:Protein ;
+    smodule:isSelected true ;
+    smodule:variableName "?proteinClone4" .
+
+<http://uniprot_module.biographs.org/M40_module_port-rangeClone4> a smodule:ModulePortURI ;
+    rdfs:label "Range" ;
+    rdfs:domain xsd:anyURI ;
+    smodule:isSelected false ;
+    smodule:variableName "?rangeClone4" .
+

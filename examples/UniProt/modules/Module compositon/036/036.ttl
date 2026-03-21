@@ -1,0 +1,47 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix up_mod: <http://uniprot_module.biographs.org/> .
+@prefix base_mod: <http://base_module.biographs.org/> .
+
+smodule:module_composition_036 dcterms:title "Find the orthologous proteins for UniProtKB entry P05067 using the OrthoDB database".
+smodule:module_composition_036 rdfs:comment "Find the orthologous proteins for UniProtKB entry P05067 using the OrthoDB database".
+smodule:module_composition_036 dcterms:subject "ortholog".
+
+smodule:module_composition_036 rdf:type smodule:SPARQL_Module_Composition.
+smodule:module_composition_036 smodule:hasConnection smodule:036_c1, smodule:036_c2, smodule:036_c3, smodule:036_c4, smodule:036_c5, smodule:036_c6, smodule:036_c7, smodule:036_c8, smodule:036_c9.
+smodule:module_composition_036 smodule:hasComponent smodule:OperatorValuesClone45, smodule:OperatorValuesClone44, smodule:OperatorOptionalClone11, up_mod:m2_moduleClone1, up_mod:M74_moduleClone2, up_mod:M67_moduleClone9, up_mod:M31_moduleClone4, up_mod:M14_moduleClone10, up_mod:M73_moduleClone5, up_mod:M32_moduleClone5.
+smodule:module_composition_036 smodule:includeFile "VALUESClone45.ttl", "VALUESClone44.ttl", "OPTIONALClone11.ttl", "m2Clone1.ttl", "M74Clone2.ttl", "M67Clone9.ttl", "M31Clone4.ttl", "M14Clone10.ttl", "M73Clone5.ttl", "M32Clone5.ttl".
+
+smodule:036_c1 rdf:type smodule:Connection.
+smodule:036_c1 smodule:connects up_mod:M14_module_port-proteinClone10, smodule:OperatorOptionalPortParameter0Clone11.
+
+smodule:036_c2 rdf:type smodule:Connection.
+smodule:036_c2 smodule:connects up_mod:M14_module_port-annotationTypeClone10, smodule:OperatorValuesPortResultClone45.
+
+smodule:OperatorValuesPortResultClone45 smodule:valuesEnumeration "up:Function_Annotation" .
+
+smodule:036_c3 rdf:type smodule:Connection.
+smodule:036_c3 smodule:connects up_mod:M67_module_port-entryClone9, up_mod:M31_module_port-entryClone4.
+
+smodule:036_c4 rdf:type smodule:Connection.
+smodule:036_c4 smodule:connects up_mod:M67_module_port-entryClone9, smodule:OperatorOptionalPortResultClone11.
+
+smodule:036_c5 rdf:type smodule:Connection.
+smodule:036_c5 smodule:connects up_mod:M67_module_port-entryClone9, smodule:OperatorValuesPortResultClone44.
+
+smodule:OperatorValuesPortResultClone44 smodule:valuesEnumeration "uniprotkb:P05067" .
+
+smodule:036_c6 rdf:type smodule:Connection.
+smodule:036_c6 smodule:connects up_mod:M67_module_port-entryClone9, up_mod:M73_module_port-proteinClone5.
+
+smodule:036_c7 rdf:type smodule:Connection.
+smodule:036_c7 smodule:connects up_mod:M67_module_port-entryClone9, up_mod:M32_module_port-entryClone5.
+
+smodule:036_c8 rdf:type smodule:Connection.
+smodule:036_c8 smodule:connects up_mod:M67_module_port-organismClone9, up_mod:M74_module_port-taxonClone2.
+
+smodule:036_c9 rdf:type smodule:Connection.
+smodule:036_c9 smodule:connects up_mod:M67_module_port-entryClone9, up_mod:m2_module_port-proteinClone1.
+

@@ -1,0 +1,28 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://uniprot_module.biographs.org/m2_moduleClone1> a smodule:SPARQLModule ;
+    rdfs:label "englishLabelStr structured name" ;
+    smodule:clonedFrom <http://uniprot_module.biographs.org/m2_module> ;
+    smodule:fragmentSPARQL """ 
+    SERVICE <https://sparql.orthodb.org/sparql/>{
+    ?orthoGroupClone1 orthodb:ogMedianProteinLength ?medianLengthClone1 .
+    ?orthoGroupClone1 orthodb:hasMember ?xrefClone1 .
+    ?xrefClone1 orthodb:xref/orthodb:xrefResource ?proteinClone1 .
+  }
+    """ ;
+    smodule:output <http://uniprot_module.biographs.org/m2_module_port-proteinClone1> ;
+    smodule:prefixes """PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+""" .
+
+<http://uniprot_module.biographs.org/m2_module_port-proteinClone1> a smodule:ModulePortURI ;
+    rdfs:label "Protein" ;
+    rdfs:domain xsd:string ;
+    smodule:isSelected true ;
+    smodule:variableName "?proteinClone1" .
+

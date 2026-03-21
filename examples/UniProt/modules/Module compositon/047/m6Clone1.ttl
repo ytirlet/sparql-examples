@@ -1,0 +1,45 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://uniprot_module.biographs.org/m6_moduleClone1> a smodule:SPARQLModule ;
+    rdfs:label "begin structured name" ;
+    smodule:clonedFrom <http://uniprot_module.biographs.org/m6_module> ;
+    smodule:fragmentSPARQL """ 
+    BIND(?beginClone1 - 10 AS ?tenBeforeBegin)
+    BIND(IF(?tenBeforeBeginClone1 < 1, 0, ?tenBeforeBegin) AS ?from)
+    BIND(SUBSTR(?aasClone1, ?fromClone1, 15) AS ?interestingRegion)
+    FILTER(CONTAINS(?interestingRegionClone1, 'A'))
+    """ ;
+    smodule:output <http://uniprot_module.biographs.org/m6_module_port-beginClone1>, <http://uniprot_module.biographs.org/m6_module_port-fromClone1>, <http://uniprot_module.biographs.org/m6_module_port-interestingRegionClone1>, <http://uniprot_module.biographs.org/m6_module_port-aasClone1> ;
+    smodule:prefixes """PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+""" .
+
+<http://uniprot_module.biographs.org/m6_module_port-beginClone1> a smodule:ModulePortURI ;
+    rdfs:label "Begin Position" ;
+    rdfs:domain xsd:anyURI ;
+    smodule:isSelected false ;
+    smodule:variableName "?beginClone1" .
+    
+<http://uniprot_module.biographs.org/m6_module_port-fromClone1> a smodule:ModulePortURI ;
+    rdfs:label "from" ;
+    rdfs:domain xsd:anyURI ;
+    smodule:isSelected true ;
+    smodule:variableName "?fromClone1" .
+    
+<http://uniprot_module.biographs.org/m6_module_port-interestingRegionClone1> a smodule:ModulePortURI ;
+    rdfs:label "Interesting Region" ;
+    rdfs:domain xsd:anyURI ;
+    smodule:isSelected true ;
+    smodule:variableName "?interestingRegionClone1" .
+    
+<http://uniprot_module.biographs.org/m6_module_port-aasClone1> a smodule:ModulePortURI ;
+    rdfs:label "aas" ;
+    rdfs:domain xsd:anyURI ;
+    smodule:isSelected true ;
+    smodule:variableName "?aasClone1" .
+

@@ -1,0 +1,39 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <https://schema.org/> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix up: <http://purl.uniprot.org/core/> .
+@prefix up_mod: <http://uniprot_module.biographs.org/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+
+up_mod:M95_moduleClone1 a smodule:SPARQLModule;
+  rdfs:label "Sequence fragment"@en;
+  rdfs:comment "Sequence fragment"@en;
+  smodule:clonedFrom <http://uniprot_module.biographs.org/M95_module> ;
+  schema:keywords "fragment";
+  smodule:prefixes """PREFIX up: <http://purl.uniprot.org/core/>
+  PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+  PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+  """ ;
+  smodule:fragmentSPARQL """
+    ?sequenceClone1 up:fragment ?fragmentClone1 .
+    """;
+  smodule:output up_mod:M95_module_port-sequenceClone1, up_mod:M95_module_port-fragmentClone1.
+  
+up_mod:M95_module_port-fragmentClone1
+  a smodule:ModulePortDatatype;
+  rdfs:domain [
+    a owl:Class ;
+    smodule:option ("multiple" "single")
+    ]; 
+  smodule:variableName "?fragmentClone1" ;
+  rdfs:label "Fragment" ;
+  smodule:isSelected "false"^^xsd:boolean .
+
+up_mod:M95_module_port-sequenceClone1
+  a smodule:ModulePortURI;
+  rdfs:domain up:Sequence;
+  smodule:variableName "?sequenceClone1" ;
+  rdfs:label "Sequence" ;
+  smodule:isSelected "false"^^xsd:boolean .

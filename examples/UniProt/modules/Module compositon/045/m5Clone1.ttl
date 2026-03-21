@@ -1,0 +1,27 @@
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://uniprot_module.biographs.org/m5_moduleClone1> a smodule:SPARQLModule ;
+    rdfs:label "chebiRestriction structured name" ;
+    smodule:clonedFrom <http://uniprot_module.biographs.org/m5_module> ;
+    smodule:fragmentSPARQL """ 
+    ?chebiRestrictionClone1 a owl:Restriction ;
+	owl:onProperty chebihash:has_major_microspecies_at_pH_7_3.
+    """ ;
+    smodule:output <http://uniprot_module.biographs.org/m5_module_port-chebiRestrictionClone1> ;
+    smodule:prefixes """PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX sh: <http://www.w3.org/ns/shacl#>
+
+""" .
+
+<http://uniprot_module.biographs.org/m5_module_port-chebiRestrictionClone1> a smodule:ModulePortURI ;
+    rdfs:label "ChEBI Restriction" ;
+    rdfs:domain owl:Restriction ;
+    smodule:isSelected false ;
+    smodule:variableName "?chebiRestrictionClone1" .
+

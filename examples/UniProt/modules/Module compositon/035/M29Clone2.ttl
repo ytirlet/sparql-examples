@@ -1,0 +1,55 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <https://schema.org/> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix up: <http://purl.uniprot.org/core/> .
+@prefix up_mod: <http://uniprot_module.biographs.org/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+
+up_mod:M29_moduleClone2 a smodule:SPARQLModule;
+  rdfs:label "Cluster and similar protein"@en;
+  rdfs:comment "Cluster and similar protein"@en;
+  smodule:clonedFrom <http://uniprot_module.biographs.org/M29_module> ;
+  schema:keywords "similar protein";
+  smodule:prefixes """PREFIX up: <http://purl.uniprot.org/core/>
+    PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+    PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+    """ ;
+  smodule:fragmentSPARQL """
+    ?clusterClone2 up:member ?memberClone2.
+    ?memberClone2 up:sequenceFor ?similarClone2.
+    ?clusterClone2 up:identity ?identityClone2.
+    """;
+  smodule:output up_mod:M29_module_port-clusterClone2, up_mod:M29_module_port-memberClone2, up_mod:M29_module_port-similarClone2, up_mod:M29_module_port-identityClone2 .
+
+up_mod:M29_module_port-clusterClone2
+  a smodule:ModulePortURI;
+  smodule:variableName "?clusterClone2" ;
+  rdfs:domain xsd:anyURI ;
+  rdfs:label "Cluster" ;
+  smodule:isSelected "false"^^xsd:boolean.
+
+up_mod:M29_module_port-similarClone2
+  a smodule:ModulePortURI;
+  smodule:variableName "?similarClone2" ;
+  rdfs:domain xsd:anyURI ;
+  rdfs:label "Similar protein" ;
+  smodule:isSelected "false"^^xsd:boolean.
+
+up_mod:M29_module_port-memberClone2
+  a smodule:ModulePortURI;
+  smodule:variableName "?memberClone2" ;
+  rdfs:domain xsd:anyURI ;
+  rdfs:label "Member" ;
+  smodule:isSelected "false"^^xsd:boolean.
+  
+up_mod:M29_module_port-identityClone2
+  a smodule:ModulePortDatatype;
+  smodule:variableName "?identityClone2" ;
+  rdfs:domain [
+		a owl:Class ;
+		smodule:option ("0.5" "0.9" "1.0")
+		]; 
+  rdfs:label "Cluster identity" ;
+  smodule:isSelected "false"^^xsd:boolean .

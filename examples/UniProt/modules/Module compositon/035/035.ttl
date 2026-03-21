@@ -1,0 +1,34 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix up_mod: <http://uniprot_module.biographs.org/> .
+@prefix uniprotkb: <http://purl.uniprot.org/uniprot/> .
+
+smodule:module_composition_035 dcterms:title "Find the similar proteins for UniProtKB entry P05067 sorted by UniRef cluster identity".
+smodule:module_composition_035 rdfs:comment "Find the similar proteins for UniProtKB entry P05067 sorted by UniRef cluster identity".
+smodule:module_composition_035 dcterms:subject "similarity", "UniRef".
+
+smodule:module_composition_035 rdf:type smodule:SPARQL_Module_Composition.
+smodule:module_composition_035 smodule:hasConnection smodule:035_c1, smodule:035_c2. #, smodule:035_c3, smodule:035_c4, smodule:035_c5.
+smodule:module_composition_035 smodule:hasComponent smodule:OperatorValuesClone43, up_mod:M29_moduleClone2, up_mod:M29_moduleClone3. #smodule:OperatorFilterClone12, smodule:OperatorOrderByDescClone6,
+smodule:module_composition_035 smodule:includeFile "VALUESClone43.ttl", "M29Clone2.ttl", "M29Clone3.ttl". #"FILTERClone12.ttl", "ORDERBYDESCClone6.ttl",
+
+smodule:035_c1 rdf:type smodule:Connection.
+smodule:035_c1 smodule:connects up_mod:M29_module_port-clusterClone2, up_mod:M29_module_port-clusterClone3.
+
+smodule:035_c2 rdf:type smodule:Connection.
+smodule:035_c2 smodule:connects up_mod:M29_module_port-similarClone2, smodule:OperatorValuesPortResultClone43.
+
+smodule:OperatorValuesPortResultClone43 smodule:valuesEnumeration "uniprotkb:P05607" .
+
+#smodule:035_c3 rdf:type smodule:Connection.
+#smodule:035_c3 smodule:connects up_mod:M29_module_port-similarClone2, smodule:OperatorFilterPortParameter1Clone12.
+
+#smodule:035_c4 rdf:type smodule:Connection.
+#smodule:035_c4 smodule:connects up_mod:M29_module_port-similarClone3, smodule:OperatorFilterPortParameter2Clone12.
+
+#smodule:OperatorFilterPortResultClone12 smodule:filterInput "!sameTerm(?parameter1, ?parameter2)" .
+
+#smodule:035_c5 rdf:type smodule:Connection.
+#smodule:035_c5 smodule:connects smodule:OperatorOrderByDescPortParameterClone6, up_mod:M29_module_port-identityClone2 .
