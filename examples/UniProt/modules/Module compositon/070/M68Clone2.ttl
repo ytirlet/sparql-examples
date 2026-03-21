@@ -1,0 +1,39 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <https://schema.org/> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix up: <http://purl.uniprot.org/core/> .
+@prefix up_mod: <http://uniprot_module.biographs.org/> .
+
+up_mod:M68_moduleClone2 a smodule:SPARQLModule ;
+  rdfs:label "Sachem query"@en ;
+  rdfs:comment "Sachem query"@en ;
+  smodule:clonedFrom <http://uniprot_module.biographs.org/M68_module> ;
+  schema:keywords "Sachem" ;
+  smodule:prefixes """PREFIX up: <http://purl.uniprot.org/core/>
+    PREFIX sachem: <http://bioinfo.uochb.cas.cz/rdf/v1.0/sachem#>
+    PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+    PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+    PREFIX chebi: <http://purl.obolibrary.org/obo/CHEBI_>
+    """ ;
+  smodule:fragmentSPARQL """
+    SERVICE <https://idsm.elixir-czech.cz/sparql/endpoint/chebi> {
+      ?chebiClone2 sachem:substructureSearch|sachem:similarCompoundSearch|sachem:similaritySearch [sachem:query ?queryClone2 ].
+    }
+    """ ;
+  smodule:output up_mod:M68_module_port-chebiClone2, up_mod:M68_module_port-queryClone2 .
+    
+up_mod:M68_module_port-chebiClone2
+  a smodule:ModulePortURI ; 
+  smodule:variableName "?chebiClone2" ;
+  rdfs:label "ChEBI" ;
+  smodule:isSelected "true"^^xsd:boolean.
+
+up_mod:M68_module_port-queryClone2 
+  a smodule:ModulePortDatatype ; 
+  smodule:variableName "?queryClone2" ;
+  rdfs:domain xsd:string ;
+  rdfs:label "Sachem query" ;
+  smodule:isSelected "false"^^xsd:boolean.
+	

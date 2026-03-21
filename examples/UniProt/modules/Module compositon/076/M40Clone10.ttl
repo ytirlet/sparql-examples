@@ -1,0 +1,42 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <https://schema.org/> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix up: <http://purl.uniprot.org/core/> .
+@prefix up_mod: <http://uniprot_module.biographs.org/> .
+
+up_mod:M40_moduleClone10 a smodule:SPARQLModule;
+  rdfs:label "Protein to annotation range"@en;
+  rdfs:comment "Protein to annotation range"@en;
+  smodule:clonedFrom <http://uniprot_module.biographs.org/M40_module> ;
+  schema:keywords "protein annotation", "annotation range";
+  smodule:prefixes """PREFIX up: <http://purl.uniprot.org/core/>
+    PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+    PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+    """ ;
+  smodule:fragmentSPARQL """
+    ?proteinClone10 up:annotation ?annotationClone10.
+    ?annotationClone10 up:range ?rangeClone10.
+    """;
+  smodule:output up_mod:M40_module_port-proteinClone10, up_mod:M40_module_port-annotationClone10, up_mod:M40_module_port-rangeClone10 .
+
+up_mod:M40_module_port-annotationClone10
+  a smodule:ModulePortURI;
+  rdfs:domain up:Annotation ;
+  smodule:variableName "?annotationClone10" ;
+  rdfs:label "Annotation" ;
+  smodule:isSelected "true"^^xsd:boolean.
+
+up_mod:M40_module_port-proteinClone10
+  a smodule:ModulePortURI;
+  smodule:variableName "?proteinClone10" ;
+  rdfs:domain up:Protein ;
+  rdfs:label "Protein" ;
+  smodule:isSelected "true"^^xsd:boolean.
+
+up_mod:M40_module_port-rangeClone10
+  a smodule:ModulePortURI;
+  smodule:variableName "?rangeClone10" ;
+  rdfs:label "Range" ;
+  smodule:isSelected "true"^^xsd:boolean.

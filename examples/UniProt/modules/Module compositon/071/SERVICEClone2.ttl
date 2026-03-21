@@ -1,0 +1,34 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix up_mod: <http://uniprot_module.biographs.org/> .
+
+smodule:OperatorServiceClone2 a smodule:SPARQLModuleOperatorService ;
+    rdfs:label "Operator SERVICE" ;
+    smodule:clonedFrom smodule:moduleOperatorSERVICE;
+    smodule:fragmentSPARQL """
+  SERVICE <https://sparql.rhea-db.org/sparql> {
+  # Result variable is ?operatorServiceResult
+  [operatorParameter0]
+  } .
+""" ;
+    smodule:output smodule:OperatorServicePortParameterClone2,
+        smodule:OperatorServicePortResultClone2 ;
+    smodule:prefixes """PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+""" .
+
+smodule:OperatorServicePortParameterClone2 a smodule:ModulePortOperatorParameter ;
+    rdfs:label "Parameter" ;
+    smodule:isSelected false ;
+    smodule:variableName "[operatorParameter0]" .
+
+smodule:OperatorServicePortResultClone2 a smodule:ModulePortTyped ;
+    rdfs:label "Result" ;
+    rdfs:domain xsd:any ;
+    smodule:isSelected false ;
+    smodule:variableName "?operatorServiceResult" .
+

@@ -1,0 +1,55 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix up_mod: <http://uniprot_module.biographs.org/> .
+
+smodule:module_composition_074 dcterms:title "Find Hydrolases (enzymes that catalyse the hydrolysis of various bonds) that have at least two transmembrane domains".
+smodule:module_composition_074 rdfs:comment "Find Hydrolases (enzymes that catalyse the hydrolysis of various bonds) that have at least two transmembrane domains".
+smodule:module_composition_074 dcterms:subject "enzyme", "transmembrane", "count", "enzyme classification".
+
+smodule:module_composition_074 rdf:type smodule:SPARQL_Module_Composition.
+smodule:module_composition_074 smodule:hasConnection smodule:074_c1 , smodule:074_c2, smodule:074_c3, smodule:074_c4, smodule:074_c5, smodule:074_c6, smodule:074_c7. #, smodule:074_c8, smodule:074_c9, smodule:074_c10, smodule:074_c11.
+smodule:module_composition_074 smodule:hasComponent smodule:OperatorValuesClone105, smodule:OperatorValuesClone104, smodule:OperatorValuesClone103, smodule:OperatorUnionClone5,  up_mod:M88_moduleClone7, up_mod:M84_moduleClone1, up_mod:M39_moduleClone20, up_mod:M14_moduleClone20. #smodule:OperatorGroupByClone7, smodule:OperatorCountClone3, smodule:OperatorHavingClone2,
+smodule:module_composition_074 smodule:includeFile "VALUESClone105.ttl", "VALUESClone104.ttl", "VALUESClone103.ttl", "UNIONClone5.ttl", "M88Clone7.ttl", "M84Clone1.ttl", "M39Clone20.ttl", "M14Clone20.ttl". #"GROUPBYClone7.ttl", "COUNTClone3.ttl", "HAVINGClone2.ttl", 
+
+smodule:074_c1 rdf:type smodule:Connection.
+smodule:074_c1 smodule:connects up_mod:M14_module_port-proteinClone20, smodule:OperatorUnionPortResultClone5.
+
+smodule:074_c2 rdf:type smodule:Connection.
+smodule:074_c2 smodule:connects up_mod:M88_module_port-proteinClone7, smodule:OperatorUnionPortParameter1Clone5.
+
+smodule:074_c3 rdf:type smodule:Connection.
+smodule:074_c3 smodule:connects up_mod:M88_module_port-ecClassClone7, smodule:OperatorValuesPortResultClone105.
+
+smodule:OperatorValuesPortResultClone105 smodule:valuesEnumeration "<http://purl.uniprot.org/enzyme/3.-.-.->" .
+
+smodule:074_c4 rdf:type smodule:Connection.
+smodule:074_c4 smodule:connects up_mod:M39_module_port-proteinClone20, smodule:OperatorUnionPortParameter0Clone5.
+
+smodule:074_c5 rdf:type smodule:Connection.
+smodule:074_c5 smodule:connects up_mod:M39_module_port-catalyticActivityClone20, up_mod:M84_module_port-catalyticActivityClone1.
+
+smodule:074_c6 rdf:type smodule:Connection.
+smodule:074_c6 smodule:connects up_mod:M84_module_port-ancestorECClone1, smodule:OperatorValuesPortResultClone104.
+
+smodule:OperatorValuesPortResultClone104 smodule:valuesEnumeration "<http://purl.uniprot.org/enzyme/3.-.-.->" .
+
+smodule:074_c7 rdf:type smodule:Connection.
+smodule:074_c7 smodule:connects up_mod:M14_module_port-annotationTypeClone20, smodule:OperatorValuesPortResultClone103.
+
+smodule:OperatorValuesPortResultClone103 smodule:valuesEnumeration "up:Transmembrane_Annotation" .
+
+#smodule:074_c8 rdf:type smodule:Connection.
+#smodule:074_c8 smodule:connects up_mod:M14_module_port-proteinClone20, smodule:OperatorGroupByPortParameterClone7.
+
+#smodule:074_c9 rdf:type smodule:Connection.
+#smodule:074_c9 smodule:connects smodule:OperatorCountPortParameter1Clone3, smodule:OperatorGroupByPortResultClone7 .
+
+#smodule:074_c10 rdf:type smodule:Connection.
+#smodule:074_c10 smodule:connects smodule:OperatorHavingPortParameterClone2, smodule:OperatorCountPortResultClone3 .
+
+#smodule:074_c11 rdf:type smodule:Connection.
+#smodule:074_c11 smodule:connects smodule:OperatorCountPortParameter2Clone3, up_mod:M14_module_port-annotationClone20 .
+
+#smodule:OperatorHavingPortResultClone2 smodule:havingInput "?parameter >=2".

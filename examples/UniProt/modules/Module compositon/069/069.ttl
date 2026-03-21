@@ -1,0 +1,53 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix up_mod: <http://uniprot_module.biographs.org/> .
+@prefix base_mod: <http://base_module.biographs.org/> .
+
+smodule:module_composition_069 dcterms:title "Find Drosophila proteins, that depend on more than one transcript (requires cross-references to Ensembl family of resources)".
+smodule:module_composition_069 rdfs:comment "Find Drosophila proteins, that depend on more than one transcript (requires cross-references to Ensembl family of resources)".
+smodule:module_composition_069 dcterms:subject "transcript", "cross-reference", "count", "Ensembl".
+
+smodule:module_composition_069 rdf:type smodule:SPARQL_Module_Composition.
+smodule:module_composition_069 smodule:hasConnection smodule:069_c1 , smodule:069_c2, smodule:069_c3, smodule:069_c4, smodule:069_c5, smodule:069_c6. #, smodule:069_c7, smodule:069_c8, smodule:069_c9, smodule:069_c10.
+smodule:module_composition_069 smodule:hasComponent smodule:OperatorValuesClone96, smodule:OperatorValuesClone95, smodule:OperatorValuesClone94,  base_mod:Mb4_moduleClone2, up_mod:M67_moduleClone25, up_mod:M45_moduleClone5, up_mod:M17_moduleClone12. # smodule:OperatorGroupByClone8, smodule:OperatorCountClone4, smodule:OperatorHavingClone3,
+smodule:module_composition_069 smodule:includeFile "VALUESClone96.ttl", "VALUESClone95.ttl", "VALUESClone94.ttl", "Mb4Clone2.ttl","M67Clone25.ttl", "M45Clone5.ttl", "M17Clone12.ttl". #"GROUPBYClone8.ttl", "COUNTClone3.ttl", "HAVINGClone3.ttl", 
+
+smodule:069_c1 rdf:type smodule:Connection.
+smodule:069_c1 smodule:connects up_mod:M67_module_port-entryClone25, up_mod:M17_module_port-proteinClone12.
+
+smodule:069_c2 rdf:type smodule:Connection.
+smodule:069_c2 smodule:connects up_mod:M67_module_port-organismClone25, smodule:OperatorValuesPortResultClone96.
+
+smodule:OperatorValuesPortResultClone96 smodule:valuesEnumeration "taxon:7227" .
+
+smodule:069_c3 rdf:type smodule:Connection.
+smodule:069_c3 smodule:connects up_mod:M17_module_port-reviewedClone12, smodule:OperatorValuesPortResultClone95.
+
+smodule:OperatorValuesPortResultClone95 smodule:valuesEnumeration "true" .
+
+smodule:069_c4 rdf:type smodule:Connection.
+smodule:069_c4 smodule:connects up_mod:M67_module_port-entryClone25, up_mod:M45_module_port-proteinClone5.
+
+smodule:069_c5 rdf:type smodule:Connection.
+smodule:069_c5 smodule:connects up_mod:M45_module_port-entryClone5, base_mod:Mb4_module_port-subjectClone2.
+
+smodule:069_c6 rdf:type smodule:Connection.
+smodule:069_c6 smodule:connects base_mod:Mb4_module_port-typeClone2, smodule:OperatorValuesPortResultClone94.
+
+smodule:OperatorValuesPortResultClone94 smodule:valuesEnumeration "up:Transcript_Resource" .
+
+#smodule:069_c7 rdf:type smodule:Connection.
+#smodule:069_c7 smodule:connects up_mod:M67_module_port-entryClone25, smodule:OperatorGroupByPortParameterClone8.
+
+#smodule:069_c8 rdf:type smodule:Connection.
+#smodule:069_c8 smodule:connects smodule:OperatorCountPortParameter1Clone4, smodule:OperatorGroupByPortResultClone8 .
+
+#smodule:069_c9 rdf:type smodule:Connection.
+#smodule:069_c9 smodule:connects smodule:OperatorHavingPortParameterClone3, smodule:OperatorCountPortResultClone4 .
+
+#smodule:069_c10 rdf:type smodule:Connection.
+#smodule:069_c10 smodule:connects smodule:OperatorCountPortParameter2Clone4, up_mod:M45_module_port-entryClone5 .
+
+#smodule:OperatorHavingPortResultClone3 smodule:havingInput "?parameter >=2".

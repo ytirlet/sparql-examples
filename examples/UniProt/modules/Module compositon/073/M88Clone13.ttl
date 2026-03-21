@@ -1,0 +1,42 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix up: <http://purl.uniprot.org/core/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://uniprot_module.biographs.org/M88_moduleClone13> a smodule:SPARQLModule ;
+    rdfs:label "Protein to enzyme" ;
+    smodule:clonedFrom <http://uniprot_module.biographs.org/M88_module> ;
+    smodule:fragmentSPARQL """ 
+    ?proteinClone13 rdf:type up:Protein.
+    ?proteinClone13 up:enzyme ?enzymeClone13 .
+    ?enzymeClone13 rdfs:subClassOf? ?ecClassClone13.
+    """ ;
+    smodule:output <http://uniprot_module.biographs.org/M88_module_port-ecClassClone13>,
+        <http://uniprot_module.biographs.org/M88_module_port-enzymeClone13>,
+        <http://uniprot_module.biographs.org/M88_module_port-proteinClone13> ;
+    smodule:prefixes """PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX up: <http://purl.uniprot.org/core/>
+
+""" .
+
+<http://uniprot_module.biographs.org/M88_module_port-ecClassClone13> a smodule:ModulePortURI ;
+    rdfs:label "Enzyme Class" ;
+    rdfs:domain up:Enzyme ;
+    smodule:isSelected true ;
+    smodule:variableName "?ecClassClone13" .
+
+<http://uniprot_module.biographs.org/M88_module_port-enzymeClone13> a smodule:ModulePortURI ;
+    rdfs:label "Enzyme" ;
+    rdfs:domain up:Enzyme ;
+    smodule:isSelected true ;
+    smodule:variableName "?enzymeClone13" .
+
+<http://uniprot_module.biographs.org/M88_module_port-proteinClone13> a smodule:ModulePortURI ;
+    rdfs:label "Protein" ;
+    rdfs:domain up:protein ;
+    smodule:isSelected true ;
+    smodule:variableName "?proteinClone13" .
+

@@ -1,0 +1,52 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <https://schema.org/> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix up: <http://purl.uniprot.org/core/> .
+@prefix up_mod: <http://uniprot_module.biographs.org/> .
+
+up_mod:M14_moduleClone28 a smodule:SPARQLModule;
+  rdfs:label "Protein annotation"@en;
+  rdfs:comment "Protein annotation"@en;
+  smodule:clonedFrom <http://uniprot_module.biographs.org/M14_module> ;
+  schema:keywords "annotation";
+  smodule:prefixes """PREFIX up: <http://purl.uniprot.org/core/>
+  PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+  PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+  """ ;
+  smodule:fragmentSPARQL """ 
+    ?proteinClone28 rdf:type up:ProteinClone28.
+    ?proteinClone28 up:annotation ?annotationClone28.
+    ?annotationClone28 rdf:type ?annotationTypeClone28.
+    ?annotationClone28 rdfs:comment ?commentClone28.
+    """;
+  smodule:output up_mod:M14_module_port-proteinClone28, up_mod:M14_module_port-annotationClone28, up_mod:M14_module_port-annotationTypeClone28, up_mod:M14_module_port-commentClone28 .
+  
+up_mod:M14_module_port-annotationClone28
+  a smodule:ModulePortURI;
+  rdfs:domain up:Annotation ;
+  smodule:variableName "?annotationClone28" ;
+  rdfs:label "Annotation" ;
+  smodule:isSelected "true"^^xsd:boolean .
+
+up_mod:M14_module_port-proteinClone28
+  a smodule:ModulePortURI;
+  rdfs:domain up:Protein;
+  smodule:variableName "?proteinClone28" ;
+  rdfs:label "Protein" ;
+  smodule:isSelected "true"^^xsd:boolean .
+
+up_mod:M14_module_port-annotationTypeClone28
+  a smodule:ModulePortURI;
+  smodule:variableName "?annotationTypeClone28" ;
+  rdfs:domain up:Annotation;
+  rdfs:label "Type of annotation" ;
+  smodule:isSelected "true"^^xsd:boolean .
+  
+up_mod:M14_module_port-commentClone28
+  a smodule:ModulePortDatatype;
+  rdfs:domain xsd:string ;
+  smodule:variableName "?commentClone28" ;
+  rdfs:label "Annotation comment" ;
+  smodule:isSelected "true"^^xsd:boolean .

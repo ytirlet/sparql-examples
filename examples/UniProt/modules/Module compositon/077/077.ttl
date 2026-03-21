@@ -1,0 +1,40 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix up_mod: <http://uniprot_module.biographs.org/> .
+@prefix base_mod: <http://base_module.biographs.org/> .
+
+smodule:module_composition_077 dcterms:title "Find enzymes with a Tyrosine (Y) as an active site".
+smodule:module_composition_077 rdfs:comment "Find enzymes with a Tyrosine (Y) as an active site".
+smodule:module_composition_077 dcterms:subject "active site", "enzyme", "search within sequence".
+
+smodule:module_composition_077 rdf:type smodule:SPARQL_Module_Composition.
+smodule:module_composition_077 smodule:hasConnection smodule:077_c1 , smodule:077_c2, smodule:077_c3, smodule:077_c4, smodule:077_c5. #, smodule:077_c6, smodule:077_c7.
+smodule:module_composition_077 smodule:hasComponent smodule:OperatorValuesClone108, up_mod:M76_moduleClone7, base_mod:Mb1_moduleClone4, up_mod:M40_moduleClone7, up_mod:M14_moduleClone22.#smodule:OperatorFilterClone6, 
+smodule:module_composition_077 smodule:includeFile "VALUESClone108.ttl", "M76Clone7.ttl", "Mb1Clone4.ttl", "M40Clone7.ttl", "M14Clone22.ttl". #"FILTERClone6.ttl", 
+
+smodule:077_c1 rdf:type smodule:Connection.
+smodule:077_c1 smodule:connects up_mod:M14_module_port-annotationClone22, up_mod:M40_module_port-annotationClone7.
+
+smodule:077_c2 rdf:type smodule:Connection.
+smodule:077_c2 smodule:connects up_mod:M14_module_port-proteinClone22, up_mod:M40_module_port-proteinClone7.
+
+smodule:077_c3 rdf:type smodule:Connection.
+smodule:077_c3 smodule:connects up_mod:M40_module_port-rangeClone7, up_mod:M76_module_port-entryClone7.
+
+smodule:077_c4 rdf:type smodule:Connection.
+smodule:077_c4 smodule:connects up_mod:M14_module_port-annotationTypeClone22, smodule:OperatorValuesPortResultClone108.
+
+smodule:OperatorValuesPortResultClone108 smodule:valuesEnumeration "up:Active_Site_Annotation" .
+
+smodule:077_c5 rdf:type smodule:Connection.
+smodule:077_c5 smodule:connects base_mod:Mb1_module_port-subjectClone4, up_mod:M76_module_port-referenceClone7.
+
+#smodule:077_c6 rdf:type smodule:Connection.
+#smodule:077_c6 smodule:connects smodule:Mb1_module_port-valueClone4, smodule:OperatorFilterPortParameter1Clone6.
+
+#smodule:077_c7 rdf:type smodule:Connection.
+#smodule:077_c7 smodule:connects up_mod:M76_module_port-beginPositionClone7, smodule:OperatorFilterPortParameter2Clone6.
+
+#smodule:OperatorFilterPortResultClone6 smodule:filterInput "substr(?parameter1, ?parameter2)  = 'Y'" .

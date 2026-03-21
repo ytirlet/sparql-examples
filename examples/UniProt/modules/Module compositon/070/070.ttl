@@ -1,0 +1,46 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix up_mod: <http://uniprot_module.biographs.org/> .
+
+smodule:module_composition_070 dcterms:title "Look for enzymes catalyzing reactions with molecules similar to dopamine.".
+smodule:module_composition_070 rdfs:comment "Look for enzymes catalyzing reactions with molecules similar to dopamine.".
+smodule:module_composition_070 dcterms:subject "enzyme", "tissue specificity", "federated query", "Ensembl", "Bgee", "Rhea", "UBERON".
+
+smodule:module_composition_070 rdf:type smodule:SPARQL_Module_Composition.
+smodule:module_composition_070 smodule:hasConnection smodule:070_c1 , smodule:070_c2, smodule:070_c3, smodule:070_c4, smodule:070_c5, smodule:070_c6, smodule:070_c7, smodule:070_c8.
+smodule:module_composition_070 smodule:hasComponent smodule:OperatorValuesClone98, smodule:OperatorValuesClone97, smodule:OperatorServiceClone11, smodule:OperatorServiceClone12, up_mod:M75_moduleClone10, up_mod:M38_moduleClone10, up_mod:M39_moduleClone17, up_mod:M17_moduleClone13, up_mod:M68_moduleClone2.
+smodule:module_composition_070 smodule:includeFile "VALUESClone98.ttl", "VALUESClone97.ttl", "SERVICEClone11.ttl", "SERVICEClone12.ttl", "M75Clone10.ttl", "M38Clone10.ttl", "M39Clone17.ttl", "M17Clone13.ttl", "M68Clone2.ttl".
+
+smodule:070_c1 rdf:type smodule:Connection.
+smodule:070_c1 smodule:connects up_mod:M75_module_port-compoundClone10, up_mod:M38_module_port-compoundClone10.
+
+smodule:070_c2 rdf:type smodule:Connection.
+smodule:070_c2 smodule:connects up_mod:M39_module_port-proteinClone17, up_mod:M17_module_port-proteinClone13.
+
+smodule:070_c3 rdf:type smodule:Connection.
+smodule:070_c3 smodule:connects up_mod:M38_module_port-reactionClone10, smodule:OperatorServicePortParameterClone11.
+
+smodule:070_c4 rdf:type smodule:Connection.
+smodule:070_c4 smodule:connects up_mod:M39_module_port-reactionClone17, smodule:OperatorServicePortResultClone11.
+
+smodule:OperatorServicePortResultClone11 smodule:serviceInput "<https://sparql.rhea-db.org/sparql>".
+
+smodule:070_c5 rdf:type smodule:Connection.
+smodule:070_c5 smodule:connects up_mod:M68_module_port-chebiClone2, smodule:OperatorServicePortParameterClone12.
+
+smodule:070_c6 rdf:type smodule:Connection.
+smodule:070_c6 smodule:connects up_mod:M75_module_port-chebiClone10, smodule:OperatorServicePortResultClone12.
+
+smodule:OperatorServicePortResultClone12 smodule:serviceInput "<https://idsm.elixir-czech.cz/sparql/endpoint/chebi>".
+
+smodule:070_c7 rdf:type smodule:Connection.
+smodule:070_c7 smodule:connects up_mod:M68_module_port-queryClone2, smodule:OperatorValuesPortResultClone98.
+
+smodule:OperatorValuesPortResultClone98 smodule:valuesEnumeration "'NCCc1ccc(O)c(O)c1'" .
+
+smodule:070_c8 rdf:type smodule:Connection.
+smodule:070_c8 smodule:connects up_mod:M17_module_port-reviewedClone13, smodule:OperatorValuesPortResultClone97.
+
+smodule:OperatorValuesPortResultClone97 smodule:valuesEnumeration "true" .

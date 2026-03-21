@@ -1,0 +1,41 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix up: <http://purl.uniprot.org/core/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://uniprot_module.biographs.org/M45_moduleClone5> a smodule:SPARQLModule ;
+    rdfs:label "protein transcribed from gene" ;
+    smodule:clonedFrom <http://uniprot_module.biographs.org/M45_module> ;
+    smodule:fragmentSPARQL """
+    ?proteinClone5 rdfs:seeAlso ?entryClone5.
+    ?entryClone5 up:transcribedFrom ?geneClone5.
+    """ ;
+    smodule:output <http://uniprot_module.biographs.org/M45_module_port-entryClone5>,
+        <http://uniprot_module.biographs.org/M45_module_port-geneClone5>,
+        <http://uniprot_module.biographs.org/M45_module_port-proteinClone5> ;
+    smodule:prefixes """PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX up: <http://purl.uniprot.org/core/>
+
+""" .
+
+<http://uniprot_module.biographs.org/M45_module_port-entryClone5> a smodule:ModulePortURI ;
+    rdfs:label "see also entry" ;
+    rdfs:domain xsd:anyURI ;
+    smodule:isSelected false ;
+    smodule:variableName "?entryClone5" .
+
+<http://uniprot_module.biographs.org/M45_module_port-geneClone5> a smodule:ModulePortURI ;
+    rdfs:label "Gene" ;
+    rdfs:domain up:Gene ;
+    smodule:isSelected false ;
+    smodule:variableName "?geneClone5" .
+
+<http://uniprot_module.biographs.org/M45_module_port-proteinClone5> a smodule:ModulePortURI ;
+    rdfs:label "Protein" ;
+    rdfs:domain up:Protein ;
+    smodule:isSelected true ;
+    smodule:variableName "?proteinClone5" .
+

@@ -1,0 +1,56 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix up_mod: <http://uniprot_module.biographs.org/> .
+
+smodule:module_composition_075 dcterms:title "Find enzymes that have at least two transmembrane domains, whose 3D structure is elucidated through X-Ray analysis".
+smodule:module_composition_075 rdfs:comment "Find enzymes that have at least two transmembrane domains, whose 3D structure is elucidated through X-Ray analysis".
+smodule:module_composition_075 dcterms:subject "enzyme", "transmembrane", "membrane", "count", "enzyme classification", "3D", "PDB".
+
+smodule:module_composition_075 rdf:type smodule:SPARQL_Module_Composition.
+smodule:module_composition_075 smodule:hasConnection smodule:075_c1 , smodule:075_c2, smodule:075_c3, smodule:075_c4, smodule:075_c5, smodule:075_c6, smodule:075_c10, smodule:075_c11, smodule:075_c12 . #smodule:075_c7, smodule:075_c8, smodule:075_c9,
+smodule:module_composition_075 smodule:hasComponent smodule:OperatorValuesClone107, smodule:OperatorValuesClone106, smodule:OperatorUnionClone9, up_mod:m19_moduleClone1, up_mod:M88_moduleClone8, up_mod:M84_moduleClone2, up_mod:M39_moduleClone21, up_mod:M31_moduleClone11, up_mod:M14_moduleClone21. #smodule:OperatorGroupByClone11, smodule:OperatorCountClone6, smodule:OperatorHavingClone5, 
+smodule:module_composition_075 smodule:includeFile "VALUESClone107.ttl", "VALUESClone106.ttl", "UNIONClone9.ttl", "m19Clone1.ttl", "M88Clone8.ttl", "M84Clone2.ttl", "M39Clone21.ttl", "M31Clone11.ttl", "M14Clone21.ttl". # "GROUPBYClone11.ttl", "COUNTClone6.ttl", "HAVINGClone5.ttl",
+
+smodule:075_c1 rdf:type smodule:Connection.
+smodule:075_c1 smodule:connects up_mod:M14_module_port-proteinClone21, smodule:OperatorUnionPortResultClone9.
+
+smodule:075_c2 rdf:type smodule:Connection.
+smodule:075_c2 smodule:connects up_mod:M88_module_port-proteinClone8, smodule:OperatorUnionPortParameter1Clone9.
+
+smodule:075_c3 rdf:type smodule:Connection.
+smodule:075_c3 smodule:connects up_mod:M39_module_port-proteinClone21, smodule:OperatorUnionPortParameter0Clone9.
+
+smodule:075_c4 rdf:type smodule:Connection.
+smodule:075_c4 smodule:connects up_mod:M39_module_port-catalyticActivityClone21, up_mod:M84_module_port-catalyticActivityClone2.
+
+smodule:075_c5 rdf:type smodule:Connection.
+smodule:075_c5 smodule:connects up_mod:M14_module_port-annotationTypeClone21, smodule:OperatorValuesPortResultClone107.
+
+smodule:OperatorValuesPortResultClone107 smodule:valuesEnumeration "up:Transmembrane_Annotation" .
+
+#smodule:075_c6 rdf:type smodule:Connection.
+#smodule:075_c6 smodule:connects up_mod:M14_module_port-proteinClone21, smodule:OperatorGroupByPortParameterClone11.
+
+#smodule:075_c7 rdf:type smodule:Connection.
+#smodule:075_c7 smodule:connects smodule:OperatorCountPortParameter1Clone6, smodule:OperatorGroupByPortResultClone11 .
+
+#smodule:075_c8 rdf:type smodule:Connection.
+#smodule:075_c8 smodule:connects smodule:OperatorHavingPortParameterClone5, smodule:OperatorCountPortResultClone6 .
+
+#smodule:075_c9 rdf:type smodule:Connection.
+#smodule:075_c9 smodule:connects smodule:OperatorCountPortParameter2Clone6, up_mod:M14_module_port-annotationClone21 .
+
+#smodule:OperatorHavingPortResultClone5 smodule:havingInput "?parameter >=2".
+
+smodule:075_c10 rdf:type smodule:Connection.
+smodule:075_c10 smodule:connects up_mod:M14_module_port-proteinClone21, up_mod:M31_module_port-entryClone11.
+
+smodule:075_c11 rdf:type smodule:Connection.
+smodule:075_c11 smodule:connects up_mod:M31_module_port-databaseClone11, smodule:OperatorValuesPortResultClone106.
+
+smodule:OperatorValuesPortResultClone106 smodule:valuesEnumeration "<http://purl.uniprot.org/database/PDB>" .
+
+smodule:075_c12 rdf:type smodule:Connection.
+smodule:075_c12 smodule:connects up_mod:M31_module_port-dbentryClone11, up_mod:m19_module_port-entryClone1.

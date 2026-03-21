@@ -1,0 +1,44 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix up_mod: <http://uniprot_module.biographs.org/> .
+
+smodule:module_composition_073 dcterms:title "Select Enzyme Classification (EC) classes that have a protein associated to them".
+smodule:module_composition_073 rdfs:comment "Select Enzyme Classification (EC) classes that have a protein associated to them".
+smodule:module_composition_073 dcterms:subject "enzyme", "enzyme classification".
+
+smodule:module_composition_073 rdf:type smodule:SPARQL_Module_Composition.
+smodule:module_composition_073 smodule:hasConnection smodule:073_c1, smodule:073_c2, smodule:073_c3, smodule:073_c4, smodule:073_c5, smodule:073_c6, smodule:073_c7. #, smodule:073_c8, smodule:073_c9, smodule:073_c10.
+smodule:module_composition_073 smodule:hasComponent smodule:OperatorUnionClone17, smodule:OperatorUnionClone18, smodule:OperatorUnionClone19, up_mod:M39_moduleClone32, up_mod:M84_moduleClone5, up_mod:M88_moduleClone13, up_mod:M89_moduleClone7, up_mod:M90_moduleClone6.
+smodule:module_composition_073 smodule:includeFile "UNIONClone17.ttl", "UNIONClone18.ttl", "UNIONClone19.ttl", "M39Clone32.ttl", "M84Clone5.ttl", "M88Clone13.ttl", "M89Clone7.ttl", "M90Clone6.ttl".
+
+smodule:073_c1 rdf:type smodule:Connection.
+smodule:073_c1 smodule:connects up_mod:M39_module_port-catalyticActivityClone32, up_mod:M84_module_port-catalyticActivityClone5.
+
+smodule:073_c2 rdf:type smodule:Connection.
+smodule:073_c2 smodule:connects up_mod:M39_module_port-proteinClone32, smodule:OperatorUnionPortParameter0Clone17.
+
+smodule:073_c3 rdf:type smodule:Connection.
+smodule:073_c3 smodule:connects up_mod:M88_module_port-proteinClone13, smodule:OperatorUnionPortParameter1Clone17.
+
+smodule:073_c4 rdf:type smodule:Connection.
+smodule:073_c4 smodule:connects smodule:OperatorUnionPortResultClone17, smodule:OperatorUnionPortParameter0Clone18.
+
+smodule:073_c5 rdf:type smodule:Connection.
+smodule:073_c5 smodule:connects up_mod:M89_module_port-proteinClone7, smodule:OperatorUnionPortParameter1Clone18.
+
+smodule:073_c6 rdf:type smodule:Connection.
+smodule:073_c6 smodule:connects smodule:OperatorUnionPortResultClone18, smodule:OperatorUnionPortParameter0Clone19.
+
+smodule:073_c7 rdf:type smodule:Connection.
+smodule:073_c7 smodule:connects up_mod:M90_module_port-proteinClone6, smodule:OperatorUnionPortParameter1Clone19.
+
+#smodule:073_c8 rdf:type smodule:Connection.
+#smodule:073_c8 smodule:connects up_mod:M88_module_port-enzymeClone13, up_mod:M89_module_port-enzymeClone7.
+
+#smodule:073_c9 rdf:type smodule:Connection.
+#smodule:073_c9 smodule:connects up_mod:M88_module_port-enzymeClone13, up_mod:M90_module_port-enzymeClone6.
+
+#smodule:073_c10 rdf:type smodule:Connection.
+#smodule:073_c10 smodule:connects up_mod:M88_module_port-enzymeClone13, up_mod:M84_module_port-ECClone5.

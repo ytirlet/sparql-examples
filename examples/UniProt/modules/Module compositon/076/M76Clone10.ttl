@@ -1,0 +1,64 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <https://schema.org/> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix up: <http://purl.uniprot.org/core/> .
+@prefix faldo: <http://biohackathon.org/resource/faldo#> .
+@prefix up_mod: <http://uniprot_module.biographs.org/> .
+
+up_mod:M76_moduleClone10 a smodule:SPARQLModule;
+  rdfs:label "faldo: start/end position and reference"@en;
+  rdfs:comment "faldo: start/end position and reference"@en;
+  smodule:clonedFrom <http://uniprot_module.biographs.org/M76_module> ;
+  schema:keywords "faldo begin", "faldo position", "falso reference";
+  smodule:prefixes """PREFIX up: <http://purl.uniprot.org/core/>
+    PREFIX faldo: <http://biohackathon.org/resource/faldo#>
+    PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+    PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+    """ ;
+  smodule:fragmentSPARQL """
+    ?entryClone10 faldo:begin ?faldoBeginClone10.
+    ?faldoBeginClone10 faldo:position ?beginPositionClone10.
+    ?faldoBeginClone10 faldo:reference ?referenceClone10.
+    ?entryClone10 faldo:end ?faldoEndClone10.
+    ?faldoEndClone10 faldo:position ?endPositionClone10.
+    """;
+  smodule:output up_mod:M76_module_port-entryClone10, up_mod:M76_module_port-faldoBeginClone10, up_mod:M76_module_port-faldoEndClone10, up_mod:M76_module_port-beginPositionClone10, up_mod:M76_module_port-endPositionClone10, up_mod:M76_module_port-referenceClone10 .
+
+up_mod:M76_module_port-entryClone10
+  a smodule:ModulePortURI;
+  rdfs:domain xsd:anyURI ;
+  smodule:variableName "?entryClone10" ;
+  rdfs:label "Entry" ;
+  smodule:isSelected "true"^^xsd:boolean.
+
+up_mod:M76_module_port-referenceClone10
+  a smodule:ModulePortURI;
+  smodule:variableName "?referenceClone10" ;
+  rdfs:label "Reference" ;
+  smodule:isSelected "true"^^xsd:boolean.
+
+up_mod:M76_module_port-endPositionClone10
+  a smodule:ModulePortURI;
+  smodule:variableName "?endPositionClone10" ;
+  rdfs:label "End Position" ;
+  smodule:isSelected "true"^^xsd:boolean.
+
+up_mod:M76_module_port-faldoBeginClone10
+  a smodule:ModulePortURI;
+  smodule:variableName "?faldoBeginClone10" ;
+  rdfs:label "FALDO begin" ;
+  smodule:isSelected "true"^^xsd:boolean.
+
+up_mod:M76_module_port-faldoEndClone10
+  a smodule:ModulePortURI;
+  smodule:variableName "?faldoEndClone10" ;
+  rdfs:label "FALDO end" ;
+  smodule:isSelected "true"^^xsd:boolean.
+
+up_mod:M76_module_port-beginPositionClone10
+  a smodule:ModulePortURI;
+  smodule:variableName "?beginPositionClone10" ;
+  rdfs:label "Begin Position" ;
+  smodule:isSelected "true"^^xsd:boolean.

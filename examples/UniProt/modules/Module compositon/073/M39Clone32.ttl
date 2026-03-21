@@ -1,0 +1,53 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix up: <http://purl.uniprot.org/core/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://uniprot_module.biographs.org/M39_moduleClone32> a smodule:SPARQLModule ;
+    rdfs:label "Protein to catalyzed reaction" ;
+    smodule:clonedFrom <http://uniprot_module.biographs.org/M39_module> ;
+    smodule:fragmentSPARQL """
+    ?proteinClone32 rdf:type up:Protein .
+    ?proteinClone32 up:annotation ?annotationClone32.
+    ?annotationClone32 up:catalyticActivity ?catalyticActivityClone32.
+    ?catalyticActivityClone32 rdf:type up:Catalytic_Activity .
+    ?catalyticActivityClone32 up:catalyzedReaction ?reactionClone32.
+    ?annotationClone32 rdf:type up:Catalytic_Activity_Annotation.
+    """ ;
+    smodule:output <http://uniprot_module.biographs.org/M39_module_port-annotationClone32>,
+        <http://uniprot_module.biographs.org/M39_module_port-catalyticActivityClone32>,
+        <http://uniprot_module.biographs.org/M39_module_port-proteinClone32>,
+        <http://uniprot_module.biographs.org/M39_module_port-reactionClone32> ;
+    smodule:prefixes """PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX : <http://biographs.org/>
+PREFIX up: <http://purl.uniprot.org/core/>
+
+""" .
+
+<http://uniprot_module.biographs.org/M39_module_port-annotationClone32> a smodule:ModulePortURI ;
+    rdfs:label "Annotation" ;
+    rdfs:domain up:Catalytic_Activity_Annotation ;
+    smodule:isSelected true ;
+    smodule:variableName "?annotationClone32" .
+
+<http://uniprot_module.biographs.org/M39_module_port-catalyticActivityClone32> a smodule:ModulePortURI ;
+    rdfs:label "Catalytic Activity" ;
+    rdfs:domain up:Catalytic_Activity ;
+    smodule:isSelected true ;
+    smodule:variableName "?catalyticActivityClone32" .
+
+<http://uniprot_module.biographs.org/M39_module_port-proteinClone32> a smodule:ModulePortURI ;
+    rdfs:label "Protein" ;
+    rdfs:domain up:Protein ;
+    smodule:isSelected true ;
+    smodule:variableName "?proteinClone32" .
+
+<http://uniprot_module.biographs.org/M39_module_port-reactionClone32> a smodule:ModulePortURI ;
+    rdfs:label "Reaction" ;
+    rdfs:domain <http://rdf.rhea-db.org/Reaction> ;
+    smodule:isSelected true ;
+    smodule:variableName "?reactionClone32" .
+

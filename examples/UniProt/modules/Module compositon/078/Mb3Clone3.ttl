@@ -1,0 +1,32 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <https://schema.org/> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix base_mod: <http://base_module.biographs.org/> .
+
+base_mod:Mb3_moduleClone3 a smodule:SPARQLModule;
+  rdfs:label "rdfs comment"@en;
+  rdfs:comment "Gives comment of element"@en;
+  smodule:clonedFrom <http://uniprot_module.biographs.org/M73_module> ;
+  schema:keywords "comment";
+  smodule:prefixes """PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+  """ ;
+  smodule:fragmentSPARQL """ 
+    ?subjectClone3 rdfs:comment ?commentClone3 .
+    """;
+  smodule:output base_mod:Mb3_module_port-subjectClone3, base_mod:Mb3_module_port-commentClone3.
+  
+base_mod:Mb3_module_port-subjectClone3
+  a smodule:ModulePortURI;
+  rdfs:domain rdfs:Resource ;
+  smodule:variableName "?subjectClone3" ;
+  rdfs:label "Subject" ;
+  smodule:isSelected "true"^^xsd:boolean .
+
+base_mod:Mb3_module_port-commentClone3
+  a smodule:ModulePortTyped;
+  rdfs:domain rdfs:Literal;
+  smodule:variableName "?commentClone3" ;
+  rdfs:label "Comment" ;
+  smodule:isSelected "true"^^xsd:boolean .

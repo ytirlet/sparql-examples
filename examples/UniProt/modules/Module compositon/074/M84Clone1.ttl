@@ -1,0 +1,41 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix up: <http://purl.uniprot.org/core/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://uniprot_module.biographs.org/M84_moduleClone1> a smodule:SPARQLModule ;
+    rdfs:label "Enzyme class" ;
+    smodule:clonedFrom <http://uniprot_module.biographs.org/M84_module> ;
+    smodule:fragmentSPARQL """ 
+    ?catalyticActivityClone1 up:enzymeClass ?ECClone1 .
+    ?ECClone1 rdfs:subClassOf ?ancestorECClone1.
+    """ ;
+    smodule:output <http://uniprot_module.biographs.org/M84_module_port-ECClone1>,
+        <http://uniprot_module.biographs.org/M84_module_port-ancestorECClone1>,
+        <http://uniprot_module.biographs.org/M84_module_port-catalyticActivityClone1> ;
+    smodule:prefixes """PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX up: <http://purl.uniprot.org/core/>
+
+""" .
+
+<http://uniprot_module.biographs.org/M84_module_port-ECClone1> a smodule:ModulePortURI ;
+    rdfs:label "Enzyme" ;
+    rdfs:domain up:Enzyme ;
+    smodule:isSelected false ;
+    smodule:variableName "?ECClone1" .
+
+<http://uniprot_module.biographs.org/M84_module_port-ancestorECClone1> a smodule:ModulePortURI ;
+    rdfs:label "ancestor Enzyme" ;
+    rdfs:domain up:Enzyme ;
+    smodule:isSelected false ;
+    smodule:variableName "?ancestorECClone1" .
+
+<http://uniprot_module.biographs.org/M84_module_port-catalyticActivityClone1> a smodule:ModulePortURI ;
+    rdfs:label "Catalytic Activity" ;
+    rdfs:domain up:CatalyticActivity ;
+    smodule:isSelected false ;
+    smodule:variableName "?catalyticActivityClone1" .
+

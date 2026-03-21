@@ -1,0 +1,49 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix up: <http://purl.uniprot.org/core/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://uniprot_module.biographs.org/M31_moduleClone10> a smodule:SPARQLModule ;
+    rdfs:label "Entry and database" ;
+    smodule:clonedFrom <http://uniprot_module.biographs.org/M31_module> ;
+    smodule:fragmentSPARQL """
+    ?entryClone10 rdf:type ?entryTypeClone10.
+    ?entryClone10 rdfs:seeAlso ?dbentryClone10.
+    ?dbentryClone10 up:database ?databaseClone10.
+    """ ;
+    smodule:output <http://uniprot_module.biographs.org/M31_module_port-databaseClone10>,
+        <http://uniprot_module.biographs.org/M31_module_port-dbentryClone10>,
+        <http://uniprot_module.biographs.org/M31_module_port-entryClone10>,
+        <http://uniprot_module.biographs.org/M31_module_port-entryTypeClone10> ;
+    smodule:prefixes """PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX up: <http://purl.uniprot.org/core/>
+
+""" .
+
+<http://uniprot_module.biographs.org/M31_module_port-databaseClone10> a smodule:ModulePortURI ;
+    rdfs:label "Database" ;
+    rdfs:domain up:Database ;
+    smodule:isSelected true ;
+    smodule:variableName "?databaseClone10" .
+
+<http://uniprot_module.biographs.org/M31_module_port-dbentryClone10> a smodule:ModulePortURI ;
+    rdfs:label "Database entry" ;
+    rdfs:domain up:Ressource ;
+    smodule:isSelected false ;
+    smodule:variableName "?dbentryClone10" .
+
+<http://uniprot_module.biographs.org/M31_module_port-entryClone10> a smodule:ModulePortURI ;
+    rdfs:label "Entry" ;
+    rdfs:domain xsd:anyURI ;
+    smodule:isSelected true ;
+    smodule:variableName "?entryClone10" .
+
+<http://uniprot_module.biographs.org/M31_module_port-entryTypeClone10> a smodule:ModulePortURI ;
+    rdfs:label "Entry type" ;
+    rdfs:domain xsd:anyURI ;
+    smodule:isSelected false ;
+    smodule:variableName "?entryTypeClone10" .
+

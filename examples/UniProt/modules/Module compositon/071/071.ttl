@@ -1,0 +1,64 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix up_mod: <http://uniprot_module.biographs.org/> .
+@prefix base_mod: <http://base_module.biographs.org/> .
+
+smodule:module_composition_071 dcterms:title "Look for enzymes catalyzing reactions with molecules similar to dopamine, with natural variants related to a disease.".
+smodule:module_composition_071 rdfs:comment "Look for enzymes catalyzing reactions with molecules similar to dopamine, with natural variants related to a disease.".
+smodule:module_composition_071 dcterms:subject "enzyme", "chemical similarity", "federated query", "idsm", "sachem", "Rhea", "small molecule", "variant", "disease".
+
+smodule:module_composition_071 rdf:type smodule:SPARQL_Module_Composition.
+smodule:module_composition_071 smodule:hasConnection smodule:071_c1 , smodule:071_c2, smodule:071_c3, smodule:071_c4, smodule:071_c5, smodule:071_c6, smodule:071_c7, smodule:071_c8, smodule:071_c9, smodule:071_c10, smodule:071_c11, smodule:071_c12, smodule:071_c13.
+smodule:module_composition_071 smodule:hasComponent smodule:OperatorValuesClone101, smodule:OperatorValuesClone100, smodule:OperatorValuesClon99, smodule:OperatorServiceClone2, smodule:OperatorServiceClone3, up_mod:M75_moduleClone11, up_mod:M38_moduleClone11, base_mod:Mb7_moduleClone1, up_mod:M51_moduleClone6, up_mod:M39_moduleClone18, up_mod:M17_moduleClone14, up_mod:M14_moduleClone19, up_mod:M68_moduleClone1.
+smodule:module_composition_071 smodule:includeFile "VALUESClone101.ttl", "VALUESClone100.ttl", "VALUESClone99.ttl", "SERVICEClone2.ttl", "SERVICEClone3.ttl", "M75Clone11.ttl", "M38Clone11.ttl", "Mb7Clone1.ttl", "M51Clone6.ttl", "M39Clone18.ttl", "M17Clone14.ttl", "M14Clone19.ttl", "M68Clone1.ttl".
+
+smodule:071_c1 rdf:type smodule:Connection.
+smodule:071_c1 smodule:connects up_mod:M75_module_port-compoundClone11, up_mod:M38_module_port-compoundClone11.
+
+smodule:071_c2 rdf:type smodule:Connection.
+smodule:071_c2 smodule:connects up_mod:M39_module_port-proteinClone18, up_mod:M17_module_port-proteinClone14.
+
+smodule:071_c3 rdf:type smodule:Connection.
+smodule:071_c3 smodule:connects up_mod:M38_module_port-reactionClone11, smodule:OperatorServicePortParameterClone2.
+
+smodule:071_c4 rdf:type smodule:Connection.
+smodule:071_c4 smodule:connects up_mod:M39_module_port-reactionClone18, smodule:OperatorServicePortResultClone2.
+
+smodule:OperatorServicePortResultClone2 smodule:serviceInput "<https://sparql.rhea-db.org/sparql>".
+
+smodule:071_c5 rdf:type smodule:Connection.
+smodule:071_c5 smodule:connects up_mod:M68_module_port-chebiClone1, smodule:OperatorServicePortParameterClone3.
+
+smodule:071_c6 rdf:type smodule:Connection.
+smodule:071_c6 smodule:connects up_mod:M75_module_port-chebiClone11, smodule:OperatorServicePortResultClone3.
+
+smodule:OperatorServicePortResultClone3 smodule:serviceInput "<https://idsm.elixir-czech.cz/sparql/endpoint/chebi>".
+
+smodule:071_c7 rdf:type smodule:Connection.
+smodule:071_c7 smodule:connects up_mod:M68_module_port-queryClone1, smodule:OperatorValuesPortResultClone101.
+
+smodule:OperatorValuesPortResultClone101 smodule:valuesEnumeration "'NCCc1ccc(O)c(O)c1'" .
+
+smodule:071_c8 rdf:type smodule:Connection.
+smodule:071_c8 smodule:connects up_mod:M17_module_port-reviewedClone14, smodule:OperatorValuesPortResultClone100.
+
+smodule:OperatorValuesPortResultClone100 smodule:valuesEnumeration "true" .
+
+smodule:071_c9 rdf:type smodule:Connection.
+smodule:071_c9 smodule:connects up_mod:M39_module_port-proteinClone18, up_mod:M14_module_port-proteinClone19.
+
+smodule:071_c10 rdf:type smodule:Connection.
+smodule:071_c10 smodule:connects up_mod:M39_module_port-proteinClone18, up_mod:M51_module_port-proteinClone6.
+
+smodule:071_c11 rdf:type smodule:Connection.
+smodule:071_c11 smodule:connects up_mod:M14_module_port-annotationtypeClone19, smodule:OperatorValuesPortResultClone99.
+
+smodule:OperatorValuesPortResultClone99 smodule:valuesEnumeration "up:Natural_Variant_Annotation" .
+
+smodule:071_c12 rdf:type smodule:Connection.
+smodule:071_c12 smodule:connects up_mod:M14_module_port-annotationClone19, base_mod:Mb7_module_port-subjectClone1.
+
+smodule:071_c13 rdf:type smodule:Connection.
+smodule:071_c13 smodule:connects up_mod:M51_module_port-diseaseClone1, base_mod:Mb7_module_port-objectClone1.

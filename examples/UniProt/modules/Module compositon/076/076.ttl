@@ -1,0 +1,56 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix up_mod: <http://uniprot_module.biographs.org/> .
+
+smodule:module_composition_076 dcterms:title "Find enzymes, where the active site is a region affected by mutagenesis and show the comment regarding mutagenesis effect.".
+smodule:module_composition_076 rdfs:comment "Find enzymes, where the active site is a region affected by mutagenesis and show the comment regarding mutagenesis effect.".
+smodule:module_composition_076 dcterms:subject "active site", "enzyme", "mutagenesis", "search wihtin sequence", "list".
+
+smodule:module_composition_076 rdf:type smodule:SPARQL_Module_Composition.
+smodule:module_composition_076 smodule:hasConnection smodule:076_c1, smodule:076_c2, smodule:076_c3, smodule:076_c4, smodule:076_c5, smodule:076_c6, smodule:076_c7, smodule:076_c8, smodule:076_c9. #, smodule:076_c10, smodule:076_c11, smodule:076_c2 .
+smodule:module_composition_076 smodule:hasComponent smodule:OperatorValuesClone166, smodule:OperatorValuesClone167, up_mod:M14_moduleClone28, up_mod:M14_moduleClone29, up_mod:M40_moduleClone9, up_mod:M40_moduleClone10, up_mod:M76_moduleClone9, up_mod:M76_moduleClone10. #smodule:OperatorFilterClone17, 
+smodule:module_composition_076 smodule:includeFile "VALUESClone166.ttl", "VALUESClone167.ttl", "M14Clone28.ttl", "M14Clone29.ttl", "M40Clone9.ttl", "M40Clone10.ttl", "M76Clone9.ttl", "M76Clone10.ttl". #"FILTERClone17.ttl", 
+
+smodule:076_c1 rdf:type smodule:Connection.
+smodule:076_c1 smodule:connects up_mod:M14_module_port-annotationClone28, up_mod:M40_module_port-annotationClone9.
+
+smodule:076_c2 rdf:type smodule:Connection.
+smodule:076_c2 smodule:connects up_mod:M14_module_port-proteinClone28, up_mod:M40_module_port-proteinClone9.
+
+smodule:076_c3 rdf:type smodule:Connection.
+smodule:076_c3 smodule:connects up_mod:M40_module_port-rangeClone9, up_mod:M76_module_port-entryClone9.
+
+smodule:076_c4 rdf:type smodule:Connection.
+smodule:076_c4 smodule:connects up_mod:M14_module_port-annotationClone29, up_mod:M40_module_port-annotationClone10.
+
+smodule:076_c5 rdf:type smodule:Connection.
+smodule:076_c5 smodule:connects up_mod:M14_module_port-proteinClone29, up_mod:M40_module_port-proteinClone10.
+
+smodule:076_c6 rdf:type smodule:Connection.
+smodule:076_c6 smodule:connects up_mod:M40_module_port-rangeClone10, up_mod:M76_module_port-entryClone10.
+
+smodule:076_c7 rdf:type smodule:Connection.
+smodule:076_c7 smodule:connects up_mod:M14_module_port-proteinClone28, up_mod:M14_module_port-proteinClone29.
+
+smodule:076_c8 rdf:type smodule:Connection.
+smodule:076_c8 smodule:connects up_mod:M14_module_port-annotationTypeClone28, smodule:OperatorValuesPortResultClone166.
+
+smodule:OperatorValuesPortResultClone166 smodule:valuesEnumeration "up:Active_Site_Annotation" .
+
+smodule:076_c9 rdf:type smodule:Connection.
+smodule:076_c9 smodule:connects up_mod:M14_module_port-annotationTypeClone29, smodule:OperatorValuesPortResultClone167.
+
+smodule:OperatorValuesPortResultClone167 smodule:valuesEnumeration "up:Mutagenesis_Annotation" .
+
+#smodule:076_c10 rdf:type smodule:Connection.
+#smodule:076_c10 smodule:connects up_mod:M76_module_port-beginPositionClone9, smodule:OperatorFilterPortParameter2Clone17.
+
+#smodule:076_c11 rdf:type smodule:Connection.
+#smodule:076_c11 smodule:connects up_mod:M76_module_port-beginPositionClone10, smodule:OperatorFilterPortParameter1Clone17.
+
+#smodule:076_c12 rdf:type smodule:Connection.
+#smodule:076_c12 smodule:connects up_mod:M76_module_port-endPositionClone10, smodule:OperatorFilterPortParameter3Clone17.
+
+#smodule:OperatorFilterPortResultClone17 smodule:filterInput "?parameter1 <= ?parameter2 && ?parameter2 <= ?parameter3" .
