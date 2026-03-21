@@ -1,0 +1,37 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix up_mod: <http://uniprot_module.biographs.org/> .
+
+smodule:module_composition_018 dcterms:title "Select the number of UniProtKB entries for each of the EC (Enzyme Commission) top level categories".
+smodule:module_composition_018 rdfs:comment "Select the number of UniProtKB entries for each of the EC (Enzyme Commission) top level categories".
+smodule:module_composition_018 dcterms:subject "ec", "enzyme", "count", "enzyme classification".
+
+smodule:module_composition_018 rdf:type smodule:SPARQL_Module_Composition.
+smodule:module_composition_018 smodule:hasConnection smodule:018_c1 , smodule:018_c2, smodule:018_c3, smodule:018_c4, smodule:018_c7. #, smodule:018_c5, smodule:018_c6, .
+smodule:module_composition_018 smodule:hasComponent smodule:OperatorValuesClone19, smodule:OperatorUnionClone16, smodule:OperatorUnionClone20, up_mod:M90_moduleClone1, up_mod:M89_moduleClone1, up_mod:M88_moduleClone1. #smodule:OperatorGroupByClone18, smodule:OperatorOrderByClone4, 
+smodule:module_composition_018 smodule:includeFile "VALUESClone19.ttl", "UNIONClone16.ttl", "UNIONClone20.ttl", "M90Clone1.ttl", "M89Clone1.ttl", "M88Clone1.ttl". #"GROUPBYClone18.ttl", "ORDERBYClone4.ttl",
+
+smodule:018_c1 rdf:type smodule:Connection.
+smodule:018_c1 smodule:connects up_mod:M88_module_port-ecClassClone1, smodule:OperatorUnionPortParameter0Clone16.
+
+smodule:018_c2 rdf:type smodule:Connection.
+smodule:018_c2 smodule:connects up_mod:M89_module_port-ecClassClone1, smodule:OperatorUnionPortParameter1Clone16.
+
+smodule:018_c3 rdf:type smodule:Connection.
+smodule:018_c3 smodule:connects up_mod:M90_module_port-ecClassClone1, smodule:OperatorUnionPortParameter0Clone20.
+
+smodule:018_c7 rdf:type smodule:Connection.
+smodule:018_c7 smodule:connects smodule:OperatorUnionPortResultClone16, smodule:OperatorUnionPortParameter1Clone20.
+
+smodule:018_c4 rdf:type smodule:Connection.
+smodule:018_c4 smodule:connects smodule:OperatorUnionPortResultClone20, smodule:OperatorValuesPortResultClone19.
+
+smodule:OperatorValuesPortResultClone19 smodule:valuesEnumeration "ec:1.-.-.- ec:2.-.-.- ec:3.-.-.- ec:4.-.-.- ec:5.-.-.- ec:6.-.-.- ec:7.-.-.-" .
+
+#smodule:018_c5 rdf:type smodule:Connection.
+#smodule:018_c5 smodule:connects smodule:OperatorUnionPortResultClone16, smodule:OperatorGroupByPortParameterClone18.
+
+#smodule:018_c6 rdf:type smodule:Connection.
+#smodule:018_c6 smodule:connects smodule:OperatorGroupByPortResultClone18, smodule:OperatorOrderByPortResultClone4.

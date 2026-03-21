@@ -1,0 +1,25 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix up_mod: <http://uniprot_module.biographs.org/> .
+@prefix uniprotkb: <http://purl.uniprot.org/uniprot/>.
+
+smodule:module_composition_022 dcterms:title "For two accession numbers (ACs) find the GO term labels and group them into GO process,function and component".
+smodule:module_composition_022 rdfs:comment "For two accession numbers (ACs) find the GO term labels and group them into GO process,function and component".
+smodule:module_composition_022 dcterms:subject "gene ontology", "identifier".
+
+smodule:module_composition_022 rdf:type smodule:SPARQL_Module_Composition.
+smodule:module_composition_022 smodule:hasConnection smodule:022_c1 , smodule:022_c2.
+smodule:module_composition_022 smodule:hasComponent smodule:OperatorValuesClone25, smodule:OperatorValuesClone24, up_mod:M23_moduleClone2.
+smodule:module_composition_022 smodule:includeFile "VALUESClone25.ttl", "VALUESClone24.ttl", "M23Clone2.ttl".
+
+smodule:022_c1 rdf:type smodule:Connection.
+smodule:022_c1 smodule:connects up_mod:M23_module_port-ancestorGOTermClone2, smodule:OperatorValuesPortResultClone25.
+
+smodule:OperatorValuesPortResultClone25 smodule:valuesEnumeration "GO:0008150 GO:0005575 GO:0003674" .
+
+smodule:022_c2 rdf:type smodule:Connection.
+smodule:022_c2 smodule:connects up_mod:M23_module_port-proteinClone2, smodule:OperatorValuesPortResultClone24.
+
+smodule:OperatorValuesPortResultClone24 smodule:valuesEnumeration "uniprotkb:Q6GZX4 uniprotkb:Q96375" .

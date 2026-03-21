@@ -1,0 +1,53 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix up: <http://purl.uniprot.org/core/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://uniprot_module.biographs.org/M51_moduleClone1> a smodule:SPARQLModule ;
+    rdfs:label "protein and associated disease" ;
+    smodule:clonedFrom <http://uniprot_module.biographs.org/M51_module> ;
+    smodule:fragmentSPARQL """
+    ?proteinClone1 up:annotation ?disease_annotationClone1.
+    ?proteinClone1 rdf:type up:Protein.
+    ?disease_annotationClone1 rdf:type up:Disease_Annotation.
+    ?disease_annotationClone1 up:disease ?diseaseClone1.
+    ?diseaseClone1 skos:prefLabel ?diseaseLabelClone1.
+    ?diseaseClone1 rdf:type up:Disease.
+    """ ;
+    smodule:output <http://uniprot_module.biographs.org/M51_module_port-disease_annotationClone1>,
+        <http://uniprot_module.biographs.org/M51_module_port-diseaseClone1>,
+        <http://uniprot_module.biographs.org/M51_module_port-diseaseLabelClone1>,
+        <http://uniprot_module.biographs.org/M51_module_port-proteinClone1> ;
+    smodule:prefixes """PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX up: <http://purl.uniprot.org/core/>
+
+""" .
+
+<http://uniprot_module.biographs.org/M51_module_port-disease_annotationClone1> a smodule:ModulePortURI ;
+    rdfs:label "Annotation" ;
+    rdfs:domain up:Disease_Annotation ;
+    smodule:isSelected false ;
+    smodule:variableName "?disease_annotationClone1" .
+
+<http://uniprot_module.biographs.org/M51_module_port-diseaseClone1> a smodule:ModulePortURI ;
+    rdfs:label "Disease" ;
+    rdfs:domain xsd:anyURI ;
+    smodule:isSelected false ;
+    smodule:variableName "?diseaseClone1" .
+
+<http://uniprot_module.biographs.org/M51_module_port-diseaseLabelClone1> a smodule:ModulePortDatatype ;
+    rdfs:label "Disease label" ;
+    rdfs:domain xsd:string ;
+    smodule:isSelected true ;
+    smodule:variableName "?diseaseLabelClone1" .
+
+<http://uniprot_module.biographs.org/M51_module_port-proteinClone1> a smodule:ModulePortURI ;
+    rdfs:label "Protein" ;
+    rdfs:domain up:Protein ;
+    smodule:isSelected true ;
+    smodule:variableName "?proteinClone1" .
+

@@ -1,0 +1,32 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <https://schema.org/> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix base_mod: <http://base_module.biographs.org/> .
+
+base_mod:Mb4_moduleClone6 a smodule:SPARQLModule;
+  rdfs:label "rdf type"@en;
+  rdfs:comment "Gives type of element"@en;
+  smodule:clonedFrom base_mod:Mb4_module ;
+  schema:keywords "type";
+  smodule:prefixes """PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+  """ ;
+  smodule:fragmentSPARQL """ 
+    ?subjectClone6 rdf:type ?typeClone6 .
+    """;
+  smodule:output base_mod:Mb4_module_port-subjectClone6, base_mod:Mb4_module_port-typeClone6.
+  
+base_mod:Mb4_module_port-subjectClone6
+  a smodule:ModulePortURI;
+  rdfs:domain rdfs:Resource ;
+  smodule:variableName "?subjectClone6" ;
+  rdfs:label "Subject" ;
+  smodule:isSelected "true"^^xsd:boolean .
+
+base_mod:Mb4_module_port-typeClone6
+  a smodule:ModulePortURI;
+  rdfs:domain rdfs:Class;
+  smodule:variableName "?typeClone6" ;
+  rdfs:label "Type" ;
+  smodule:isSelected "true"^^xsd:boolean .

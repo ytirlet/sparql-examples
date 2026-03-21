@@ -1,0 +1,17 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix up_mod: <http://uniprot_module.biographs.org/> .
+
+smodule:module_composition_021 dcterms:title "Find where disease related proteins are known to be located in the cell".
+smodule:module_composition_021 rdfs:comment "Find where disease related proteins are known to be located in the cell".
+smodule:module_composition_021 dcterms:subject "disease", "subcellular location".
+
+smodule:module_composition_021 rdf:type smodule:SPARQL_Module_Composition.
+smodule:module_composition_021 smodule:hasConnection smodule:021_c1 .
+smodule:module_composition_021 smodule:hasComponent up_mod:M51_moduleClone1, up_mod:M52_moduleClone1.
+smodule:module_composition_021 smodule:includeFile "M51Clone1.ttl", "M52Clone1.ttl".
+
+smodule:021_c1 rdf:type smodule:Connection.
+smodule:021_c1 smodule:connects up_mod:M51_module_port-proteinClone1, up_mod:M52_module_port-proteinClone1.

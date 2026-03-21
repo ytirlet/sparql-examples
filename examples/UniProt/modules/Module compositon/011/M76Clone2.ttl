@@ -1,0 +1,64 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://uniprot_module.biographs.org/M76_moduleClone2> a smodule:SPARQLModule ;
+    rdfs:label "faldo: start/end position and reference" ;
+    smodule:clonedFrom <http://uniprot_module.biographs.org/M76_module> ;
+    smodule:fragmentSPARQL """
+    ?entryClone2 faldo:begin ?faldoBeginClone2.
+    ?faldoBeginClone2 faldo:position ?beginPositionClone2.
+    ?faldoBeginClone2 faldo:reference ?referenceClone2.
+    ?entryClone2 faldo:end ?faldoEndClone2.
+    ?faldoEndClone2 faldo:position ?endPositionClone2.
+    """ ;
+    smodule:output <http://uniprot_module.biographs.org/M76_module_port-beginPositionClone2>,
+        <http://uniprot_module.biographs.org/M76_module_port-endPositionClone2>,
+        <http://uniprot_module.biographs.org/M76_module_port-entryClone2>,
+        <http://uniprot_module.biographs.org/M76_module_port-faldoBeginClone2>,
+        <http://uniprot_module.biographs.org/M76_module_port-faldoEndClone2>,
+        <http://uniprot_module.biographs.org/M76_module_port-referenceClone2> ;
+    smodule:prefixes """PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX faldo: <http://biohackathon.org/resource/faldo#>
+
+""" .
+
+<http://uniprot_module.biographs.org/M76_module_port-beginPositionClone2> a smodule:ModulePortURI ;
+    rdfs:label "Begin Position" ;
+    rdfs:domain xsd:anyURI ;
+    smodule:isSelected true ;
+    smodule:variableName "?beginPositionClone2" .
+
+<http://uniprot_module.biographs.org/M76_module_port-endPositionClone2> a smodule:ModulePortURI ;
+    rdfs:label "End Position" ;
+    rdfs:domain xsd:anyURI ;
+    smodule:isSelected true ;
+    smodule:variableName "?endPositionClone2" .
+
+<http://uniprot_module.biographs.org/M76_module_port-entryClone2> a smodule:ModulePortURI ;
+    rdfs:label "Entry" ;
+    rdfs:domain xsd:anyURI ;
+    smodule:isSelected false ;
+    smodule:variableName "?entryClone2" .
+
+<http://uniprot_module.biographs.org/M76_module_port-faldoBeginClone2> a smodule:ModulePortURI ;
+    rdfs:label "FALDO begin" ;
+    rdfs:domain xsd:anyURI ;
+    smodule:isSelected false ;
+    smodule:variableName "?faldoBeginClone2" .
+
+<http://uniprot_module.biographs.org/M76_module_port-faldoEndClone2> a smodule:ModulePortURI ;
+    rdfs:label "FALDO end" ;
+    rdfs:domain xsd:anyURI ;
+    smodule:isSelected false ;
+    smodule:variableName "?faldoEndClone2" .
+
+<http://uniprot_module.biographs.org/M76_module_port-referenceClone2> a smodule:ModulePortURI ;
+    rdfs:label "Reference" ;
+    rdfs:domain xsd:anyURI ;
+    smodule:isSelected false ;
+    smodule:variableName "?referenceClone2" .
+

@@ -1,0 +1,36 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix up_mod: <http://uniprot_module.biographs.org/> .
+
+smodule:module_composition_019 dcterms:title "Find all natural variant annotations if associated via an evidence tag to an article with a PubMed identifier".
+smodule:module_composition_019 rdfs:comment "Find all natural variant annotations if associated via an evidence tag to an article with a PubMed identifier".
+smodule:module_composition_019 dcterms:subject "variant annotation", "evidence tag", "PubMed".
+
+smodule:module_composition_019 rdf:type smodule:SPARQL_Module_Composition.
+smodule:module_composition_019 smodule:hasConnection smodule:019_c1, smodule:019_c2, smodule:019_c3, smodule:019_c4, smodule:019_c5, smodule:019_c6 .
+smodule:module_composition_019 smodule:hasComponent smodule:OperatorValuesClone21, smodule:OperatorValuesClone20, up_mod:M14_moduleClone4, up_mod:M20_moduleClone1, up_mod:m31_moduleClone1.
+smodule:module_composition_019 smodule:includeFile "VALUESClone21.ttl", "VALUESClone20.ttl", "M14Clone4.ttl", "M20Clone1.ttl", "m31Clone1.ttl".
+
+smodule:019_c1 rdf:type smodule:Connection.
+smodule:019_c1 smodule:connects up_mod:M14_module_port-annotationClone4, up_mod:M20_module_port-annotationClone1.
+
+smodule:019_c2 rdf:type smodule:Connection.
+smodule:019_c2 smodule:connects up_mod:M14_module_port-annotationTypeClone4, smodule:OperatorValuesPortResultClone21.
+
+smodule:OperatorValuesPortResultClone21 smodule:valuesEnumeration "up:Natural_Variant_Annotation" .
+
+smodule:019_c3 rdf:type smodule:Connection.
+smodule:019_c3 smodule:connects up_mod:M20_module_port-sourceTypeClone1, smodule:OperatorValuesPortResultClone20.
+
+smodule:OperatorValuesPortResultClone20 smodule:valuesEnumeration "up:Journal_Citation" .
+
+smodule:019_c4 rdf:type smodule:Connection.
+smodule:019_c4 smodule:connects up_mod:M14_module_port-annotationClone4, up_mod:m31_module_port-annotationClone1.
+
+smodule:019_c5 rdf:type smodule:Connection.
+smodule:019_c5 smodule:connects up_mod:M14_module_port-proteinClone4, up_mod:m31_module_port-proteinClone1.
+
+smodule:019_c6 rdf:type smodule:Connection.
+smodule:019_c6 smodule:connects up_mod:M20_module_port-sourceClone1, up_mod:m31_module_port-sourceClone1.

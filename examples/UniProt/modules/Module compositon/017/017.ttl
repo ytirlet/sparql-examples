@@ -1,0 +1,36 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix up_mod: <http://uniprot_module.biographs.org/> .
+
+smodule:module_composition_017 dcterms:title "Select the average number of cross-references to the PDB database of UniProtKB entries that have at least one cross-reference to the PDB database".
+smodule:module_composition_017 rdfs:comment "Select the average number of cross-references to the PDB database of UniProtKB entries that have at least one cross-reference to the PDB database".
+smodule:module_composition_017 dcterms:subject "cross-reference", "count", "PDB".
+
+smodule:module_composition_017 rdf:type smodule:SPARQL_Module_Composition.
+smodule:module_composition_017 smodule:hasConnection smodule:017_c1, smodule:017_c2. #, smodule:017_c3, smodule:017_c4, smodule:017_c5, smodule:017_c6.
+smodule:module_composition_017 smodule:hasComponent smodule:OperatorValuesClone18, smodule:OperatorValuesClone17, up_mod:M31_moduleClone3. #smodule:OperatorGroupByClone19, smodule:OperatorCountClone13, smodule:OperatorOrderByDescClone11, .
+smodule:module_composition_017 smodule:includeFile "VALUESClone18.ttl", "VALUESClone17.ttl", "M31Clone3.ttl". # "GROUPBYClone19.ttl", "COUNTClone13.ttl", "ORDERBYDESCClone11.ttl", .
+
+smodule:017_c1 rdf:type smodule:Connection.
+smodule:017_c1 smodule:connects up_mod:M31_module_port-entryTypeClone3, smodule:OperatorValuesPortResultClone18.
+
+smodule:OperatorValuesPortResultClone18 smodule:valuesEnumeration "up:Protein" .
+
+smodule:017_c2 rdf:type smodule:Connection.
+smodule:017_c2 smodule:connects up_mod:M31_module_port-databaseClone3, smodule:OperatorValuesPortResultClone17.
+
+smodule:OperatorValuesPortResultClone17 smodule:valuesEnumeration "<http://purl.uniprot.org/database/PDB>" .
+
+#smodule:017_c3 rdf:type smodule:Connection.
+#smodule:017_c3 smodule:connects up_mod:M31_module_port-entryClone3, smodule:OperatorGroupByPortParameterClone19.
+
+#smodule:017_c4 rdf:type smodule:Connection.
+#smodule:017_c4 smodule:connects smodule:OperatorCountPortParameter1Clone13, smodule:OperatorGroupByPortResultClone19 .
+
+#smodule:017_c5 rdf:type smodule:Connection.
+#smodule:017_c5 smodule:connects smodule:OperatorOrderByDescPortParameterClone11, smodule:OperatorCountPortResultClone13 .
+
+#smodule:017_c6 rdf:type smodule:Connection.
+#smodule:017_c6 smodule:connects smodule:OperatorCountPortParameter2Clone13, up_mod:M31_module_port-dbentryClone3 .

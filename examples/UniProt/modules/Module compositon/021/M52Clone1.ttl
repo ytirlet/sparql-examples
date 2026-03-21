@@ -1,0 +1,51 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix up: <http://purl.uniprot.org/core/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://uniprot_module.biographs.org/M52_moduleClone1> a smodule:SPARQLModule ;
+    rdfs:label "protein and location" ;
+    smodule:clonedFrom <http://uniprot_module.biographs.org/M52_module> ;
+    smodule:fragmentSPARQL """
+    ?proteinClone1 up:annotation ?location_annotationClone1.
+    ?proteinClone1 rdf:type up:Protein.
+    ?location_annotationClone1 up:locatedIn/up:cellularComponent ?cellComponentClone1.
+    ?cellComponentClone1 skos:prefLabel ?location_inside_cellClone1.
+    """ ;
+    smodule:output <http://uniprot_module.biographs.org/M52_module_port-location_annotationClone1>,
+        <http://uniprot_module.biographs.org/M52_module_port-cellComponentClone1>,
+        <http://uniprot_module.biographs.org/M52_module_port-location_inside_cellClone1>,
+        <http://uniprot_module.biographs.org/M52_module_port-proteinClone1> ;
+    smodule:prefixes """PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX up: <http://purl.uniprot.org/core/>
+
+""" .
+
+<http://uniprot_module.biographs.org/M52_module_port-location_annotationClone1> a smodule:ModulePortURI ;
+    rdfs:label "Annotation" ;
+    rdfs:domain up:Subcellular_Location_Annotation ;
+    smodule:isSelected false ;
+    smodule:variableName "?location_annotationClone1" .
+
+<http://uniprot_module.biographs.org/M52_module_port-cellComponentClone1> a smodule:ModulePortURI ;
+    rdfs:label "Cell component" ;
+    rdfs:domain xsd:anyURI ;
+    smodule:isSelected true ;
+    smodule:variableName "?cellComponentClone1" .
+
+<http://uniprot_module.biographs.org/M52_module_port-location_inside_cellClone1> a smodule:ModulePortDatatype ;
+    rdfs:label "Location inside cell" ;
+    rdfs:domain xsd:string ;
+    smodule:isSelected true ;
+    smodule:variableName "?location_inside_cellClone1" .
+
+<http://uniprot_module.biographs.org/M52_module_port-proteinClone1> a smodule:ModulePortURI ;
+    rdfs:label "Protein" ;
+    rdfs:domain up:Protein ;
+    smodule:isSelected true ;
+    smodule:variableName "?proteinClone1" .
+

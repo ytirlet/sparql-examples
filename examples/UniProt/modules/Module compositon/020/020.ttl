@@ -1,0 +1,42 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix up_mod: <http://uniprot_module.biographs.org/> .
+
+smodule:module_composition_020 dcterms:title "Find how often an article in PubMed was used in an evidence tag in a human protein (ordered by most used to least)".
+smodule:module_composition_020 rdfs:comment "Find how often an article in PubMed was used in an evidence tag in a human protein (ordered by most used to least)".
+smodule:module_composition_020 dcterms:subject "publication", "evidence tag", "PubMed", "sorting", "count".
+
+smodule:module_composition_020 rdf:type smodule:SPARQL_Module_Composition.
+smodule:module_composition_020 smodule:hasConnection smodule:020_c1, smodule:020_c2, smodule:020_c3, smodule:020_c4. #, smodule:020_c5, smodule:020_c6, smodule:020_c7, smodule:020_c8.
+smodule:module_composition_020 smodule:hasComponent smodule:OperatorValuesClone23, smodule:OperatorValuesClone22, up_mod:M67_moduleClone6, up_mod:M20_moduleClone2, up_mod:M14_moduleClone5. #smodule:OperatorGroupByClone17, smodule:OperatorCountClone12, smodule:OperatorOrderByDescClone10,
+smodule:module_composition_020 smodule:includeFile "VALUESClone23.ttl", "VALUESClone22.ttl", "M67Clone6.ttl", "M20Clone2.ttl", "M14Clone5.ttl". #"GROUPBYClone17.ttl", "COUNTClone12.ttl", "ORDERBYDESCClone10.ttl",
+
+smodule:020_c1 rdf:type smodule:Connection.
+smodule:020_c1 smodule:connects up_mod:M14_module_port-annotationClone5, up_mod:M20_module_port-annotationClone2.
+
+smodule:020_c2 rdf:type smodule:Connection.
+smodule:020_c2 smodule:connects up_mod:M14_module_port-proteinClone5, up_mod:M67_module_port-entryClone6.
+
+smodule:020_c3 rdf:type smodule:Connection.
+smodule:020_c3 smodule:connects up_mod:M67_module_port-organismClone6, smodule:OperatorValuesPortResultClone23.
+
+smodule:OperatorValuesPortResultClone23 smodule:valuesEnumeration "taxon:9606" .
+
+smodule:020_c4 rdf:type smodule:Connection.
+smodule:020_c4 smodule:connects up_mod:M20_module_port-sourceTypeClone2, smodule:OperatorValuesPortResultClone22.
+
+smodule:OperatorValuesPortResultClone22 smodule:valuesEnumeration "up:Journal_Citation" .
+
+#smodule:020_c5 rdf:type smodule:Connection.
+#smodule:020_c5 smodule:connects up_mod:M20_module_port-sourceClone2, smodule:OperatorGroupByPortParameterClone17.
+
+#smodule:020_c6 rdf:type smodule:Connection.
+#smodule:020_c6 smodule:connects smodule:OperatorCountPortParameter1Clone12, smodule:OperatorGroupByPortResultClone17 .
+
+#smodule:020_c7 rdf:type smodule:Connection.
+#smodule:020_c7 smodule:connects smodule:OperatorOrderByDescPortParameterClone10, smodule:OperatorCountPortResultClone12 .
+
+#smodule:020_c8 rdf:type smodule:Connection.
+#smodule:020_c8 smodule:connects smodule:OperatorCountPortParameter2Clone12, up_mod:M20_module_port-attributionClone2 .

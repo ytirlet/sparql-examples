@@ -1,0 +1,19 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix up_mod: <http://uniprot_module.biographs.org/> .
+
+smodule:module_composition_012 dcterms:title "Select all UniProtKB entries that were integrated on the 30th of November 2010".
+smodule:module_composition_012 rdfs:comment "Select all UniProtKB entries that were integrated on the 30th of November 2010".
+smodule:module_composition_012 dcterms:subject "entry history", "date".
+
+smodule:module_composition_012 rdf:type smodule:SPARQL_Module_Composition.
+smodule:module_composition_012 smodule:hasConnection smodule:012_c1 .
+smodule:module_composition_012 smodule:hasComponent smodule:OperatorValuesClone14, up_mod:M17_moduleClone2.
+smodule:module_composition_012 smodule:includeFile "VALUESClone14.ttl", "M17Clone2.ttl".
+
+smodule:012_c1 rdf:type smodule:Connection.
+smodule:012_c1 smodule:connects up_mod:M17_module_port-creationDateClone2, smodule:OperatorValuesPortResultClone14.
+
+smodule:OperatorValuesPortResultClone14 smodule:valuesEnumeration "'2010-11-30'^^xsd:date" .

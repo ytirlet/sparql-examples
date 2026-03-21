@@ -1,0 +1,28 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix up_mod: <http://uniprot_module.biographs.org/> .
+
+smodule:module_composition_011 dcterms:title "Select all UniProtKB entries with annotated transmembrane regions and the regions' begin and end coordinates on the canonical sequence".
+smodule:module_composition_011 rdfs:comment "Select all UniProtKB entries with annotated transmembrane regions and the regions' begin and end coordinates on the canonical sequence".
+smodule:module_composition_011 dcterms:subject "trasmembrane annotation", "search within sequence".
+
+smodule:module_composition_011 rdf:type smodule:SPARQL_Module_Composition.
+smodule:module_composition_011 smodule:hasConnection smodule:011_c1, smodule:011_c2, smodule:011_c3, smodule:011_c4.
+smodule:module_composition_011 smodule:hasComponent smodule:OperatorValuesClone13, up_mod:M76_moduleClone2, up_mod:M40_moduleClone2, up_mod:M14_moduleClone3.
+smodule:module_composition_011 smodule:includeFile "VALUESClone13.ttl", "M76Clone2.ttl", "M40Clone2.ttl", "M14Clone3.ttl".
+
+smodule:011_c1 rdf:type smodule:Connection.
+smodule:011_c1 smodule:connects up_mod:M14_module_port-proteinClone3, up_mod:M40_module_port-proteinClone2.
+
+smodule:011_c2 rdf:type smodule:Connection.
+smodule:011_c2 smodule:connects up_mod:M14_module_port-annotationClone3, up_mod:M40_module_port-annotationClone2.
+
+smodule:011_c3 rdf:type smodule:Connection.
+smodule:011_c3 smodule:connects up_mod:M40_module_port-rangeClone2, up_mod:M76_module_port-entryClone2.
+
+smodule:011_c4 rdf:type smodule:Connection.
+smodule:011_c4 smodule:connects up_mod:M14_module_port-annotationTypeClone3, smodule:OperatorValuesPortResultClone13.
+
+smodule:OperatorValuesPortResultClone13 smodule:valuesEnumeration "up:Transmembrane_Annotation" .

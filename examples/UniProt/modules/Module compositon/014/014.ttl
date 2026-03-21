@@ -1,0 +1,28 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix up_mod: <http://uniprot_module.biographs.org/> .
+@prefix base_mod: <http://base_module.biographs.org/> .
+
+smodule:module_composition_014 dcterms:title "Construct new triples of the type 'HumanProtein' from all human UniProtKB entries".
+smodule:module_composition_014 rdfs:comment "Construct new triples of the type 'HumanProtein' from all human UniProtKB entries".
+smodule:module_composition_014 dcterms:subject "triples".
+
+smodule:module_composition_014 rdf:type smodule:SPARQL_Module_Composition.
+smodule:module_composition_014 smodule:hasConnection smodule:014_c1, smodule:014_c2, smodule:014_c3 .
+smodule:module_composition_014 smodule:hasComponent smodule:OperatorValuesClone16, smodule:OperatorValuesClone162, up_mod:M67_moduleClone5, base_mod:Mb4_moduleClone6.
+smodule:module_composition_014 smodule:includeFile "VALUESClone16.ttl", "VALUESClone162.ttl", "M67Clone5.ttl", "Mb4Clone6.ttl".
+
+smodule:014_c1 rdf:type smodule:Connection.
+smodule:014_c1 smodule:connects up_mod:M67_module_port-organismClone5, smodule:OperatorValuesPortResultClone16.
+
+smodule:OperatorValuesPortResultClone16 smodule:valuesEnumeration "taxon:9606" .
+
+smodule:014_c2 rdf:type smodule:Connection.
+smodule:014_c2 smodule:connects up_mod:M67_module_port-entryClone5, base_mod:Mb4_module_port-subjectClone6.
+
+smodule:014_c3 rdf:type smodule:Connection.
+smodule:014_c3 smodule:connects base_mod:Mb4_module_port-typeClone6, smodule:OperatorValuesPortResultClone162.
+
+smodule:OperatorValuesPortResultClone162 smodule:valuesEnumeration "up:Protein" .
