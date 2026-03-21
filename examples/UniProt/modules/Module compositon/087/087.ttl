@@ -1,0 +1,30 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix up_mod: <http://uniprot_module.biographs.org/> .
+
+smodule:module_composition_087 dcterms:title "Find taxon records for which one reviewed UniProtKB/Swiss-Prot entry exists. We might expect species, strains, subspecies and isolates in the taxon list.".
+smodule:module_composition_087 rdfs:comment "Find taxon records for which one reviewed UniProtKB/Swiss-Prot entry exists. We might expect species, strains, subspecies and isolates in the taxon list.".
+smodule:module_composition_087 dcterms:subject "taxonomy", "entry status", "list".
+
+smodule:module_composition_087 rdf:type smodule:SPARQL_Module_Composition.
+smodule:module_composition_087 smodule:hasConnection smodule:087_c1 , smodule:087_c2, smodule:087_c3, smodule:087_c4.
+smodule:module_composition_087 smodule:hasComponent smodule:OperatorValuesClone117, smodule:OperatorValuesClone116, up_mod:M74_moduleClone6, up_mod:M67_moduleClone26, up_mod:M17_moduleClone15.
+smodule:module_composition_087 smodule:includeFile "VALUESClone117.ttl", "VALUESClone116.ttl", "M74Clone6.ttl", "M67Clone26.ttl", "M17Clone15.ttl".
+
+smodule:087_c1 rdf:type smodule:Connection.
+smodule:087_c1 smodule:connects up_mod:M17_module_port-proteinClone15, up_mod:M67_module_port-entryClone26.
+
+smodule:087_c2 rdf:type smodule:Connection.
+smodule:087_c2 smodule:connects up_mod:M67_module_port-organismClone26, up_mod:M74_module_port-taxonClone6.
+
+smodule:087_c3 rdf:type smodule:Connection.
+smodule:087_c3 smodule:connects up_mod:M74_module_port-ancestorTaxonClone6, smodule:OperatorValuesPortResultClone117.
+
+smodule:OperatorValuesPortResultClone117 smodule:valuesEnumeration "taxon:2 taxon:2157 taxon:2759 taxon:10239" .
+
+smodule:087_c4 rdf:type smodule:Connection.
+smodule:087_c4 smodule:connects up_mod:M17_module_port-reviewedClone15, smodule:OperatorValuesPortResultClone116.
+
+smodule:OperatorValuesPortResultClone116 smodule:valuesEnumeration "true" .

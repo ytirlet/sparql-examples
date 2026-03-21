@@ -1,0 +1,30 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix base_mod: <http://base_module.biographs.org/> .
+
+<http://base_module.biographs.org/Mb4_moduleClone3> a smodule:SPARQLModule ;
+    rdfs:label "rdf type" ;
+    smodule:clonedFrom <http://base_module.biographs.org/Mb4_module> ;
+    smodule:fragmentSPARQL """ 
+    ?subjectClone3 rdf:type ?typeClone3 .
+    """ ;
+    smodule:output <http://base_module.biographs.org/Mb4_module_port-subjectClone3>, <http://base_module.biographs.org/Mb4_module_port-typeClone3> ;
+    smodule:prefixes """PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+""" .
+
+<http://base_module.biographs.org/Mb4_module_port-subjectClone3> a smodule:ModulePortURI ;
+    rdfs:label "Subject" ;
+    rdfs:domain rdfs:Resource ;
+    smodule:isSelected true ;
+    smodule:variableName "?subjectClone3" .
+
+<http://base_module.biographs.org/Mb4_module_port-typeClone3> a smodule:ModulePortURI ;
+    rdfs:label "Type" ;
+    rdfs:domain rdfs:Resource ;
+    smodule:isSelected false ;
+    smodule:variableName "?typeClone3" .

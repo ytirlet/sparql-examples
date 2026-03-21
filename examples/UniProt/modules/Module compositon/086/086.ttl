@@ -1,0 +1,20 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix up_mod: <http://uniprot_module.biographs.org/> .
+
+smodule:module_composition_086 dcterms:title "Retrieve the rank and the scientific name of an taxonomic record. Not all taxonomic records have a rank associated with them.".
+smodule:module_composition_086 rdfs:comment "Retrieve the rank and the scientific name of an taxonomic record. Not all taxonomic records have a rank associated with them.".
+smodule:module_composition_086 dcterms:subject "taxonomy".
+
+smodule:module_composition_086 rdf:type smodule:SPARQL_Module_Composition.
+smodule:module_composition_086 smodule:hasConnection smodule:086_c1, smodule:086_c2.
+smodule:module_composition_086 smodule:hasComponent smodule:OperatorOptionalClone7, up_mod:M74_moduleClone5, up_mod:M86_moduleClone2.
+smodule:module_composition_086 smodule:includeFile "OPTIONALClone7.ttl", "M74Clone5.ttl", "M86Clone2.ttl".
+
+smodule:086_c1 rdf:type smodule:Connection.
+smodule:086_c1 smodule:connects up_mod:M74_module_port-taxonClone5,  smodule:OperatorOptionalPortResultClone7.
+
+smodule:086_c2 rdf:type smodule:Connection.
+smodule:086_c2 smodule:connects smodule:OperatorOptionalPortParameter0Clone7,  up_mod:M86_module_port-taxonClone2.

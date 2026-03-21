@@ -1,0 +1,44 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix up_mod: <http://uniprot_module.biographs.org/> .
+@prefix base_mod: <http://base_module.biographs.org/> .
+
+smodule:module_composition_081 dcterms:title "Find all Rhea (only small molecule) that are used in UniProtKB where the annotation has a paper and is tagged having experimental evidence".
+smodule:module_composition_081 rdfs:comment "Find all Rhea (only small molecule) that are used in UniProtKB where the annotation has a paper and is tagged having experimental evidence".
+smodule:module_composition_081 dcterms:subject "small molecule", "Rhea", "evidence tag".
+
+smodule:module_composition_081 rdf:type smodule:SPARQL_Module_Composition.
+smodule:module_composition_081 smodule:hasConnection smodule:081_c1 , smodule:081_c2, smodule:081_c3, smodule:081_c4, smodule:081_c5, smodule:081_c6, smodule:081_c7.
+smodule:module_composition_081 smodule:hasComponent smodule:OperatorValuesClone112, smodule:OperatorValuesClone111, smodule:OperatorValuesClone110, smodule:OperatorServiceClone9, up_mod:M38_moduleClone12, base_mod:Mb6_moduleClone1, up_mod:M39_moduleClone22, up_mod:M20_moduleClone5.
+smodule:module_composition_081 smodule:includeFile "VALUESClone112.ttl", "VALUESClone111.ttl", "VALUESClone110.ttl", "SERVICEClone9.ttl", "M38Clone12.ttl", "Mb6Clone1.ttl", "M39Clone22.ttl", "M20Clone5.ttl".
+
+smodule:081_c1 rdf:type smodule:Connection.
+smodule:081_c1 smodule:connects up_mod:M38_module_port-reactionClone12, smodule:OperatorServicePortParameterClone9.
+
+smodule:081_c2 rdf:type smodule:Connection.
+smodule:081_c2 smodule:connects up_mod:M39_module_port-reactionClone22, smodule:OperatorServicePortResultClone9.
+
+smodule:OperatorServicePortResultClone9 smodule:serviceInput "<https://sparql.rhea-db.org/sparql>".
+
+smodule:081_c3 rdf:type smodule:Connection.
+smodule:081_c3 smodule:connects up_mod:M38_module_port-compoundClone12, base_mod:Mb6_module_port-subjectClone1.
+
+smodule:081_c4 rdf:type smodule:Connection.
+smodule:081_c4 smodule:connects base_mod:Mb6_module_port-classClone1, smodule:OperatorValuesPortResultClone112.
+
+smodule:OperatorValuesPortResultClone112 smodule:valuesEnumeration "rh:smallMolecule" .
+
+smodule:081_c5 rdf:type smodule:Connection.
+smodule:081_c5 smodule:connects up_mod:M39_module_port-annotationClone22, up_mod:M20_module_port-annotationClone5.
+
+smodule:081_c6 rdf:type smodule:Connection.
+smodule:081_c6 smodule:connects up_mod:M20_module_port-sourceTypeClone5, smodule:OperatorValuesPortResultClone111.
+
+smodule:OperatorValuesPortResultClone111 smodule:valuesEnumeration "up:Citation" .
+
+smodule:081_c7 rdf:type smodule:Connection.
+smodule:081_c7 smodule:connects up_mod:M20_module_port-evidenceClone5, smodule:OperatorValuesPortResultClone110.
+
+smodule:OperatorValuesPortResultClone110 smodule:valuesEnumeration "ECO:0000269" .

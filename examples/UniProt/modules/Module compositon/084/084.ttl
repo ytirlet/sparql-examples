@@ -1,0 +1,35 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix up_mod: <http://uniprot_module.biographs.org/> .
+
+smodule:module_composition_084 dcterms:title "Find all taxonomic records that describe species of the genus Homo.".
+smodule:module_composition_084 rdfs:comment "Find all taxonomic records that describe species of the genus Homo.".
+smodule:module_composition_084 dcterms:subject "taxonomy".
+
+smodule:module_composition_084 rdf:type smodule:SPARQL_Module_Composition.
+smodule:module_composition_084 smodule:hasConnection smodule:084_c1, smodule:084_c2, smodule:084_c3, smodule:084_c4, smodule:084_c5.
+smodule:module_composition_084 smodule:hasComponent smodule:OperatorValuesClone115, smodule:OperatorValuesClone114, smodule:OperatorValuesClone113, up_mod:M74_moduleClone4, up_mod:M86_moduleClone1, up_mod:M86_moduleClone3.
+smodule:module_composition_084 smodule:includeFile "VALUESClone115.ttl", "VALUESClone114.ttl", "VALUESClone113.ttl", "M74Clone4.ttl", "M86Clone1.ttl", "M86Clone3.ttl".
+
+smodule:084_c1 rdf:type smodule:Connection.
+smodule:084_c1 smodule:connects up_mod:M74_module_port-taxonClone4,  up_mod:M86_module_port-taxonClone1.
+
+smodule:084_c2 rdf:type smodule:Connection.
+smodule:084_c2 smodule:connects up_mod:M86_module_port-rankClone1, smodule:OperatorValuesPortResultClone115.
+
+smodule:OperatorValuesPortResultClone115 smodule:valuesEnumeration "up:Species" .
+
+smodule:084_c3 rdf:type smodule:Connection.
+smodule:084_c3 smodule:connects up_mod:M74_module_port-ancestorTaxonClone4, up_mod:M86_module_port-taxonClone3.
+
+smodule:084_c4 rdf:type smodule:Connection.
+smodule:084_c4 smodule:connects up_mod:M86_module_port-rankClone3, smodule:OperatorValuesPortResultClone114.
+
+smodule:OperatorValuesPortResultClone114 smodule:valuesEnumeration "up:Genus" .
+
+smodule:084_c5 rdf:type smodule:Connection.
+smodule:084_c5 smodule:connects up_mod:M74_module_port-ancestorTaxonClone4, smodule:OperatorValuesPortResultClone113.
+
+smodule:OperatorValuesPortResultClone113 smodule:valuesEnumeration "taxon:9605" .

@@ -1,0 +1,33 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix up: <http://purl.uniprot.org/core/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://uniprot_module.biographs.org/M86_moduleClone2> a smodule:SPARQLModule ;
+    rdfs:label "Taxon rank" ;
+    smodule:clonedFrom <http://uniprot_module.biographs.org/M86_module> ;
+    smodule:fragmentSPARQL """ 
+    ?taxonClone2 up:rank ?rankClone2.
+    """ ;
+    smodule:output <http://uniprot_module.biographs.org/M86_module_port-rankClone2>,
+        <http://uniprot_module.biographs.org/M86_module_port-taxonClone2> ;
+    smodule:prefixes """PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX up: <http://purl.uniprot.org/core/>
+
+""" .
+
+<http://uniprot_module.biographs.org/M86_module_port-rankClone2> a smodule:ModulePortURI ;
+    rdfs:label "Rank" ;
+    rdfs:domain up:Rank ;
+    smodule:isSelected true ;
+    smodule:variableName "?rankClone2" .
+
+<http://uniprot_module.biographs.org/M86_module_port-taxonClone2> a smodule:ModulePortURI ;
+    rdfs:label "Taxon" ;
+    rdfs:domain up:Taxon ;
+    smodule:isSelected true ;
+    smodule:variableName "?taxonClone2" .
+

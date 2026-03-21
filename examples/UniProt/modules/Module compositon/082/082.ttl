@@ -1,0 +1,18 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix up_mod: <http://uniprot_module.biographs.org/> .
+
+smodule:module_composition_082 dcterms:title "List Rhea reactions associated with an EC (enzyme classification).".
+smodule:module_composition_082 rdfs:comment "List Rhea reactions associated with an EC (enzyme classification).".
+smodule:module_composition_082 dcterms:subject "enzyme", "enzyme classification", "Rhea", "list".
+
+smodule:module_composition_082 rdf:type smodule:SPARQL_Module_Composition.
+smodule:module_composition_082 smodule:hasConnection smodule:082_c1.
+smodule:module_composition_082 smodule:hasComponent up_mod:M84_moduleClone3, up_mod:M39_moduleClone23.
+smodule:module_composition_082 smodule:includeFile "M84Clone3.ttl", "M39Clone23.ttl".
+
+smodule:082_c1 rdf:type smodule:Connection.
+smodule:082_c1 smodule:connects up_mod:M39_module_port-catalyticActivityClone23, up_mod:M84_module_port-catalyticActivityClone3.
+

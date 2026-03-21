@@ -1,0 +1,33 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix up: <http://purl.uniprot.org/core/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://uniprot_module.biographs.org/M85_moduleClone1> a smodule:SPARQLModule ;
+    rdfs:label "Virus host" ;
+    smodule:clonedFrom <http://uniprot_module.biographs.org/M85_module> ;
+    smodule:fragmentSPARQL """ 
+    ?virusClone1 up:host ?hostClone1.
+    """ ;
+    smodule:output <http://uniprot_module.biographs.org/M85_module_port-hostClone1>,
+        <http://uniprot_module.biographs.org/M85_module_port-virusClone1> ;
+    smodule:prefixes """PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX up: <http://purl.uniprot.org/core/>
+
+""" .
+
+<http://uniprot_module.biographs.org/M85_module_port-hostClone1> a smodule:ModulePortURI ;
+    rdfs:label "Host" ;
+    rdfs:domain up:Taxon ;
+    smodule:isSelected true ;
+    smodule:variableName "?hostClone1" .
+
+<http://uniprot_module.biographs.org/M85_module_port-virusClone1> a smodule:ModulePortURI ;
+    rdfs:label "Virus" ;
+    rdfs:domain up:Taxon ;
+    smodule:isSelected true ;
+    smodule:variableName "?virusClone1" .
+

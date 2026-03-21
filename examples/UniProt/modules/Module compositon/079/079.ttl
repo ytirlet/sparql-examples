@@ -1,0 +1,13 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix up_mod: <http://uniprot_module.biographs.org/> .
+
+smodule:module_composition_079 dcterms:title "List all UniProtKB protein ID (mnemonic) for current UniProtKB entries.".
+smodule:module_composition_079 rdfs:comment "List all UniProtKB protein ID (mnemonic) for current UniProtKB entries.".
+smodule:module_composition_079 dcterms:subject "identifier", "list".
+
+smodule:module_composition_079 rdf:type smodule:SPARQL_Module_Composition.
+smodule:module_composition_079 smodule:hasComponent up_mod:M57_moduleClone6.
+smodule:module_composition_079 smodule:includeFile "M57Clone6.ttl".

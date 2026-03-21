@@ -1,0 +1,58 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix up: <http://purl.uniprot.org/core/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://uniprot_module.biographs.org/M17_moduleClone15> a smodule:SPARQLModule ;
+    rdfs:label "Protein information" ;
+    smodule:clonedFrom <http://uniprot_module.biographs.org/M17_module> ;
+    smodule:fragmentSPARQL """
+    ?proteinClone15 rdf:type up:Protein ;
+      up:created ?creationDateClone15 ;
+      up:modified ?modificationDateClone15 ;
+      up:reviewed ?reviewedClone15 ;
+      up:version ?versionClone15 .
+    """ ;
+    smodule:output <http://uniprot_module.biographs.org/M17_module_port-creationDateClone15>,
+        <http://uniprot_module.biographs.org/M17_module_port-modificationDateClone15>,
+        <http://uniprot_module.biographs.org/M17_module_port-proteinClone15>,
+        <http://uniprot_module.biographs.org/M17_module_port-reviewedClone15>,
+        <http://uniprot_module.biographs.org/M17_module_port-versionClone15> ;
+    smodule:prefixes """PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX up: <http://purl.uniprot.org/core/>
+
+""" .
+
+<http://uniprot_module.biographs.org/M17_module_port-creationDateClone15> a smodule:ModulePortURI ;
+    rdfs:label "date of creation" ;
+    rdfs:domain xsd:date ;
+    smodule:isSelected false ;
+    smodule:variableName "?creationDateClone15" .
+
+<http://uniprot_module.biographs.org/M17_module_port-modificationDateClone15> a smodule:ModulePortDatatype ;
+    rdfs:label "date of modification" ;
+    rdfs:domain xsd:date ;
+    smodule:isSelected false ;
+    smodule:variableName "?modificationDateClone15" .
+
+<http://uniprot_module.biographs.org/M17_module_port-proteinClone15> a smodule:ModulePortURI ;
+    rdfs:label "Protein" ;
+    rdfs:domain up:Protein ;
+    smodule:isSelected false ;
+    smodule:variableName "?proteinClone15" .
+
+<http://uniprot_module.biographs.org/M17_module_port-reviewedClone15> a smodule:ModulePortDatatype ;
+    rdfs:label "is reviewed" ;
+    rdfs:domain xsd:boolean ;
+    smodule:isSelected false ;
+    smodule:variableName "?reviewedClone15" .
+
+<http://uniprot_module.biographs.org/M17_module_port-versionClone15> a smodule:ModulePortDatatype ;
+    rdfs:label "Version" ;
+    rdfs:domain xsd:int ;
+    smodule:isSelected false ;
+    smodule:variableName "?versionClone15" .
+
