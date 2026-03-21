@@ -1,0 +1,21 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix up_mod: <http://uniprot_module.biographs.org/> .
+
+smodule:module_composition_004 dcterms:title "Select the UniProtKB entry with the mnemonic 'A4_HUMAN'".
+smodule:module_composition_004 rdfs:comment "Select the UniProtKB entry with the mnemonic 'A4_HUMAN'".
+smodule:module_composition_004 dcterms:subject "identifier".
+
+smodule:module_composition_004 rdf:type smodule:SPARQL_Module_Composition.
+smodule:module_composition_004 smodule:hasConnection smodule:004_c1 .
+smodule:module_composition_004 smodule:hasComponent smodule:OperatorValuesClone3, up_mod:M57_moduleClone1.
+smodule:module_composition_004 smodule:includeFile "VALUESClone3.ttl", "M57Clone1.ttl".
+
+
+
+smodule:004_c1 rdf:type smodule:Connection.
+smodule:004_c1 smodule:connects up_mod:M57_module_port-mnemonicClone1, smodule:OperatorValuesPortResultClone3.
+
+smodule:OperatorValuesPortResultClone3 smodule:valuesEnumeration "'A4_HUMAN'" .

@@ -1,0 +1,19 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix up_mod: <http://uniprot_module.biographs.org/> .
+
+smodule:module_composition_002 dcterms:title "Select all bacterial taxa and their scientific name from the UniProt taxonomy".
+smodule:module_composition_002 rdfs:comment "Select all bacterial taxa and their scientific name from the UniProt taxonomy".
+smodule:module_composition_002 dcterms:subject "taxonomy".
+
+smodule:module_composition_002 rdf:type smodule:SPARQL_Module_Composition.
+smodule:module_composition_002 smodule:hasConnection smodule:002_c1 .
+smodule:module_composition_002 smodule:hasComponent smodule:OperatorValuesClone1, up_mod:M74_moduleClone1.
+smodule:module_composition_002 smodule:includeFile "VALUESClone1.ttl", "M74Clone1.ttl".
+
+smodule:002_c1 rdf:type smodule:Connection.
+smodule:002_c1 smodule:connects up_mod:M74_module_port-ancestorTaxonClone1, smodule:OperatorValuesPortResultClone1.
+
+smodule:OperatorValuesPortResultClone1 smodule:valuesEnumeration "taxon:2" .

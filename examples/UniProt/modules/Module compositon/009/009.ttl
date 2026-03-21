@@ -1,0 +1,27 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix up_mod: <http://uniprot_module.biographs.org/> .
+
+smodule:module_composition_009 dcterms:title "Select all human UniProtKB entries with a sequence variant that leads to a 'loss of function'".
+smodule:module_composition_009 rdfs:comment "Select all human UniProtKB entries with a sequence variant that leads to a 'loss of function'".
+smodule:module_composition_009 dcterms:subject "variant", "variant annotation".
+
+smodule:module_composition_009 rdf:type smodule:SPARQL_Module_Composition.
+smodule:module_composition_009 smodule:hasConnection smodule:009_c1, smodule:009_c3 .
+smodule:module_composition_009 smodule:hasComponent smodule:OperatorValuesClone10, up_mod:M14_moduleClone2, up_mod:M67_moduleClone3.
+smodule:module_composition_009 smodule:includeFile "VALUESClone10.ttl", "M14Clone2.ttl", "M67Clone3.ttl".
+
+smodule:009_c1 rdf:type smodule:Connection.
+smodule:009_c1 smodule:connects up_mod:M14_module_port-proteinClone2, up_mod:M67_module_port-entryClone3.
+
+#smodule:009_c2 rdf:type smodule:Connection.
+#smodule:009_c2 smodule:connects up_mod:M14_module_port-commentClone2, smodule:OperatorFilterPortParameterClone15.
+
+#smodule:OperatorFilterPortResultClone15 smodule:filterInput "CONTAINS(?result, 'loss of function')" .
+
+smodule:009_c3 rdf:type smodule:Connection.
+smodule:009_c3 smodule:connects up_mod:M67_module_port-organismClone3, smodule:OperatorValuesPortResultClone10.
+
+smodule:OperatorValuesPortResultClone10 smodule:valuesEnumeration "taxon:9606" .

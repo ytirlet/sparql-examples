@@ -1,0 +1,13 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix up_mod: <http://uniprot_module.biographs.org/> .
+
+smodule:module_composition_001 dcterms:title "Select all taxa from the UniProt taxonomy".
+smodule:module_composition_001 rdfs:comment "Select all taxa from the UniProt taxonomy".
+smodule:module_composition_001 dcterms:subject "taxonomy".
+
+smodule:module_composition_001 rdf:type smodule:SPARQL_Module_Composition.
+smodule:module_composition_001 smodule:hasComponent up_mod:M74_moduleClone11.
+smodule:module_composition_001 smodule:includeFile "M74Clone11.ttl".

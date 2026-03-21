@@ -1,0 +1,25 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix up_mod: <http://uniprot_module.biographs.org/> .
+
+smodule:module_composition_005 dcterms:title "Select a mapping of UniProtKB to PDB entries using the UniProtKB cross-references to the PDB database".
+smodule:module_composition_005 rdfs:comment "VALUES for up:Protein ?".
+smodule:module_composition_005 dcterms:subject "mapping", "PBD", "cross-reference".
+
+smodule:module_composition_005 rdf:type smodule:SPARQL_Module_Composition.
+smodule:module_composition_005 smodule:hasConnection smodule:005_c1, smodule:005_c2 .
+smodule:module_composition_005 smodule:hasComponent smodule:OperatorValuesClone4, smodule:OperatorValuesClone164, up_mod:M31_moduleClone1.
+smodule:module_composition_005 smodule:includeFile "VALUESClone4.ttl", "VALUESClone164.ttl", "M31Clone1.ttl".
+
+
+smodule:005_c1 rdf:type smodule:Connection.
+smodule:005_c1 smodule:connects up_mod:M31_module_port-databaseClone1, smodule:OperatorValuesPortResultClone4.
+
+smodule:OperatorValuesPortResultClone4 smodule:valuesEnumeration "<http://purl.uniprot.org/database/PDB>" .
+
+smodule:005_c2 rdf:type smodule:Connection.
+smodule:005_c2 smodule:connects up_mod:M31_module_port-entryTypeClone1, smodule:OperatorValuesPortResultClone164.
+
+smodule:OperatorValuesPortResultClone164 smodule:valuesEnumeration "up:Protein" .

@@ -1,0 +1,50 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix up: <http://purl.uniprot.org/core/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://uniprot_module.biographs.org/M23_moduleClone1> a smodule:SPARQLModule ;
+    rdfs:label "Protein GO classification" ;
+    smodule:clonedFrom <http://uniprot_module.biographs.org/M23_module> ;
+    smodule:fragmentSPARQL """
+    ?proteinClone1 up:classifiedWith ?goTermClone1.
+    ?proteinClone1 rdf:type up:Protein.
+    ?goTermClone1 rdfs:subClassOf ?ancestorGOTermClone1.
+    ?goTermClone1 rdfs:label ?labelClone1.
+    """ ;
+    smodule:output <http://uniprot_module.biographs.org/M23_module_port-ancestorGOTermClone1>,
+        <http://uniprot_module.biographs.org/M23_module_port-goTermClone1>,
+        <http://uniprot_module.biographs.org/M23_module_port-labelClone1>,
+        <http://uniprot_module.biographs.org/M23_module_port-proteinClone1> ;
+    smodule:prefixes """PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX up: <http://purl.uniprot.org/core/>
+
+""" .
+
+<http://uniprot_module.biographs.org/M23_module_port-ancestorGOTermClone1> a smodule:ModulePortURI ;
+    rdfs:label "Ancestor GO Term" ;
+    rdfs:domain xsd:anyURI ;
+    smodule:isSelected false ;
+    smodule:variableName "?ancestorGOTermClone1" .
+
+<http://uniprot_module.biographs.org/M23_module_port-goTermClone1> a smodule:ModulePortURI ;
+    rdfs:label "GO Term" ;
+    rdfs:domain xsd:anyURI ;
+    smodule:isSelected false ;
+    smodule:variableName "?goTermClone1" .
+
+<http://uniprot_module.biographs.org/M23_module_port-labelClone1> a smodule:ModulePortDatatype ;
+    rdfs:label "GO Term Label" ;
+    rdfs:domain xsd:string ;
+    smodule:isSelected false ;
+    smodule:variableName "?labelClone1" .
+
+<http://uniprot_module.biographs.org/M23_module_port-proteinClone1> a smodule:ModulePortURI ;
+    rdfs:label "Protein" ;
+    rdfs:domain up:Protein ;
+    smodule:isSelected false ;
+    smodule:variableName "?proteinClone1" .
+

@@ -1,0 +1,49 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix up_mod: <http://uniprot_module.biographs.org/> .
+@prefix base_mod: <http://base_module.biographs.org/> .
+
+smodule:module_composition_010 dcterms:title "Select all human UniProtKB entries with a sequence variant that leads to a tyrosine to phenylalanine substitution".
+smodule:module_composition_010 rdfs:comment "Select all human UniProtKB entries with a sequence variant that leads to a tyrosine to phenylalanine substitution".
+smodule:module_composition_010 dcterms:subject "variant annotation", "search within sequence".
+
+smodule:module_composition_010 rdf:type smodule:SPARQL_Module_Composition.
+smodule:module_composition_010 smodule:hasConnection smodule:010_c1 , smodule:010_c2, smodule:010_c3, smodule:010_c4, smodule:010_c5, smodule:010_c6, smodule:010_c8. #, smodule:010_c9.smodule:010_c7,
+smodule:module_composition_010 smodule:hasComponent smodule:OperatorValuesClone12, smodule:OperatorValuesClone11, up_mod:M76_moduleClone1, base_mod:Mb1_moduleClone1, up_mod:M79_moduleClone1, up_mod:M67_moduleClone4, up_mod:M40_moduleClone1.
+smodule:module_composition_010 smodule:includeFile "VALUESClone12.ttl", "VALUESClone11.ttl", "M76Clone1.ttl", "Mb1Clone1.ttl", "M79Clone1.ttl", "M67Clone4.ttl", "M40Clone1.ttl".
+
+smodule:010_c1 rdf:type smodule:Connection.
+smodule:010_c1 smodule:connects up_mod:M79_module_port-proteinClone1, up_mod:M40_module_port-proteinClone1.
+
+smodule:010_c2 rdf:type smodule:Connection.
+smodule:010_c2 smodule:connects up_mod:M79_module_port-proteinClone1, up_mod:M67_module_port-entryClone4.
+
+smodule:010_c3 rdf:type smodule:Connection.
+smodule:010_c3 smodule:connects up_mod:M40_module_port-rangeClone1, up_mod:M76_module_port-entryClone1.
+
+smodule:010_c4 rdf:type smodule:Connection.
+smodule:010_c4 smodule:connects up_mod:M40_module_port-annotationClone1, up_mod:M79_module_port-annotationClone1.
+
+smodule:010_c5 rdf:type smodule:Connection.
+smodule:010_c5 smodule:connects up_mod:M67_module_port-organismClone4, smodule:OperatorValuesPortResultClone12.
+
+smodule:OperatorValuesPortResultClone12 smodule:valuesEnumeration "taxon:9606" .
+
+smodule:010_c6 rdf:type smodule:Connection.
+smodule:010_c6 smodule:connects up_mod:M79_module_port-substitutionClone1, smodule:OperatorValuesPortResultClone11.
+
+smodule:OperatorValuesPortResultClone12 smodule:valuesEnumeration "'F'" .
+
+#smodule:010_c7 rdf:type smodule:Connection.
+#smodule:010_c7 smodule:connects base_mod:Mb1_module_port-valueClone1, smodule:OperatorFilterPortParameter1Clone16.
+
+#smodule:010_c9 rdf:type smodule:Connection.
+#smodule:010_c9 smodule:connects up_mod:M76_module_port-beginPositionClone1, smodule:OperatorFilterPortParameter2Clone16.
+
+#smodule:OperatorFilterPortResultClone16 smodule:filterInput "substr(?parameter1, ?parameter2)  = 'Y'" .
+
+smodule:010_c8 rdf:type smodule:Connection.
+smodule:010_c8 smodule:connects up_mod:M76_module_port-referenceClone1, base_mod:Mb1_module_port-subjectClone1.
+

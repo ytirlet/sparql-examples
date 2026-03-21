@@ -1,0 +1,27 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix up_mod: <http://uniprot_module.biographs.org/> .
+
+smodule:module_composition_003 dcterms:title "Select all UniProtKB entries, and their organism and amino acid sequences (including isoforms), for E. coli K12 and all its strains".
+smodule:module_composition_003 rdfs:comment "Select all UniProtKB entries, and their organism and amino acid sequences (including isoforms), for E. coli K12 and all its strains".
+smodule:module_composition_003 dcterms:subject "taxonomy", "isoform".
+
+smodule:module_composition_003 rdf:type smodule:SPARQL_Module_Composition.
+smodule:module_composition_003 smodule:hasConnection smodule:003_c1, smodule:003_c2, smodule:003_c3 .
+smodule:module_composition_003 smodule:hasComponent smodule:OperatorValuesClone2, smodule:OperatorValuesClone163, up_mod:M32_moduleClone1, up_mod:M67_moduleClone1.
+smodule:module_composition_003 smodule:includeFile "M32Clone1.ttl", "VALUESClone2.ttl","VALUESClone163.ttl", "M67Clone1.ttl".
+
+smodule:003_c1 rdf:type smodule:Connection.
+smodule:003_c1 smodule:connects up_mod:M32_module_port-entryClone1, up_mod:M67_module_port-entryClone1.
+
+smodule:003_c2 rdf:type smodule:Connection.
+smodule:003_c2 smodule:connects up_mod:M67_module_port-taxonClone1, smodule:OperatorValuesPortResultClone2.
+
+smodule:OperatorValuesPortResultClone2 smodule:valuesEnumeration "taxon:83333" .
+
+smodule:003_c3 rdf:type smodule:Connection.
+smodule:003_c3 smodule:connects up_mod:M32_module_port-entryTypeClone1, smodule:OperatorValuesPortResultClone163.
+
+smodule:OperatorValuesPortResultClone163 smodule:valuesEnumeration "up:Protein" .

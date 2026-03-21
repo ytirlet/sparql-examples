@@ -1,0 +1,30 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix up_mod: <http://uniprot_module.biographs.org/> .
+
+smodule:module_composition_008 dcterms:title "Select the preferred gene name and disease annotation of all human UniProtKB entries that are known to be involved in a disease".
+smodule:module_composition_008 rdfs:comment "M73 might restrain the result by containing the triplets corresponding to all possible names".
+smodule:module_composition_008 dcterms:subject "gene name", "disease", "list".
+
+smodule:module_composition_008 rdf:type smodule:SPARQL_Module_Composition.
+smodule:module_composition_008 smodule:hasConnection smodule:008_c1, smodule:008_c2, smodule:008_c3, smodule:008_c4 .
+smodule:module_composition_008 smodule:hasComponent smodule:OperatorValuesClone8, smodule:OperatorValuesClone9, up_mod:M73_moduleClone2, up_mod:M67_moduleClone2, up_mod:M14_moduleClone1.
+smodule:module_composition_008 smodule:includeFile "VALUESClone8.ttl", "VALUESClone9.ttl", "M73Clone2.ttl", "M67Clone2.ttl", "M14Clone1.ttl".
+
+smodule:008_c1 rdf:type smodule:Connection.
+smodule:008_c1 smodule:connects up_mod:M14_module_port-proteinClone1, up_mod:M67_module_port-entryClone2.
+
+smodule:008_c2 rdf:type smodule:Connection.
+smodule:008_c2 smodule:connects up_mod:M14_module_port-proteinClone1, up_mod:M73_module_port-proteinClone2.
+
+smodule:008_c3 rdf:type smodule:Connection.
+smodule:008_c3 smodule:connects up_mod:M14_module_port-annotationTypeClone1, smodule:OperatorValuesPortResultClone9.
+
+smodule:OperatorValuesPortResultClone9 smodule:valuesEnumeration "up:Disease_Annotation" .
+
+smodule:008_c4 rdf:type smodule:Connection.
+smodule:008_c4 smodule:connects up_mod:M67_module_port-organismClone2, smodule:OperatorValuesPortResultClone8.
+
+smodule:OperatorValuesPortResultClone8 smodule:valuesEnumeration "taxon:9606" .
