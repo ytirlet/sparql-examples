@@ -1,0 +1,38 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX up: <http://purl.uniprot.org/core/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX taxon: <http://purl.uniprot.org/taxonomy/>
+
+SELECT ?commentClone1 ?nameClone2
+WHERE {
+VALUES ?annotationTypeClone1 { up:Disease_Annotation } .
+  VALUES ?organismClone2 { taxon:9606 } .
+    ?entryClone2 up:organism ?organismClone2.
+    #?organismClone2 rdfs:subClassOf? ?taxonClone2. # Hierarchy of taxon is materialized
+    
+
+  # Result variable is ?organismClone2
+
+
+ 
+    ?entryClone2 rdf:type up:Protein.
+    ?entryClone2 up:annotation ?annotationClone1.
+    ?annotationClone1 rdf:type ?annotationTypeClone1.
+    ?annotationClone1 rdfs:comment ?commentClone1.
+    
+
+    ?entryClone2 rdf:type up:Protein.
+    ?entryClone2 up:encodedBy ?geneClone2.
+    ?geneClone2 skos:prefLabel ?nameClone2.
+    #OPTIONAL {?geneClone2 up:locusName ?locusNameClone2.}
+    #OPTIONAL {?geneClone2 skos:altLabel ?altLabelClone2.}
+    #OPTIONAL {?geneClone2 up:orfName ?orfNameClone2.}
+    
+
+  # Result variable is ?annotationTypeClone1
+  
+
+}

@@ -1,0 +1,65 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX up: <http://purl.uniprot.org/core/>
+PREFIX : <http://biographs.org/>
+PREFIX rh: <http://rdf.rhea-db.org/>
+PREFIX CHEBI: <http://purl.obolibrary.org/obo/CHEBI_>
+
+SELECT DISTINCT ?proteinClone5 ?reactionClone5 ?geneClone1
+WHERE {
+
+    ?proteinClone5 rdf:type up:Protein .
+    ?proteinClone5 up:annotation ?annotationClone5.
+    ?annotationClone5 up:catalyticActivity ?catalyticActivityClone5.
+    ?catalyticActivityClone5 rdf:type up:Catalytic_Activity .
+    ?catalyticActivityClone5 up:catalyzedReaction ?reactionClone5.
+    ?annotationClone5 rdf:type up:Catalytic_Activity_Annotation.
+    
+
+    ?proteinClone5 up:organism ?organismClone13.
+    ?organismClone13 rdfs:subClassOf? ?taxonClone13. # Hierarchy of taxon is materialized
+    
+
+    ?proteinClone5 rdfs:seeAlso ?entryClone1.
+    ?entryClone1 up:transcribedFrom ?geneClone1.
+    
+
+    BIND( IRI(REPLACE(STR(?ensemblGeneClone1), "\\.[0-9]+$", "")) AS ?ensemblGeneNoVerClone1 )   # strip version from Ensembl ID
+    
+
+  SERVICE <https://sparql.rhea-db.org/sparql> {
+  # Result variable is ?reactionClone5
+  
+    ?reactionClone5 rdfs:subClassOf rh:Reaction.
+    ?reactionClone5 rh:side ?sideClone3.
+    ?sideClone3 rh:contains ?participantClone3.
+    ?participantClone3 rh:compound ?compoundClone3.
+    
+ 
+    ?reactionClone5 rdfs:subClassOf rh:Reaction ;
+      rh:equation ?equationClone1 .
+    
+
+    ?compoundClone3 (rh:chebi|(rh:reactivePart/rh:chebi)|(rh:underlyingChebi)) ?chebiClone3 .
+    ?chebiClone3 (rdfs:subClassOf)+ ?chebiAncestorClone3.
+    
+
+  # Result variable is ?chebiClone3
+  VALUES ?chebiClone3 { CHEBI:16113 } .
+
+  } .
+
+
+  # Result variable is ?organismClone13
+  VALUES ?organismClone13 { taxon:9606 } .
+
+ 
+    SERVICE <https://www.bgee.org/sparql/> {
+    ?geneClone1 lscr:xrefEnsemblGene ?ensemblGeneNoVerClone1 ;
+      genex:isExpressedIn ?anatomicEntityClone1 .
+    ?anatomicEntityClone1 rdfs:label ?anatomicEntityLabelClone1 .
+  }
+    
+}

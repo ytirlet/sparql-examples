@@ -1,0 +1,14 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX up: <http://purl.uniprot.org/core/>
+
+SELECT ?memberClone4 (COUNT(?similarClone4) AS ?entry)
+WHERE {
+
+    ?clusterClone4 up:member ?memberClone4.
+    ?memberClone4 up:sequenceFor ?similarClone4.
+    ?clusterClone4 up:identity ?identityClone4.
+    
+} GROUP BY ?memberClone4 ORDER BY DESC(COUNT(?similarClone4))

@@ -1,0 +1,44 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX up: <http://purl.uniprot.org/core/>
+
+SELECT DISTINCT ?namesClone4 ?entryClone2 ?entryClone3 ?proteinClone3
+WHERE {
+ 
+    ?structuredNameClone4 ?anyKindOfNameClone4  ?namesClone4 .
+    ?anyKindOfNameClone4 rdfs:subPropertyOf up:structuredNameType .
+    
+
+  # union Result variable is ?structuredNameClone4
+  {
+   
+    ?entryClone2 rdf:type ?entryTypeClone2.
+    ?entryClone2 (up:recommendedName|up:alternativeName) ?structuredNameClone4.
+    
+
+  # Result variable is ?entryTypeClone2
+  VALUES ?entryTypeClone2 { up:Protein } .
+
+  }
+  UNION {
+   
+    ?entryClone3 rdf:type ?entryTypeClone3.
+    ?entryClone3 (up:recommendedName|up:alternativeName) ?structuredNameClone4.
+    
+ 
+    ?proteinClone3 rdf:type up:Protein.
+    ?proteinClone3 up:domain|up:component ?entryClone3.
+    
+  }
+
+ 
+    SERVICE <https://data.allie.dbcls.jp/sparql>{
+        ?xClone1 rdfs:label "アミロイド前駆体タンパク質"@ja ;
+            rdfs:label ?englishLabelClone1 .
+        FILTER(lang(?englishLabel) = "en")
+    }
+    BIND (STR(?englishLabel) AS ?englishLabelStr)
+    
+}

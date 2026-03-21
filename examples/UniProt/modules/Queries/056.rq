@@ -1,0 +1,29 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX up: <http://purl.uniprot.org/core/>
+
+SELECT ?labelClone2 ?proteinClone15 ?chebiClone3 ?commentClone1
+WHERE {
+ 
+    ?subjectClone2 rdfs:label ?labelClone2 .
+    
+ 
+    ?proteinClone15 rdf:type up:Protein.
+    ?proteinClone15 up:annotation ?annotationClone15.
+    #?annotationClone15 rdf:type ?annotationTypeClone15.
+    #?annotationClone15 rdfs:comment ?commentClone15.
+    
+
+    ?annotationClone15 up:ligand ?subjectClone2.
+    ?subjectClone2 rdfs:subClassOf ?chebiClone3.
+    
+ 
+    ?subjectClone2 rdfs:comment ?commentClone1 .
+    
+
+  # Result variable is ?annotationTypeClone15
+  VALUES ?annotationTypeClone15 { up:Binding_Site_Annotation } .
+FILTER(REGEX(?commentClone1, "allosteric", "i"))
+}

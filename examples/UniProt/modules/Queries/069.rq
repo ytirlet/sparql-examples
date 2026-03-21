@@ -1,0 +1,39 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX up: <http://purl.uniprot.org/core/>
+
+SELECT ?proteinClone12
+WHERE {
+ 
+    ?subjectClone2 rdf:type ?typeClone2 .
+    
+
+    ?proteinClone12 rdf:type up:Protein ;
+      up:created ?creationDateClone12 ;
+      up:modified ?modificationDateClone12 ;
+      up:reviewed ?reviewedClone12 ;
+      up:version ?versionClone12 .
+    
+
+    ?proteinClone12 up:organism ?organismClone25.
+    ?organismClone25 rdfs:subClassOf? ?taxonClone25. # Hierarchy of taxon is materialized
+    
+
+  # Result variable is ?organismClone25
+  VALUES ?organismClone25 { taxon:7227 } .
+
+
+  # Result variable is ?reviewedClone12
+  VALUES ?reviewedClone12 { true } .
+
+
+    ?proteinClone12 rdfs:seeAlso ?subjectClone2.
+    ?subjectClone2 up:transcribedFrom ?geneClone5.
+    
+
+  # Result variable is ?typeClone2
+  VALUES ?typeClone2 { up:Transcript_Resource } .
+
+}GROUP BY ?proteinClone12 HAVING(COUNT(?subjectClone2) >= 2)

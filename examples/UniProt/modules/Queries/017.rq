@@ -1,0 +1,22 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX up: <http://purl.uniprot.org/core/>
+
+SELECT (AVG(COUNT(DISTINCT(?dbentryClone3)) AS ?truc) AS ?avgLinksToPdbPerEntry)
+WHERE {
+
+    ?entryClone3 rdf:type ?entryTypeClone3.
+    ?entryClone3 rdfs:seeAlso ?dbentryClone3.
+    ?dbentryClone3 up:database ?databaseClone3.
+    
+
+  # Result variable is ?entryTypeClone3
+  VALUES ?entryTypeClone3 { up:Protein } .
+
+
+  # Result variable is ?databaseClone3
+  VALUES ?databaseClone3 { <http://purl.uniprot.org/database/PDB> } .
+
+}GROUP BY ?entryClone3 ORDER BY DESC(COUNT(DISTINCT(?dbentryClone3)))

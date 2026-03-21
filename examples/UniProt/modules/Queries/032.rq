@@ -1,0 +1,22 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX up: <http://purl.uniprot.org/core/>
+
+SELECT ?proteinClone6 
+    (GROUP_CONCAT(?commentClone6; separator=", ") AS ?comments)
+WHERE {
+ 
+    ?proteinClone6 rdf:type up:Protein.
+    ?proteinClone6 up:annotation ?annotationClone6.
+    ?annotationClone6 rdf:type ?annotationTypeClone6.
+    ?annotationClone6 rdfs:comment ?commentClone6.
+    
+
+  # Result variable is ?annotationTypeClone6
+  VALUES ?annotationTypeClone6 { up:Topological_Domain_Annotation } .
+
+}
+GROUP BY ?proteinClone6
+HAVING (COUNT(?annotationClone6) > 1)

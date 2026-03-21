@@ -1,0 +1,42 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX up: <http://purl.uniprot.org/core/>
+PREFIX ec: <http://purl.uniprot.org/enzyme/>
+
+SELECT ?ecClass (COUNT(?proteinClone1) as ?size)
+WHERE {
+
+  # Result variable is ?ecClass
+  VALUES ?ecClass { ec:1.-.-.- ec:2.-.-.- ec:3.-.-.- ec:4.-.-.- ec:5.-.-.- ec:6.-.-.- ec:7.-.-.- } .
+
+
+  # union Result variable is ?ecClass
+  {
+   
+    ?proteinClone1 up:component ?componentClone1.
+    ?componentClone1 up:enzyme ?enzymeClone1 .
+    ?enzymeClone1 rdfs:subClassOf ?ecClass.
+    
+  }
+  UNION {
+  
+  # union Result variable is ?ecClass
+  {
+   
+    ?proteinClone1 up:enzyme ?enzymeClone1 .
+    ?enzymeClone1 rdfs:subClassOf ?ecClass.
+    
+  }
+  UNION {
+   
+    ?proteinClone1 up:domain ?domainClone1.
+    ?domainClone1 up:enzyme ?enzymeClone1 .
+    ?enzymeClone1 rdfs:subClassOf ?ecClass.
+    
+  }
+
+  }
+
+}GROUP BY ?ecClass ORDER BY ?ecClass

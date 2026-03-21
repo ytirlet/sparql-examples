@@ -1,0 +1,22 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX up: <http://purl.uniprot.org/core/>
+PREFIX uniprotkb: <http://purl.uniprot.org/uniprot/>
+
+SELECT ?dbentryClone8 ?entryClone8 ?commentClone2
+WHERE {
+ VALUES ?entryClone8 { uniprotkb:P05067 uniprotkb:P00750 } .
+    ?entryClone8 rdf:type ?entryTypeClone8.
+    ?entryClone8 rdfs:seeAlso ?dbentryClone8.
+    ?dbentryClone8 up:database ?databaseClone8.
+    
+
+  # Result variable is ?entryClone8
+ 
+VALUES ?databaseClone8 {<http://purl.uniprot.org/database/HGNC>}
+ 
+    ?dbentryClone8 rdfs:comment ?commentClone2 .
+    
+}

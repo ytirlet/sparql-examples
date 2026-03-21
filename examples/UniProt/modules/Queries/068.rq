@@ -1,0 +1,59 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX up: <http://purl.uniprot.org/core/>
+PREFIX : <http://biographs.org/>
+
+SELECT ?proteinClone11
+WHERE {
+ 
+    ?subjectClone1 rdf:type ?typeClone1 .
+    
+
+    ?proteinClone11 rdf:type up:Protein ;
+      up:created ?creationDateClone11 ;
+      up:modified ?modificationDateClone11 ;
+      up:reviewed ?reviewedClone11 ;
+      up:version ?versionClone11 .
+    
+
+    ?proteinClone11 up:organism ?organismClone24.
+    ?organismClone24 rdfs:subClassOf? ?taxonClone24. # Hierarchy of taxon is materialized
+    
+
+  # Result variable is ?organismClone24
+  VALUES ?organismClone24 { taxon:7227 } .
+
+
+  # Result variable is ?reviewedClone11
+  VALUES ?reviewedClone11 { true } .
+
+
+    ?proteinClone11 rdfs:seeAlso ?subjectClone1.
+    ?subjectClone1 up:transcribedFrom ?geneClone4.
+    
+
+  # Result variable is ?typeClone1
+  VALUES ?typeClone1 { up:Transcript_Resource } .
+
+
+  # union Result variable is ?proteinClone11
+  {
+  
+    ?proteinClone11 rdf:type up:Protein .
+    ?proteinClone11 up:annotation ?annotationClone16.
+    ?annotationClone16 up:catalyticActivity ?catalyticActivityClone16.
+    ?catalyticActivityClone16 rdf:type up:Catalytic_Activity .
+    ?catalyticActivityClone16 up:catalyzedReaction ?reactionClone16.
+    ?annotationClone16 rdf:type up:Catalytic_Activity_Annotation.
+    
+  }
+  UNION {
+   
+    ?proteinClone11 up:enzyme ?enzymeClone5 .
+    ?enzymeClone5 rdfs:subClassOf? ?ecClassClone5.
+    
+  }
+
+}GROUP BY ?proteinClone11 HAVING(COUNT(?subjectClone1) >= 2)

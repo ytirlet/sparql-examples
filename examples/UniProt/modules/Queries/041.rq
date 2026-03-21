@@ -1,0 +1,23 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX up: <http://purl.uniprot.org/core/>
+
+SELECT DISTINCT ?entryClone2
+WHERE {
+
+    ?entryClone2 rdf:type ?entryTypeClone2.
+    ?entryClone2 up:sequence ?sequenceClone2.
+    ?sequenceClone2 rdf:type ?sequenceTypeClone2.
+    ?sequenceClone2 rdf:value ?valueClone2.
+    
+
+  # Result variable is ?entryTypeClone2
+  VALUES ?entryTypeClone2 { up:Protein } .
+
+ 
+
+    ?sequenceClone2 up:fragment ?fragmentClone1 .
+    
+}

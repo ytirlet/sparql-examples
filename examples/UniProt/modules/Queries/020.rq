@@ -1,0 +1,36 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX up: <http://purl.uniprot.org/core/>
+PREFIX taxon: <http://purl.uniprot.org/taxonomy/>
+
+SELECT ?sourceClone2 (COUNT (?attributionClone2 ) as ?att)
+WHERE {
+ 
+    ?proteinClone5 rdf:type up:Protein.
+    ?proteinClone5 up:annotation ?annotationClone5.
+    ?annotationClone5 rdf:type ?annotationTypeClone5.
+    ?annotationClone5 rdfs:comment ?commentClone5.
+    
+
+    ?objectClone2 rdf:object ?annotationClone5.
+    ?objectClone2 up:attribution ?attributionClone2.
+    ?attributionClone2 up:source ?sourceClone2.
+    ?sourceClone2 rdf:type ?sourceTypeClone2.
+    ?attributionClone2 up:evidence ?evidenceClone2.
+    
+
+    ?proteinClone5 up:organism ?organismClone6.
+    ?organismClone6 rdfs:subClassOf? ?taxonClone6. # Hierarchy of taxon is materialized
+    
+
+  # Result variable is ?organismClone6
+  VALUES ?organismClone6 { taxon:9606 } .
+
+
+  # Result variable is ?sourceTypeClone2
+  VALUES ?sourceTypeClone2 { up:Journal_Citation } .
+
+}
+GROUP BY ?sourceClone2 ORDER BY DESC(COUNT(?attributionClone2))

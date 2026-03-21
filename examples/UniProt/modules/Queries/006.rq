@@ -1,0 +1,34 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX up: <http://purl.uniprot.org/core/>
+PREFIX keywords: <http://purl.uniprot.org/keywords/>
+
+SELECT DISTINCT ?dbentryClone2
+WHERE {
+VALUES ?goTermClone1 { keywords:5 } .
+  VALUES ?categoryClone1 { '3D structure databases' } .
+    ?proteinClone1 up:classifiedWith ?goTermClone1.
+    ?proteinClone1 rdf:type up:Protein.
+    #?goTermClone1 rdfs:subClassOf ?ancestorGOTermClone1.
+    #?goTermClone1 rdfs:label ?labelClone1.
+    
+
+  # Result variable is ?goTermClone1
+  
+
+
+    ?proteinClone1 rdf:type ?entryTypeClone2.
+    ?proteinClone1 rdfs:seeAlso ?dbentryClone2.
+    ?dbentryClone2 up:database ?databaseClone2.
+    
+ 
+    #?databaseClone2 a up:Database.
+    ?databaseClone2 up:category ?categoryClone1 .
+    
+
+  # Result variable is ?categoryClone1
+
+
+}

@@ -1,0 +1,86 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX up: <http://purl.uniprot.org/core/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX faldo: <http://biohackathon.org/resource/faldo#>
+
+SELECT DISTINCT ?diseaseClone5 
+WHERE {
+ 
+    ?proteinClone17 rdf:type up:Protein.
+    ?proteinClone17 up:annotation ?annotationClone17.
+    ?annotationClone17 rdf:type ?annotationTypeClone17.
+    ?annotationClone17 rdfs:comment ?commentClone17.
+    
+
+    ?proteinClone17 up:annotation ?annotationClone5.
+    ?proteinClone17 rdf:type up:Protein.
+    ?annotationClone5 rdf:type up:Disease_Annotation.
+    ?annotationClone5 up:disease ?diseaseClone5.
+    ?diseaseClone5 skos:prefLabel ?diseaseLabelClone5.
+    ?diseaseClone5 rdf:type up:Disease.
+    
+
+    ?proteinClone17 up:organism ?organismClone21.
+    ?organismClone21 rdfs:subClassOf? ?taxonClone21. # Hierarchy of taxon is materialized
+    
+
+  # union Result variable is ?proteinClone17
+  {
+   
+    ?proteinClone17 up:enzyme ?enzymeClone4 .
+    ?enzymeClone4 rdfs:subClassOf? ?ecClassClone4.
+    
+  }
+  UNION {
+   
+    ?proteinClone17 rdf:type up:Protein.
+    ?proteinClone17 up:annotation ?annotationClone16.
+    ?annotationClone16 rdf:type ?annotationTypeClone16.
+    ?annotationClone16 rdfs:comment ?commentClone16.
+    
+
+  # Result variable is ?annotationTypeClone16
+  VALUES ?annotationTypeClone16 { up:Catalytic_Activity_Annotation } .
+
+  }
+
+
+  # Result variable is ?annotationTypeClone17
+  VALUES ?annotationTypeClone17 { up:Active_Site_Annotation } .
+
+
+    ?proteinClone17 up:annotation ?annotationClone17.
+    ?annotationClone17 up:range ?rangeClone5.
+    
+
+    ?rangeClone5 faldo:begin ?faldoBeginClone5.
+    ?faldoBeginClone5 faldo:position ?beginPositionClone5.
+    ?faldoBeginClone5 faldo:reference ?referenceClone5.
+    ?rangeClone5 faldo:end ?faldoEndClone5.
+    ?faldoEndClone5 faldo:position ?endPositionClone5.
+    
+ 
+    ?proteinClone17 rdf:type up:Protein.
+    ?proteinClone17 up:annotation ?annotationClone18.
+    ?annotationClone18 rdf:type ?annotationTypeClone18.
+    ?annotationClone18 rdfs:comment ?commentClone18.
+    
+
+  # Result variable is ?annotationTypeClone18
+  VALUES ?annotationTypeClone18 { up:Natural_Variant_Annotation } .
+
+
+    ?proteinClone17 up:annotation ?annotationClone18.
+    ?annotationClone18 up:range ?rangeClone6.
+    
+
+    ?rangeClone6 faldo:begin ?faldoBeginClone6.
+    ?faldoBeginClone6 faldo:position ?beginPositionClone6.
+    ?faldoBeginClone6 faldo:reference ?referenceClone6.
+    ?rangeClone6 faldo:end ?faldoEndClone6.
+    ?faldoEndClone6 faldo:position ?endPositionClone6.
+    FILTER(?beginPositionClone6 >= ?beginPositionClone5 && ?beginPositionClone5 <= ?endPositionClone6)
+}

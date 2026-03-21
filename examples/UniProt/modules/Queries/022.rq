@@ -1,0 +1,24 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX up: <http://purl.uniprot.org/core/>
+PREFIX uniprotkb: <http://purl.uniprot.org/uniprot/>
+PREFIX GO: <http://purl.obolibrary.org/obo/GO_>
+SELECT DISTINCT ?goTermClone2 ?labelClone2 ?proteinClone2
+WHERE {
+
+    ?proteinClone2 up:classifiedWith ?goTermClone2.
+    ?proteinClone2 rdf:type up:Protein.
+    ?goTermClone2 rdfs:subClassOf ?ancestorGOTermClone2.
+    ?goTermClone2 rdfs:label ?labelClone2.
+    
+
+  # Result variable is ?ancestorGOTermClone2
+  VALUES ?ancestorGOTermClone2 { GO:0008150 GO:0005575 GO:0003674 } .
+
+
+  # Result variable is ?proteinClone2
+  VALUES ?proteinClone2 { uniprotkb:Q6GZX4 uniprotkb:Q96375 } .
+
+}

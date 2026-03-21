@@ -1,0 +1,41 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX up: <http://purl.uniprot.org/core/>
+PREFIX obo: <http://purl.obolibrary.org/obo/>
+PREFIX CHEBI: <http://purl.obolibrary.org/obo/CHEBI_>
+
+SELECT ?chebiClone2 ?labelClone1 (COUNT(DISTINCT ?proteinClone14) AS ?entries)
+WHERE {
+ 
+    ?chebiClone2 rdfs:label ?labelClone1 .
+    ?chebiClone2 rdfs:subClassOf+ ?chebids .
+    
+ 
+    ?proteinClone14 rdf:type up:Protein.
+    ?proteinClone14 up:annotation ?annotationClone14.
+    #?annotationClone14 rdf:type ?annotationTypeClone14.
+    #?annotationClone14 rdfs:comment ?commentClone14.
+    
+
+    ?objectClone4 rdf:object ?annotationClone14.
+    ?objectClone4 up:attribution ?attributionClone4.
+    #?attributionClone4 up:source ?sourceClone4.
+    #?sourceClone4 rdf:type ?sourceTypeClone4.
+    ?attributionClone4 up:evidence ?evidenceClone4.
+    
+
+    ?annotationClone14 up:ligand ?subjectClone1.
+    ?subjectClone1 rdfs:subClassOf ?chebiClone2.
+    
+
+  # Result variable is ?evidenceClone4
+  VALUES ?evidenceClone4 { obo:ECO_0000269 obo:ECO_0007744 } .
+
+
+  # Result variable is ?chebiClone2
+  VALUES ?chebids { CHEBI:25213 CHEBI:25214 } .
+
+}GROUP BY ?chebiClone2 ?labelClone1
+ORDER BY DESC(?entries)

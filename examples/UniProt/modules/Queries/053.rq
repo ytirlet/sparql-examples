@@ -1,0 +1,57 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX up: <http://purl.uniprot.org/core/>
+PREFIX : <http://biographs.org/>
+PREFIX rh: <http://rdf.rhea-db.org/>
+
+SELECT DISTINCT ?proteinClone9 ?reactionClone9 ?chebiClone7 ?mouseProteinClone1 ?clusterClone1
+WHERE {
+
+    ?proteinClone9 rdf:type up:Protein .
+    ?proteinClone9 up:annotation ?annotationClone9.
+    ?annotationClone9 up:catalyticActivity ?catalyticActivityClone9.
+    ?catalyticActivityClone9 rdf:type up:Catalytic_Activity .
+    ?catalyticActivityClone9 up:catalyzedReaction ?reactionClone9.
+    ?annotationClone9 rdf:type up:Catalytic_Activity_Annotation.
+    
+
+  SERVICE <https://sparql.rhea-db.org/sparql> {
+  # Result variable is ?reactionClone9
+  
+    ?compoundClone7 (rh:chebi|(rh:reactivePart/rh:chebi)|(rh:underlyingChebi)) ?chebiClone7 .
+    ?chebiClone7 (rdfs:subClassOf)+ ?chebiAncestorClone7.
+    
+
+  # Result variable is ?chebiAncestorClone7
+  VALUES ?chebiAncestorClone7 { CHEBI:15889 } .
+
+
+    ?reactionClone9 rdfs:subClassOf rh:Reaction.
+    ?reactionClone9 rh:side ?sideClone7.
+    ?sideClone7 rh:contains ?participantClone7.
+    ?participantClone7 rh:compound ?compoundClone7.
+    
+  } .
+
+
+    ?proteinClone9 up:organism ?organismClone16.
+    ?organismClone16 rdfs:subClassOf? ?taxonClone16. # Hierarchy of taxon is materialized
+    
+
+  # Result variable is ?organismClone16
+  VALUES ?organismClone16 { taxon:9606 } .
+
+ 
+  SERVICE  <https://sparql.omabrowser.org/sparql/> {
+    ?clusterClone1 a orth:ParalogsCluster .
+    ?clusterClone1 orth:hasHomologousMember ?node1Clone1 , ?node2Clone1 .
+    ?node1Clone1 orth:hasHomologousMember* ?orthoProtein1Clone1 .
+    ?node2Clone1 orth:hasHomologousMember* ?orthoProtein2Clone1 .
+    ?orthoProtein1Clone1 lscr:xrefUniprot ?mouseProteinClone1 .
+    ?orthoProtein2Clone1 lscr:xrefUniprot ?proteinClone9 .
+    ?orthoProtein1Clone1 orth:organism/<http://purl.obolibrary.org/obo/RO_0002162> taxon:10090 . 
+  }
+    
+}

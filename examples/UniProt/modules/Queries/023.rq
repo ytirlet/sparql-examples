@@ -1,0 +1,39 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX up: <http://purl.uniprot.org/core/>
+PREFIX GO: <http://purl.obolibrary.org/obo/GO_>
+PREFIX taxon: <http://purl.uniprot.org/taxonomy/>
+SELECT DISTINCT ?entryClone7
+WHERE {
+
+    ?entryClone7 up:organism ?organismClone7.
+    ?organismClone7 rdfs:subClassOf? ?taxonClone7. # Hierarchy of taxon is materialized
+    
+
+  # Result variable is ?organismClone7
+  VALUES ?organismClone7 { taxon:9606 } .
+
+
+    ?entryClone7 rdf:type up:Protein ;
+      up:created ?creationDateClone4 ;
+      up:modified ?modificationDateClone4 ;
+      up:reviewed ?reviewedClone4 ;
+      up:version ?versionClone4 .
+    
+
+    ?entryClone7 up:classifiedWith/rdfs:subClassOf* ?goClone1 .
+    GRAPH <https://sparql.uniprot.org/go> {
+      ?goClone1 a owl:Class .
+    }
+    
+
+  # Result variable is ?goClone1
+  VALUES ?goClone1 { GO:0016301 } .
+
+
+  # Result variable is ?reviewedClone4
+  VALUES ?reviewedClone4 { true } .
+
+}

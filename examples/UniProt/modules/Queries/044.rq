@@ -1,0 +1,38 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX up: <http://purl.uniprot.org/core/>
+PREFIX : <http://biographs.org/>
+
+SELECT ?catalyticActivityClone3 ?dbentryClone6
+WHERE {
+
+    ?proteinClone7 rdf:type up:Protein ;
+      #up:created ?creationDateClone7 ;
+      #up:modified ?modificationDateClone7 ;
+      up:reviewed ?reviewedClone7 .
+      #up:version ?versionClone7 .
+    
+
+    ?proteinClone7 rdf:type up:Protein .
+    ?proteinClone7 up:annotation ?annotationClone3.
+    ?annotationClone3 up:catalyticActivity ?catalyticActivityClone3.
+    ?catalyticActivityClone3 rdf:type up:Catalytic_Activity .
+    #?catalyticActivityClone3 up:catalyzedReaction ?reactionClone3.
+    ?annotationClone3 rdf:type up:Catalytic_Activity_Annotation.
+    
+
+    ?proteinClone7 rdf:type ?entryTypeClone6.
+    ?proteinClone7 rdfs:seeAlso ?dbentryClone6.
+    ?dbentryClone6 up:database ?databaseClone6.
+    
+
+  # Result variable is ?databaseClone6
+  VALUES ?databaseClone6 { <http://purl.uniprot.org/database/InterPro> } .
+
+
+  # Result variable is ?reviewedClone7
+  VALUES ?reviewedClone7 { true } .
+
+} ORDER BY ?catalyticActivityClone3

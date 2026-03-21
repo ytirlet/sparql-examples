@@ -1,0 +1,35 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX up: <http://purl.uniprot.org/core/>
+
+SELECT DISTINCT ?annotationClone4 ?proteinClone4 ?sourceClone1
+WHERE {
+ 
+    ?proteinClone4 rdf:type up:Protein.
+    ?proteinClone4 up:annotation ?annotationClone4.
+    ?annotationClone4 rdf:type ?annotationTypeClone4.
+    ?annotationClone4 rdfs:comment ?commentClone4.
+    
+
+    ?objectClone1 rdf:object ?annotationClone4.
+    ?objectClone1 up:attribution ?attributionClone1.
+    ?attributionClone1 up:source ?sourceClone1.
+    ?sourceClone1 rdf:type ?sourceTypeClone1.
+    ?attributionClone1 up:evidence ?evidenceClone1.
+    
+
+  # Result variable is ?annotationTypeClone4
+  VALUES ?annotationTypeClone4 { up:Natural_Variant_Annotation } .
+
+
+  # Result variable is ?sourceTypeClone1
+  VALUES ?sourceTypeClone1 { up:Journal_Citation } .
+
+ 
+    BIND(SUBSTR(STR(?proteinClone1),33) AS ?accessionClone1)
+  BIND(IF(CONTAINS(STR(?annotationClone1), "#SIP"), SUBSTR(STR(?annotationClone1),33), SUBSTR(STR(?annotationClone1),36))AS?annotation_accClone1)
+  BIND(SUBSTR(STR(?sourceClone1),35) AS ?pubmedClone1)
+    
+}

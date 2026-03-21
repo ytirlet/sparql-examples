@@ -1,0 +1,97 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX up: <http://purl.uniprot.org/core/>
+PREFIX : <http://biographs.org/>
+PREFIX rh: <http://rdf.rhea-db.org/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX CHEBI: <http://purl.obolibrary.org/obo/CHEBI_>
+
+SELECT DISTINCT ?proteinClone8 ?fullNameClone4
+WHERE {
+
+    ?proteinClone8 rdf:type up:Protein .
+    ?proteinClone8 up:annotation ?annotationClone8.
+    ?annotationClone8 up:catalyticActivity ?catalyticActivityClone8.
+    ?catalyticActivityClone8 rdf:type up:Catalytic_Activity .
+    ?catalyticActivityClone8 up:catalyzedReaction ?reactionClone8.
+    ?annotationClone8 rdf:type up:Catalytic_Activity_Annotation.
+    
+
+    ?proteinClone8 up:recommendedName ?recNameClone4.
+    ?proteinClone8 up:alternativeName ?altNameClone4.
+    ?recNameClone4 up:fullName ?fullNameClone4.
+    ?recNameClone4 up:shortName ?shortNameClone4.
+    
+
+    ?proteinClone8 up:organism ?organismClone15.
+    ?organismClone15 rdfs:subClassOf? ?taxonClone15. # Hierarchy of taxon is materialized
+    
+
+  SERVICE <https://sparql.rhea-db.org/sparql> {
+  # Result variable is ?reactionClone8
+  
+    ?reactionClone8 rdfs:subClassOf rh:Reaction.
+    ?reactionClone8 rh:side ?sideClone6.
+    ?sideClone6 rh:contains ?participantClone6.
+    ?participantClone6 rh:compound ?compoundClone6.
+    
+ 
+    ?reactionClone8 rdfs:subClassOf rh:Reaction ;
+      rh:status ?statusClone2 .
+    
+
+  # Result variable is ?statusClone2
+  VALUES ?statusClone2 { rh:Approved } .
+
+
+  # union Result variable is ?compoundClone6
+  {
+  
+    ?compoundClone6 (rh:chebi|(rh:reactivePart/rh:chebi)|(rh:underlyingChebi)) ?chebiClone6 .
+    ?chebiClone6 (rdfs:subClassOf)+ ?chebiAncestorClone6.
+    
+
+  # Result variable is ?chebiAncestorClone6
+  VALUES ?chebiAncestorClone6 { CHEBI:15889 } .
+
+  }
+  UNION {
+  
+    ?compoundClone6 rh:chebi ?chebiClone2.
+    ?chebiRestrictionClone2 owl:someValuesFrom ?chebiClone2.
+    ?chebiRestrictionClone2 rdf:type owl:Restriction.
+    ?chebi2Clone2 rdfs:subClassOf ?chebiRestrictionClone2.
+    ?chebi2Clone2 (rdfs:subClassOf)+ ?chebiAncestorClone2.
+    
+
+  # Result variable is ?chebiAncestorClone2
+  VALUES ?chebiAncestorClone2 { CHEBI:15889 } .
+
+  }
+
+  } .
+
+
+  # Result variable is ?organismClone15
+  VALUES ?organismClone15 { taxon:9606 } .
+
+ 
+    SERVICE <https://idsm.elixir-czech.cz/sparql/endpoint/idsm> {
+    ?activityClone1 a cco:Activity ;
+      cco:hasMolecule ?chemblMoleculeClone1 ;
+      cco:hasAssay ?assayClone1 ;
+      cco:standardType ?activityTypeClone1 ;
+      cco:standardValue ?standardActivityValueClone1 ;
+      cco:standardUnits ?standardActivityUnitClone1 .
+    ?chemblMoleculeClone1 cco:highestDevelopmentPhase ?highestDevelopmentPhaseClone1 ;
+      rdfs:label ?chemblMoleculeLabelClone1 ;
+      skos:prefLabel ?chemlbMoleculePrefLabelClone1 .
+    FILTER (?highestDevelopmentPhaseClone1 > 3)
+    ?assayClone1 cco:hasTarget ?targetClone1 .
+    ?targetClone1 cco:hasTargetComponent/cco:targetCmptXref ?proteinClone8 .
+    ?proteinClone8 a cco:UniprotRef .
+  }
+    
+}

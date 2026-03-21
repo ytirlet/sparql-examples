@@ -1,0 +1,35 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX up: <http://purl.uniprot.org/core/>
+PREFIX : <http://biographs.org/>
+PREFIX rh: <http://rdf.rhea-db.org/>
+PREFIX taxon: <http://purl.uniprot.org/taxonomy/>
+
+SELECT DISTINCT ?proteinClone2 ?dbentryClone5
+WHERE {
+
+    ?proteinClone2 rdf:type up:Protein .
+    ?proteinClone2 up:annotation ?annotationClone2.
+    ?annotationClone2 up:catalyticActivity ?catalyticActivityClone2.
+    ?catalyticActivityClone2 rdf:type up:Catalytic_Activity .
+    ?catalyticActivityClone2 up:catalyzedReaction ?reactionClone2.
+    ?annotationClone2 rdf:type up:Catalytic_Activity_Annotation.
+   SERVICE <https://sparql.rhea-db.org/sparql> {
+   ?compoundClone1 (rh:chebi|(rh:reactivePart/rh:chebi)|(rh:underlyingChebi)) ?chebiClone1 .
+    ?chebiClone1 (rdfs:subClassOf)+ ?chebiAncestorClone1.
+  VALUES ?chebiAncestorClone1 { CHEBI:26739 } .
+    ?reactionClone2 rdfs:subClassOf rh:Reaction.
+    ?reactionClone2 rh:side ?sideClone1.
+    ?sideClone1 rh:contains ?participantClone1.
+    ?participantClone1 rh:compound ?compoundClone1.
+  } .
+?proteinClone2 rdf:type ?entryTypeClone5.
+    ?proteinClone2 rdfs:seeAlso ?dbentryClone5.
+    ?dbentryClone5 up:database ?databaseClone5.
+ ?proteinClone2 up:organism ?organismClone11.
+    ?organismClone11 rdfs:subClassOf? ?taxonClone11.
+  VALUES ?organismClone11 { taxon:9606 } .
+  VALUES ?databaseClone5 { <http://purl.uniprot.org/database/ChEMBL> } .
+}

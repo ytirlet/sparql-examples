@@ -1,0 +1,28 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX up: <http://purl.uniprot.org/core/>
+
+SELECT DISTINCT ?proteinClone1 ?proteomeClone1
+WHERE {
+
+    ?proteinClone1 rdf:type up:Protein.
+    ?proteinClone1 up:proteome ?proteomeClone1 .
+    
+
+  # Result variable is ?proteomeClone1
+  VALUES ?proteomeClone1 { <http://purl.uniprot.org/proteomes/UP000000625#Chromosome> } .
+
+
+    ?proteinClone1 rdf:type up:Protein ;
+      up:created ?creationDateClone5 ;
+      up:modified ?modificationDateClone5 ;
+      up:reviewed ?reviewedClone5 ;
+      up:version ?versionClone5 .
+    
+
+  # Result variable is ?reviewedClone5
+  VALUES ?reviewedClone5 { true } .
+
+}

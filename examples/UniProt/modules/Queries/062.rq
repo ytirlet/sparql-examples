@@ -1,0 +1,39 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX up: <http://purl.uniprot.org/core/>
+PREFIX : <http://biographs.org/>
+
+SELECT DISTINCT ?diseaseClone3 ?diseaseLabelClone3
+WHERE {
+
+    ?proteinClone3 up:annotation ?annotationClone3.
+    ?proteinClone3 rdf:type up:Protein.
+    ?annotationClone3 rdf:type up:Disease_Annotation.
+    ?annotationClone3 up:disease ?diseaseClone3.
+    ?diseaseClone3 skos:prefLabel ?diseaseLabelClone3.
+    ?diseaseClone3 rdf:type up:Disease.
+    
+
+  # union Result variable is ?proteinClone3
+  {
+   
+    ?proteinClone3 up:enzyme ?enzymeClone2 .
+    #?enzymeClone2 rdfs:subClassOf? ?ecClassClone2.
+    
+  }
+  UNION {
+  
+    ?proteinClone3 rdf:type up:Protein .
+    ?proteinClone3 up:annotation ?annotationClone12.
+    ?annotationClone12 up:catalyticActivity ?catalyticActivityClone12.
+    ?catalyticActivityClone12 rdf:type up:Catalytic_Activity .
+    #?catalyticActivityClone12 up:catalyzedReaction ?reactionClone12.
+    #?annotationClone12 rdf:type up:Catalytic_Activity_Annotation.
+    ?catalyticActivityClone12 up:enzymeClass ?enzymeClone2 .
+    #?enzymeClone2 rdfs:subClassOf ?ancestorEC.
+  }
+
+}

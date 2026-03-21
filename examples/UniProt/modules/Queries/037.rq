@@ -1,0 +1,48 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX up: <http://purl.uniprot.org/core/>
+PREFIX faldo: <http://biohackathon.org/resource/faldo#>
+PREFIX taxon: <http://purl.uniprot.org/taxonomy/>
+
+SELECT ?commentClone11 ?proteinClone11 ?beginPositionClone3 ?endPositionClone3
+WHERE {
+    
+ 
+    ?proteinClone11 rdf:type up:Protein.
+    ?proteinClone11 up:annotation ?annotationClone11.
+    ?annotationClone11 rdf:type ?annotationTypeClone11.
+    ?annotationClone11 rdfs:comment ?commentClone11.
+    
+
+    ?proteinClone11 up:organism ?organismClone10.
+    ?organismClone10 rdfs:subClassOf? ?taxonClone10. # Hierarchy of taxon is materialized
+    
+
+  # Result variable is ?annotationTypeClone11
+  VALUES ?annotationTypeClone11 { up:Modified_Residue_Annotation } .
+
+
+  # Result variable is ?organismClone10
+  VALUES ?organismClone10 { taxon:9606 } .
+
+
+    ?proteinClone11 rdf:type ?entryTypeClone6.
+    ?proteinClone11 up:sequence ?sequenceClone6.
+    ?sequenceClone6 rdf:type ?sequenceTypeClone6.
+    ?sequenceClone6 rdf:value ?valueClone6.
+    
+
+    ?proteinClone11 up:annotation ?annotationClone11.
+    ?annotationClone11 up:range ?rangeClone3.
+    
+
+    ?rangeClone3 faldo:begin ?faldoBeginClone3.
+    ?faldoBeginClone3 faldo:position ?beginPositionClone3.
+    ?faldoBeginClone3 faldo:reference ?sequenceClone6.
+    ?rangeClone3 faldo:end ?faldoEndClone3.
+    ?faldoEndClone3 faldo:position ?endPositionClone3.
+    FILTER (SUBSTR(?sequenceClone6, ?beginPositionClone3 -2 , 4) = "VSTQ")     
+  FILTER (CONTAINS(?commentClone11, "Phosphothreonine"))
+}

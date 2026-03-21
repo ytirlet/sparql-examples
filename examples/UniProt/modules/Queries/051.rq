@@ -1,0 +1,61 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX up: <http://purl.uniprot.org/core/>
+PREFIX : <http://biographs.org/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX rh: <http://rdf.rhea-db.org/>
+
+SELECT DISTINCT ?proteinClone7 ?fullNameClone3 ?nameClone4 ?chebiClone5 ?nameClone1
+WHERE {
+
+    ?proteinClone7 rdf:type up:Protein .
+    ?proteinClone7 up:annotation ?annotationClone7.
+    ?annotationClone7 up:catalyticActivity ?catalyticActivityClone7.
+    ?catalyticActivityClone7 rdf:type up:Catalytic_Activity .
+    ?catalyticActivityClone7 up:catalyzedReaction ?reactionClone7.
+    ?annotationClone7 rdf:type up:Catalytic_Activity_Annotation.
+    
+
+    ?proteinClone7 up:recommendedName ?recNameClone3.
+    #?proteinClone7 up:alternativeName ?altNameClone3.
+    ?recNameClone3 up:fullName ?fullNameClone3.
+    #?recNameClone3 up:shortName ?shortNameClone3.
+    
+
+  OPTIONAL {
+  # Result variable is ?proteinClone7
+  
+    ?proteinClone7 rdf:type up:Protein.
+    ?proteinClone7 up:encodedBy ?geneClone4.
+    ?geneClone4 skos:prefLabel ?nameClone4.
+    OPTIONAL {?geneClone4 up:locusName ?locusNameClone4.}
+    OPTIONAL {?geneClone4 skos:altLabel ?altLabelClone4.}
+    OPTIONAL {?geneClone4 up:orfName ?orfNameClone4.}
+    
+  }
+
+
+  SERVICE <https://sparql.rhea-db.org/sparql> {
+  # Result variable is ?reactionClone7
+  
+    ?reactionClone7 rdfs:subClassOf rh:Reaction.
+    ?reactionClone7 rh:side ?sideClone5.
+    ?sideClone5 rh:contains ?participantClone5.
+    ?participantClone5 rh:compound ?compoundClone5.
+    
+
+    ?compoundClone5 (rh:chebi|(rh:reactivePart/rh:chebi)|(rh:underlyingChebi)) ?chebiClone5 .
+    ?chebiClone5 (rdfs:subClassOf)+ ?chebiAncestorClone5.
+    
+
+  # Result variable is ?chebiClone5
+  VALUES ?chebiClone5 { CHEBI:32395 } .
+
+ 
+    ?chebiClone5 up:name ?nameClone1.
+    
+  }
+
+}

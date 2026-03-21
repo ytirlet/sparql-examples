@@ -1,0 +1,30 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX up: <http://purl.uniprot.org/core/>
+PREFIX faldo: <http://biohackathon.org/resource/faldo#>
+
+SELECT ?proteinClone3 ?beginPositionClone2 ?endPositionClone2
+WHERE {
+ 
+    ?proteinClone3 rdf:type up:Protein.
+    #?proteinClone3 up:annotation ?annotationClone3.
+    #?annotationClone3 rdf:type ?annotationTypeClone3.
+    #?annotationClone3 rdfs:comment ?commentClone3.
+    
+
+    ?proteinClone3 up:annotation ?annotationClone3.
+    ?annotationClone3 up:range ?rangeClone2.
+
+    ?rangeClone2 faldo:begin ?faldoBeginClone2.
+    ?faldoBeginClone2 faldo:position ?beginPositionClone2.
+    ?faldoBeginClone2 faldo:reference ?referenceClone2.
+    ?rangeClone2 faldo:end ?faldoEndClone2.
+    ?faldoEndClone2 faldo:position ?endPositionClone2.
+    
+
+  # Result variable is ?annotationTypeClone3
+  VALUES ?annotationTypeClone3 { up:Transmembrane_Annotation } .
+
+}

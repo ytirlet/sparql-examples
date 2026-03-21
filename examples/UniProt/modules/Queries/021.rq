@@ -1,0 +1,22 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX up: <http://purl.uniprot.org/core/>
+
+SELECT ?diseaseLabelClone1 ?proteinClone1 ?cellComponentClone1 ?location_inside_cellClone1
+WHERE {
+
+    ?proteinClone1 up:annotation ?disease_annotationClone1.
+    ?proteinClone1 rdf:type up:Protein.
+    ?disease_annotationClone1 rdf:type up:Disease_Annotation.
+    ?disease_annotationClone1 up:disease ?diseaseClone1.
+    ?diseaseClone1 skos:prefLabel ?diseaseLabelClone1.
+    ?diseaseClone1 rdf:type up:Disease.
+    
+    ?proteinClone1 up:annotation ?location_annotationClone1.
+    ?proteinClone1 rdf:type up:Protein.
+    ?location_annotationClone1 up:locatedIn/up:cellularComponent ?cellComponentClone1.
+    ?cellComponentClone1 skos:prefLabel ?location_inside_cellClone1.
+}

@@ -1,0 +1,44 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX up: <http://purl.uniprot.org/core/>
+
+SELECT DISTINCT ?anyKindOfNameClone3 ?namesClone3 ?entryClone6 ?entryClone7 ?proteinClone2
+WHERE {
+ 
+    ?structuredNameClone3 ?anyKindOfNameClone3  ?namesClone3 .
+    ?anyKindOfNameClone3 rdfs:subPropertyOf up:structuredNameType .
+    
+
+  # union Result variable is ?structuredNameClone3
+  {
+   
+    ?entryClone6 rdf:type ?entryTypeClone6.
+    ?entryClone6 (up:recommendedName|up:alternativeName) ?structuredNameClone3.
+    
+
+  # Result variable is ?entryTypeClone6
+  VALUES ?entryTypeClone6 { up:Protein } .
+
+
+  # Result variable is ?entryClone6
+  VALUES ?entryClone6 { <http://purl.uniprot.org/uniprot/P05067> } .
+
+  }
+  UNION {
+   
+    ?entryClone7 rdf:type ?entryTypeClone7.
+    ?entryClone7 (up:recommendedName|up:alternativeName) ?structuredNameClone3.
+    
+ 
+    ?proteinClone2 rdf:type up:Protein.
+    ?proteinClone2 up:domain|up:component ?entryClone7.
+    
+
+  # Result variable is ?proteinClone2
+  VALUES ?proteinClone2 { <http://purl.uniprot.org/uniprot/P05067> } .
+
+  }
+
+}

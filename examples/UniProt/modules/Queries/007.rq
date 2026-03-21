@@ -1,0 +1,35 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX up: <http://purl.uniprot.org/core/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+
+SELECT DISTINCT ?proteinClone1 ?fullNameClone1
+WHERE {
+
+    ?proteinClone1 rdf:type up:Protein ;
+      up:created ?creationDateClone1 ;
+      up:modified ?modificationDateClone1 ;
+      up:reviewed ?reviewedClone1 ;
+      up:version ?versionClone1 .
+    
+
+    ?proteinClone1 up:recommendedName ?recNameClone1.
+    ?proteinClone1 up:alternativeName ?altNameClone1.
+    ?recNameClone1 up:fullName ?fullNameClone1.
+    ?recNameClone1 up:shortName ?shortNameClone1.
+    
+
+    ?proteinClone1 rdf:type up:Protein.
+    ?proteinClone1 up:encodedBy ?geneClone1.
+    ?geneClone1 skos:prefLabel ?nameClone1.
+    OPTIONAL {?geneClone1 up:locusName ?locusNameClone1.}
+    OPTIONAL {?geneClone1 skos:altLabel ?altLabelClone1.}
+    OPTIONAL {?geneClone1 up:orfName ?orfNameClone1.}
+    
+
+  # Result variable is ?reviewedClone1
+  VALUES ?reviewedClone1 { true } .
+
+}

@@ -1,0 +1,40 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX up: <http://purl.uniprot.org/core/>
+PREFIX : <http://biographs.org/>
+
+SELECT ?objectClone3 ?reactionClone1
+WHERE {
+
+    ?objectClone3 rdf:object ?annotationClone3.
+    ?objectClone3 up:attribution ?attributionClone3.
+    ?attributionClone3 up:source ?sourceClone3.
+    ?sourceClone3 rdf:type ?sourceTypeClone3.
+    ?attributionClone3 up:evidence ?evidenceClone3.
+    
+
+  # Result variable is ?evidenceClone3
+  VALUES ?evidenceClone3 { <http://purl.obolibrary.org/obo/ECO_0000269> } .
+
+
+    ?objectClone3 rdf:type up:Protein .
+    ?objectClone3 up:annotation ?annotationClone1.
+    ?annotationClone1 up:catalyticActivity ?catalyticActivityClone1.
+    ?catalyticActivityClone1 rdf:type up:Catalytic_Activity .
+    ?catalyticActivityClone1 up:catalyzedReaction ?reactionClone1.
+    ?annotationClone1 rdf:type up:Catalytic_Activity_Annotation.
+    
+
+    ?objectClone3 rdf:type up:Protein ;
+      up:created ?creationDateClone6 ;
+      up:modified ?modificationDateClone6 ;
+      up:reviewed ?reviewedClone6 ;
+      up:version ?versionClone6 .
+    
+
+  # Result variable is ?reviewedClone6
+  VALUES ?reviewedClone6 { true } .
+
+}

@@ -1,0 +1,41 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX up: <http://purl.uniprot.org/core/>
+
+SELECT ?comment1Clone9 
+    ?comment2Clone8 
+    (COUNT(?comment1Clone9) AS ?count1)
+WHERE {
+ 
+    ?proteinClone8 rdf:type up:Protein.
+    ?proteinClone8 up:annotation ?annotationClone8.
+    ?annotationClone8 rdf:type ?annotationTypeClone8.
+    ?annotationClone8 rdfs:comment ?commentClone8.
+    
+ 
+    ?proteinClone8 rdf:type up:Protein.
+    ?proteinClone8 up:annotation ?annotationClone9.
+    ?annotationClone9 rdf:type ?annotationTypeClone9.
+    ?annotationClone9 rdfs:comment ?commentClone9.
+    
+
+  # Result variable is ?annotationTypeClone9
+  VALUES ?annotationTypeClone9 { up:Topological_Domain_Annotation } .
+
+
+  # Result variable is ?annotationTypeClone8
+  VALUES ?annotationTypeClone8 { up:Topological_Domain_Annotation } .
+
+ 
+    BIND(IF(contains(?commentClone9, ';'), 
+            STRBEFORE(?commentClone9,';'), 
+            ?commentClone9) AS ?comment1Clone9)
+    
+ 
+    BIND(IF(contains(?commentClone8, ';'), 
+            STRBEFORE(?commentClone8,';'), 
+            ?commentClone8) AS ?comment2Clone8)
+    FILTER(?annotationClone9 != ?annotationClone8)
+}
+GROUP BY ?comment1Clone9 ?comment2Clone8 
+ORDER BY DESC(COUNT(?comment1Clone9))

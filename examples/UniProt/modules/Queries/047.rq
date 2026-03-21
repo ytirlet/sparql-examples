@@ -1,0 +1,41 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX up: <http://purl.uniprot.org/core/>
+PREFIX faldo: <http://biohackathon.org/resource/faldo#>
+
+SELECT ?proteinClone12 ?fromClone1 ?interestingRegionClone1
+WHERE {
+ 
+    ?subjectClone3 rdf:value ?valueClone3 .
+    
+ 
+    ?proteinClone12 rdf:type up:Protein.
+    ?proteinClone12 up:annotation ?annotationClone12.
+    ?annotationClone12 rdf:type ?annotationTypeClone12.
+    ?annotationClone12 rdfs:comment ?commentClone12.
+    
+
+    ?proteinClone12 up:annotation ?annotationClone12.
+    ?annotationClone12 up:range ?rangeClone4.
+    
+
+    ?rangeClone4 faldo:begin ?faldoBeginClone4.
+    ?faldoBeginClone4 faldo:position ?beginPositionClone4.
+    ?faldoBeginClone4 faldo:reference ?subjectClone3.
+    ?rangeClone4 faldo:end ?faldoEndClone4.
+    ?faldoEndClone4 faldo:position ?endPositionClone4.
+    
+
+  # Result variable is ?annotationTypeClone12
+  VALUES ?annotationTypeClone12 { up:Transmembrane_Annotation } .
+
+ 
+    BIND(?beginPositionClone4 - 10 AS ?tenBeforeBegin)
+    BIND(IF(?tenBeforeBeginClone1 < 1, 0, ?tenBeforeBegin) AS ?from)
+    BIND(SUBSTR(?valueClone3, ?fromClone1, 15) AS ?interestingRegion)
+    FILTER(CONTAINS(?interestingRegionClone1, 'A'))
+    
+}
+

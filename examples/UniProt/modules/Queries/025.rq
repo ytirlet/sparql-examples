@@ -1,0 +1,25 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX up: <http://purl.uniprot.org/core/>
+
+SELECT DISTINCT ?anyKindOfNameClone1 ?entryClone1
+WHERE {
+ 
+    ?structuredNameClone1 ?anyKindOfNameClone1  ?namesClone1 .
+    ?anyKindOfNameClone1 rdfs:subPropertyOf up:structuredNameType .
+    
+
+  # Result variable is ?namesClone1
+  VALUES ?namesClone1 { 'HLA class I histocompatibility antigen, B alpha chain' } .
+
+ 
+    ?entryClone1 rdf:type ?entryTypeClone1.
+    ?entryClone1 (up:recommendedName|up:alternativeName) ?structuredNameClone1.
+    
+
+  # Result variable is ?entryTypeClone1
+  VALUES ?entryTypeClone1 { up:Protein } .
+
+}

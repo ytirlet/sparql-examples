@@ -1,0 +1,19 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX up: <http://purl.uniprot.org/core/>
+
+SELECT ?annotationClone7 ?commentClone7
+WHERE {
+ 
+    ?proteinClone7 rdf:type up:Protein.
+    ?proteinClone7 up:annotation ?annotationClone7.
+    ?annotationClone7 rdf:type ?annotationTypeClone7.
+    ?annotationClone7 rdfs:comment ?commentClone7.
+    
+
+  # Result variable is ?annotationTypeClone7
+  VALUES ?annotationTypeClone7 { up:Natural_Variant_Annotation } .
+
+}ORDER BY DESC(STRLEN(?commentClone7))

@@ -1,0 +1,63 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX up: <http://purl.uniprot.org/core/>
+
+SELECT ?anyKindOfNameClone2 ?proteinClone1
+WHERE {
+ 
+    ?structuredNameClone2 ?anyKindOfNameClone2  ?namesClone2 .
+    ?anyKindOfNameClone2 rdfs:subPropertyOf up:structuredNameType .
+    
+
+  # union Result variable is ?structuredNameClone2
+  {
+   
+    ?proteinClone1 rdf:type ?entryTypeClone4.
+    ?proteinClone1 (up:recommendedName|up:alternativeName) ?structuredNameClone2.
+    
+
+  # Result variable is ?entryTypeClone4
+  VALUES ?entryTypeClone4 { up:Protein } .
+
+  }
+  UNION {
+   
+    ?entryClone5 rdf:type ?entryTypeClone5.
+    ?entryClone5 (up:recommendedName|up:alternativeName) ?structuredNameClone2.
+    
+ 
+    ?proteinClone1 rdf:type up:Protein.
+    ?proteinClone1 up:domain|up:component ?entryClone5.
+    
+  }
+
+
+  # union Result variable is ?structuredNameClone2
+  {
+   
+    ?proteinClone1 rdf:type ?entryTypeClone4.
+    ?proteinClone1 (up:recommendedName|up:alternativeName) ?structuredNameClone2.
+    
+
+  # Result variable is ?entryTypeClone4
+  VALUES ?entryTypeClone4 { up:Protein } .
+
+  }
+  UNION {
+   
+    ?entryClone5 rdf:type ?entryTypeClone5.
+    ?entryClone5 (up:recommendedName|up:alternativeName) ?structuredNameClone2.
+    
+ 
+    ?proteinClone1 rdf:type up:Protein.
+    ?proteinClone1 up:domain|up:component ?entryClone5.
+    
+  }
+
+
+  # Result variable is ?namesClone2
+  VALUES ?namesClone2 { 'HLA class I histocompatibility antigen, B-73 alpha chain' } .
+
+}

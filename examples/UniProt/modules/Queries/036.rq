@@ -1,0 +1,69 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX up: <http://purl.uniprot.org/core/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX uniprotkb: <http://purl.uniprot.org/uniprot/>
+
+####################
+# BAD GETAWAY
+#####################
+
+SELECT DISTINCT ?entryClone9 ?commentClone10 ?nameClone5 ?nameClone2
+WHERE {
+
+    ?entryClone9 up:organism ?organismClone9.
+    ?organismClone9 rdfs:subClassOf? ?taxonClone9. # Hierarchy of taxon is materialized
+    
+
+  OPTIONAL {
+  # Result variable is ?entryClone9
+   
+    ?entryClone9 rdf:type up:Protein.
+    ?entryClone9 up:annotation ?annotationClone10.
+    ?annotationClone10 rdf:type ?annotationTypeClone10.
+    ?annotationClone10 rdfs:comment ?commentClone10.
+    
+
+  # Result variable is ?annotationTypeClone10
+  VALUES ?annotationTypeClone10 { up:Function_Annotation } .
+
+  }
+
+
+    ?entryClone9 rdf:type ?entryTypeClone4.
+    ?entryClone9 rdfs:seeAlso ?dbentryClone4.
+    ?dbentryClone4 up:database ?databaseClone4.
+    
+
+  # Result variable is ?entryClone9
+  VALUES ?entryClone9 { uniprotkb:P05067 } .
+
+
+    ?entryClone9 rdf:type up:Protein.
+    ?entryClone9 up:encodedBy ?geneClone5.
+    ?geneClone5 skos:prefLabel ?nameClone5.
+    OPTIONAL {?geneClone5 up:locusName ?locusNameClone5.}
+    OPTIONAL {?geneClone5 skos:altLabel ?altLabelClone5.}
+    OPTIONAL {?geneClone5 up:orfName ?orfNameClone5.}
+    
+
+    ?entryClone9 rdf:type ?entryTypeClone5.
+    ?entryClone9 up:sequence ?sequenceClone5.
+    ?sequenceClone5 rdf:type ?sequenceTypeClone5.
+    ?sequenceClone5 rdf:value ?valueClone5.
+    
+
+    ?organismClone9 rdf:type up:Taxon.
+    ?organismClone9 up:scientificName ?nameClone2.
+    ?organismClone9 rdfs:subClassOf ?ancestorTaxonClone2.
+    
+ 
+    SERVICE <https://sparql.orthodb.org/sparql/>{
+    ?orthoGroupClone1 orthodb:ogMedianProteinLength ?medianLengthClone1 .
+    ?orthoGroupClone1 orthodb:hasMember ?xrefClone1 .
+    ?xrefClone1 orthodb:xref/orthodb:xrefResource ?entryClone9 .
+  }
+    
+}

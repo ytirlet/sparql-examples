@@ -1,0 +1,24 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX up: <http://purl.uniprot.org/core/>
+PREFIX uniprotkb: <http://purl.uniprot.org/uniprot/>
+
+SELECT ?similarClone3 ?identityClone2
+WHERE {
+
+    ?clusterClone2 up:member ?memberClone2.
+    ?memberClone2 up:sequenceFor ?similarClone2.
+    ?clusterClone2 up:identity ?identityClone2.
+    
+
+    ?clusterClone2 up:member ?memberClone3.
+    ?memberClone3 up:sequenceFor ?similarClone3.
+    ?clusterClone2 up:identity ?identityClone2.
+    
+
+  # Result variable is ?similarClone2
+  VALUES ?similarClone2 { uniprotkb:P05607 } .
+FILTER(?similarClone2 != ?similarClone3)
+}ORDER BY DESC(?identityclone2)

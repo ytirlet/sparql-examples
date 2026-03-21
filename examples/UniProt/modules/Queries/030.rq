@@ -1,0 +1,28 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX up: <http://purl.uniprot.org/core/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX taxon: <http://purl.uniprot.org/taxonomy/>
+
+SELECT ?entryClone8 
+  (GROUP_CONCAT(?locusNameClone3; separator=',') AS ?locusNames)
+WHERE {
+
+    ?entryClone8 up:organism ?organismClone8.
+    #?organismClone8 rdfs:subClassOf? ?taxonClone8. # Hierarchy of taxon is materialized
+    
+
+    ?entryClone8 rdf:type up:Protein.
+    ?entryClone8 up:encodedBy ?geneClone3.
+    #?geneClone3 skos:prefLabel ?nameClone3.
+    ?geneClone3 up:locusName ?locusNameClone3.
+    #OPTIONAL {?geneClone3 skos:altLabel ?altLabelClone3.}
+    #OPTIONAL {?geneClone3 up:orfName ?orfNameClone3.}
+    
+
+  # Result variable is ?organismClone8
+  VALUES ?organismClone8 { taxon:360910 } .
+
+}
+GROUP BY ?entryClone8 
+HAVING (COUNT(?locusNameClone3) > 1)

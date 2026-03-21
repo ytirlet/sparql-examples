@@ -1,0 +1,80 @@
+PREFIX taxon: <http://purl.uniprot.org/taxonomy/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX up: <http://purl.uniprot.org/core/>
+PREFIX : <http://biographs.org/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX rh: <http://rdf.rhea-db.org/>
+PREFIX sachem: <http://bioinfo.uochb.cas.cz/rdf/v1.0/sachem#>
+
+SELECT ?proteinClone10 ?reactionClone10 ?diseaseClone2 ?dbentryClone15 ?chebiAncestorClone8
+WHERE {
+  
+  # Result variable is ?organismClone18
+  VALUES ?organismClone18 { taxon:9606 } .
+
+    ?proteinClone10 rdf:type up:Protein .
+    ?proteinClone10 up:annotation ?annotationClone10.
+    ?annotationClone10 up:catalyticActivity ?catalyticActivityClone10.
+    ?catalyticActivityClone10 rdf:type up:Catalytic_Activity .
+    ?catalyticActivityClone10 up:catalyzedReaction ?reactionClone10.
+    ?annotationClone10 rdf:type up:Catalytic_Activity_Annotation.
+    
+
+    ?proteinClone10 up:organism ?organismClone18.
+    ?organismClone18 rdfs:subClassOf? ?taxonClone18. # Hierarchy of taxon is materialized
+    
+
+    ?proteinClone10 up:annotation ?annotationClone2.
+    ?proteinClone10 rdf:type up:Protein.
+    ?annotationClone2 rdf:type up:Disease_Annotation.
+    ?annotationClone2 up:disease ?diseaseClone2.
+    ?diseaseClone2 skos:prefLabel ?diseaseLabelClone2.
+    ?diseaseClone2 rdf:type up:Disease.
+    
+
+  OPTIONAL {
+  # Result variable is ?diseaseClone2
+  
+    ?diseaseClone2 rdf:type ?entryTypeClone15.
+    ?diseaseClone2 rdfs:seeAlso ?dbentryClone15.
+    ?dbentryClone15 up:database ?databaseClone15.
+    
+
+  # Result variable is ?databaseClone15
+  VALUES ?databaseClone15 { <http://purl.uniprot.org/database/MIM> } .
+
+  }
+
+
+
+
+  SERVICE <https://sparql.rhea-db.org/sparql> {
+  # Result variable is ?reactionClone10
+  
+    ?reactionClone10 rdfs:subClassOf rh:Reaction.
+    ?reactionClone10 rh:side ?sideClone8.
+    ?sideClone8 rh:contains ?participantClone8.
+    ?participantClone8 rh:compound ?compoundClone8.
+    
+
+    #?compoundClone8 (rh:chebi|(rh:reactivePart/rh:chebi)|(rh:underlyingChebi)) ?compoundClone8 .
+    ?compoundClone8 rdfs:subClassOf ?chebiAncestorClone8.
+    
+
+  SERVICE <https://idsm.elixir-czech.cz/sparql/endpoint/chebi> {
+  # Result variable is ?chebiAncestorClone8
+  
+    SERVICE <https://idsm.elixir-czech.cz/sparql/endpoint/chebi> {
+      ?chebiAncestorClone8 sachem:substructureSearch|sachem:similarCompoundSearch|sachem:similaritySearch [sachem:query ?queryClone3 ].
+    }
+    
+
+  # Result variable is ?queryClone3
+  VALUES ?queryClone3 { '[C@]12(CCC3CCCC[C@]3(C)[C@@]1([H])CC[C@]1(C)[C@@]([H])([C@@](C)([H])CCCC(C)C)CC[C@@]21[H])[H]' } .
+
+  } .
+
+  } .
+
+}

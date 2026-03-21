@@ -1,0 +1,31 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX up: <http://purl.uniprot.org/core/>
+PREFIX taxon: <http://purl.uniprot.org/taxonomy/>
+
+SELECT (COUNT ( DISTINCT ?sequenceClone3) AS ?seqs)
+WHERE {
+
+    ?proteinClone8 rdf:type up:Protein ;
+      up:created ?creationDateClone8 ;
+      up:modified ?modificationDateClone8 ;
+      up:reviewed ?reviewedClone8 ;
+      up:version ?versionClone8 .
+    
+
+  # Result variable is ?reviewedClone8
+  VALUES ?reviewedClone8 { true } .
+
+
+    ?proteinClone8 up:organism ?organismClone17.
+    ?organismClone17 rdfs:subClassOf? ?taxonClone17. # Hierarchy of taxon is materialized
+    
+
+    ?proteinClone8 rdf:type ?entryTypeClone3.
+    ?proteinClone8 up:sequence ?sequenceClone3.
+    ?sequenceClone3 rdf:type ?sequenceTypeClone3.
+    ?sequenceClone3 rdf:value ?valueClone3.
+    
+}

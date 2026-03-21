@@ -1,0 +1,30 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX up: <http://purl.uniprot.org/core/>
+
+SELECT ?organismClone22
+  (SAMPLE(?nameClone3) AS ?anName)
+  (COUNT(DISTINCT ?proteinClone3) AS ?entriesPerExtinctTaxon)
+WHERE {
+
+    ?proteinClone3 up:classifiedWith ?goTermClone3.
+    ?proteinClone3 rdf:type up:Protein.
+    #?goTermClone3 rdfs:subClassOf ?ancestorGOTermClone3.
+    #?goTermClone3 rdfs:label ?labelClone3.
+    
+
+    ?proteinClone3 up:organism ?organismClone22.
+    #?organismClone22 rdfs:subClassOf? ?taxonClone22. # Hierarchy of taxon is materialized
+    
+
+    ?organismClone22 rdf:type up:Taxon.
+    ?organismClone22 up:scientificName ?nameClone3.
+    #?organismClone22 rdfs:subClassOf ?ancestorTaxonClone3.
+    
+
+  # Result variable is ?goTermClone3
+  VALUES ?goTermClone3 { keywords:952 } .
+
+}GROUP BY ?organismClone22 ORDER BY ?organismClone22

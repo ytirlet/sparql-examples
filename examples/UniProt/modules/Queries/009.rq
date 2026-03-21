@@ -1,0 +1,25 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX up: <http://purl.uniprot.org/core/>
+PREFIX taxon: <http://purl.uniprot.org/taxonomy/>
+
+SELECT ?commentClone2 ?proteinClone2
+WHERE {
+ 
+    ?proteinClone2 rdf:type up:Protein.
+    ?proteinClone2 up:annotation ?annotationClone2.
+    ?annotationClone2 rdf:type ?annotationTypeClone2.
+    ?annotationClone2 rdfs:comment ?commentClone2.
+    
+
+    ?proteinClone2 up:organism ?organismClone3.
+    #?organismClone3 rdfs:subClassOf? ?taxonClone3. # Hierarchy of taxon is materialized
+    
+
+  # Result variable is ?organismClone3
+  VALUES ?organismClone3 { taxon:9606 } .
+  VALUES ?annotationTypeClone2 { up:Natural_Variant_Annotation } .
+FILTER (CONTAINS(?commentClone2, 'loss of function'))
+}

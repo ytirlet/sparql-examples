@@ -1,0 +1,56 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX up: <http://purl.uniprot.org/core/>
+PREFIX : <http://biographs.org/>
+PREFIX taxon: <http://purl.uniprot.org/taxonomy/>
+
+SELECT DISTINCT ?diseaseClone4
+WHERE {
+
+    ?proteinClone4 up:annotation ?annotationClone4.
+    ?proteinClone4 rdf:type up:Protein.
+    ?annotationClone4 rdf:type up:Disease_Annotation.
+    ?annotationClone4 up:disease ?diseaseClone4.
+    ?diseaseClone4 skos:prefLabel ?diseaseLabelClone4.
+    ?diseaseClone4 rdf:type up:Disease.
+    
+
+    ?proteinClone4 up:annotation ?annotationClone2.
+    ?proteinClone4 rdf:type up:Protein.
+    ?annotationClone2 up:locatedIn/up:cellularComponent ?cellComponentClone2.
+    ?cellComponentClone2 skos:prefLabel ?location_inside_cellClone2.
+    
+
+  # union Result variable is ?proteinClone4
+  {
+  
+    ?proteinClone4 rdf:type up:Protein .
+    ?proteinClone4 up:annotation ?annotationClone13.
+    ?annotationClone13 up:catalyticActivity ?catalyticActivityClone13.
+    ?catalyticActivityClone13 rdf:type up:Catalytic_Activity .
+    ?catalyticActivityClone13 up:catalyzedReaction ?reactionClone13.
+    ?annotationClone13 rdf:type up:Catalytic_Activity_Annotation.
+    
+  }
+  UNION {
+   
+    ?proteinClone4 up:enzyme ?enzymeClone3 .
+    ?enzymeClone3 rdfs:subClassOf? ?ecClassClone3.
+    
+  }
+
+
+    ?proteinClone4 up:organism ?organismClone20.
+    ?organismClone20 rdfs:subClassOf? ?taxonClone20. # Hierarchy of taxon is materialized
+    
+
+  # Result variable is ?organismClone20
+  VALUES ?organismClone20 { taxon:9606 } .
+
+ 
+    ?cellComponentClone2 up:partOf* <http://purl.uniprot.org/locations/173>
+    
+}

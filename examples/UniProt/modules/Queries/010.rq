@@ -1,0 +1,45 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX up: <http://purl.uniprot.org/core/>
+PREFIX faldo: <http://biohackathon.org/resource/faldo#>
+PREFIX taxon: <http://purl.uniprot.org/taxonomy/>
+
+SELECT ?proteinClone1 ?annotationClone1 ?beginPositionClone1 ?commentClone1
+WHERE {
+ 
+    ?subjectClone1 rdf:value ?valueClone1 .
+    
+
+    ?proteinClone1 up:annotation ?annotationClone1.
+    ?annotationClone1 up:range ?rangeClone1.
+    
+ 
+    ?proteinClone1 rdf:type up:Protein.
+    ?proteinClone1 up:annotation ?annotationClone1.
+    ?annotationClone1 rdf:type up:Natural_Variant_Annotation.
+    ?annotationClone1 rdfs:comment ?commentClone1.
+    ?annotationClone1 up:substitution ?substitutionClone1.
+    
+
+    ?proteinClone1 up:organism ?organismClone4.
+    ?organismClone4 rdfs:subClassOf? ?taxonClone4. # Hierarchy of taxon is materialized
+    
+
+    ?rangeClone1 faldo:begin ?faldoBeginClone1.
+    ?faldoBeginClone1 faldo:position ?beginPositionClone1.
+    ?faldoBeginClone1 faldo:reference ?subjectClone1.
+    ?rangeClone1 faldo:end ?faldoEndClone1.
+    ?faldoEndClone1 faldo:position ?endPositionClone1.
+
+  # Result variable is ?organismClone4
+  VALUES ?organismClone4 { taxon:9606 } .
+
+
+  # Result variable is ?substitutionClone1
+  VALUES ?substitutionClone1 { 'F' } .
+
+BIND (substr(?valueClone1, ?beginPositionClone1, 1) as ?original) .
+        FILTER(?original = 'Y')
+}

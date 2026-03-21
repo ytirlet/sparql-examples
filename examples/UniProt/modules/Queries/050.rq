@@ -1,0 +1,63 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX up: <http://purl.uniprot.org/core/>
+PREFIX : <http://biographs.org/>
+PREFIX rh: <http://rdf.rhea-db.org/>
+PREFIX CHEBI: <http://purl.obolibrary.org/obo/CHEBI_>
+
+
+SELECT DISTINCT ?proteinClone6 ?reactionClone6 ?chebiClone4 ?geneClone2
+WHERE {
+
+    ?proteinClone6 rdf:type up:Protein .
+    ?proteinClone6 up:annotation ?annotationClone6.
+    ?annotationClone6 up:catalyticActivity ?catalyticActivityClone6.
+    ?catalyticActivityClone6 rdf:type up:Catalytic_Activity .
+    ?catalyticActivityClone6 up:catalyzedReaction ?reactionClone6.
+    ?annotationClone6 rdf:type up:Catalytic_Activity_Annotation.
+    
+
+  SERVICE <https://sparql.rhea-db.org/sparql> {
+  # Result variable is ?reactionClone6
+  
+    ?compoundClone4 (rh:chebi|(rh:reactivePart/rh:chebi)|(rh:underlyingChebi)) ?chebiClone4 .
+    ?chebiClone4 (rdfs:subClassOf)+ ?chebiAncestorClone4.
+    
+
+  # Result variable is ?chebiAncestorClone4
+  VALUES ?chebiAncestorClone4 { CHEBI:15889 } .
+
+
+    ?reactionClone6 rdfs:subClassOf rh:Reaction.
+    ?reactionClone6 rh:side ?sideClone4.
+    ?sideClone4 rh:contains ?participantClone4.
+    ?participantClone4 rh:compound ?compoundClone4.
+    
+ 
+    ?reactionClone6 rdfs:subClassOf rh:Reaction ;
+      rh:equation ?equationClone2 .
+    
+  } .
+
+
+    ?proteinClone6 up:organism ?organismClone14.
+    ?organismClone14 rdfs:subClassOf? ?taxonClone14. # Hierarchy of taxon is materialized
+    
+
+  # Result variable is ?organismClone14
+  VALUES ?organismClone14 { taxon:9606 } .
+
+
+    ?proteinClone6 rdfs:seeAlso ?entryClone2.
+    ?entryClone2 up:transcribedFrom ?geneClone2.
+    
+ 
+    SERVICE  <https://www.bgee.org/sparql/> {
+    ?geneClone1 genex:isExpressedIn ?anatomicEntityClone1 .
+    ?geneClone1 lscr:xrefEnsemblGene ?geneClone2 .
+    ?anatomicEntityClone1 rdfs:label ?anatomicEntityLabelClone1 .
+  }
+    
+}

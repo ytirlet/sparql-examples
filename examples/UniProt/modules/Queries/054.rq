@@ -1,0 +1,54 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX sachem: <http://bioinfo.uochb.cas.cz/rdf/v1.0/sachem#>
+PREFIX up: <http://purl.uniprot.org/core/>
+
+SELECT ?proteinClone13 ?ligandClone1 ?mnemonicClone3 ?fullNameClone5 ?ligandSimilarityScoreClone1
+WHERE {
+
+    SERVICE <https://idsm.elixir-czech.cz/sparql/endpoint/chebi> {
+      ?chebiClone4 (sachem:substructureSearch|sachem:similarCompoundSearch|sachem:similaritySearch) [sachem:query ?queryClone4 ].
+    }
+    
+ 
+    ?proteinClone13 rdf:type up:Protein.
+    ?proteinClone13 up:annotation ?annotationClone13.
+    ?annotationClone13 rdf:type ?annotationTypeClone13.
+    ?annotationClone13 rdfs:comment ?commentClone13.
+    
+
+    ?annotationClone13 up:ligand ?ligandClone1.
+    ?ligandClone1 rdfs:subClassOf ?chebiClone1.
+    
+
+    ?proteinClone13 rdf:type ?typeClone3.
+    ?proteinClone13 up:mnemonic ?mnemonicClone3.
+    OPTIONAL {?proteinClone13 up:oldMnemonic ?oldmnemonicClone3.}
+    
+
+    ?proteinClone13 up:recommendedName ?recNameClone5.
+    ?proteinClone13 up:alternativeName ?altNameClone5.
+    ?recNameClone5 up:fullName ?fullNameClone5.
+    ?recNameClone5 up:shortName ?shortNameClone5.
+    
+
+  # Result variable is ?annotationTypeClone13
+  VALUES ?annotationTypeClone13 { up:Binding_Site_Annotation } .
+
+ 
+  SERVICE <https://idsm.elixir-czech.cz/sparql/endpoint/chebi> {
+    ?chebiClone4 sachem:compound ?ligandClone1; 
+      sachem:score ?ligandSimilarityScoreClone1 ;
+      sachem:cutoff "8e-1"^^xsd:double ;
+      sachem:aromaticityMode sachem:aromaticityDetect ;
+      sachem:similarityRadius 1 ;
+      sachem:tautomerMode sachem:ignoreTautomers .
+  }
+    
+
+  # Result variable is ?queryClone4
+  VALUES ?queryClone4 { 'CC1=C(CCC([O-])=O)C2=[N+]3C1=Cc1c(C)c(C=C)c4C=C5C(C)=C(C=C)C6=[N+]5[Fe-]3(n14)n1c(=C6)c(C)c(CCC([O-])=O)c1=C2' } .
+
+}ORDER BY DESC(?ligandSimilarityScoreClone1)

@@ -1,0 +1,51 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX up: <http://purl.uniprot.org/core/>
+PREFIX : <http://biographs.org/>
+PREFIX taxon: <http://purl.uniprot.org/taxonomy/>
+
+SELECT DISTINCT ?proteinClone9 ?reactionClone11 ?geneClone3
+WHERE {
+  # Result variable is ?reviewedClone9
+  VALUES ?reviewedClone9 { true } .
+
+
+  # Result variable is ?organismClone19
+  VALUES ?organismClone19 { taxon:9606 } .
+
+
+  # Result variable is ?databaseClone9
+  VALUES ?databaseClone9 { <http://purl.uniprot.org/database/Ensembl> } .
+    ?proteinClone9 rdf:type up:Protein ;
+      up:created ?creationDateClone9 ;
+      up:modified ?modificationDateClone9 ;
+      up:reviewed ?reviewedClone9 ;
+      up:version ?versionClone9 .
+    
+
+    ?proteinClone9 rdf:type up:Protein .
+    ?proteinClone9 up:annotation ?annotationClone11.
+    ?annotationClone11 up:catalyticActivity ?catalyticActivityClone11.
+    ?catalyticActivityClone11 rdf:type up:Catalytic_Activity .
+    ?catalyticActivityClone11 up:catalyzedReaction ?reactionClone11.
+    ?annotationClone11 rdf:type up:Catalytic_Activity_Annotation.
+    
+
+    ?proteinClone9 rdf:type ?entryTypeClone9.
+    ?proteinClone9 rdfs:seeAlso ?dbentryClone9.
+    ?dbentryClone9 up:database ?databaseClone9.
+    
+
+    ?proteinClone9 up:organism ?organismClone19.
+    ?organismClone19 rdfs:subClassOf? ?taxonClone19. # Hierarchy of taxon is materialized
+    
+
+    ?proteinClone9 rdfs:seeAlso ?dbentryClone9.
+    ?dbentryClone9 up:transcribedFrom ?geneClone3.
+    
+
+
+
+}

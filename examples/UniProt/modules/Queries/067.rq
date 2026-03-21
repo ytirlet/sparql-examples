@@ -1,0 +1,52 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX up: <http://purl.uniprot.org/core/>
+PREFIX : <http://biographs.org/>
+PREFIX sh: <http://www.w3.org/ns/shacl#>
+PREFIX rh: <http://rdf.rhea-db.org/>
+
+SELECT DISTINCT ?proteinClone15 ?reactionClone15 ?chebiClone1 ?mnemonicClone4
+WHERE {
+
+    ?proteinClone15 rdf:type up:Protein .
+    ?proteinClone15 up:annotation ?annotationClone15.
+    ?annotationClone15 up:catalyticActivity ?catalyticActivityClone15.
+    ?catalyticActivityClone15 rdf:type up:Catalytic_Activity .
+    ?catalyticActivityClone15 up:catalyzedReaction ?reactionClone15.
+    ?annotationClone15 rdf:type up:Catalytic_Activity_Annotation.
+    
+
+  SERVICE <https://sparql.rhea-db.org/sparql> {
+  # Result variable is ?reactionClone15
+   
+  ?chebiClone1 chebislash:smiles ?smilesClone1 ;
+          chebislash:inchikey ?inchiKeyClone1 .
+    
+
+    ?compoundClone9 (rh:chebi|(rh:reactivePart/rh:chebi)|(rh:underlyingChebi)) ?chebiClone1 .
+    ?chebiClone1 (rdfs:subClassOf)+ ?chebiAncestorClone9.
+    
+
+    ?reactionClone15 rdfs:subClassOf rh:Reaction.
+    ?reactionClone15 rh:side ?sideClone9.
+    ?sideClone9 rh:contains ?participantClone9.
+    ?participantClone9 rh:compound ?compoundClone9.
+    
+  } .
+
+
+    ?proteinClone15 up:organism ?organismClone23.
+    ?organismClone23 rdfs:subClassOf? ?taxonClone23. # Hierarchy of taxon is materialized
+    
+
+  # Result variable is ?organismClone23
+  VALUES ?organismClone23 { taxon:9606 } .
+
+
+    ?proteinClone15 rdf:type ?typeClone4.
+    ?proteinClone15 up:mnemonic ?mnemonicClone4.
+    OPTIONAL {?proteinClone15 up:oldMnemonic ?oldmnemonicClone4.}
+    
+}
