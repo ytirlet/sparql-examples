@@ -1,0 +1,30 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://uniprot_module.biographs.org/m24_moduleClone1> a smodule:SPARQLModule ;
+    rdfs:label "englishLabelStr structured name" ;
+    smodule:clonedFrom <http://uniprot_module.biographs.org/m24_module> ;
+    smodule:fragmentSPARQL """ 
+    BIND(uberon:0002107 AS ?anat)
+	  SERVICE <https://www.bgee.org/sparql/> {
+	    ?seqClone1 genex:isExpressedIn ?anatClone1 .
+	    ?seqClone1 lscr:xrefUniprot ?proteinClone1 .
+	    ?seqClone1 orth:organism ?organismClone1 .
+	    ?organismClone1 obo:RO_0002162 taxon:9606 .
+	  }
+    """ ;
+    smodule:output <http://uniprot_module.biographs.org/m24_module_port-proteinClone1> ;
+    smodule:prefixes """PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+""" .
+
+<http://uniprot_module.biographs.org/m24_module_port-proteinClone1> a smodule:ModulePortURI ;
+    rdfs:label "Protein" ;
+    rdfs:domain <http://purl.uniprot.org/core/Protein> ;
+    smodule:isSelected true ;
+    smodule:variableName "?proteinClone1" .
+

@@ -1,0 +1,28 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix up_mod: <http://uniprot_module.biographs.org/> .
+
+smodule:module_composition_103 dcterms:title "List UniProtKB proteins with genetic replicon that they are encoded on using the Proteome data.".
+smodule:module_composition_103 rdfs:comment "List UniProtKB proteins with genetic replicon that they are encoded on using the Proteome data.".
+smodule:module_composition_103 dcterms:subject "proteome".
+
+smodule:module_composition_103 rdf:type smodule:SPARQL_Module_Composition.
+smodule:module_composition_103 smodule:hasConnection smodule:103_c1 , smodule:103_c2, smodule:103_c3, smodule:103_c4.
+smodule:module_composition_103 smodule:hasComponent smodule:OperatorValuesClone126, up_mod:M77_moduleClone3, up_mod:M67_moduleClone29, up_mod:M17_moduleClone16, up_mod:m22_moduleClone1.
+smodule:module_composition_103 smodule:includeFile "VALUESClone126.ttl", "M77Clone3.ttl", "M67Clone29.ttl", "M17Clone16.ttl", "m22Clone1.ttl".
+
+smodule:103_c1 rdf:type smodule:Connection.
+smodule:103_c1 smodule:connects up_mod:M17_module_port-proteinClone16, up_mod:M67_module_port-entryClone29.
+
+smodule:103_c2 rdf:type smodule:Connection.
+smodule:103_c2 smodule:connects up_mod:M17_module_port-proteinClone16, up_mod:M77_module_port-proteinClone3.
+
+smodule:103_c3 rdf:type smodule:Connection.
+smodule:103_c3 smodule:connects up_mod:m22_module_port-proteomeDataClone1, up_mod:M77_module_port-proteomeClone3.
+
+smodule:103_c4 rdf:type smodule:Connection.
+smodule:103_c4 smodule:connects up_mod:M17_module_port-reviewedClone16, smodule:OperatorValuesPortResultClone126.
+
+smodule:OperatorValuesPortResultClone126 smodule:valuesEnumeration "true" .

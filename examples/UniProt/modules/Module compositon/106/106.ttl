@@ -1,0 +1,13 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix up_mod: <http://uniprot_module.biographs.org/> .
+
+smodule:module_composition_106 dcterms:title "List all UniProtKB proteins and if they are reviewed (Swiss-Prot) or unreviewed (TrEMBL)".
+smodule:module_composition_106 rdfs:comment "List all UniProtKB proteins and if they are reviewed (Swiss-Prot) or unreviewed (TrEMBL)".
+smodule:module_composition_106 dcterms:subject "entry status", "list".
+
+smodule:module_composition_106 rdf:type smodule:SPARQL_Module_Composition.
+smodule:module_composition_106 smodule:hasComponent up_mod:M17_moduleClone27.
+smodule:module_composition_106 smodule:includeFile "M17Clone27.ttl".

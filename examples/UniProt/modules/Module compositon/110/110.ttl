@@ -1,0 +1,13 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix up_mod: <http://uniprot_module.biographs.org/> .
+
+smodule:module_composition_110 dcterms:title "List the proteins encoded by a gene that is located in an organelle other than the nucleus, or on a plasmid rather than a chromosome. In these cases the gene location is stored with encodedIn properties. Note that if a plasmid has several names, they are listed as multiple rdfs:label properties".
+smodule:module_composition_110 rdfs:comment "List the proteins encoded by a gene that is located in an organelle other than the nucleus, or on a plasmid rather than a chromosome. In these cases the gene location is stored with encodedIn properties. Note that if a plasmid has several names, they are listed as multiple rdfs:label properties".
+smodule:module_composition_110 dcterms:subject "chromosome", "list".
+
+smodule:module_composition_110 rdf:type smodule:SPARQL_Module_Composition.
+smodule:module_composition_110 smodule:hasComponent up_mod:M61_moduleClone2.
+smodule:module_composition_110 smodule:includeFile "M61Clone2.ttl".

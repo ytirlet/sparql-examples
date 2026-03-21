@@ -1,0 +1,30 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix up_mod: <http://uniprot_module.biographs.org/> .
+
+smodule:module_composition_107 dcterms:title "List all human UniProtKB entries and their sequences, marking if the sequence listed is the cannonical sequence of the matching entry.".
+smodule:module_composition_107 rdfs:comment "List all human UniProtKB entries and their sequences, marking if the sequence listed is the cannonical sequence of the matching entry.".
+smodule:module_composition_107 dcterms:subject "isoform", "sequence".
+
+smodule:module_composition_107 rdf:type smodule:SPARQL_Module_Composition.
+smodule:module_composition_107 smodule:hasConnection smodule:107_c1 , smodule:107_c2, smodule:107_c3, smodule:107_c4.
+smodule:module_composition_107 smodule:hasComponent smodule:OperatorValuesClone127, smodule:OperatorValuesClone159, up_mod:m23_moduleClone1, up_mod:M67_moduleClone30, up_mod:M32_moduleClone4.
+smodule:module_composition_107 smodule:includeFile "VALUESClone127.ttl", "VALUESClone159.ttl", "m23Clone1.ttl", "M67Clone30.ttl", "M32Clone4.ttl".
+
+smodule:107_c1 rdf:type smodule:Connection.
+smodule:107_c1 smodule:connects up_mod:M32_module_port-entryClone4, up_mod:M67_module_port-entryClone30.
+
+smodule:107_c2 rdf:type smodule:Connection.
+smodule:107_c2 smodule:connects up_mod:M67_module_port-organismClone30, smodule:OperatorValuesPortResultClone127.
+
+smodule:OperatorValuesPortResultClone127 smodule:valuesEnumeration "taxon:9606" .
+
+smodule:107_c3 rdf:type smodule:Connection.
+smodule:107_c3 smodule:connects up_mod:M32_module_port-sequenceClone4, up_mod:m23_module_port-sequenceClone1.
+
+smodule:107_c4 rdf:type smodule:Connection.
+smodule:107_c4 smodule:connects up_mod:M32_module_port-entryTypeClone4, smodule:OperatorValuesPortResultClone159.
+
+smodule:OperatorValuesPortResultClone159 smodule:valuesEnumeration "up:Protein" .

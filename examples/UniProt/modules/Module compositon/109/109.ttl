@@ -1,0 +1,33 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix up_mod: <http://uniprot_module.biographs.org/> .
+
+smodule:module_composition_109 dcterms:title "Find human transporter proteins in reviewed UniProtKB/Swiss-Prot, that are expressed in the liver (Uses Bgee and UBERON).".
+smodule:module_composition_109 rdfs:comment "Find human transporter proteins in reviewed UniProtKB/Swiss-Prot, that are expressed in the liver (Uses Bgee and UBERON).".
+smodule:module_composition_109 dcterms:subject "transport reaction", "tissue specificity", "federated query", "Bgee", "Rhea", "UBERON".
+
+smodule:module_composition_109 rdf:type smodule:SPARQL_Module_Composition.
+smodule:module_composition_109 smodule:hasConnection smodule:109_c1, smodule:109_c2, smodule:109_c3, smodule:109_c4, smodule:109_c5.
+smodule:module_composition_109 smodule:hasComponent smodule:OperatorValuesClone128, smodule:OperatorServiceClone8, up_mod:m24_moduleClone1, up_mod:m17_moduleClone1, up_mod:M67_moduleClone31, up_mod:M39_moduleClone25.
+smodule:module_composition_109 smodule:includeFile "VALUESClone128.ttl", "SERVICEClone8.ttl", "m24Clone1.ttl", "m17Clone1.ttl", "M67Clone31.ttl", "M39Clone25.ttl".
+
+smodule:109_c1 rdf:type smodule:Connection.
+smodule:109_c1 smodule:connects up_mod:M39_module_port-proteinClone25, up_mod:M67_module_port-entryClone31.
+
+smodule:109_c2 rdf:type smodule:Connection.
+smodule:109_c2 smodule:connects up_mod:m17_module_port-reactionClone1, smodule:OperatorServicePortParameterClone8.
+
+smodule:109_c3 rdf:type smodule:Connection.
+smodule:109_c3 smodule:connects up_mod:M39_module_port-reactionClone25, smodule:OperatorServicePortResultClone8.
+
+smodule:OperatorServicePortResultClone8 smodule:serviceInput "<https://sparql.rhea-db.org/sparql>".
+
+smodule:109_c4 rdf:type smodule:Connection.
+smodule:109_c4 smodule:connects up_mod:M67_module_port-organismClone31, smodule:OperatorValuesPortResultClone128.
+
+smodule:OperatorValuesPortResultClone128 smodule:valuesEnumeration "taxon:9606" .
+
+smodule:109_c5 rdf:type smodule:Connection.
+smodule:109_c5 smodule:connects up_mod:M39_module_port-proteinClone25, up_mod:m24_module_port-proteinClone1.

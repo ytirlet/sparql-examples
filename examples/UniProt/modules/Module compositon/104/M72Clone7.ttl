@@ -1,0 +1,61 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix up: <http://purl.uniprot.org/core/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix up_mod: <http://uniprot_module.biographs.org/> .
+
+<http://uniprot_module.biographs.org/M72_moduleClone7> a smodule:SPARQLModule ;
+    rdfs:label "Entry Names" ;
+    smodule:clonedFrom <http://uniprot_module.biographs.org/M72_module> ;
+    smodule:fragmentSPARQL """
+    ?entryClone7 up:recommendedName ?recNameClone7.
+    ?entryClone7 up:alternativeName ?altNameClone7.
+    ?recNameClone7 up:fullName ?fullNameClone7.
+    ?recNameClone7 up:shortName ?shortNameClone7.
+    """ ;
+    smodule:output <http://uniprot_module.biographs.org/M72_module_port-altNameClone7>,
+        <http://uniprot_module.biographs.org/M72_module_port-fullNameClone7>,
+        <http://uniprot_module.biographs.org/M72_module_port-recNameClone7>,
+        <http://uniprot_module.biographs.org/M72_module_port-shortNameClone7>,
+        up_mod:M72_module_port-entryClone7;
+    smodule:prefixes """PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX up: <http://purl.uniprot.org/core/>
+
+""" .
+
+<http://uniprot_module.biographs.org/M72_module_port-altNameClone7> a smodule:ModulePortURI ;
+    rdfs:label "Alternative Name" ;
+    rdfs:domain up:Structured_Name ;
+    smodule:isSelected true ;
+    smodule:variableName "?altNameClone7" .
+
+<http://uniprot_module.biographs.org/M72_module_port-fullNameClone7> a smodule:ModulePortURI ;
+    rdfs:label "Full Name" ;
+    rdfs:domain up:Structured_Name ;
+    smodule:isSelected true ;
+    smodule:variableName "?fullNameClone7" .
+
+<http://uniprot_module.biographs.org/M72_module_port-recNameClone7> a smodule:ModulePortURI ;
+    rdfs:label "Recommended Name" ;
+    rdfs:domain up:Structured_Name ;
+    smodule:isSelected true ;
+    smodule:variableName "r?ecNameClone7" .
+
+<http://uniprot_module.biographs.org/M72_module_port-shortNameClone7> a smodule:ModulePortURI ;
+    rdfs:label "Short Name" ;
+    rdfs:domain up:Structured_Name ;
+    smodule:isSelected true ;
+    smodule:variableName "?shortNameClone7" .
+
+up_mod:M72_module_port-entryClone7
+  a smodule:ModulePortURI;
+  rdfs:domain [
+		a owl:Class ;
+		smodule:option (up:Protein up:Part)
+		]; 
+  smodule:variableName "?entryClone7" ;
+  rdfs:label "Entry" ;
+  smodule:isSelected "true"^^xsd:boolean.

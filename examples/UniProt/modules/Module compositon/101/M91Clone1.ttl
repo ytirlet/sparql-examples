@@ -1,0 +1,34 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix up: <http://purl.uniprot.org/core/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://uniprot_module.biographs.org/M91_moduleClone1> a smodule:SPARQLModule ;
+    rdfs:label "Protein potential sequence" ;
+    smodule:clonedFrom <http://uniprot_module.biographs.org/M91_module> ;
+    smodule:fragmentSPARQL """ 
+    ?proteinClone1 rdf:type up:Protein.
+    ?proteinClone1 up:potentialSequence ?sequenceClone1 .
+    """ ;
+    smodule:output <http://uniprot_module.biographs.org/M91_module_port-proteinClone1>,
+        <http://uniprot_module.biographs.org/M91_module_port-sequenceClone1> ;
+    smodule:prefixes """PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX up: <http://purl.uniprot.org/core/>
+
+""" .
+
+<http://uniprot_module.biographs.org/M91_module_port-proteinClone1> a smodule:ModulePortURI ;
+    rdfs:label "Protein" ;
+    rdfs:domain up:Protein ;
+    smodule:isSelected true ;
+    smodule:variableName "?proteinClone1" .
+
+<http://uniprot_module.biographs.org/M91_module_port-sequenceClone1> a smodule:ModulePortURI ;
+    rdfs:label "Potential sequence" ;
+    rdfs:domain up:Sequence ;
+    smodule:isSelected true ;
+    smodule:variableName "?sequenceClone1" .
+

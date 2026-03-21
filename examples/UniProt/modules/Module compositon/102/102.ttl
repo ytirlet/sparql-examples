@@ -1,0 +1,13 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix up_mod: <http://uniprot_module.biographs.org/> .
+
+smodule:module_composition_102 dcterms:title "Extracting an UniProtKB primary accession from our IRIs. Is done with a bit of string manipulation. While UniProt primary accession are unique within UniProtKB they may be reused by accident or itentionally by other data sources. If we provided them as strings (not IRI) and if you used them in a query that way, you might accidentaly retrieve completely wrong records.".
+smodule:module_composition_102 rdfs:comment "Extracting an UniProtKB primary accession from our IRIs. Is done with a bit of string manipulation. While UniProt primary accession are unique within UniProtKB they may be reused by accident or itentionally by other data sources. If we provided them as strings (not IRI) and if you used them in a query that way, you might accidentaly retrieve completely wrong records.".
+smodule:module_composition_102 dcterms:subject "identifier", "mapping".
+
+smodule:module_composition_102 rdf:type smodule:SPARQL_Module_Composition.
+smodule:module_composition_102 smodule:hasComponent up_mod:M87_moduleClone1.
+smodule:module_composition_102 smodule:includeFile "M87Clone1.ttl".

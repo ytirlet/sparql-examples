@@ -1,0 +1,13 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix up_mod: <http://uniprot_module.biographs.org/> .
+
+smodule:module_composition_104 dcterms:title "The recommended protein full names for UniProtKB entries".
+smodule:module_composition_104 rdfs:comment "The recommended protein full names for UniProtKB entries".
+smodule:module_composition_104 dcterms:subject "protein name".
+
+smodule:module_composition_104 rdf:type smodule:SPARQL_Module_Composition.
+smodule:module_composition_104 smodule:hasComponent up_mod:M72_moduleClone7.
+smodule:module_composition_104 smodule:includeFile "M72Clone7.ttl".
