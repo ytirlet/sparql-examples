@@ -1,0 +1,61 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix up_mod: <http://uniprot_module.biographs.org/> .
+@prefix taxon: <http://purl.uniprot.org/taxonomy/>.
+
+smodule:module_composition_060 dcterms:title "Find human proteins that catalyze reactions where substrates or product have a Cholestane skeleton".
+smodule:module_composition_060 rdfs:comment "Find human proteins that catalyze reactions where substrates or product have a Cholestane skeleton".
+smodule:module_composition_060 dcterms:subject "enzyme", "substructure search", "ChEBI","idsm", "sachem", "federated query".
+
+smodule:module_composition_060 rdf:type smodule:SPARQL_Module_Composition.
+smodule:module_composition_060 smodule:hasConnection smodule:060_c1 , smodule:060_c2, smodule:060_c3, smodule:060_c4, smodule:060_c5, smodule:060_c6, smodule:060_c7, smodule:060_c8, smodule:060_c9, smodule:060_c10, smodule:060_c11, smodule:060_c12.
+smodule:module_composition_060 smodule:hasComponent smodule:OperatorValuesClone81, smodule:OperatorValuesClone80, smodule:OperatorValuesClone79, smodule:OperatorServiceClone13, smodule:OperatorServiceClone14, smodule:OperatorOptionalClone9, up_mod:M75_moduleClone8, up_mod:M38_moduleClone8, up_mod:M67_moduleClone18, up_mod:M51_moduleClone2, up_mod:M39_moduleClone10, up_mod:M31_moduleClone15, up_mod:M68_moduleClone3.
+smodule:module_composition_060 smodule:includeFile "VALUESClone81.ttl", "VALUESClone80.ttl", "VALUESClone79.ttl", "SERVICEClone13.ttl", "SERVICEClone14.ttl", "OPTIONALClone9.ttl", "M75Clone8.ttl", "M38Clone8.ttl", "M67Clone18.ttl", "M51Clone2.ttl", "M39Clone10.ttl", "M31Clone15.ttl", "M68Clone3.ttl".
+
+smodule:060_c1 rdf:type smodule:Connection.
+smodule:060_c1 smodule:connects up_mod:M75_module_port-chebiClone8, up_mod:M38_module_port-compoundClone8.
+
+smodule:060_c2 rdf:type smodule:Connection.
+smodule:060_c2 smodule:connects up_mod:M39_module_port-proteinClone10, up_mod:M67_module_port-entryClone18.
+
+smodule:060_c3 rdf:type smodule:Connection.
+smodule:060_c3 smodule:connects up_mod:M39_module_port-proteinClone10, up_mod:M51_module_port-proteinClone2.
+
+smodule:060_c4 rdf:type smodule:Connection.
+smodule:060_c4 smodule:connects up_mod:M51_module_port-diseaseClone2, smodule:OperatorOptionalPortResultClone9.
+
+smodule:060_c5 rdf:type smodule:Connection.
+smodule:060_c5 smodule:connects up_mod:M31_module_port-entryClone15, smodule:OperatorOptionalPortParameter0Clone9.
+
+smodule:060_c6 rdf:type smodule:Connection.
+smodule:060_c6 smodule:connects up_mod:M31_module_port-databaseClone15, smodule:OperatorValuesPortResultClone81.
+
+smodule:OperatorValuesPortResultClone81 smodule:valuesEnumeration "<http://purl.uniprot.org/database/MIM>" .
+
+smodule:060_c7 rdf:type smodule:Connection.
+smodule:060_c7 smodule:connects up_mod:M67_module_port-organismClone18, smodule:OperatorValuesPortResultClone80.
+
+smodule:OperatorValuesPortResultClone80 smodule:valuesEnumeration "taxon:9606" .
+
+smodule:060_c8 rdf:type smodule:Connection.
+smodule:060_c8 smodule:connects up_mod:M38_module_port-reactionClone8, smodule:OperatorServicePortParameterClone13.
+
+smodule:060_c9 rdf:type smodule:Connection.
+smodule:060_c9 smodule:connects up_mod:M39_module_port-reactionClone10, smodule:OperatorServicePortResultClone13.
+
+smodule:OperatorServicePortResultClone13 smodule:serviceInput "<https://sparql.rhea-db.org/sparql>".
+
+smodule:060_c10 rdf:type smodule:Connection.
+smodule:060_c10 smodule:connects up_mod:M68_module_port-chebiClone3, smodule:OperatorServicePortParameterClone14.
+
+smodule:060_c11 rdf:type smodule:Connection.
+smodule:060_c11 smodule:connects up_mod:M75_module_port-chebiAncestorClone8, smodule:OperatorServicePortResultClone14.
+
+smodule:OperatorServicePortResultClone14 smodule:serviceInput "<https://idsm.elixir-czech.cz/sparql/endpoint/chebi>".
+
+smodule:060_c12 rdf:type smodule:Connection.
+smodule:060_c12 smodule:connects up_mod:M68_module_port-queryClone3, smodule:OperatorValuesPortResultClone79.
+
+smodule:OperatorValuesPortResultClone79 smodule:valuesEnumeration "'[C@]12(CCC3CCCC[C@]3(C)[C@@]1([H])CC[C@]1(C)[C@@]([H])([C@@](C)([H])CCCC(C)C)CC[C@@]21[H])[H]'" .

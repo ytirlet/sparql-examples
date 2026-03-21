@@ -1,0 +1,33 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://sparql_module.biographs.org/OperatorOptionalClone9> a smodule:SPARQLModuleOperatorOptional ;
+    rdfs:label "Operator OPTIONAL" ;
+    smodule:clonedFrom <https://sparql_module.biographs.org/OperatorOptional> ;
+    smodule:fragmentSPARQL """
+  OPTIONAL {
+  # Result variable is ?operatorOptionalResult
+  [operatorParameter0]
+  }
+""" ;
+    smodule:output <https://sparql_module.biographs.org/OperatorOptionalPortParameter0Clone9>,
+        <https://sparql_module.biographs.org/OperatorOptionalPortResultClone9> ;
+    smodule:prefixes """PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+""" .
+
+<https://sparql_module.biographs.org/OperatorOptionalPortParameter0Clone9> a smodule:ModulePortOperatorParameter ;
+    rdfs:label "Parameter" ;
+    smodule:isSelected false ;
+    smodule:variableName "[operatorParameter0]" .
+
+<https://sparql_module.biographs.org/OperatorOptionalPortResultClone9> a smodule:ModulePortTyped ;
+    rdfs:label "Result" ;
+    rdfs:domain xsd:any ;
+    smodule:isSelected false ;
+    smodule:variableName "?operatorOptionalResult" .
+

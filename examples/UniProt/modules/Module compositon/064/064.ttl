@@ -1,0 +1,76 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix up_mod: <http://uniprot_module.biographs.org/> .
+
+smodule:module_composition_064 dcterms:title "Find (Human Genetic) diseases, that are related to a natural variant on the active site of an enzyme.".
+smodule:module_composition_064 rdfs:comment "Find (Human Genetic) diseases, that are related to a natural variant on the active site of an enzyme.".
+smodule:module_composition_064 dcterms:subject "enzyme", "disease", "variant", "search within sequence".
+
+smodule:module_composition_064 rdf:type smodule:SPARQL_Module_Composition.
+smodule:module_composition_064 smodule:hasConnection smodule:064_c1 , smodule:064_c2, smodule:064_c3, smodule:064_c4, smodule:064_c5, smodule:064_c6, smodule:064_c7, smodule:064_c8, smodule:064_c9, smodule:064_c10, smodule:064_c11, smodule:064_c12, smodule:064_c13, smodule:064_c14, smodule:064_c15. #, smodule:064_c16, smodule:064_c17, smodule:064_c18.
+smodule:module_composition_064 smodule:hasComponent smodule:OperatorValuesClone88, smodule:OperatorValuesClone87, smodule:OperatorValuesClone86, smodule:OperatorUnionClone7, up_mod:M76_moduleClone6, up_mod:M76_moduleClone5, up_mod:M88_moduleClone4, up_mod:M67_moduleClone21, up_mod:M51_moduleClone5, up_mod:M40_moduleClone6, up_mod:M40_moduleClone5, up_mod:M14_moduleClone18, up_mod:M14_moduleClone17, up_mod:M14_moduleClone16. #  smodule:OperatorFilterClone7,
+smodule:module_composition_064 smodule:includeFile "VALUESClone88.ttl", "VALUESClone87.ttl", "VALUESClone86.ttl", "UNIONClone7.ttl", "M76Clone6.ttl", "M76Clone5.ttl", "M88Clone4.ttl", "M67Clone21.ttl", "M51Clone5.ttl", "M40Clone6.ttl", "M40Clone5.ttl", "M14Clone18.ttl", "M14Clone17.ttl", "M14Clone16.ttl". #"FILTERClone7.ttl", 
+
+smodule:064_c1 rdf:type smodule:Connection.
+smodule:064_c1 smodule:connects up_mod:M51_module_port-proteinClone5, up_mod:M67_module_port-entryClone21.
+
+smodule:064_c2 rdf:type smodule:Connection.
+smodule:064_c2 smodule:connects up_mod:M67_module_port-entryClone21, smodule:OperatorUnionPortResultClone7.
+
+smodule:064_c3 rdf:type smodule:Connection.
+smodule:064_c3 smodule:connects smodule:OperatorUnionPortParameter0Clone7, up_mod:M88_module_port-proteinClone4.
+
+smodule:064_c4 rdf:type smodule:Connection.
+smodule:064_c4 smodule:connects smodule:OperatorUnionPortParameter1Clone7, up_mod:M14_module_port-proteinClone16.
+
+smodule:064_c5 rdf:type smodule:Connection.
+smodule:064_c5 smodule:connects up_mod:M14_module_port-annotationTypeClone16, smodule:OperatorValuesPortResultClone88.
+
+smodule:OperatorValuesPortResultClone88 smodule:valuesEnumeration "up:Catalytic_Activity_Annotation" .
+
+smodule:064_c6 rdf:type smodule:Connection.
+smodule:064_c6 smodule:connects up_mod:M67_module_port-entryClone21, up_mod:M14_module_port-proteinClone17.
+
+smodule:064_c7 rdf:type smodule:Connection.
+smodule:064_c7 smodule:connects up_mod:M14_module_port-annotationTypeClone17, smodule:OperatorValuesPortResultClone87.
+
+smodule:OperatorValuesPortResultClone87 smodule:valuesEnumeration "up:Active_Site_Annotation" .
+
+smodule:064_c8 rdf:type smodule:Connection.
+smodule:064_c8 smodule:connects up_mod:M14_module_port-annotationClone17, up_mod:M40_module_port-annotationClone5.
+
+smodule:064_c9 rdf:type smodule:Connection.
+smodule:064_c9 smodule:connects up_mod:M14_module_port-proteinClone17, up_mod:M40_module_port-proteinClone5.
+
+smodule:064_c10 rdf:type smodule:Connection.
+smodule:064_c10 smodule:connects up_mod:M40_module_port-rangeClone5, up_mod:M76_module_port-entryClone5.
+
+smodule:064_c11 rdf:type smodule:Connection.
+smodule:064_c11 smodule:connects up_mod:M67_module_port-entryClone21, up_mod:M14_module_port-proteinClone18.
+
+smodule:064_c12 rdf:type smodule:Connection.
+smodule:064_c12 smodule:connects up_mod:M14_module_port-annotationTypeClone18, smodule:OperatorValuesPortResultClone86.
+
+smodule:OperatorValuesPortResultClone86 smodule:valuesEnumeration "up:Natural_Variant_Annotation" .
+
+smodule:064_c13 rdf:type smodule:Connection.
+smodule:064_c13 smodule:connects up_mod:M14_module_port-annotationClone18, up_mod:M40_module_port-annotationClone6.
+
+smodule:064_c14 rdf:type smodule:Connection.
+smodule:064_c14 smodule:connects up_mod:M14_module_port-proteinClone18, up_mod:M40_module_port-proteinClone6.
+
+smodule:064_c15 rdf:type smodule:Connection.
+smodule:064_c15 smodule:connects up_mod:M40_module_port-rangeClone6, up_mod:M76_module_port-entryClone6.
+
+#smodule:064_c16 rdf:type smodule:Connection.
+#smodule:064_c16 smodule:connects up_mod:M76_module_port-beginPositionClone6, smodule:OperatorFilterPortParameter1Clone7.
+
+#smodule:064_c17 rdf:type smodule:Connection.
+#smodule:064_c17 smodule:connects up_mod:M76_module_port-beginPositionClone5, smodule:OperatorFilterPortParameter2Clone7.
+
+#smodule:064_c18 rdf:type smodule:Connection.
+#smodule:064_c18 smodule:connects up_mod:M76_module_port-endPositionClone6, smodule:OperatorFilterPortParameter3Clone7.
+
+#smodule:OperatorFilterPortResultClone7 smodule:filterInput "?parameter1 >= ?parameter2 && ?parameter2 <= ?parameter3" .

@@ -1,0 +1,65 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix up_mod: <http://uniprot_module.biographs.org/> .
+
+<http://uniprot_module.biographs.org/M76_moduleClone5> a smodule:SPARQLModule ;
+    rdfs:label "faldo: start/end position and reference" ;
+    smodule:clonedFrom <http://uniprot_module.biographs.org/M76_module> ;
+    smodule:fragmentSPARQL """
+    ?entryClone5 faldo:begin ?faldoBeginClone5.
+    ?faldoBeginClone5 faldo:position ?beginPositionClone5.
+    ?faldoBeginClone5 faldo:reference ?referenceClone5.
+    ?entryClone5 faldo:end ?faldoEndClone5.
+    ?faldoEndClone5 faldo:position ?endPositionClone5.
+    """ ;
+    smodule:output <http://uniprot_module.biographs.org/M76_module_port-beginPositionClone5>,
+        <http://uniprot_module.biographs.org/M76_module_port-endPositionClone5>,
+        <http://uniprot_module.biographs.org/M76_module_port-entryClone5>,
+        <http://uniprot_module.biographs.org/M76_module_port-faldoBeginClone5>,
+        <http://uniprot_module.biographs.org/M76_module_port-faldoEndClone5>,
+        <http://uniprot_module.biographs.org/M76_module_port-referenceClone5> ;
+    smodule:prefixes """PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX faldo: <http://biohackathon.org/resource/faldo#>
+
+""" .
+
+<http://uniprot_module.biographs.org/M76_module_port-beginPositionClone5> a smodule:ModulePortURI ;
+    rdfs:label "Begin Position" ;
+    rdfs:domain xsd:anyURI ;
+    smodule:isSelected false ;
+    smodule:variableName "?beginPositionClone5" .
+
+<http://uniprot_module.biographs.org/M76_module_port-endPositionClone5> a smodule:ModulePortURI ;
+    rdfs:label "End Position" ;
+    rdfs:domain xsd:anyURI ;
+    smodule:isSelected false ;
+    smodule:variableName "?endPositionClone5" .
+
+<http://uniprot_module.biographs.org/M76_module_port-entryClone5> a smodule:ModulePortURI ;
+    rdfs:label "Entry" ;
+    rdfs:domain xsd:anyURI ;
+    smodule:isSelected false ;
+    smodule:variableName "?entryClone5" .
+
+<http://uniprot_module.biographs.org/M76_module_port-faldoBeginClone5> a smodule:ModulePortURI ;
+    rdfs:label "FALDO begin" ;
+    rdfs:domain xsd:anyURI ;
+    smodule:isSelected false ;
+    smodule:variableName "?faldoBeginClone5" .
+
+<http://uniprot_module.biographs.org/M76_module_port-faldoEndClone5> a smodule:ModulePortURI ;
+    rdfs:label "FALDO end" ;
+    rdfs:domain xsd:anyURI ;
+    smodule:isSelected false ;
+    smodule:variableName "?faldoEndClone5" .
+
+<http://uniprot_module.biographs.org/M76_module_port-referenceClone5> a smodule:ModulePortURI ;
+    rdfs:label "Reference" ;
+    rdfs:domain xsd:anyURI ;
+    smodule:isSelected false ;
+    smodule:variableName "?referenceClone5" .
+

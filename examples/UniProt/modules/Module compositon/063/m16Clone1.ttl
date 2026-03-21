@@ -1,0 +1,25 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://uniprot_module.biographs.org/m16_moduleClone1> a smodule:SPARQLModule ;
+    rdfs:label "englishLabelStr structured name" ;
+    smodule:clonedFrom <http://uniprot_module.biographs.org/m16_module> ;
+    smodule:fragmentSPARQL """ 
+    ?componentClone1 up:partOf* <http://purl.uniprot.org/locations/173>
+    """ ;
+    smodule:output <http://uniprot_module.biographs.org/m16_module_port-componentClone1> ;
+    smodule:prefixes """PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX up: <http://purl.uniprot.org/core/>
+
+""" .
+
+<http://uniprot_module.biographs.org/m16_module_port-componentClone1> a smodule:ModulePortURI ;
+    rdfs:label "Cell component" ;
+    rdfs:domain xsd:anyURI ;
+    smodule:isSelected false ;
+    smodule:variableName "?componentClone1" .
+

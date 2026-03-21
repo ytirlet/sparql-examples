@@ -1,0 +1,42 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix up: <http://purl.uniprot.org/core/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://uniprot_module.biographs.org/M74_moduleClone3> a smodule:SPARQLModule ;
+    rdfs:label "Taxon, Scientific name and ancestor Class" ;
+    smodule:clonedFrom <http://uniprot_module.biographs.org/M74_module> ;
+    smodule:fragmentSPARQL """
+    ?taxonClone3 rdf:type up:Taxon.
+    ?taxonClone3 up:scientificName ?nameClone3.
+    ?taxonClone3 rdfs:subClassOf ?ancestorTaxonClone3.
+    """ ;
+    smodule:output <http://uniprot_module.biographs.org/M74_module_port-ancestorTaxonClone3>,
+        <http://uniprot_module.biographs.org/M74_module_port-nameClone3>,
+        <http://uniprot_module.biographs.org/M74_module_port-taxonClone3> ;
+    smodule:prefixes """PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX up: <http://purl.uniprot.org/core/>
+
+""" .
+
+<http://uniprot_module.biographs.org/M74_module_port-ancestorTaxonClone3> a smodule:ModulePortURI ;
+    rdfs:label "Ancestor taxon" ;
+    rdfs:domain up:Taxon ;
+    smodule:isSelected false ;
+    smodule:variableName "?ancestorTaxonClone3" .
+
+<http://uniprot_module.biographs.org/M74_module_port-nameClone3> a smodule:ModulePortDatatype ;
+    rdfs:label "Taxon name" ;
+    rdfs:domain xsd:string ;
+    smodule:isSelected true ;
+    smodule:variableName "?nameClone3" .
+
+<http://uniprot_module.biographs.org/M74_module_port-taxonClone3> a smodule:ModulePortURI ;
+    rdfs:label "Taxon" ;
+    rdfs:domain up:Taxon ;
+    smodule:isSelected true ;
+    smodule:variableName "?taxonClone3" .
+

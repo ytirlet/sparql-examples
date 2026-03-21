@@ -1,0 +1,55 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix up_mod: <http://uniprot_module.biographs.org/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix up: <http://purl.uniprot.org/core/> .
+
+<http://uniprot_module.biographs.org/M57_moduleClone4> a smodule:SPARQLModule ;
+    rdfs:label "entry mnemonic" ;
+    smodule:clonedFrom <http://uniprot_module.biographs.org/M57_module> ;
+    smodule:fragmentSPARQL """
+    ?entryClone4 rdf:type ?typeClone4.
+    ?entryClone4 up:mnemonic ?mnemonicClone4.
+    OPTIONAL {?entryClone4 up:oldMnemonic ?oldmnemonicClone4.}
+    """ ;
+    smodule:output <http://uniprot_module.biographs.org/M57_module_port-mnemonicClone4>,
+        <http://uniprot_module.biographs.org/M57_module_port-oldmnemonicClone4>,
+        <http://uniprot_module.biographs.org/M57_module_port-typeClone4> ,
+        up_mod:M57_module_port-entryClone4;
+    smodule:prefixes """PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX up: <http://purl.uniprot.org/core/>
+
+""" .
+
+<http://uniprot_module.biographs.org/M57_module_port-mnemonicClone4> a smodule:ModulePortDatatype ;
+    rdfs:label "Mnemonic" ;
+    rdfs:domain xsd:string ;
+    smodule:isSelected true ;
+    smodule:variableName "?mnemonicClone4" .
+
+<http://uniprot_module.biographs.org/M57_module_port-oldmnemonicClone4> a smodule:ModulePortDatatype ;
+    rdfs:label "Old mnemonic" ;
+    rdfs:domain xsd:string ;
+    smodule:isSelected false ;
+    smodule:variableName "?oldmnemonicClone4" .
+
+<http://uniprot_module.biographs.org/M57_module_port-typeClone4> a smodule:ModulePortURI ;
+    rdfs:label "Entry type" ;
+    rdfs:domain xsd:anyURI ;
+    smodule:isSelected false ;
+    smodule:variableName "?typeClone4" .
+    
+up_mod:M57_module_port-entryClone4
+  a smodule:ModulePortURI ; 
+  smodule:variableName "?entryClone4" ; 
+  rdfs:domain [
+    a owl:Class ;
+    smodule:option (up:Cluster up:Protein up:Sequence)
+    ]; 
+  rdfs:label "Entry" ;
+  smodule:isSelected "true"^^xsd:boolean.
+

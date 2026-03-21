@@ -1,0 +1,44 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix up_mod: <http://uniprot_module.biographs.org/> .
+
+smodule:module_composition_061 dcterms:title "Select the Gene Protein Reaction sets for Human (Ensembl Gene, Human UniProtKB, Catalyzed Rhea reactions)".
+smodule:module_composition_061 rdfs:comment "Select the Gene Protein Reaction sets for Human (Ensembl Gene, Human UniProtKB, Catalyzed Rhea reactions)".
+smodule:module_composition_061 dcterms:subject "enzyme", "gene name", "federated query", "Ensembl", "protein name", "Rhea", "list".
+
+smodule:module_composition_061 rdf:type smodule:SPARQL_Module_Composition.
+smodule:module_composition_061 smodule:hasConnection smodule:061_c1 , smodule:061_c2, smodule:061_c3, smodule:061_c4, smodule:061_c5, smodule:061_c6, smodule:061_c7, smodule:061_c8.
+smodule:module_composition_061 smodule:hasComponent smodule:OperatorValuesClone84, smodule:OperatorValuesClone83, smodule:OperatorValuesClone82, up_mod:M67_moduleClone19, up_mod:M45_moduleClone3, up_mod:M39_moduleClone11, up_mod:M31_moduleClone9, up_mod:M17_moduleClone9.
+smodule:module_composition_061 smodule:includeFile "VALUESClone84.ttl", "VALUESClone83.ttl", "VALUESClone82.ttl", "M67Clone19.ttl", "M45Clone3.ttl", "M39Clone11.ttl", "M31Clone9.ttl", "M17Clone9.ttl".
+
+smodule:061_c1 rdf:type smodule:Connection.
+smodule:061_c1 smodule:connects up_mod:M39_module_port-proteinClone11, up_mod:M17_module_port-proteinClone9.
+
+smodule:061_c2 rdf:type smodule:Connection.
+smodule:061_c2 smodule:connects up_mod:M39_module_port-proteinClone11, up_mod:M31_module_port-entryClone9.
+
+smodule:061_c3 rdf:type smodule:Connection.
+smodule:061_c3 smodule:connects up_mod:M39_module_port-proteinClone11, up_mod:M67_module_port-entryClone19.
+
+smodule:061_c4 rdf:type smodule:Connection.
+smodule:061_c4 smodule:connects up_mod:M39_module_port-proteinClone11, up_mod:M45_module_port-proteinClone3.
+
+smodule:061_c5 rdf:type smodule:Connection.
+smodule:061_c5 smodule:connects up_mod:M45_module_port-entryClone3, up_mod:M31_module_port-dbentryClone9.
+
+smodule:061_c6 rdf:type smodule:Connection.
+smodule:061_c6 smodule:connects up_mod:M17_module_port-reviewedClone9, smodule:OperatorValuesPortResultClone84.
+
+smodule:OperatorValuesPortResultClone84 smodule:valuesEnumeration "true" .
+
+smodule:061_c7 rdf:type smodule:Connection.
+smodule:061_c7 smodule:connects up_mod:M67_module_port-organismClone19, smodule:OperatorValuesPortResultClone83.
+
+smodule:OperatorValuesPortResultClone83 smodule:valuesEnumeration "taxon:9606" .
+
+smodule:061_c8 rdf:type smodule:Connection.
+smodule:061_c8 smodule:connects up_mod:M31_module_port-databaseClone9, smodule:OperatorValuesPortResultClone82.
+
+smodule:OperatorValuesPortResultClone82 smodule:valuesEnumeration "<http://purl.uniprot.org/database/Ensembl>" .

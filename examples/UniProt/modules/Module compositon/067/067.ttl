@@ -1,0 +1,39 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix up_mod: <http://uniprot_module.biographs.org/> .
+
+smodule:module_composition_067 dcterms:title "Generate a draft human metabolome".
+smodule:module_composition_067 rdfs:comment "Generate a draft human metabolome".
+smodule:module_composition_067 dcterms:subject "enzyme", "small molecule", "list".
+
+smodule:module_composition_067 rdf:type smodule:SPARQL_Module_Composition.
+smodule:module_composition_067 smodule:hasConnection smodule:067_c1 , smodule:067_c2, smodule:067_c3, smodule:067_c4, smodule:067_c5, smodule:067_c6, smodule:067_c7.
+smodule:module_composition_067 smodule:hasComponent smodule:OperatorValuesClone90, smodule:OperatorServiceClone10, up_mod:M75_moduleClone9, up_mod:M38_moduleClone9, up_mod:M67_moduleClone23, up_mod:M57_moduleClone4, up_mod:M39_moduleClone15, up_mod:m18_moduleClone1.
+smodule:module_composition_067 smodule:includeFile "VALUESClone90.ttl", "SERVICEClone10.ttl", "M75Clone9.ttl", "M38Clone9.ttl", "M67Clone23.ttl", "M57Clone4.ttl", "M39Clone15.ttl", "m18Clone1.ttl".
+
+smodule:067_c1 rdf:type smodule:Connection.
+smodule:067_c1 smodule:connects up_mod:M75_module_port-compoundClone9, up_mod:M38_module_port-compoundClone9.
+
+smodule:067_c2 rdf:type smodule:Connection.
+smodule:067_c2 smodule:connects up_mod:M39_module_port-proteinClone15, up_mod:M67_module_port-entryClone23.
+
+smodule:067_c3 rdf:type smodule:Connection.
+smodule:067_c3 smodule:connects up_mod:M39_module_port-proteinClone15, up_mod:M57_module_port-entryClone4.
+
+smodule:067_c4 rdf:type smodule:Connection.
+smodule:067_c4 smodule:connects up_mod:M38_module_port-reactionClone9, smodule:OperatorServicePortParameterClone10.
+
+smodule:067_c5 rdf:type smodule:Connection.
+smodule:067_c5 smodule:connects up_mod:M39_module_port-reactionClone15, smodule:OperatorServicePortResultClone10.
+
+smodule:OperatorServicePortResultClone10 smodule:serviceInput "<https://sparql.rhea-db.org/sparql>".
+
+smodule:067_c6 rdf:type smodule:Connection.
+smodule:067_c6 smodule:connects up_mod:M67_module_port-organismClone23, smodule:OperatorValuesPortResultClone90.
+
+smodule:OperatorValuesPortResultClone90 smodule:valuesEnumeration "taxon:9606" .
+
+smodule:067_c7 rdf:type smodule:Connection.
+smodule:067_c7 smodule:connects up_mod:M75_module_port-chebiClone9, up_mod:m18_module_port-chebiClone1.

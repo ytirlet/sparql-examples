@@ -1,0 +1,37 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix up_mod: <http://uniprot_module.biographs.org/> .
+
+smodule:module_composition_063 dcterms:title "Find (Human genetic) diseases that are thought to be related to Enzymes, known to be located in the Mitochondrion".
+smodule:module_composition_063 rdfs:comment "Find (Human genetic) diseases that are thought to be related to Enzymes, known to be located in the Mitochondrion".
+smodule:module_composition_063 dcterms:subject "enzyme", "disease", "subcellular location", "list".
+
+smodule:module_composition_063 rdf:type smodule:SPARQL_Module_Composition.
+smodule:module_composition_063 smodule:hasConnection smodule:063_c1 , smodule:063_c2, smodule:063_c3, smodule:063_c4, smodule:063_c5, smodule:063_c6, smodule:063_c7.
+smodule:module_composition_063 smodule:hasComponent smodule:OperatorValuesClone85, smodule:OperatorUnionClone8, up_mod:m16_moduleClone1, up_mod:M88_moduleClone3, up_mod:M67_moduleClone20, up_mod:M52_moduleClone2, up_mod:M51_moduleClone4, up_mod:M39_moduleClone13.
+smodule:module_composition_063 smodule:includeFile "VALUESClone85.ttl", "UNIONClone8.ttl", "m16Clone1.ttl", "M88Clone3.ttl", "M67Clone20.ttl", "M52Clone2.ttl", "M51Clone4.ttl", "M39Clone13.ttl".
+
+smodule:063_c1 rdf:type smodule:Connection.
+smodule:063_c1 smodule:connects up_mod:M51_module_port-proteinClone4, up_mod:M52_module_port-proteinClone2.
+
+smodule:063_c2 rdf:type smodule:Connection.
+smodule:063_c2 smodule:connects up_mod:M51_module_port-proteinClone4, smodule:OperatorUnionPortResultClone8.
+
+smodule:063_c3 rdf:type smodule:Connection.
+smodule:063_c3 smodule:connects up_mod:M88_module_port-proteinClone3, smodule:OperatorUnionPortParameter1Clone8.
+
+smodule:063_c4 rdf:type smodule:Connection.
+smodule:063_c4 smodule:connects up_mod:M39_module_port-proteinClone13, smodule:OperatorUnionPortParameter0Clone8.
+
+smodule:063_c5 rdf:type smodule:Connection.
+smodule:063_c5 smodule:connects up_mod:M51_module_port-proteinClone4, up_mod:M67_module_port-entryClone20.
+
+smodule:063_c6 rdf:type smodule:Connection.
+smodule:063_c6 smodule:connects up_mod:M67_module_port-organismClone20, smodule:OperatorValuesPortResultClone85.
+
+smodule:OperatorValuesPortResultClone85 smodule:valuesEnumeration "taxon:9606" .
+
+smodule:063_c7 rdf:type smodule:Connection.
+smodule:063_c7 smodule:connects up_mod:M52_module_port-cellComponentClone2, up_mod:m16_module_port-componentClone1.

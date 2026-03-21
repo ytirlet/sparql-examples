@@ -1,0 +1,25 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://uniprot_module.biographs.org/m15_moduleClone1> a smodule:SPARQLModule ;
+    rdfs:label "englishLabelStr structured name" ;
+    smodule:clonedFrom <http://uniprot_module.biographs.org/m15_module> ;
+    smodule:fragmentSPARQL """ 
+    ?proteomeClone1 skos:narrower proteome:UP000005640.
+    """ ;
+    smodule:output <http://uniprot_module.biographs.org/m15_module_port-proteomeClone1> ;
+    smodule:prefixes """PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+
+""" .
+
+<http://uniprot_module.biographs.org/m15_module_port-proteomeClone1> a smodule:ModulePortURI ;
+    rdfs:label "Proteome" ;
+    rdfs:domain <http://purl.uniprot.org/core/Proteome_Component> ;
+    smodule:isSelected false ;
+    smodule:variableName "?proteomeClone1" .
+

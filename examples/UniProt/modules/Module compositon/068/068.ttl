@@ -1,0 +1,62 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix up_mod: <http://uniprot_module.biographs.org/> .
+@prefix base_mod: <http://base_module.biographs.org/> .
+
+smodule:module_composition_068 dcterms:title "Find Drosophila enzymes, that depend on more than one transcript (requires cross-references to Ensembl family of resources).".
+smodule:module_composition_068 rdfs:comment "Find Drosophila enzymes, that depend on more than one transcript (requires cross-references to Ensembl family of resources).".
+smodule:module_composition_068 dcterms:subject "enzyme", "mRNA", "transcript", "cross-reference", "count", "Ensembl", "sequence origin".
+
+smodule:module_composition_068 rdf:type smodule:SPARQL_Module_Composition.
+smodule:module_composition_068 smodule:hasConnection smodule:068_c1 , smodule:068_c2, smodule:068_c3, smodule:068_c4, smodule:068_c5, smodule:068_c6, smodule:068_c7, smodule:068_c8, smodule:068_c9. #, smodule:068_c10, smodule:068_c11, smodule:068_c12, smodule:068_c13.
+smodule:module_composition_068 smodule:hasComponent smodule:OperatorValuesClone93, smodule:OperatorValuesClone92, smodule:OperatorValuesClone91, smodule:OperatorUnionClone6, base_mod:Mb4_moduleClone1, up_mod:M88_moduleClone5, up_mod:M67_moduleClone24, up_mod:M45_moduleClone4, up_mod:M39_moduleClone16, up_mod:M17_moduleClone11. #smodule:OperatorGroupByClone10, smodule:OperatorCountClone5, smodule:OperatorHavingClone4, 
+smodule:module_composition_068 smodule:includeFile "VALUESClone93.ttl", "VALUESClone92.ttl", "VALUESClone91.ttl", "UNIONClone6.ttl", "Mb4Clone1.ttl", "M88Clone5.ttl", "M67Clone24.ttl", "M45Clone4.ttl", "M39Clone16.ttl", "M17Clone11.ttl". #"GROUPBYClone10.ttl", "COUNTClone5.ttl", "HAVINGClone4.ttl", 
+
+smodule:068_c1 rdf:type smodule:Connection.
+smodule:068_c1 smodule:connects up_mod:M67_module_port-entryClone24, up_mod:M17_module_port-proteinClone11.
+
+smodule:068_c2 rdf:type smodule:Connection.
+smodule:068_c2 smodule:connects up_mod:M67_module_port-organismClone24, smodule:OperatorValuesPortResultClone93.
+
+smodule:OperatorValuesPortResultClone93 smodule:valuesEnumeration "taxon:7227" .
+
+smodule:068_c3 rdf:type smodule:Connection.
+smodule:068_c3 smodule:connects up_mod:M17_module_port-reviewedClone11, smodule:OperatorValuesPortResultClone92.
+
+smodule:OperatorValuesPortResultClone92 smodule:valuesEnumeration "true" .
+
+smodule:068_c4 rdf:type smodule:Connection.
+smodule:068_c4 smodule:connects up_mod:M67_module_port-entryClone24, up_mod:M45_module_port-proteinClone4.
+
+smodule:068_c5 rdf:type smodule:Connection.
+smodule:068_c5 smodule:connects up_mod:M45_module_port-entryClone4, base_mod:Mb4_module_port-subjectClone1.
+
+smodule:068_c6 rdf:type smodule:Connection.
+smodule:068_c6 smodule:connects base_mod:Mb4_module_port-typeClone1, smodule:OperatorValuesPortResultClone91.
+
+smodule:OperatorValuesPortResultClone91 smodule:valuesEnumeration "up:Transcript_Resource" .
+
+smodule:068_c7 rdf:type smodule:Connection.
+smodule:068_c7 smodule:connects up_mod:M67_module_port-entryClone24, smodule:OperatorUnionPortResultClone6.
+
+smodule:068_c8 rdf:type smodule:Connection.
+smodule:068_c8 smodule:connects up_mod:M88_module_port-proteinClone5, smodule:OperatorUnionPortParameter1Clone6.
+
+smodule:068_c9 rdf:type smodule:Connection.
+smodule:068_c9 smodule:connects up_mod:M39_module_port-proteinClone16, smodule:OperatorUnionPortParameter0Clone6.
+
+#smodule:068_c10 rdf:type smodule:Connection.
+#smodule:068_c10 smodule:connects up_mod:M67_module_port-entryClone24, smodule:OperatorGroupByPortParameterClone10.
+
+#smodule:068_c11 rdf:type smodule:Connection.
+#smodule:068_c11 smodule:connects smodule:OperatorCountPortParamater1Clone5, smodule:OperatorGroupByPortResultClone10 .
+
+#smodule:068_c12 rdf:type smodule:Connection.
+#smodule:068_c12 smodule:connects smodule:OperatorHavingPortParamaterClone4, smodule:OperatorCountPortResultClone5 .
+
+#smodule:068_c13 rdf:type smodule:Connection.
+#smodule:068_c13 smodule:connects smodule:OperatorCountPortParamater2Clone5, up_mod:M45_module_port-entryClone4 .
+
+#smodule:OperatorHavingPortResultClone4 smodule:havingInput "?parameter >=2".

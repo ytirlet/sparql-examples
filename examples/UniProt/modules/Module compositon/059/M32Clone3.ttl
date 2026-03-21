@@ -1,0 +1,61 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <https://schema.org/> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix up: <http://purl.uniprot.org/core/> .
+@prefix up_mod: <http://uniprot_module.biographs.org/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+
+up_mod:M32_moduleClone3 a smodule:SPARQLModule;
+  rdfs:label "Entry sequence"@en;
+  rdfs:comment "Entry sequence"@en;
+  smodule:clonedFrom <http://uniprot_module.biographs.org/M32_module> ;
+  schema:keywords "sequence";
+  smodule:prefixes """PREFIX up: <http://purl.uniprot.org/core/>
+    PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+    PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+    """ ;
+  smodule:fragmentSPARQL """
+    ?entryClone3 rdf:type ?entryTypeClone3.
+    ?entryClone3 up:sequence ?sequenceClone3.
+    ?sequenceClone3 rdf:type ?sequenceTypeClone3.
+    ?sequenceClone3 rdf:value ?valueClone3.
+    """;
+  smodule:output up_mod:M32_module_port-entryClone3, up_mod:M32_module_port-entryTypeClone3, up_mod:M32_module_port-sequenceClone3 , up_mod:M32_module_port-sequenceTypeClone3, up_mod:M32_module_port-valueClone3.
+
+up_mod:M32_module_port-entryClone3
+  a smodule:ModulePortURI;
+  rdfs:domain [
+		a owl:Class ;
+		smodule:option (up:Annotation up:Resource up:Protein)
+		]; 
+  smodule:variableName "?entryClone3" ;
+  rdfs:label "Entry" ;
+  smodule:isSelected "false"^^xsd:boolean.
+
+up_mod:M32_module_port-sequenceClone3
+  a smodule:ModulePortURI;
+  smodule:variableName "?sequenceClone3" ;
+  rdfs:label "Sequence" ;
+  smodule:isSelected "true"^^xsd:boolean.
+
+up_mod:M32_module_port-entryTypeClone3
+  a smodule:ModulePortURI;
+  smodule:option (up:Annotation up:Ressource up:Protein) ;
+  smodule:variableName "?entryTypeClone3" ;
+  rdfs:label "Entry type" ;
+  smodule:isSelected "false"^^xsd:boolean.
+  
+up_mod:M32_module_port-sequenceTypeClone3
+  a smodule:ModulePortURI;
+  smodule:variableName "?sequenceTypeClone3" ;
+  rdfs:label "Sequence type" ;
+  smodule:isSelected "false"^^xsd:boolean.
+  
+up_mod:M32_module_port-valueClone3
+  a smodule:ModulePortDatatype;
+  rdfs:domain xsd:string;
+  smodule:variableName "?valueClone3" ;
+  rdfs:label "Value" ;
+  smodule:isSelected "false"^^xsd:boolean.

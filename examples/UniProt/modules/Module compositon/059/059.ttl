@@ -1,0 +1,31 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix up_mod: <http://uniprot_module.biographs.org/> .
+
+smodule:module_composition_059 dcterms:title "Count all isoforms for a given proteome".
+smodule:module_composition_059 rdfs:comment "Count all isoforms for a given proteome".
+smodule:module_composition_059 dcterms:subject "proteome", "isoform", "count".
+
+smodule:module_composition_059 rdf:type smodule:SPARQL_Module_Composition.
+smodule:module_composition_059 smodule:hasConnection smodule:059_c1 , smodule:059_c2, smodule:059_c3, smodule:059_c4, smodule:059_c5.
+smodule:module_composition_059 smodule:hasComponent smodule:OperatorValuesClone78, up_mod:m15_moduleClone1, up_mod:M77_moduleClone2, up_mod:M67_moduleClone17, up_mod:M17_moduleClone8, up_mod:M32_moduleClone3.
+smodule:module_composition_059 smodule:includeFile "VALUESClone78.ttl", "m15Clone1.ttl", "M77Clone2.ttl", "M67Clone17.ttl", "M17Clone8.ttl", "M32Clone3.ttl".
+
+smodule:059_c1 rdf:type smodule:Connection.
+smodule:059_c1 smodule:connects up_mod:M17_module_port-proteinClone8, up_mod:M67_module_port-entryClone17.
+
+smodule:059_c2 rdf:type smodule:Connection.
+smodule:059_c2 smodule:connects up_mod:M17_module_port-proteinClone8, up_mod:M32_module_port-entryClone3.
+
+smodule:059_c3 rdf:type smodule:Connection.
+smodule:059_c3 smodule:connects up_mod:M17_module_port-proteinClone8, up_mod:M77_module_port-proteinClone2.
+
+smodule:059_c4 rdf:type smodule:Connection.
+smodule:059_c4 smodule:connects up_mod:M77_module_port-proteomeClone2, up_mod:m15_module_port-proteomeClone1.
+
+smodule:059_c5 rdf:type smodule:Connection.
+smodule:059_c5 smodule:connects up_mod:M17_module_port-reviewedClone8, smodule:OperatorValuesPortResultClone78.
+
+smodule:OperatorValuesPortResultClone78 smodule:valuesEnumeration "true" .

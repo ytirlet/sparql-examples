@@ -1,0 +1,34 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix smodule: <https://sparql_module.biographs.org/> .
+@prefix up_mod: <http://uniprot_module.biographs.org/> .
+
+smodule:module_composition_065 dcterms:title "How many distinct extinct organisms are represented in UniProtKB".
+smodule:module_composition_065 rdfs:comment "How many distinct extinct organisms are represented in UniProtKB".
+smodule:module_composition_065 dcterms:subject "taxonomy", "keyword", "count".
+
+smodule:module_composition_065 rdf:type smodule:SPARQL_Module_Composition.
+smodule:module_composition_065 smodule:hasConnection smodule:065_c1 , smodule:065_c2, smodule:065_c3.#, smodule:065_c4, smodule:065_c5, smodule:065_c6.
+smodule:module_composition_065 smodule:hasComponent smodule:OperatorValuesClone89, up_mod:M74_moduleClone3, up_mod:M67_moduleClone22, up_mod:M23_moduleClone3. #smodule:OperatorGroupByClone9, smodule:OperatorOrderByClone2, 
+smodule:module_composition_065 smodule:includeFile "VALUESClone89.ttl", "M74Clone3.ttl", "M67Clone22.ttl", "M23Clone3.ttl". #"GROUPBYClone9.ttl", "ORDERBYClone2.ttl", 
+
+smodule:065_c1 rdf:type smodule:Connection.
+smodule:065_c1 smodule:connects up_mod:M67_module_port-entryClone22, up_mod:M23_module_port-proteinClone3.
+
+smodule:065_c2 rdf:type smodule:Connection.
+smodule:065_c2 smodule:connects up_mod:M67_module_port-organismClone22, up_mod:M74_module_port-taxonClone3.
+
+smodule:065_c3 rdf:type smodule:Connection.
+smodule:065_c3 smodule:connects up_mod:M23_module_port-goTermClone3, smodule:OperatorValuesPortResultClone89.
+
+smodule:OperatorValuesPortResultClone89 smodule:valuesEnumeration "keywords:952" .
+
+#smodule:065_c4 rdf:type smodule:Connection.
+#smodule:065_c4 smodule:connects up_mod:M67_module_port-organismClone22, smodule:OperatorGroupByPortParameterClone9.
+
+#smodule:065_c5 rdf:type smodule:Connection.
+#smodule:065_c5 smodule:connects smodule:OperatorOrderByPortParameter1Clone2, smodule:OperatorGroupByPortResultClone9 .
+
+#smodule:065_c6 rdf:type smodule:Connection.
+#smodule:065_c6 smodule:connects smodule:OperatorOrderByPortParameter2Clone2, up_mod:M67_module_port-organismClone22 .
