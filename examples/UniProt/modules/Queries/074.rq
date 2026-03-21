@@ -1,0 +1,51 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX up: <http://purl.uniprot.org/core/>
+PREFIX : <http://biographs.org/>
+
+SELECT ?proteinClone20
+WHERE {
+ 
+    ?proteinClone20 rdf:type up:Protein.
+    ?proteinClone20 up:annotation ?annotationClone20.
+    ?annotationClone20 rdf:type ?annotationTypeClone20.
+    ?annotationClone20 rdfs:comment ?commentClone20.
+    
+
+  # union Result variable is ?proteinClone20
+  {
+  
+    ?proteinClone20 rdf:type up:Protein .
+    ?proteinClone20 up:annotation ?annotationClone20.
+    ?annotationClone20 up:catalyticActivity ?catalyticActivityClone20.
+    ?catalyticActivityClone20 rdf:type up:Catalytic_Activity .
+    ?catalyticActivityClone20 up:catalyzedReaction ?reactionClone20.
+    ?annotationClone20 rdf:type up:Catalytic_Activity_Annotation.
+    
+ 
+    ?catalyticActivityClone20 up:enzymeClass ?ECClone1 .
+    ?ECClone1 rdfs:subClassOf ?ancestorECClone1.
+    
+
+  # Result variable is ?ancestorECClone1
+  VALUES ?ancestorECClone1 { <http://purl.uniprot.org/enzyme/3.-.-.-> } .
+
+  }
+  UNION {
+   
+    ?proteinClone20 up:enzyme ?enzymeClone7 .
+    ?enzymeClone7 rdfs:subClassOf? ?ecClassClone7.
+    
+
+  # Result variable is ?ecClassClone7
+  VALUES ?ecClassClone7 { <http://purl.uniprot.org/enzyme/3.-.-.-> } .
+
+  }
+
+
+  # Result variable is ?annotationTypeClone20
+  VALUES ?annotationTypeClone20 { up:Transmembrane_Annotation } .
+
+} GROUP BY ?proteinClone20 HAVING (COUNT(DISTINCT ?annotationClone20) >= 2)

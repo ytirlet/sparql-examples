@@ -1,0 +1,31 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX up: <http://purl.uniprot.org/core/>
+PREFIX faldo: <http://biohackathon.org/resource/faldo#>
+
+SELECT (CONCAT('>', ?chainSeqId, '\\n', (SUBSTR(?valueClone5, ?beginPositionClone8, (?endPositionClone8-?beginPositionClone8+1))))  AS ?chainFasta)
+WHERE {
+
+BIND("PRO_0000268053" AS ?chainSeqId) 
+  BIND(IRI(CONCAT("http://purl.uniprot.org/annotation/", ?chainSeqId)) AS ?annotationClone8)
+
+    ?proteinClone8 up:annotation ?annotationClone8.
+    ?annotationClone8 up:range ?rangeClone8.
+    
+
+  # Result variable is ?annotationClone8
+  VALUES ?annotationClone8 { <http://purl.uniprot.org/annotation/PRO_0000268053> } .
+
+
+    ?rangeClone8 faldo:begin ?faldoBeginClone8.
+    ?faldoBeginClone8 faldo:position ?beginPositionClone8.
+    ?faldoBeginClone8 faldo:reference ?referenceClone8.
+    ?rangeClone8 faldo:end ?faldoEndClone8.
+    ?faldoEndClone8 faldo:position ?endPositionClone8.
+    
+ 
+    ?referenceClone8 rdf:value ?valueClone5 .
+    
+}

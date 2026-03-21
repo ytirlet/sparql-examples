@@ -1,0 +1,55 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX up: <http://purl.uniprot.org/core/>
+PREFIX : <http://biographs.org/>
+
+SELECT ?proteinClone21
+WHERE {
+ 
+    ?proteinClone21 rdf:type up:Protein.
+    ?proteinClone21 up:annotation ?annotationClone21.
+    ?annotationClone21 rdf:type ?annotationTypeClone21.
+    ?annotationClone21 rdfs:comment ?commentClone21.
+    
+
+  # union Result variable is ?proteinClone21
+  {
+  
+    ?proteinClone21 rdf:type up:Protein .
+    ?proteinClone21 up:annotation ?annotationClone21.
+    ?annotationClone21 up:catalyticActivity ?catalyticActivityClone21.
+    ?catalyticActivityClone21 rdf:type up:Catalytic_Activity .
+    ?catalyticActivityClone21 up:catalyzedReaction ?reactionClone21.
+    ?annotationClone21 rdf:type up:Catalytic_Activity_Annotation.
+    
+ 
+    ?catalyticActivityClone21 up:enzymeClass ?ECClone2 .
+    ?ECClone2 rdfs:subClassOf ?ancestorECClone2.
+    
+  }
+  UNION {
+   
+    ?proteinClone21 up:enzyme ?enzymeClone8 .
+    ?enzymeClone8 rdfs:subClassOf? ?ecClassClone8.
+    
+  }
+
+
+  # Result variable is ?annotationTypeClone21
+  VALUES ?annotationTypeClone21 { up:Transmembrane_Annotation } .
+
+
+    ?proteinClone21 rdf:type ?entryTypeClone11.
+    ?proteinClone21 rdfs:seeAlso ?dbentryClone11.
+    ?dbentryClone11 up:database ?databaseClone11.
+    
+
+  # Result variable is ?databaseClone11
+  VALUES ?databaseClone11 { <http://purl.uniprot.org/database/PDB> } .
+
+ 
+    ?dbentryClone11 up:method up:X-Ray_Crystallography 
+    
+}GROUP BY ?proteinClone21 HAVING(COUNT(DISTINCT ?annotationClone21 ) >= 2)

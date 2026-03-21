@@ -1,0 +1,32 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX up: <http://purl.uniprot.org/core/>
+
+SELECT DISTINCT ?proteomeClone3 ?proteomeClone1 ?repliconClone1
+WHERE {
+
+    ?proteinClone16 rdf:type up:Protein ;
+      up:created ?creationDateClone16 ;
+      up:modified ?modificationDateClone16 ;
+      up:reviewed ?reviewedClone16 ;
+      up:version ?versionClone16 .
+    
+
+  # Result variable is ?reviewedClone16
+  VALUES ?reviewedClone16 { true } .
+
+
+    ?proteinClone16 up:organism ?organismClone29.
+    ?organismClone29 rdfs:subClassOf? ?taxonClone29. # Hierarchy of taxon is materialized
+    
+
+    ?proteinClone16 rdf:type up:Protein.
+    ?proteinClone16 up:proteome ?proteomeClone3 .
+    
+
+  BIND( strbefore( str(?proteomeDataClone1), '#' ) as ?proteomeClone1 )
+  BIND( strafter( str(?proteomeDataClone1), '#' ) as ?repliconClone1 )
+    
+}

@@ -1,0 +1,28 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX up: <http://purl.uniprot.org/core/>
+
+SELECT ?dbentryClone14 
+  ?organismClone27 
+  (GROUP_CONCAT(?entryClone14; separator=', ') AS ?entries)
+WHERE {
+
+    #?entryClone14 rdf:type ?entryTypeClone14.
+    ?entryClone14 rdfs:seeAlso ?dbentryClone14.
+    ?dbentryClone14 up:database ?databaseClone14.
+    
+
+    ?entryClone14 up:organism ?organismClone27.
+    #?organismClone27 rdfs:subClassOf? ?taxonClone27. # Hierarchy of taxon is materialized
+    
+
+  # Result variable is ?organismClone27
+  VALUES ?organismClone27 { taxon:9606 taxon:10090 } .
+
+
+  # Result variable is ?databaseClone14
+  VALUES ?databaseClone14 { <http://purl.uniprot.org/database/GeneID> } .
+
+}GROUP BY ?dbentryClone14 ?organismClone27 HAVING (COUNT(?entryClone14) > 1) ORDER BY ?organismClone27 ?dbentryClone14

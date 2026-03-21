@@ -1,0 +1,53 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX up: <http://purl.uniprot.org/core/>
+PREFIX : <http://biographs.org/>
+PREFIX rh: <http://rdf.rhea-db.org/>
+
+SELECT (COUNT( *) AS ?cnt)
+WHERE {
+
+    ?proteinClone27 rdf:type up:Protein .
+    ?proteinClone27 up:annotation ?annotationClone27.
+    ?annotationClone27 up:catalyticActivity ?catalyticActivityClone27.
+    ?catalyticActivityClone27 rdf:type up:Catalytic_Activity .
+    ?catalyticActivityClone27 up:catalyzedReaction ?reactionClone27.
+    ?annotationClone27 rdf:type up:Catalytic_Activity_Annotation.
+    
+
+  SERVICE <https://sparql.rhea-db.org/sparql> {
+  # Result variable is ?reactionClone27
+   
+    ?reactionClone27 rdfs:subClassOf rh:Reaction ;
+      rh:status ?statusClone3 .
+    
+
+  # Result variable is ?statusClone3
+  VALUES ?statusClone3 { rh:Approved } .
+
+
+    ?reactionClone27 rdfs:subClassOf rh:Reaction.
+    ?reactionClone27 rh:side ?sideClone13.
+    ?sideClone13 rh:contains ?participantClone13.
+    ?participantClone13 rh:compound ?compoundClone13.
+    
+
+    ?compoundClone13 (rh:chebi|(rh:reactivePart/rh:chebi)|(rh:underlyingChebi)) ?chebiClone12 .
+    ?chebiClone12 (rdfs:subClassOf)+ CHEBI:18059.
+    
+  } .
+
+
+    ?proteinClone27 rdf:type up:Protein ;
+      #up:created ?creationDateClone17 ;
+      #up:modified ?modificationDateClone17 ;
+      up:reviewed ?reviewedClone17 ;
+      #up:version ?versionClone17 .
+    
+
+  # Result variable is ?reviewedClone17
+  VALUES ?reviewedClone17 { true } .
+
+}

@@ -1,0 +1,35 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX up: <http://purl.uniprot.org/core/>
+PREFIX eurio: <http://data.europa.eu/s66#> 
+PREFIX patent: <http://purl.uniprot.org/EPO/>
+
+SELECT  (IRI(CONCAT('https://cordis.europa.eu/project/id/', SAMPLE(?identifierClone1))) AS ?id)
+  (SAMPLE(?project_titleClone1) AS ?project_titles)
+  (COUNT(DISTINCT ?doi_stringClone1) AS ?doisInSwissProt)
+  (COUNT(DISTINCT ?entryClone1) AS ?entriesInSwissProt)
+WHERE {
+ SERVICE <https://cordis.europa.eu/datalab/sparql> {
+        ?projectClone1 a eurio:Project ;
+            eurio:identifier ?identifierClone1 ;
+                eurio:title ?project_titleClone1 ;
+                eurio:hasResult ?resultClone1 .
+        ?resultClone1 eurio:doi ?doiClone1 .
+  }
+
+BIND(CONCAT("doi:", STR(?doiClone1)) AS ?doi_stringClone1)
+  BIND(xsd:int(?identifierClone1) AS ?intidClone1)
+    ?entryClone1 up:citation ?citationClone1 .
+    ?citationClone1 a up:Journal_Citation ;
+     dcterms:identifier ?doi_stringClone1 .
+    
+ 
+   
+  #EURIO use literals of type xsd:anyURI to represent DOIs 
+  #without the leading doi: indicator
+  
+    
+}GROUP BY ?projectClone1 ORDER BY DESC(?intidClone1)

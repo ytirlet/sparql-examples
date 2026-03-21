@@ -1,0 +1,44 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX up: <http://purl.uniprot.org/core/>
+PREFIX : <http://biographs.org/>
+PREFIX rh: <http://rdf.rhea-db.org/>
+
+SELECT DISTINCT ?proteinClone25 ?reactionClone25
+WHERE {
+
+    ?proteinClone25 rdf:type up:Protein .
+    ?proteinClone25 up:annotation ?annotationClone25.
+    ?annotationClone25 up:catalyticActivity ?catalyticActivityClone25.
+    ?catalyticActivityClone25 rdf:type up:Catalytic_Activity .
+    ?catalyticActivityClone25 up:catalyzedReaction ?reactionClone25.
+    ?annotationClone25 rdf:type up:Catalytic_Activity_Annotation.
+    
+
+  SERVICE <https://sparql.rhea-db.org/sparql> {
+  # Result variable is ?reactionClone25
+   
+   ?reactionClone25 rh:isTransport true .
+    
+  } .
+
+
+    ?proteinClone25 up:organism ?organismClone31.
+    ?organismClone31 rdfs:subClassOf? ?taxonClone31. # Hierarchy of taxon is materialized
+    
+
+  # Result variable is ?organismClone31
+  VALUES ?organismClone31 { taxon:9606 } .
+
+ 
+    BIND(uberon:0002107 AS ?anat)
+          SERVICE <https://www.bgee.org/sparql/> {
+            ?seqClone1 genex:isExpressedIn ?anatClone1 .
+            ?seqClone1 lscr:xrefUniprot ?proteinClone25 .
+            ?seqClone1 orth:organism ?organismClone1 .
+            ?organismClone1 obo:RO_0002162 taxon:9606 .
+          }
+    
+}

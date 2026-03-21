@@ -1,0 +1,22 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX up: <http://purl.uniprot.org/core/>
+PREFIX : <http://biographs.org/>
+
+SELECT (COUNT( ?reactionClone23) AS ?truc)
+WHERE {
+ 
+    ?catalyticActivityClone3 up:enzymeClass ?ECClone3 .
+    #?ECClone3 rdfs:subClassOf ?ancestorECClone3.
+    
+
+    #?proteinClone23 rdf:type up:Protein .
+    #?proteinClone23 up:annotation ?annotationClone23.
+    #?annotationClone23 up:catalyticActivity ?catalyticActivityClone3.
+    ?catalyticActivityClone3 rdf:type up:Catalytic_Activity .
+    ?catalyticActivityClone3 up:catalyzedReaction ?reactionClone23.
+    #?annotationClone23 rdf:type up:Catalytic_Activity_Annotation.
+    
+}

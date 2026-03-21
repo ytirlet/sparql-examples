@@ -1,0 +1,78 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX up: <http://purl.uniprot.org/core/>
+PREFIX : <http://biographs.org/>
+PREFIX rh: <http://rdf.rhea-db.org/>
+PREFIX sachem: <http://bioinfo.uochb.cas.cz/rdf/v1.0/sachem#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+
+SELECT  ?proteinClone18 ?reactionClone18 ?chebiClone11 ?diseaseClone6
+WHERE {
+
+    ?proteinClone18 rdf:type up:Protein .
+    ?proteinClone18 up:annotation ?annotationClone18.
+    ?annotationClone18 up:catalyticActivity ?catalyticActivityClone18.
+    ?catalyticActivityClone18 rdf:type up:Catalytic_Activity .
+    ?catalyticActivityClone18 up:catalyzedReaction ?reactionClone18.
+    ?annotationClone18 rdf:type up:Catalytic_Activity_Annotation.
+    
+
+  SERVICE <https://sparql.rhea-db.org/sparql> {
+  # Result variable is ?reactionClone18
+  
+    ?compoundClone11 (rh:chebi|(rh:reactivePart/rh:chebi)|(rh:underlyingChebi)) ?chebiClone11 .
+    #?chebiClone11 (rdfs:subClassOf)+ ?chebiAncestorClone11.
+    
+
+  SERVICE <https://idsm.elixir-czech.cz/sparql/endpoint/chebi> {
+  # Result variable is ?chebiClone11
+  
+    SERVICE <https://idsm.elixir-czech.cz/sparql/endpoint/chebi> {
+      ?chebiClone11 sachem:substructureSearch|sachem:similarCompoundSearch|sachem:similaritySearch [sachem:query ?queryClone1 ].
+    }
+    
+
+  # Result variable is ?queryClone1
+  VALUES ?queryClone1 { 'NCCc1ccc(O)c(O)c1' } .
+
+  } .
+
+
+    ?reactionClone18 rdfs:subClassOf rh:Reaction.
+    ?reactionClone18 rh:side ?sideClone11.
+    ?sideClone11 rh:contains ?participantClone11.
+    ?participantClone11 rh:compound ?compoundClone11.
+    
+  } .
+
+
+    ?proteinClone18 rdf:type up:Protein ;
+      #up:created ?creationDateClone14 ;
+      #up:modified ?modificationDateClone14 ;
+      up:reviewed ?reviewedClone14 .
+      #up:version ?versionClone14 .
+    
+
+  # Result variable is ?reviewedClone14
+  VALUES ?reviewedClone14 { true } .
+
+ 
+    ?proteinClone18 rdf:type up:Protein.
+    ?proteinClone18 up:annotation ?annotationClone19.
+    ?annotationClone19 rdf:type up:Natural_Variant_Annotation.
+    ?annotationClone19 rdfs:comment ?commentClone19.
+    
+ 
+    ?annotationClone19 skos:related ?objectClone1 .
+    
+
+    ?proteinClone18 up:annotation ?annotationClone6.
+    ?proteinClone18 rdf:type up:Protein.
+    ?annotationClone6 rdf:type up:Disease_Annotation.
+    ?annotationClone6 up:disease ?diseaseClone6.
+    ?diseaseClone6 skos:prefLabel ?diseaseLabelClone6.
+    ?diseaseClone6 rdf:type up:Disease.
+    
+}

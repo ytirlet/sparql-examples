@@ -1,0 +1,60 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX up: <http://purl.uniprot.org/core/>
+PREFIX : <http://biographs.org/>
+PREFIX rh: <http://rdf.rhea-db.org/>
+PREFIX sachem: <http://bioinfo.uochb.cas.cz/rdf/v1.0/sachem#>
+
+SELECT DISTINCT ?proteinClone17 ?reactionClone17 ?chebiClone10
+WHERE {
+
+    ?proteinClone17 rdf:type up:Protein .
+    ?proteinClone17 up:annotation ?annotationClone17.
+    ?annotationClone17 up:catalyticActivity ?catalyticActivityClone17.
+    ?catalyticActivityClone17 rdf:type up:Catalytic_Activity .
+    ?catalyticActivityClone17 up:catalyzedReaction ?reactionClone17.
+    ?annotationClone17 rdf:type up:Catalytic_Activity_Annotation.
+    
+
+  SERVICE <https://sparql.rhea-db.org/sparql> {
+  # Result variable is ?reactionClone17
+  
+    ?compoundClone10 (rh:chebi|(rh:reactivePart/rh:chebi)|(rh:underlyingChebi)) ?chebiClone10 .
+    ?chebiClone10 (rdfs:subClassOf)+ ?chebiAncestorClone10.
+    
+
+  SERVICE <https://idsm.elixir-czech.cz/sparql/endpoint/chebi> {
+  # Result variable is ?chebiClone10
+  
+    SERVICE <https://idsm.elixir-czech.cz/sparql/endpoint/chebi> {
+      ?chebiClone10 sachem:substructureSearch|sachem:similarCompoundSearch|sachem:similaritySearch [sachem:query ?queryClone2 ].
+    }
+    
+
+  # Result variable is ?queryClone2
+  VALUES ?queryClone2 { 'NCCc1ccc(O)c(O)c1' } .
+
+  } .
+
+
+    ?reactionClone17 rdfs:subClassOf rh:Reaction.
+    ?reactionClone17 rh:side ?sideClone10.
+    ?sideClone10 rh:contains ?participantClone10.
+    ?participantClone10 rh:compound ?compoundClone10.
+    
+  } .
+
+
+    ?proteinClone17 rdf:type up:Protein ;
+      up:created ?creationDateClone13 ;
+      up:modified ?modificationDateClone13 ;
+      up:reviewed ?reviewedClone13 ;
+      up:version ?versionClone13 .
+    
+
+  # Result variable is ?reviewedClone13
+  VALUES ?reviewedClone13 { true } .
+
+}

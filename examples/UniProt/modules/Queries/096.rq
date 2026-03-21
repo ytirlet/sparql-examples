@@ -1,0 +1,18 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX up: <http://purl.uniprot.org/core/>
+
+SELECT DISTINCT ?altLabelClone8 ?geneClone8 ?locusNameClone8 ?orfNameClone8 ?proteinClone8
+WHERE {
+
+    ?proteinClone8 rdf:type up:Protein.
+    ?proteinClone8 up:encodedBy ?geneClone8.
+    ?geneClone8 skos:prefLabel ?nameClone8.
+    #OPTIONAL {?geneClone8 up:locusName ?locusNameClone8.}
+    #OPTIONAL {?geneClone8 skos:altLabel ?altLabelClone8.}
+    #OPTIONAL {?geneClone8 up:orfName ?orfNameClone8.}
+    
+}

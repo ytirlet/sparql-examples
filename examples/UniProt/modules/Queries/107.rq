@@ -1,0 +1,39 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX up: <http://purl.uniprot.org/core/>
+
+SELECT ?entryClone30 ?sequenceClone4 ?isCanonicalClone1
+WHERE {
+
+    ?entryClone30 up:organism ?organismClone30.
+    #?organismClone30 rdfs:subClassOf? ?taxonClone30. # Hierarchy of taxon is materialized
+    
+
+  # Result variable is ?organismClone30
+  VALUES ?organismClone30 { taxon:9606 } .
+
+
+    ?entryClone30 rdf:type ?entryTypeClone4.
+    ?entryClone30 up:sequence ?sequenceClone4.
+    #?sequenceClone4 rdf:type ?sequenceTypeClone4.
+    #?sequenceClone4 rdf:value ?valueClone4.
+    
+ 
+    OPTIONAL {
+        ?sequenceClone4 a up:Simple_Sequence .
+        BIND(true AS ?likelyIsCanonical)
+      }
+      OPTIONAL {
+        FILTER(?likelyIsCanonical)
+        ?sequenceClone4 a up:External_Sequence .
+        BIND(true AS ?isComplicated)
+      }
+      BIND(IF(BOUND(?isComplicated), STRENDS(STR(?entryClone30), STRBEFORE(SUBSTR(STR(?sequenceClone4), 34),'-')),?likelyIsCanonical) AS ?isCanonicalClone1)
+    
+
+  # Result variable is ?entryTypeClone4
+  VALUES ?entryTypeClone4 { up:Protein } .
+
+}

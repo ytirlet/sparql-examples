@@ -1,0 +1,54 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX up: <http://purl.uniprot.org/core/>
+PREFIX : <http://biographs.org/>
+PREFIX rh: <http://rdf.rhea-db.org/>
+PREFIX ECO: <http://purl.obolibrary.org/obo/ECO_>
+
+SELECT ?catalyticActivityClone22 ?reactionClone22 ?sourceClone5
+WHERE {
+
+  # Result variable is ?sourceTypeClone5
+  VALUES ?sourceTypeClone5 { up:Citation } .
+
+
+  # Result variable is ?evidenceClone5
+  VALUES ?evidenceClone5 { ECO:0000269 } .
+
+    #?proteinClone22 rdf:type up:Protein .
+    #?proteinClone22 up:annotation ?annotationClone22.
+    #?annotationClone22 up:catalyticActivity ?catalyticActivityClone22.
+    ?catalyticActivityClone22 rdf:type up:Catalytic_Activity .
+    ?catalyticActivityClone22 up:catalyzedReaction ?reactionClone22.
+    #?annotationClone22 rdf:type up:Catalytic_Activity_Annotation.
+    
+
+  SERVICE <https://sparql.rhea-db.org/sparql> {
+  # Result variable is ?reactionClone22
+   
+    ?subjectClone1 rdfs:subClassOf ?classClone1 .
+    
+
+  # Result variable is ?classClone1
+  VALUES ?classClone1 { rh:smallMolecule } .
+
+
+    ?reactionClone22 rdfs:subClassOf rh:Reaction.
+    ?reactionClone22 rh:side ?sideClone12.
+    ?sideClone12 rh:contains ?participantClone12.
+    ?participantClone12 rh:compound ?subjectClone1.
+    
+  } .
+
+
+    ?objectClone5 rdf:object ?catalyticActivityClone22.
+    ?objectClone5 up:attribution ?attributionClone5.
+    ?attributionClone5 up:source ?sourceClone5.
+    ?sourceClone5 rdf:type ?sourceTypeClone5.
+    ?attributionClone5 up:evidence ?evidenceClone5.
+    
+
+
+}

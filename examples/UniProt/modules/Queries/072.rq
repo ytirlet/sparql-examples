@@ -1,0 +1,38 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX up: <http://purl.uniprot.org/core/>
+PREFIX : <http://biographs.org/>
+
+SELECT ?databaseClone10 ?entryClone10
+WHERE {
+
+    #?entryClone10 rdf:type ?entryTypeClone10.
+    ?entryClone10 rdfs:seeAlso ?dbentryClone10.
+    ?dbentryClone10 up:database ?databaseClone10.
+    
+
+  # union Result variable is ?entryClone10
+  {
+    ?entryClone10 rdf:type up:Protein .
+    ?entryClone10 up:enzyme ?enzymeClone6 .
+    #?enzymeClone6 rdfs:subClassOf? ?ecClassClone6.
+    
+  }
+  UNION {
+  
+    ?entryClone10 rdf:type up:Protein .
+    ?entryClone10 up:annotation ?annotationClone19.
+    #?annotationClone19 up:catalyticActivity ?catalyticActivityClone19.
+    #?catalyticActivityClone19 rdf:type up:Catalytic_Activity .
+    #?catalyticActivityClone19 up:catalyzedReaction ?reactionClone19.
+    ?annotationClone19 rdf:type up:Catalytic_Activity_Annotation.
+    
+  }
+
+
+  # Result variable is ?databaseClone10
+  VALUES ?databaseClone10 { <http://purl.uniprot.org/database/PDB> } .
+
+}

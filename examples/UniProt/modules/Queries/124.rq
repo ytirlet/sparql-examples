@@ -1,0 +1,30 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX up: <http://purl.uniprot.org/core/>
+
+SELECT DISTINCT ?enzymeClone5
+WHERE {
+
+    ?proteinClone24 rdf:type up:Protein ;
+      #up:created ?creationDateClone24 ;
+      #up:modified ?modificationDateClone24 ;
+      up:reviewed ?reviewedClone24 .
+      #up:version ?versionClone24 .
+    
+
+  # Result variable is ?reviewedClone24
+  VALUES ?reviewedClone24 { true } .
+
+
+    #?proteinClone24 rdf:type ?typeClone5.
+    ?proteinClone24 up:mnemonic ?mnemonicClone5.
+    #OPTIONAL {?proteinClone24 up:oldMnemonic ?oldmnemonicClone5.}
+    
+ 
+    ?proteinClone24 up:domain ?domainClone5.
+    ?domainClone5 up:enzyme ?enzymeClone5 .
+    #?enzymeClone5 rdfs:subClassOf? ?ecClassClone5.
+    
+}

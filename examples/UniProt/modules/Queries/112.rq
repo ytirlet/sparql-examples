@@ -1,0 +1,35 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX up: <http://purl.uniprot.org/core/>
+PREFIX : <http://biographs.org/>
+PREFIX rh: <http://rdf.rhea-db.org/>
+
+SELECT (COUNT(DISTINCT ?proteinClone26) AS ?humanTransportEnzymes)
+WHERE {
+
+    ?proteinClone26 rdf:type up:Protein .
+    ?proteinClone26 up:annotation ?annotationClone26.
+    ?annotationClone26 up:catalyticActivity ?catalyticActivityClone26.
+    ?catalyticActivityClone26 rdf:type up:Catalytic_Activity .
+    ?catalyticActivityClone26 up:catalyzedReaction ?reactionClone26.
+    ?annotationClone26 rdf:type up:Catalytic_Activity_Annotation.
+    
+
+  SERVICE <https://sparql.rhea-db.org/sparql> {
+  # Result variable is ?reactionClone26
+   
+   ?reactionClone26 rh:isTransport true .
+    
+  } .
+
+
+    ?proteinClone26 up:organism ?organismClone32.
+    #?organismClone32 rdfs:subClassOf? ?taxonClone32. # Hierarchy of taxon is materialized
+    
+
+  # Result variable is ?organismClone32
+  VALUES ?organismClone32 { taxon:9606 } .
+
+}

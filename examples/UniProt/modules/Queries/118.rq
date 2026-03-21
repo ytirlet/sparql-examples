@@ -1,0 +1,52 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX up: <http://purl.uniprot.org/core/>
+
+SELECT ?geneClone1 ?orthologous_protein2Clone1
+WHERE {
+   # Result variable is ?annotationClone24
+  VALUES ?annotationClone24 { up:Disease_Annotation } .
+
+
+  # Result variable is ?nameClone7
+  VALUES ?nameClone7 { 'Homo sapiens' } .
+
+    ?proteinClone24 rdf:type up:Protein.
+    ?proteinClone24 up:annotation ?annotationClone24.
+    ?annotationClone24 rdf:type ?annotationTypeClone24.
+    ?annotationClone24 rdfs:comment ?commentClone24.
+    
+
+    ?proteinClone24 up:organism ?organismClone34.
+    #?organismClone34 rdfs:subClassOf? ?taxonClone34. # Hierarchy of taxon is materialized
+    
+
+    ?organismClone34 rdf:type up:Taxon.
+    ?organismClone34 up:scientificName ?nameClone7.
+    #?organismClone34 rdfs:subClassOf ?ancestorTaxonClone7.
+
+  SERVICE <https://sparql.omabrowser.org/sparql/> {
+    SELECT ?orthologous_protein2Clone1 ?proteinClone24 ?geneClone1 WHERE {
+      ?protein_OMAClone1 a orth:Protein .
+      ?orthologous_protein2Clone1 a orth:Protein .
+      ?clusterClone1 a orth:OrthologsCluster .
+      ?clusterClone1 orth:hasHomologousMember ?node1Clone1 .
+      ?clusterClone1 orth:hasHomologousMember ?node2Clone1 .
+      ?node2Clone1 orth:hasHomologousMember* ?protein_OMAClone1 .
+      ?node1Clone1 orth:hasHomologousMember* ?orthologous_protein2Clone1.
+      ?orthologous_protein2Clone1 orth:organism/obo:RO_0002162/up:scientificName 'Rattus norvegicus' .
+      ?orthologous_protein2Clone1 sio:SIO_010079 ?geneClone1 .
+      ?protein_OMAClone1 lscr:xrefUniprot ?proteinClone24 .
+      FILTER(?node1Clone1 != ?node2Clone1)
+    }
+  }
+  SERVICE <https://www.bgee.org/sparql/> {
+    ?geneClone1 genex:isExpressedIn ?anatEntityClone1 .
+    ?anatEntityClone1 rdfs:label 'brain' .
+    ?geneClone1 orth:organism ?orgClone1 . 
+    ?orgClone1 obo:RO_0002162 taxon:10116 .
+  }
+    FILTER CONTAINS (?commentClone24, "cancer")
+}

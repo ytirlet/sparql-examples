@@ -1,0 +1,25 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX up: <http://purl.uniprot.org/core/>
+
+SELECT ?subjectClone3 ?memberClone1
+WHERE {
+ 
+    ?subjectClone3 rdf:type ?typeClone3 .
+    
+
+  # Result variable is ?typeClone3
+  VALUES ?typeClone3 { up:Protein } .
+
+
+    ?clusterClone1 up:member ?memberClone1.
+    ?memberClone1 up:sequenceFor ?subjectClone3.
+    ?clusterClone1 up:identity ?identityClone1.
+    
+
+  # Result variable is ?memberClone1
+  VALUES ?memberClone1 { <http://purl.uniprot.org/uniparc/UPI000002DB1C> } .
+
+}

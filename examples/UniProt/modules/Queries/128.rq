@@ -1,0 +1,51 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX up: <http://purl.uniprot.org/core/>
+PREFIX : <http://biographs.org/>
+
+SELECT (COUNT(DISTINCT ?reactionClone30) as ?uniqueRheaCount)
+  ?taxonClone39 ?nameClone10 ?evidenceClone6
+WHERE {
+
+    ?objectClone6 rdf:object ?annotationClone6.
+    ?objectClone6 up:attribution ?attributionClone6.
+    ?attributionClone6 up:source ?sourceClone6.
+    ?sourceClone6 rdf:type ?sourceTypeClone6.
+    ?attributionClone6 up:evidence ?evidenceClone6.
+    
+
+    ?proteinClone10 rdf:type up:Protein ;
+      up:created ?creationDateClone10 ;
+      up:modified ?modificationDateClone10 ;
+      up:reviewed ?reviewedClone10 ;
+      up:version ?versionClone10 .
+    
+
+    ?proteinClone10 up:organism ?organismClone39.
+    ?organismClone39 rdfs:subClassOf? ?taxonClone39. # Hierarchy of taxon is materialized
+    
+
+    ?taxonClone39 rdf:type up:Taxon.
+    ?taxonClone39 up:scientificName ?nameClone10.
+    ?taxonClone39 rdfs:subClassOf ?ancestorTaxonClone10.
+    
+
+  # Result variable is ?taxonClone39
+  VALUES ?taxonClone39 { taxon:9606 taxon:7742 taxon:33208 taxon:33090 taxon:4751 taxon:2 taxon:2157 taxon:10239 } .
+
+
+  # Result variable is ?reviewedClone10
+  VALUES ?reviewedClone10 { true } .
+
+
+    ?proteinClone10 rdf:type up:Protein .
+    ?proteinClone10 up:annotation ?annotationClone30.
+    ?annotationClone30 up:catalyticActivity ?annotationClone6.
+    ?annotationClone6 rdf:type up:Catalytic_Activity .
+    ?annotationClone6 up:catalyzedReaction ?reactionClone30.
+    ?annotationClone30 rdf:type up:Catalytic_Activity_Annotation.
+    
+}GROUP BY ?taxonClone39 ?nameClone10 ?evidenceClone6
+ORDER BY ?nameClone10 ?evidenceClone6

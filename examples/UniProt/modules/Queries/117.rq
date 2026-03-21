@@ -1,0 +1,50 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX up: <http://purl.uniprot.org/core/>
+
+SELECT ?commentClone23 ?proteinClone23
+WHERE {
+ 
+    ?proteinClone23 rdf:type up:Protein.
+    ?proteinClone23 up:annotation ?annotationClone23.
+    ?annotationClone23 rdf:type ?annotationTypeClone23.
+    ?annotationClone23 rdfs:comment ?commentClone23.
+    
+    FILTER CONTAINS (?commentClone23, "glioblastoma")
+
+    ?proteinClone23 up:organism ?organismClone33.
+    #?organismClone33 rdfs:subClassOf? ?taxonClone33. # Hierarchy of taxon is materialized
+    
+
+  # Result variable is ?annotationClone23
+  VALUES ?annotationTypeClone23 { up:Disease_Annotation } .
+
+
+  # Result variable is ?organismClone33
+  VALUES ?organismClone33 { taxon:9606 } .
+
+ 
+  SERVICE <https://sparql.omabrowser.org/sparql/> {
+    SELECT ?orthologous_proteinClone1 ?proteinClone23 ?geneClone1 WHERE {
+    ?protein_OMAClone1 a orth:Protein .
+    ?orthologous_proteinClone1 a orth:Protein .
+    ?clusterClone1 a orth:OrthologsCluster .
+    ?clusterClone1 orth:hasHomologousMember ?node1Clone1 .
+    ?clusterClone1 orth:hasHomologousMember ?node2Clone1 .
+    ?node2Clone1 orth:hasHomologousMember* ?protein_OMAClone1 .
+    ?node1Clone1 orth:hasHomologousMember* ?orthologous_proteinClone1 .
+    ?orthologous_proteinClone1 orth:organism/obo:RO_0002162 taxon:10116 . # rattus norvegicus
+    ?orthologous_proteinClone1 sio:SIO_010079 ?geneClone1 .
+    ?protein_OMAClone1 lscr:xrefUniprot ?proteinClone23 .
+    FILTER(?node1Clone1 != ?node2Clone1)
+                }
+        }
+  SERVICE <https://www.bgee.org/sparql/> {
+    ?geneClone1 genex:isExpressedIn ?aClone1 .
+    ?aClone1 rdfs:label "brain" .
+    ?geneClone1 orth:organism ?sClone1 . 
+    ?sClone1 obo:RO_0002162 taxon:10116.
+        }
+}

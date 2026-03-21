@@ -1,0 +1,32 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX up: <http://purl.uniprot.org/core/>
+
+SELECT ?taxonClone1 ?ancestorTaxonClone4
+WHERE {
+ 
+    ?taxonClone1 up:rank ?rankClone1.
+    
+
+  # Result variable is ?rankClone1
+  VALUES ?rankClone1 { up:Species } .
+
+
+    ?taxonClone1 rdf:type up:Taxon.
+    ?taxonClone1 up:scientificName ?nameClone4.
+    ?taxonClone1 rdfs:subClassOf ?ancestorTaxonClone4.
+    
+ 
+    ?ancestorTaxonClone4 up:rank ?rankClone3.
+    
+
+  # Result variable is ?rankClone3
+  VALUES ?rankClone3 { up:Genus } .
+
+
+  # Result variable is ?ancestorTaxonClone4
+  VALUES ?ancestorTaxonClone4 { taxon:9605 } .
+
+}

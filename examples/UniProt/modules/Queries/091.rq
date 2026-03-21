@@ -1,0 +1,15 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX up: <http://purl.uniprot.org/core/>
+
+SELECT DISTINCT ?altNameClone6 ?fullNameClone6 ?recNameClone6 ?shortNameClone6
+WHERE {
+
+    ?entryClone6 up:recommendedName ?recNameClone6.
+    ?entryClone6 up:alternativeName ?altNameClone6.
+    ?recNameClone6 up:fullName ?fullNameClone6.
+    ?recNameClone6 up:shortName ?shortNameClone6.
+    
+}

@@ -1,0 +1,86 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX up: <http://purl.uniprot.org/core/>
+
+SELECT (count(distinct ?enzymeClone6) as ?ecCount)
+WHERE {
+ 
+    ?subjectClone2 rdfs:subClassOf ?classClone2 .
+    
+
+  FILTER NOT EXISTS {
+  # Result variable is ?subjectClone2
+  
+    ?proteinClone23 rdf:type up:Protein ;
+      #up:created ?creationDateClone23 ;
+      #up:modified ?modificationDateClone23 ;
+      up:reviewed ?reviewedClone23 .
+      #up:version ?versionClone23 .
+    
+ 
+    ?proteinClone23 up:enzyme ?enzymeClone6 .
+    ?enzymeClone12 rdfs:subClassOf? ?subjectClone2.
+    
+  }
+
+
+  FILTER NOT EXISTS {
+  # Result variable is ?subjectClone2
+  
+    ?proteinClone22 rdf:type up:Protein ;
+      #up:created ?creationDateClone22 ;
+      #up:modified ?modificationDateClone22 ;
+      up:reviewed ?reviewedClone22 .
+      #up:version ?versionClone22 .
+    
+
+  # Result variable is ?reviewedClone22
+  VALUES ?reviewedClone22 { true } .
+
+ 
+    ?proteinClone22 up:domain ?domainClone6.
+    ?domainClone6 up:enzyme ?enzymeClone6 .
+    ?enzymeClone6 rdfs:subClassOf? ?subjectClone2.
+    
+  }
+
+
+  FILTER NOT EXISTS {
+  # Result variable is ?subjectClone2
+  
+    ?proteinClone21 rdf:type up:Protein ;
+      #up:created ?creationDateClone21 ;
+      #up:modified ?modificationDateClone21 ;
+      up:reviewed ?reviewedClone21 .
+      #up:version ?versionClone21 .
+    
+ 
+    ?proteinClone21 up:component ?componentClone5.
+    ?componentClone5 up:enzyme ?enzymeClone6 .
+    ?enzymeClone5 rdfs:subClassOf? ?subjectClone2.
+    
+  }
+
+
+  # Result variable is ?proteinClone23
+  VALUES ?proteinClone23 { true } .
+
+
+  # Result variable is ?proteinClone21
+  VALUES ?proteinClone21 { true } .
+
+
+  # Result variable is ?classClone2
+  VALUES ?classClone2 { up:Enzyme } .
+
+
+  FILTER NOT EXISTS {
+  # Result variable is ?subjectClone2
+   
+    ?subjectClone2 up:obsolete true.
+    
+  }
+FILTER (!regex(?enzymeClone6,'-')) .
+}

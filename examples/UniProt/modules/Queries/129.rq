@@ -1,0 +1,34 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX up: <http://purl.uniprot.org/core/>
+PREFIX : <http://biographs.org/>
+PREFIX ECO: <http://purl.obolibrary.org/obo/ECO_>
+
+SELECT (COUNT (?reactionClone31) AS ?reac) ?organismClone40
+WHERE {
+
+    ?objectClone7 rdf:object ?annotationClone7.
+    ?objectClone7 up:attribution ?attributionClone7.
+    #?attributionClone7 up:source ?sourceClone7.
+    #?sourceClone7 rdf:type ?sourceTypeClone7.
+    ?attributionClone7 up:evidence ?evidenceClone7.
+    
+
+    ?proteinClone31 rdf:type up:Protein .
+    ?proteinClone31 up:annotation ?annotationClone31.
+    ?annotationClone31 up:catalyticActivity ?annotationClone7.
+    ?annotationClone7 rdf:type up:Catalytic_Activity .
+    ?annotationClone7 up:catalyzedReaction ?reactionClone31.
+    ?annotationClone31 rdf:type up:Catalytic_Activity_Annotation.
+    
+
+    ?proteinClone31 up:organism ?organismClone40.
+    #?organismClone40 rdfs:subClassOf? ?taxonClone40. # Hierarchy of taxon is materialized
+    
+
+  # Result variable is ?evidenceClone7
+  VALUES ?evidenceClone7 { ECO:0000269 } .
+
+} GROUP BY ?organismClone40

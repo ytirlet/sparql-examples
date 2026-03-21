@@ -1,0 +1,56 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX up: <http://purl.uniprot.org/core/>
+PREFIX : <http://biographs.org/>
+
+SELECT DISTINCT ?enzymeClone7 
+WHERE {
+
+  # union Result variable is ?operatorUnionResult
+  {
+  
+  # union Result variable is ?operatorUnionResult
+  {
+  
+  # union Result variable is ?operatorUnionResult
+  {
+  
+    ?operatorUnionResult rdf:type up:Protein .
+    ?operatorUnionResult up:annotation ?annotationClone32.
+    ?annotationClone32 up:catalyticActivity ?catalyticActivityClone32.
+    ?catalyticActivityClone32 rdf:type up:Catalytic_Activity .
+    ?catalyticActivityClone32 up:catalyzedReaction ?reactionClone32.
+    ?annotationClone32 rdf:type up:Catalytic_Activity_Annotation.
+    
+ 
+    ?catalyticActivityClone32 up:enzymeClass ?enzymeclone7 .
+    ?ECClone5 rdfs:subClassOf ?ancestorECClone5.
+    
+  }
+  UNION {
+   
+    ?operatorUnionResult rdf:type up:Protein.
+    ?operatorUnionResult up:enzyme ?enzymeClone7 .
+    ?enzymeClone13 rdfs:subClassOf? ?ecClassClone13.
+    
+  }
+
+  }
+  UNION {
+   
+    ?operatorUnionResult up:domain ?domainClone7.
+    ?domainClone7 up:enzyme ?enzymeClone7 .
+    ?enzymeClone7 rdfs:subClassOf? ?ecClassClone7.
+    
+  }
+
+  }
+  UNION {
+   
+    ?operatorUnionResult up:component ?componentClone6.
+    ?componentClone6 up:enzyme ?enzymeClone7 .
+    ?enzymeClone6 rdfs:subClassOf? ?ecClassClone6.
+    
+  }
+
+}

@@ -1,0 +1,46 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX up: <http://purl.uniprot.org/core/>
+
+SELECT (COUNT(DISTINCT ?enzymeClone4) AS ?distinctEnzymesInUniRef50Seed)
+WHERE {
+ 
+    ?proteinClone1 rdf:type up:Protein.
+    ?proteinClone1 up:seedFor ?clusterClone1 .
+    ?clusterClone1 up:identity ?identityClone1 .
+    
+
+  # union Result variable is ?proteinClone1
+  {
+   
+    ?proteinClone1 up:component ?componentClone4.
+    ?componentClone4 up:enzyme ?enzymeClone4 .
+    #?enzymeClone4 rdfs:subClassOf? ?ecClassClone4.
+    
+  }
+  UNION {
+  
+  # union Result variable is ?proteinClone1
+  {
+   
+    ?proteinClone1 up:enzyme ?enzymeClone4 .
+    #?enzymeClone11 rdfs:subClassOf? ?ecClassClone11.
+    
+  }
+  UNION {
+   
+    ?proteinClone1 up:domain ?domainClone4.
+    ?domainClone4 up:enzyme ?enzymeClone4 .
+    #?enzymeClone4 rdfs:subClassOf? ?ecClassClone4.
+    
+  }
+
+  }
+
+
+  # Result variable is ?identityClone1
+  VALUES ?identityClone1 { 0.5 } .
+
+}

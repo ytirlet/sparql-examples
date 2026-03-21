@@ -1,0 +1,35 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX up: <http://purl.uniprot.org/core/>
+PREFIX taxon: <http://purl.uniprot.org/taxonomy/>
+
+SELECT ?taxonClone8 ?subjectClone4
+WHERE {
+
+    #?taxonClone8 rdf:type up:Taxon.
+    ?taxonClone8 up:scientificName ?nameClone8.
+    #?taxonClone8 rdfs:subClassOf ?ancestorTaxonClone8.
+    
+
+  OPTIONAL {
+  # Result variable is ?taxonClone8
+   
+    ?subjectClone4 rdf:type ?typeClone4 .
+    
+
+  # Result variable is ?typeClone4
+  VALUES ?typeClone4 { up:Reference_Proteome } .
+
+
+    ?subjectClone4 up:organism ?taxonClone8.
+    #?taxonClone8 rdfs:subClassOf? ?taxonClone35. # Hierarchy of taxon is materialized
+    
+  }
+
+
+  # Result variable is ?taxonClone8
+  VALUES ?taxonClone8 { taxon:623 taxon:633 } .
+
+}

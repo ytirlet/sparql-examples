@@ -1,0 +1,54 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX up: <http://purl.uniprot.org/core/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX location: <http://purl.uniprot.org/locations/>
+
+SELECT (COUNT(DISTINCT ?entryClone37) AS ?proteins)
+  ?taxonClone37
+  ?nameClone9
+WHERE {
+
+    ?entryClone37 up:organism ?organismClone37.
+    ?organismClone37 rdfs:subClassOf? ?taxonClone37. # Hierarchy of taxon is materialized
+    
+
+  # union Result variable is ?entryClone37
+  {
+  
+    ?entryClone37 up:annotation ?annotationClone3.
+    ?entryClone37 rdf:type up:Protein.
+    ?annotationClone3 up:locatedIn/up:cellularComponent ?cellComponentClone3.
+    ?cellComponentClone3 skos:prefLabel ?location_inside_cellClone3.
+    
+
+  # Result variable is ?cellComponentClone3
+  VALUES ?cellComponentClone3 { location:177 } .
+
+  }
+  UNION {
+   
+    ?entryClone37 rdf:type up:Protein.
+    ?entryClone37 up:annotation ?annotationClone25.
+    ?annotationClone25 rdf:type ?annotationTypeClone25.
+    ?annotationClone25 rdfs:comment ?commentClone25.
+    
+
+  # Result variable is ?annotationTypeClone25
+  VALUES ?annotationTypeClone25 { up:Tissue_Specificity_Annotation } .
+
+  }
+
+
+    ?taxonClone37 rdf:type up:Taxon.
+    ?taxonClone37 up:scientificName ?nameClone9.
+    #?taxonClone37 rdfs:subClassOf ?ancestorTaxonClone9.
+    
+
+  # Result variable is ?taxonClone37
+  VALUES ?taxonClone37 { taxon:6103 taxon:8570 taxon:6855 taxon:6893 taxon:50557 taxon:37797 } .
+
+}GROUP BY ?taxonClone37 ?nameClone9
+ORDER BY ?proteins

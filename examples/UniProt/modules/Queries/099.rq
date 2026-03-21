@@ -1,0 +1,18 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX uniprotkb: <http://purl.uniprot.org/uniprot/>
+
+SELECT ?proteinClone1 ?otherIdentifierClone1
+WHERE {
+ 
+    SERVICE <https://sparql.api.identifiers.org/sparql> {
+        ?proteinClone1 owl:sameAs ?otherIdentifierClone1 .
+    }
+    
+
+  # Result variable is ?proteinClone1
+  VALUES ?proteinClone1 { uniprotkb:P00750 uniprotkb:P05067 } .
+
+}

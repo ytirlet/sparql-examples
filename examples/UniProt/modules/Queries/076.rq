@@ -1,0 +1,55 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX up: <http://purl.uniprot.org/core/>
+PREFIX faldo: <http://biohackathon.org/resource/faldo#>
+
+SELECT ?proteinClone28 ?beginPositionClone10 ?beginPositionClone9 ?endPositionClone10 ?commentClone29
+WHERE {
+ 
+    ?proteinClone28 rdf:type up:ProteinClone28.
+    ?proteinClone28 up:annotation ?annotationClone28.
+    ?annotationClone28 rdf:type ?annotationTypeClone28.
+    ?annotationClone28 rdfs:comment ?commentClone28.
+    
+
+    ?proteinClone28 up:annotation ?annotationClone28.
+    ?annotationClone28 up:range ?rangeClone9.
+  
+
+    ?rangeClone9 faldo:begin ?faldoBeginClone9.
+    ?faldoBeginClone9 faldo:position ?beginPositionClone9.
+    ?faldoBeginClone9 faldo:reference ?referenceClone9.
+    ?rangeClone9 faldo:end ?faldoEndClone9.
+    ?faldoEndClone9 faldo:position ?endPositionClone9.
+    
+ 
+    ?proteinClone28 rdf:type up:ProteinClone29.
+    ?proteinClone28 up:annotation ?annotationClone29.
+    ?annotationClone29 rdf:type ?annotationTypeClone29.
+    ?annotationClone29 rdfs:comment ?commentClone29.
+    
+
+    ?proteinClone28 up:annotation ?annotationClone29.
+    ?annotationClone29 up:range ?rangeClone10.
+
+    
+
+    ?rangeClone10 faldo:begin ?faldoBeginClone10.
+    ?faldoBeginClone10 faldo:position ?beginPositionClone10.
+    ?faldoBeginClone10 faldo:reference ?referenceClone10.
+    ?rangeClone10 faldo:end ?faldoEndClone10.
+    ?faldoEndClone10 faldo:position ?endPositionClone10.
+    
+
+  # Result variable is ?annotationTypeClone28
+  VALUES ?annotationTypeClone28 { up:Active_Site_Annotation } .
+
+
+  # Result variable is ?annotationTypeClone29
+  VALUES ?annotationTypeClone29 { up:Mutagenesis_Annotation } .
+  
+  FILTER(?beginPositionClone10 <= ?beginPositionClone9 && ?beginPositionClone9 <= ?endPositionClone10)
+
+}

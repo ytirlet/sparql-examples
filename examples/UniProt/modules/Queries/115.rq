@@ -1,0 +1,51 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX up: <http://purl.uniprot.org/core/>
+
+SELECT (count(distinct ?ecClassClone10) as ?ecNumberInProteinCount)
+  (count(distinct ?ecClassClone31) as ?ecNumberInDomainCount)
+  (count(distinct ?ecClassClone3) as ?ecNumberInComponentCount)
+WHERE {
+
+    ?proteinClone19 rdf:type up:Protein ;
+      #up:created ?creationDateClone19 ;
+      #up:modified ?modificationDateClone19 ;
+      up:reviewed ?reviewedClone19 ;
+      #up:version ?versionClone19 .
+    
+
+  OPTIONAL {
+  # Result variable is ?proteinClone19
+   
+    ?proteinClone19 up:enzyme ?enzymeClone10 .
+    ?enzymeClone10 rdfs:subClassOf? ?ecClassClone10.
+    
+  }
+
+
+  OPTIONAL {
+  # Result variable is ?proteinClone19
+   
+    ?proteinClone19 up:domain ?domainClone3.
+    ?domainClone3 up:enzyme ?enzymeClone31 .
+    ?enzymeClone31 rdfs:subClassOf? ?ecClassClone31.
+    
+  }
+
+
+  OPTIONAL {
+  # Result variable is ?proteinClone19
+   
+    ?proteinClone19 up:component ?componentClone3.
+    ?componentClone3 up:enzyme ?enzymeClone3 .
+    ?enzymeClone3 rdfs:subClassOf? ?ecClassClone3.
+    
+  }
+
+
+  # Result variable is ?reviewedClone19
+  VALUES ?reviewedClone19 { true } .
+
+}

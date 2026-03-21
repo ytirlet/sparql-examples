@@ -1,0 +1,34 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX up: <http://purl.uniprot.org/core/>
+PREFIX faldo: <http://biohackathon.org/resource/faldo#>
+
+SELECT ?proteinClone22
+WHERE {
+ 
+    ?subjectClone4 rdf:value ?valueClone4 .
+   
+ 
+    ?proteinClone22 rdf:type up:Protein.
+    ?proteinClone22 up:annotation ?annotationClone22.
+    ?annotationClone22 rdf:type ?annotationTypeClone22.
+    ?annotationClone22 rdfs:comment ?commentClone22.
+    
+
+    ?proteinClone22 up:annotation ?annotationClone22.
+    ?annotationClone22 up:range ?rangeClone7.
+    
+
+    ?rangeClone7 faldo:begin ?faldoBeginClone7.
+    ?faldoBeginClone7 faldo:position ?beginPositionClone7.
+    ?faldoBeginClone7 faldo:reference ?subjectClone4.
+    ?rangeClone7 faldo:end ?faldoEndClone7.
+    ?faldoEndClone7 faldo:position ?endPositionClone7.
+    
+
+  # Result variable is ?annotationTypeClone22
+  VALUES ?annotationTypeClone22 { up:Active_Site_Annotation } .
+FILTER(SUBSTR(?valueClone4, ?beginPositionClone7, 1) = 'Y')
+}

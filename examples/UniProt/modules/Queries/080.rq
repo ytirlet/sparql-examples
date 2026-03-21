@@ -1,0 +1,14 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX up: <http://purl.uniprot.org/core/>
+
+SELECT DISTINCT ?entryClone7 ?typeClone7 ?mnemonicClone7 ?oldmnemonicClone7
+WHERE {
+
+    ?entryClone7 rdf:type ?typeClone7.
+    ?entryClone7 up:mnemonic ?mnemonicClone7.
+    OPTIONAL {?entryClone7 up:oldMnemonic ?oldmnemonicClone7.}
+    
+}

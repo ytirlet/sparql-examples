@@ -1,0 +1,16 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX up: <http://purl.uniprot.org/core/>
+
+SELECT DISTINCT ?creationDateClone27 ?modificationDateClone27 ?proteinClone27 ?reviewedClone27 ?versionClone27
+WHERE {
+
+    ?proteinClone27 rdf:type up:Protein ;
+      up:created ?creationDateClone27 ;
+      up:modified ?modificationDateClone27 ;
+      up:reviewed ?reviewedClone27 ;
+      up:version ?versionClone27 .
+    
+}

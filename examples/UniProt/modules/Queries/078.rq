@@ -1,0 +1,35 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX up: <http://purl.uniprot.org/core/>
+
+SELECT DISTINCT ?diseaseClone7 ?proteinClone7 ?dbentryClone12 ?commentClone3
+WHERE {
+
+    ?proteinClone7 up:annotation ?annotationClone7.
+    ?proteinClone7 rdf:type up:Protein.
+    ?annotationClone7 rdf:type up:Disease_Annotation.
+    ?annotationClone7 up:disease ?diseaseClone7.
+    ?diseaseClone7 skos:prefLabel ?diseaseLabelClone7.
+    ?diseaseClone7 rdf:type up:Disease.
+    
+
+  OPTIONAL {
+  # Result variable is ?diseaseClone7
+  
+    ?diseaseClone7 rdf:type ?entryTypeClone12.
+    ?diseaseClone7 rdfs:seeAlso ?dbentryClone12.
+    ?dbentryClone12 up:database ?databaseClone12.
+    
+
+  # Result variable is ?databaseClone12
+  VALUES ?databaseClone12 { <http://purl.uniprot.org/database/MIM> } .
+
+  }
+
+ 
+    ?diseaseClone7 rdfs:comment ?commentClone3 .
+    
+}

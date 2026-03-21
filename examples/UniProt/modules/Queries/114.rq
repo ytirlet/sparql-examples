@@ -1,0 +1,47 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX up: <http://purl.uniprot.org/core/>
+
+SELECT (COUNT (DISTINCT ?proteinClone18) AS ?protcount)
+WHERE {
+
+    ?proteinClone18 rdf:type up:Protein ;
+      up:created ?creationDateClone18 ;
+      up:modified ?modificationDateClone18 ;
+      up:reviewed ?reviewedClone18 ;
+      up:version ?versionClone18 .
+    
+
+  OPTIONAL {
+  # Result variable is ?proteinClone18
+   
+    ?proteinClone18 up:enzyme ?enzymeClone9 .
+    ?enzymeClone9 rdfs:subClassOf? ?ecClassClone9.
+    
+  }
+
+
+  OPTIONAL {
+  # Result variable is ?proteinClone18
+   
+    ?proteinClone18 up:domain ?domainClone2.
+    ?domainClone2 up:enzyme ?enzymeClone2 .
+    ?enzymeClone2 rdfs:subClassOf? ?ecClassClone2.
+    
+  }
+
+
+  OPTIONAL {
+  # Result variable is ?proteinClone18
+   
+    ?proteinClone18 up:component ?componentClone2.
+    ?componentClone2 up:enzyme ?enzymeClone2 .
+    ?enzymeClone2 rdfs:subClassOf? ?ecClassClone2.
+    
+  }
+
+
+  # Result variable is ?reviewedClone18
+  VALUES ?reviewedClone18 { true } .
+FILTER (bound(?ecClassClone9)||bound(?ecClassClone2))
+} 

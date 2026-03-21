@@ -1,0 +1,35 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX up: <http://purl.uniprot.org/core/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+
+SELECT ?entryClone13 ?proteinClone8
+WHERE {
+
+    ?entryClone13 rdf:type ?entryTypeClone13.
+    ?entryClone13 rdfs:seeAlso ?dbentryClone13.
+    ?dbentryClone13 up:database ?databaseClone13.
+    
+
+  # Result variable is ?databaseClone13
+  VALUES ?databaseClone13 { <http://purl.uniprot.org/database/MeSH> } .
+
+
+    ?proteinClone8 up:annotation ?annotationClone8.
+    ?proteinClone8 rdf:type up:Protein.
+    ?annotationClone8 rdf:type up:Disease_Annotation.
+    ?annotationClone8 up:disease ?entryClone13.
+    ?entryClone13 skos:prefLabel ?diseaseLabelClone8.
+    ?entryClone13 rdf:type up:Disease.
+    
+ 
+    SERVICE<https://id.nlm.nih.gov/mesh/sparql> {
+    GRAPH <http://id.nlm.nih.gov/mesh> {
+      # Mesh M0013493 represents the concept 'Metabolic Diseases'
+          ?dbentryClone13 <http://id.nlm.nih.gov/mesh/vocab#broaderDescriptor>* ?broaderClone1 .
+      ?broaderClone1 <http://id.nlm.nih.gov/mesh/vocab#preferredConcept> <http://id.nlm.nih.gov/mesh/M0013493> .
+    }
+   } 
+}
