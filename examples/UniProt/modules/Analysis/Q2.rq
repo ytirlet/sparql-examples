@@ -1,0 +1,17 @@
+# count the number of queries per module
+
+PREFIX up: <http://purl.uniprot.org/core/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX : <https://sparql_module.biographs.org/> 
+PREFIX up_mod: <http://uniprot_module.biographs.org/> 
+
+SELECT ?module (COUNT (DISTINCT ?query) AS ?queries) 
+WHERE {
+
+?query rdf:type :SPARQL_Module_Composition.
+?query :hasComponent ?instance.
+?instance :clonedFrom ?module .
+
+}
+GROUP BY ?module ORDER BY ?queries
