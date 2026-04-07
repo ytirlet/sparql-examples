@@ -1,0 +1,17 @@
+# Find the queries in which module X appears.
+
+PREFIX up: <http://purl.uniprot.org/core/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX : <https://sparql_module.biographs.org/> 
+PREFIX up_mod: <http://uniprot_module.biographs.org/> 
+
+SELECT DISTINCT ?query
+WHERE {
+
+?query rdf:type :SPARQL_Module_Composition.
+?query :hasComponent ?instance.
+?instance :clonedFrom ?module .
+VALUES ?module {up_mod:M14_module} . # Change value to find queries in which other modules appear
+
+}
