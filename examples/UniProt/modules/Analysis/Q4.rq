@@ -1,0 +1,19 @@
+# Count the number of different modules connected for each module
+
+SELECT ?module (COUNT(DISTINCT ?connected_module) AS ?connected_modules)
+WHERE {
+
+?query rdf:type :SPARQL_Module_Composition.
+?query :hasConnection ?connection.
+?connection :connects ?port1.
+?connection :connects ?port2.
+
+?instance1 :output ?port1.
+?instance1 :clonedFrom ?module.
+
+?instance2 :output ?port2.
+?instance2 :clonedFrom ?connected_module.
+
+FILTER (?port1 != ?port2).
+}
+GROUP BY ?module ORDER BY ?connected_modules
