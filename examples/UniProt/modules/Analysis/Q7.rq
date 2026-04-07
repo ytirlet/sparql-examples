@@ -1,0 +1,21 @@
+# count the number of modules that co-occur per module
+
+PREFIX up: <http://purl.uniprot.org/core/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX : <https://sparql_module.biographs.org/> 
+PREFIX up_mod: <http://uniprot_module.biographs.org/> 
+
+SELECT DISTINCT ?module (COUNT (DISTINCT ?cooccurring_module) AS ?cooccurring_modules)
+WHERE {
+
+?query rdf:type :SPARQL_Module_Composition.
+?query :hasComponent ?instance1.
+?query :hasComponent ?instance2.
+?instance1 :clonedFrom ?module .
+?instance2 :clonedFrom ?cooccurring_module.
+
+FILTER (?instance1 != ?instance2).
+}
+
+GROUP BY ?module ORDER BY ?cooccurring_modules
