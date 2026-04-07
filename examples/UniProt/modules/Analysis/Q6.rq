@@ -1,0 +1,14 @@
+# Which modules co-occur with Module X?
+
+SELECT DISTINCT ?cooccurring_module
+WHERE {
+
+?query rdf:type :SPARQL_Module_Composition.
+?query :hasComponent ?instance1.
+?query :hasComponent ?instance2.
+?instance1 :clonedFrom ?module .
+?instance2 :clonedFrom ?cooccurring_module.
+
+VALUES ?module {up_mod:M14_module} .
+FILTER (?instance1 != ?instance2).
+}
